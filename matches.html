@@ -1,0 +1,3021 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Матчтар | Ордабасы ФК</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =====================================================
+           MATCHES PAGE
+        ===================================================== */
+
+        .matches-header {
+            position: absolute;
+        }
+
+
+        /* HERO */
+
+        .matches-page-hero {
+            min-height: 68vh;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 170px 0 90px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(2, 11, 28, 0.98),
+                    rgba(4, 31, 69, 0.82),
+                    rgba(7, 89, 133, 0.38)
+                ),
+                url("images/hero.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .matches-page-hero h1 {
+            margin-bottom: 25px;
+
+            color: white;
+
+            font-family:
+                "Manrope",
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(55px, 8vw, 110px);
+
+            font-weight: 800;
+
+            line-height: 0.9;
+
+            letter-spacing: -4px;
+        }
+
+
+        .matches-page-hero h1 span {
+            display: block;
+        }
+
+
+        .matches-page-hero h1 span:last-child {
+            color: #38bdf8;
+        }
+
+
+        .matches-hero-description {
+            max-width: 650px;
+
+            color: #cbd5e1;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           NEXT MATCH
+        ===================================================== */
+
+        .featured-match-section {
+            padding: 100px 0;
+
+            background: #f8fafc;
+        }
+
+
+        .featured-match-card {
+            overflow: hidden;
+
+            border-radius: 28px;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(14, 165, 233, 0.32),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    135deg,
+                    #020b1c,
+                    #041f45
+                );
+
+            box-shadow:
+                0 25px 70px
+                rgba(15, 23, 42, 0.20);
+        }
+
+
+        .featured-match-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 22px 35px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.10);
+        }
+
+
+        .featured-match-top > span:first-child {
+            color: #94a3b8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+
+        .featured-match-status {
+            padding: 7px 12px;
+
+            border-radius: 30px;
+
+            background: #0ea5e9;
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .featured-match-main {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto 1fr;
+
+            align-items: center;
+
+            gap: 70px;
+
+            padding: 65px 80px;
+        }
+
+
+        .featured-club {
+            text-align: center;
+        }
+
+
+        .featured-club img {
+            width: 105px;
+            height: 115px;
+
+            margin: 0 auto 20px;
+
+            object-fit: contain;
+        }
+
+
+        .featured-club h3 {
+            color: white;
+
+            font-size: 25px;
+
+            font-weight: 800;
+        }
+
+
+        .club-placeholder-logo {
+            width: 105px;
+            height: 105px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #075985,
+                    #0ea5e9
+                );
+
+            color: white;
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 15px 35px
+                rgba(14, 165, 233, 0.25);
+        }
+
+
+        .featured-match-center {
+            min-width: 180px;
+
+            text-align: center;
+        }
+
+
+        .featured-match-center p {
+            margin-bottom: 5px;
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .featured-match-center strong {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: white;
+
+            font-size: 42px;
+
+            font-weight: 800;
+        }
+
+
+        .featured-match-center span {
+            color: #38bdf8;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .featured-match-bottom {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            border-top:
+                1px solid rgba(255,255,255,0.10);
+        }
+
+
+        .featured-match-bottom > div {
+            padding: 25px 35px;
+        }
+
+
+        .featured-match-bottom > div:first-child {
+            border-right:
+                1px solid rgba(255,255,255,0.10);
+        }
+
+
+        .featured-match-bottom span,
+        .featured-match-bottom strong {
+            display: block;
+        }
+
+
+        .featured-match-bottom span {
+            margin-bottom: 5px;
+
+            color: #64748b;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+        }
+
+
+        .featured-match-bottom strong {
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           ALL MATCHES
+        ===================================================== */
+
+        .matches-page-section {
+            padding: 110px 0;
+
+            background: white;
+        }
+
+
+        .matches-page-heading {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 40px;
+
+            margin-bottom: 50px;
+        }
+
+
+        .matches-page-heading h2 {
+            color: #071b33;
+
+            font-size:
+                clamp(40px, 5vw, 58px);
+
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        /* FILTER */
+
+        .match-filters {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+
+        .match-filter-btn {
+            padding: 11px 19px;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 30px;
+
+            background: white;
+
+            color: #64748b;
+
+            font-family:
+                "Manrope",
+                Arial,
+                sans-serif;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .match-filter-btn:hover {
+            border-color: #38bdf8;
+
+            color: #0284c7;
+        }
+
+
+        .match-filter-btn.active {
+            border-color: #0ea5e9;
+
+            background: #0ea5e9;
+
+            color: white;
+        }
+
+
+        /* MATCH LIST */
+
+        .matches-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        .full-match-card {
+            display: grid;
+
+            grid-template-columns:
+                90px 1.1fr 1.7fr 1fr;
+
+            align-items: center;
+
+            gap: 30px;
+
+            min-height: 135px;
+
+            padding: 20px 30px;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 18px;
+
+            background: #f8fafc;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        .full-match-card:hover {
+            transform: translateY(-4px);
+
+            border-color: #bae6fd;
+
+            box-shadow:
+                0 18px 40px
+                rgba(15, 23, 42, 0.09);
+        }
+
+
+        /* DATE */
+
+        .full-match-date {
+            text-align: center;
+        }
+
+
+        .full-match-date strong {
+            display: block;
+
+            color: #071b33;
+
+            font-size: 35px;
+
+            font-weight: 800;
+
+            line-height: 1;
+        }
+
+
+        .full-match-date span {
+            color: #0284c7;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        /* INFO */
+
+        .full-match-info p {
+            margin-top: 8px;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .full-match-badge {
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .finished-badge {
+            background: #e2e8f0;
+
+            color: #475569;
+        }
+
+
+        .upcoming-badge {
+            background: #e0f2fe;
+
+            color: #0284c7;
+        }
+
+
+        .cup-name {
+            color: #7c3aed !important;
+        }
+
+
+        /* TEAMS */
+
+        .full-match-teams {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto 1fr;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        .full-match-teams div {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+
+        .full-match-teams > div:first-child {
+            justify-content: flex-end;
+
+            text-align: right;
+        }
+
+
+        .full-match-teams > div:last-child {
+            justify-content: flex-start;
+
+            text-align: left;
+        }
+
+
+        .full-match-teams span {
+            color: #071b33;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        .full-match-teams strong {
+            color: #071b33;
+
+            font-size: 24px;
+
+            font-weight: 800;
+        }
+
+
+        .full-match-divider {
+            color: #94a3b8 !important;
+
+            font-size: 11px !important;
+
+            font-weight: 800 !important;
+        }
+
+
+        /* LOCATION */
+
+        .full-match-location {
+            text-align: right;
+        }
+
+
+        .full-match-location span,
+        .full-match-location strong {
+            display: block;
+        }
+
+
+        .full-match-location span {
+            margin-bottom: 5px;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        .full-match-location strong {
+            color: #071b33;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        /* CTA */
+
+        .matches-page-cta {
+            padding: 90px 0;
+
+            background: #f8fafc;
+        }
+
+
+        .matches-page-cta-box {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 40px;
+
+            padding: 55px 60px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(56,189,248,0.35),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #020b1c,
+                    #041f45,
+                    #075985
+                );
+        }
+
+
+        .matches-page-cta-box h2 {
+            color: white;
+
+            font-size: 42px;
+
+            font-weight: 800;
+        }
+
+
+        /* TABLET */
+
+        @media (max-width: 950px) {
+
+            .featured-match-main {
+                gap: 30px;
+
+                padding: 55px 35px;
+            }
+
+
+            .full-match-card {
+                grid-template-columns:
+                    70px 1fr 1.5fr;
+            }
+
+
+            .full-match-location {
+                grid-column: 2 / 4;
+
+                padding-top: 15px;
+
+                border-top:
+                    1px solid #e2e8f0;
+
+                text-align: left;
+            }
+
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .matches-page-hero {
+                min-height: 60vh;
+
+                padding:
+                    135px 0 60px;
+            }
+
+
+            .matches-page-hero h1 {
+                font-size: 50px;
+
+                letter-spacing: -2.5px;
+            }
+
+
+            .featured-match-section {
+                padding: 70px 0;
+            }
+
+
+            .featured-match-main {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+
+                padding: 40px 25px;
+            }
+
+
+            .featured-match-center {
+                order: -1;
+            }
+
+
+            .featured-club img {
+                width: 82px;
+                height: 90px;
+            }
+
+
+            .club-placeholder-logo {
+                width: 82px;
+                height: 82px;
+
+                font-size: 30px;
+            }
+
+
+            .featured-match-bottom {
+                grid-template-columns: 1fr;
+            }
+
+
+            .featured-match-bottom > div:first-child {
+                border-right: none;
+
+                border-bottom:
+                    1px solid rgba(255,255,255,0.10);
+            }
+
+
+            .matches-page-section {
+                padding: 75px 0;
+            }
+
+
+            .matches-page-heading {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .match-filters {
+                width: 100%;
+            }
+
+
+            .match-filter-btn {
+                flex: 1;
+            }
+
+
+            .full-match-card {
+                grid-template-columns:
+                    60px 1fr;
+
+                gap: 18px;
+
+                padding: 22px;
+            }
+
+
+            .full-match-teams {
+                grid-column: 1 / 3;
+
+                padding: 22px 0 10px;
+
+                border-top:
+                    1px solid #e2e8f0;
+            }
+
+
+            .full-match-location {
+                grid-column: 1 / 3;
+
+                padding-top: 15px;
+            }
+
+
+            .matches-page-cta-box {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                padding: 35px 25px;
+            }
+
+
+            .matches-page-cta-box h2 {
+                font-size: 32px;
+            }
+
+        }
+        
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header matches-header"
+        id="header">
+
+    <div class="container nav-container">
+
+
+        <a href="index.html"
+           class="logo">
+
+            <img src="images/logo.png"
+                 alt="Ордабасы ФК">
+
+
+            <div class="logo-text">
+
+                <strong>
+                    ОРДАБАСЫ
+                </strong>
+
+                <small>
+                    FOOTBALL CLUB
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <nav class="navbar"
+             id="navbar">
+
+            <a href="index.html"
+               data-nav="home">
+                Басты бет
+            </a>
+
+            <a href="about.html"
+               data-nav="about">
+                Клуб туралы
+            </a>
+
+            <a href="team.html"
+               data-nav="team">
+                Команда
+            </a>
+
+            <a href="matches.html"
+               class="active"
+               data-nav="matches">
+                Матчтар
+            </a>
+
+            <a href="news.html"
+               data-nav="news">
+                Жаңалықтар
+            </a>
+
+            <a href="index.html#gallery"
+               data-nav="gallery">
+                Галерея
+            </a>
+
+        </nav>
+
+
+        <div class="language-switcher">
+
+            <button class="lang-btn active"
+                    data-lang="kk">
+                KZ
+            </button>
+
+            <button class="lang-btn"
+                    data-lang="ru">
+                RU
+            </button>
+
+            <button class="lang-btn"
+                    data-lang="en">
+                EN
+            </button>
+
+        </div>
+
+
+        <button class="menu-btn"
+                id="menuBtn"
+                aria-label="Menu">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="matches-page-hero">
+
+    <div class="container">
+
+        <p class="hero-label"
+           id="heroLabel">
+            ОЙЫН КҮНІ
+        </p>
+
+
+        <h1>
+
+            <span id="heroFirst">
+                МАТЧТАР
+            </span>
+
+            <span id="heroSecond">
+                & НӘТИЖЕЛЕР
+            </span>
+
+        </h1>
+
+
+        <p class="matches-hero-description"
+           id="heroDescription">
+
+            «Ордабасы» футбол клубының
+            2026 жылғы матчтары мен нәтижелері.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NEXT MATCH
+===================================================== -->
+
+<section class="featured-match-section">
+
+    <div class="container">
+
+        <p class="section-label"
+           id="nextMatchLabel">
+            КЕЛЕСІ МАТЧ
+        </p>
+
+
+        <div class="featured-match-card">
+
+
+            <div class="featured-match-top">
+
+                <span id="featuredCompetition">
+                    Қазақстан Премьер-Лигасы
+                </span>
+
+                <span class="featured-match-status"
+                      id="featuredStatus">
+                    АЛДАҒЫ
+                </span>
+
+            </div>
+
+
+            <div class="featured-match-main">
+
+
+                <div class="featured-club"
+                     id="featuredHome">
+                </div>
+
+
+                <div class="featured-match-center">
+
+                    <p id="featuredDate">
+                        11 ҚАЗ
+                    </p>
+
+                    <strong id="featuredTime">
+                        17:00
+                    </strong>
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div class="featured-club"
+                     id="featuredAway">
+                </div>
+
+
+            </div>
+
+
+            <div class="featured-match-bottom">
+
+                <div>
+
+                    <span id="matchTypeLabel">
+                        МАТЧ ТҮРІ
+                    </span>
+
+                    <strong id="featuredVenue">
+                        Қонақтағы матч
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span id="matchDateLabel">
+                        КҮНІ
+                    </span>
+
+                    <strong id="featuredFullDate">
+                        11.10.2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ALL MATCHES
+===================================================== -->
+
+<section class="matches-page-section">
+
+    <div class="container">
+
+
+        <div class="matches-page-heading">
+
+
+            <div>
+
+                <p class="section-label"
+                   id="scheduleLabel">
+                    КЕСТЕ
+                </p>
+
+                <h2 id="scheduleTitle">
+                    Барлық матчтар
+                </h2>
+
+            </div>
+
+
+            <div class="match-filters">
+
+                <button
+                    class="match-filter-btn active"
+                    data-filter="all"
+                    id="filterAll">
+
+                    Барлығы
+
+                </button>
+
+
+                <button
+                    class="match-filter-btn"
+                    data-filter="upcoming"
+                    id="filterUpcoming">
+
+                    Алдағы
+
+                </button>
+
+
+                <button
+                    class="match-filter-btn"
+                    data-filter="finished"
+                    id="filterFinished">
+
+                    Аяқталған
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="matches-list"
+             id="matchesList">
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     LIVE STANDINGS
+===================================================== -->
+
+<section class="standings-section">
+    <div class="container">
+
+        <div class="standings-heading">
+            <div>
+                <p class="section-label">QFL 2026</p>
+                <h2>Турнирлік кесте</h2>
+            </div>
+
+            <div class="standings-live">
+                2026
+            </div>
+        </div>
+
+        <div class="standings-wrapper">
+
+            <table class="standings-table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Команда</th>
+                        <th>И</th>
+                        <th>В</th>
+                        <th>Н</th>
+                        <th>П</th>
+                        <th>ЗМ</th>
+                        <th>ПМ</th>
+                        <th>РМ</th>
+                        <th>О</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr class="ordabasy-standing">
+                        <td>1</td>
+                        <td><strong>Ордабасы</strong></td>
+                        <td>26</td>
+                        <td>19</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>51</td>
+                        <td>18</td>
+                        <td>+33</td>
+                        <td><strong>61</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Қайрат</strong></td>
+                        <td>26</td>
+                        <td>17</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>51</td>
+                        <td>20</td>
+                        <td>+31</td>
+                        <td><strong>57</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Астана</strong></td>
+                        <td>25</td>
+                        <td>14</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>42</td>
+                        <td>25</td>
+                        <td>+17</td>
+                        <td><strong>48</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Оқжетпес</strong></td>
+                        <td>26</td>
+                        <td>13</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>41</td>
+                        <td>35</td>
+                        <td>+6</td>
+                        <td><strong>45</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Ақтөбе</strong></td>
+                        <td>26</td>
+                        <td>12</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>38</td>
+                        <td>31</td>
+                        <td>+7</td>
+                        <td><strong>42</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>6</td>
+                        <td><strong>Елімай</strong></td>
+                        <td>25</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>35</td>
+                        <td>33</td>
+                        <td>+2</td>
+                        <td><strong>38</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Тобыл</strong></td>
+                        <td>26</td>
+                        <td>10</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>33</td>
+                        <td>35</td>
+                        <td>-2</td>
+                        <td><strong>34</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Жеңіс</strong></td>
+                        <td>26</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>26</td>
+                        <td>32</td>
+                        <td>-6</td>
+                        <td><strong>32</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Ұлытау</strong></td>
+                        <td>26</td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>24</td>
+                        <td>32</td>
+                        <td>-8</td>
+                        <td><strong>32</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Каспий</strong></td>
+                        <td>26</td>
+                        <td>8</td>
+                        <td>5</td>
+                        <td>13</td>
+                        <td>27</td>
+                        <td>36</td>
+                        <td>-9</td>
+                        <td><strong>29</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Ертіс</strong></td>
+                        <td>25</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>11</td>
+                        <td>26</td>
+                        <td>34</td>
+                        <td>-8</td>
+                        <td><strong>26</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Алтай</strong></td>
+                        <td>26</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>13</td>
+                        <td>26</td>
+                        <td>36</td>
+                        <td>-10</td>
+                        <td><strong>25</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>13</td>
+                        <td><strong>Қайсар</strong></td>
+                        <td>26</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>22</td>
+                        <td>33</td>
+                        <td>-11</td>
+                        <td><strong>24</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>14</td>
+                        <td><strong>Қызылжар</strong></td>
+                        <td>26</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>14</td>
+                        <td>26</td>
+                        <td>40</td>
+                        <td>-14</td>
+                        <td><strong>24</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>15</td>
+                        <td><strong>Атырау</strong></td>
+                        <td>25</td>
+                        <td>4</td>
+                        <td>11</td>
+                        <td>10</td>
+                        <td>18</td>
+                        <td>28</td>
+                        <td>-10</td>
+                        <td><strong>23</strong></td>
+                    </tr>
+
+                    <tr>
+                        <td>16</td>
+                        <td><strong>Жетісу</strong></td>
+                        <td>26</td>
+                        <td>5</td>
+                        <td>7</td>
+                        <td>14</td>
+                        <td>26</td>
+                        <td>44</td>
+                        <td>-18</td>
+                        <td><strong>22</strong></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</section>ы
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="matches-page-cta">
+
+    <div class="container matches-page-cta-box">
+
+        <div>
+
+            <p class="contact-label"
+               id="ctaLabel">
+                БІЗБЕН БІРГЕ
+            </p>
+
+            <h2 id="ctaTitle">
+                Ордабасыны қолда!
+            </h2>
+
+        </div>
+
+
+        <a href="team.html"
+           class="btn btn-primary"
+           id="ctaButton">
+
+            Команданы көру
+
+        </a>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-bottom">
+
+        <p id="footerText">
+            © 2026 FC Ordabasy. Барлық құқықтар қорғалған.
+        </p>
+
+
+        <button class="back-to-top"
+                id="backToTop">
+            ↑
+        </button>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   MATCH DATA — 2026
+===================================================== */
+
+const matches = [
+
+    {
+        date: "2026-03-07",
+        time: "17:30",
+        competition: "league",
+        opponent: "irtysh",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 2,
+        status: "finished"
+    },
+
+    {
+        date: "2026-03-16",
+        time: "18:00",
+        competition: "league",
+        opponent: "zhenis",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 2,
+        status: "finished"
+    },
+
+    {
+        date: "2026-03-20",
+        time: "16:00",
+        competition: "league",
+        opponent: "kaisar",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-04",
+        time: "17:00",
+        competition: "league",
+        opponent: "atyrau",
+        venue: "home",
+        homeScore: 1,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-08",
+        time: "13:00",
+        competition: "cup",
+        opponent: "ontustik",
+        venue: "away",
+        homeScore: 2,
+        awayScore: 4,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-11",
+        time: "18:00",
+        competition: "league",
+        opponent: "astana",
+        venue: "away",
+        homeScore: 1,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-18",
+        time: "17:00",
+        competition: "league",
+        opponent: "okzhetpes",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-25",
+        time: "15:00",
+        competition: "league",
+        opponent: "kyzylzhar",
+        venue: "away",
+        homeScore: 1,
+        awayScore: 2,
+        status: "finished"
+    },
+
+    {
+        date: "2026-04-30",
+        time: "18:00",
+        competition: "cup",
+        opponent: "kaspiy",
+        venue: "home",
+        homeScore: 3,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-03",
+        time: "18:00",
+        competition: "league",
+        opponent: "aktobe",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-10",
+        time: "14:00",
+        competition: "league",
+        opponent: "altai",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-13",
+        time: "18:00",
+        competition: "cup",
+        opponent: "zhetysu",
+        venue: "home",
+        homeScore: 1,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-17",
+        time: "18:00",
+        competition: "league",
+        opponent: "zhetysu",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-23",
+        time: "18:00",
+        competition: "league",
+        opponent: "tobol",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 3,
+        status: "finished"
+    },
+
+    {
+        date: "2026-05-28",
+        time: "18:00",
+        competition: "league",
+        opponent: "kairat",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-06-14",
+        time: "17:00",
+        competition: "league",
+        opponent: "yelimai",
+        venue: "away",
+        homeScore: 1,
+        awayScore: 3,
+        status: "finished"
+    },
+
+    {
+        date: "2026-06-20",
+        time: "18:00",
+        competition: "league",
+        opponent: "kaspiy",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-06-28",
+        time: "16:00",
+        competition: "league",
+        opponent: "ulytau",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-07-05",
+        time: "18:00",
+        competition: "league",
+        opponent: "ulytau",
+        venue: "home",
+        homeScore: 1,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-07-11",
+        time: "18:00",
+        competition: "league",
+        opponent: "kaspiy",
+        venue: "away",
+        homeScore: 3,
+        awayScore: 2,
+        status: "finished"
+    },
+
+    {
+        date: "2026-07-15",
+        time: "18:00",
+        competition: "cup",
+        opponent: "altai",
+        venue: "home",
+        homeScore: 3,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-07-19",
+        time: "19:00",
+        competition: "league",
+        opponent: "yelimai",
+        venue: "home",
+        homeScore: 3,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-07-26",
+        time: "17:00",
+        competition: "league",
+        opponent: "kairat",
+        venue: "away",
+        homeScore: 2,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-08-02",
+        time: "18:00",
+        competition: "league",
+        opponent: "tobol",
+        venue: "home",
+        homeScore: 2,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-08-08",
+        time: "16:00",
+        competition: "league",
+        opponent: "zhetysu",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 4,
+        status: "finished"
+    },
+
+    {
+        date: "2026-08-15",
+        time: "18:00",
+        competition: "league",
+        opponent: "altai",
+        venue: "home",
+        homeScore: 3,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-08-19",
+        time: "16:00",
+        competition: "cup",
+        opponent: "altai",
+        venue: "away",
+        homeScore: 1,
+        awayScore: 2,
+        status: "finished"
+    },
+
+    {
+        date: "2026-08-29",
+        time: "18:00",
+        competition: "league",
+        opponent: "kyzylzhar",
+        venue: "home",
+        homeScore: 3,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-09-05",
+        time: "14:00",
+        competition: "league",
+        opponent: "okzhetpes",
+        venue: "away",
+        homeScore: 2,
+        awayScore: 1,
+        status: "finished"
+    },
+
+    {
+        date: "2026-09-12",
+        time: "17:00",
+        competition: "league",
+        opponent: "astana",
+        venue: "home",
+        homeScore: 1,
+        awayScore: 0,
+        status: "finished"
+    },
+
+    {
+        date: "2026-09-17",
+        time: "18:00",
+        competition: "league",
+        opponent: "atyrau",
+        venue: "away",
+        homeScore: 0,
+        awayScore: 3,
+        status: "finished"
+    },
+
+    {
+        date: "2026-10-11",
+        time: "17:00",
+        competition: "league",
+        opponent: "kaisar",
+        venue: "away",
+        status: "upcoming"
+    },
+
+    {
+        date: "2026-10-17",
+        time: "17:00",
+        competition: "league",
+        opponent: "aktobe",
+        venue: "away",
+        status: "upcoming"
+    },
+
+    {
+        date: "2026-10-24",
+        time: "16:00",
+        competition: "league",
+        opponent: "zhenis",
+        venue: "home",
+        status: "upcoming"
+    },
+
+    {
+        date: "2026-10-31",
+        time: "13:00",
+        competition: "league",
+        opponent: "irtysh",
+        venue: "away",
+        status: "upcoming"
+    },
+
+    {
+        date: "2026-11-07",
+        time: "",
+        competition: "cup",
+        opponent: "kaisar",
+        venue: "home",
+        status: "upcoming"
+    }
+
+];
+
+
+/* =====================================================
+   TRANSLATIONS
+===================================================== */
+
+const pageTexts = {
+
+    kk: {
+
+        title:
+            "Матчтар | Ордабасы ФК",
+
+        nav: {
+            home: "Басты бет",
+            about: "Клуб туралы",
+            team: "Команда",
+            matches: "Матчтар",
+            news: "Жаңалықтар",
+            gallery: "Галерея"
+        },
+
+        heroLabel:
+            "ОЙЫН КҮНІ",
+
+        heroFirst:
+            "МАТЧТАР",
+
+        heroSecond:
+            "& НӘТИЖЕЛЕР",
+
+        heroDescription:
+            "«Ордабасы» футбол клубының 2026 жылғы матчтары мен нәтижелері.",
+
+        nextMatch:
+            "КЕЛЕСІ МАТЧ",
+
+        upcoming:
+            "АЛДАҒЫ",
+
+        finished:
+            "АЯҚТАЛДЫ",
+
+        league:
+            "Қазақстан Премьер-Лигасы",
+
+        cup:
+            "Қазақстан Кубогы",
+
+        matchType:
+            "МАТЧ ТҮРІ",
+
+        matchDate:
+            "КҮНІ",
+
+        home:
+            "Үй матчы",
+
+        away:
+            "Қонақтағы матч",
+
+        scheduleLabel:
+            "КЕСТЕ",
+
+        scheduleTitle:
+            "Барлық матчтар",
+
+        all:
+            "Барлығы",
+
+        filterUpcoming:
+            "Алдағы",
+
+        filterFinished:
+            "Аяқталған",
+
+        tba:
+            "Нақтыланады",
+
+        ctaLabel:
+            "БІЗБЕН БІРГЕ",
+
+        ctaTitle:
+            "Ордабасыны қолда!",
+
+        ctaButton:
+            "Команданы көру",
+
+        footer:
+            "© 2026 FC Ordabasy. Барлық құқықтар қорғалған."
+
+    },
+
+
+    ru: {
+
+        title:
+            "Матчи | Ордабасы ФК",
+
+        nav: {
+            home: "Главная",
+            about: "О клубе",
+            team: "Команда",
+            matches: "Матчи",
+            news: "Новости",
+            gallery: "Галерея"
+        },
+
+        heroLabel:
+            "ИГРОВОЙ ДЕНЬ",
+
+        heroFirst:
+            "МАТЧИ",
+
+        heroSecond:
+            "& РЕЗУЛЬТАТЫ",
+
+        heroDescription:
+            "Матчи и результаты футбольного клуба «Ордабасы» в сезоне 2026.",
+
+        nextMatch:
+            "СЛЕДУЮЩИЙ МАТЧ",
+
+        upcoming:
+            "ПРЕДСТОЯЩИЙ",
+
+        finished:
+            "ЗАВЕРШЁН",
+
+        league:
+            "Премьер-лига Казахстана",
+
+        cup:
+            "Кубок Казахстана",
+
+        matchType:
+            "ТИП МАТЧА",
+
+        matchDate:
+            "ДАТА",
+
+        home:
+            "Домашний матч",
+
+        away:
+            "Выездной матч",
+
+        scheduleLabel:
+            "РАСПИСАНИЕ",
+
+        scheduleTitle:
+            "Все матчи",
+
+        all:
+            "Все",
+
+        filterUpcoming:
+            "Предстоящие",
+
+        filterFinished:
+            "Завершённые",
+
+        tba:
+            "Уточняется",
+
+        ctaLabel:
+            "ВМЕСТЕ С НАМИ",
+
+        ctaTitle:
+            "Поддержи Ордабасы!",
+
+        ctaButton:
+            "Посмотреть команду",
+
+        footer:
+            "© 2026 FC Ordabasy. Все права защищены."
+
+    },
+
+
+    en: {
+
+        title:
+            "Matches | FC Ordabasy",
+
+        nav: {
+            home: "Home",
+            about: "About",
+            team: "Team",
+            matches: "Matches",
+            news: "News",
+            gallery: "Gallery"
+        },
+
+        heroLabel:
+            "MATCHDAY",
+
+        heroFirst:
+            "MATCHES",
+
+        heroSecond:
+            "& RESULTS",
+
+        heroDescription:
+            "FC Ordabasy fixtures and results for the 2026 season.",
+
+        nextMatch:
+            "NEXT MATCH",
+
+        upcoming:
+            "UPCOMING",
+
+        finished:
+            "FINISHED",
+
+        league:
+            "Kazakhstan Premier League",
+
+        cup:
+            "Kazakhstan Cup",
+
+        matchType:
+            "MATCH TYPE",
+
+        matchDate:
+            "DATE",
+
+        home:
+            "Home Match",
+
+        away:
+            "Away Match",
+
+        scheduleLabel:
+            "SCHEDULE",
+
+        scheduleTitle:
+            "All Matches",
+
+        all:
+            "All",
+
+        filterUpcoming:
+            "Upcoming",
+
+        filterFinished:
+            "Finished",
+
+        tba:
+            "TBA",
+
+        ctaLabel:
+            "TOGETHER",
+
+        ctaTitle:
+            "Support Ordabasy!",
+
+        ctaButton:
+            "View Team",
+
+        footer:
+            "© 2026 FC Ordabasy. All rights reserved."
+
+    }
+
+};
+
+
+/* =====================================================
+   TEAM NAMES
+===================================================== */
+
+const teams = {
+
+    ordabasy: {
+        kk: "Ордабасы",
+        ru: "Ордабасы",
+        en: "Ordabasy"
+    },
+
+    irtysh: {
+        kk: "Ертіс Павлодар",
+        ru: "Иртыш Павлодар",
+        en: "Irtysh Pavlodar"
+    },
+
+    zhenis: {
+        kk: "Жеңіс",
+        ru: "Женис",
+        en: "Zhenis"
+    },
+
+    kaisar: {
+        kk: "Қайсар",
+        ru: "Кайсар",
+        en: "Kaisar"
+    },
+
+    atyrau: {
+        kk: "Атырау",
+        ru: "Атырау",
+        en: "Atyrau"
+    },
+
+    ontustik: {
+        kk: "Академия Оңтүстік",
+        ru: "Академия Онтустик",
+        en: "Akademia Ontustik"
+    },
+
+    astana: {
+        kk: "Астана",
+        ru: "Астана",
+        en: "Astana"
+    },
+
+    okzhetpes: {
+        kk: "Оқжетпес",
+        ru: "Окжетпес",
+        en: "Okzhetpes"
+    },
+
+    kyzylzhar: {
+        kk: "Қызыл-Жар",
+        ru: "Кызыл-Жар",
+        en: "Kyzyl-Zhar"
+    },
+
+    kaspiy: {
+        kk: "Каспий",
+        ru: "Каспий",
+        en: "Kaspiy"
+    },
+
+    aktobe: {
+        kk: "Ақтөбе",
+        ru: "Актобе",
+        en: "Aktobe"
+    },
+
+    altai: {
+        kk: "Алтай",
+        ru: "Алтай",
+        en: "Altai"
+    },
+
+    zhetysu: {
+        kk: "Жетісу",
+        ru: "Жетысу",
+        en: "Zhetysu"
+    },
+
+    tobol: {
+        kk: "Тобыл",
+        ru: "Тобол",
+        en: "Tobol"
+    },
+
+    kairat: {
+        kk: "Қайрат",
+        ru: "Кайрат",
+        en: "Kairat"
+    },
+
+    yelimay: {
+        kk: "Елімай",
+        ru: "Елимай",
+        en: "Yelimay"
+    },
+
+    ulytau: {
+        kk: "Ұлытау",
+        ru: "Улытау",
+        en: "Ulytau"
+    }
+
+};
+
+
+/* =====================================================
+   MONTHS
+===================================================== */
+
+const months = {
+
+    kk: {
+        "03": "НАУ",
+        "04": "СӘУ",
+        "05": "МАМ",
+        "06": "МАУ",
+        "07": "ШІЛ",
+        "08": "ТАМ",
+        "09": "ҚЫР",
+        "10": "ҚАЗ",
+        "11": "ҚАР"
+    },
+
+    ru: {
+        "03": "МАР",
+        "04": "АПР",
+        "05": "МАЙ",
+        "06": "ИЮН",
+        "07": "ИЮЛ",
+        "08": "АВГ",
+        "09": "СЕН",
+        "10": "ОКТ",
+        "11": "НОЯ"
+    },
+
+    en: {
+        "03": "MAR",
+        "04": "APR",
+        "05": "MAY",
+        "06": "JUN",
+        "07": "JUL",
+        "08": "AUG",
+        "09": "SEP",
+        "10": "OCT",
+        "11": "NOV"
+    }
+
+};
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentLanguage =
+    localStorage.getItem("selectedLanguage")
+    || "kk";
+
+let currentFilter = "all";
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function teamName(key) {
+
+    return teams[key]?.[currentLanguage]
+        || teams[key]?.kk
+        || key;
+
+}
+
+
+function competitionName(match) {
+
+    const t = pageTexts[currentLanguage];
+
+    return match.competition === "cup"
+        ? t.cup
+        : t.league;
+
+}
+
+
+function venueName(match) {
+
+    const t = pageTexts[currentLanguage];
+
+    return match.venue === "home"
+        ? t.home
+        : t.away;
+
+}
+
+
+function statusName(match) {
+
+    const t = pageTexts[currentLanguage];
+
+    return match.status === "finished"
+        ? t.finished
+        : t.upcoming;
+
+}
+
+
+/* =====================================================
+   RENDER MATCH LIST
+===================================================== */
+
+function renderMatches() {
+
+    const container =
+        document.getElementById("matchesList");
+
+    const filtered =
+        matches.filter(match => {
+
+            if (currentFilter === "all") {
+                return true;
+            }
+
+            return match.status === currentFilter;
+
+        });
+
+
+    container.innerHTML =
+        filtered.map(match => {
+
+            const [
+                year,
+                month,
+                day
+            ] = match.date.split("-");
+
+
+            const ordabasy =
+                teamName("ordabasy");
+
+            const opponent =
+                teamName(match.opponent);
+
+
+            let homeTeam;
+            let awayTeam;
+
+
+            if (match.venue === "home") {
+
+                homeTeam = ordabasy;
+                awayTeam = opponent;
+
+            } else {
+
+                homeTeam = opponent;
+                awayTeam = ordabasy;
+
+            }
+
+
+            const homeScore =
+                match.status === "finished"
+                    ? match.homeScore
+                    : "—";
+
+
+            const awayScore =
+                match.status === "finished"
+                    ? match.awayScore
+                    : "—";
+
+
+            const divider =
+                match.status === "finished"
+                    ? ":"
+                    : "VS";
+
+
+            const badge =
+                match.status === "finished"
+                    ? "finished-badge"
+                    : "upcoming-badge";
+
+
+            const time =
+                match.time
+                || pageTexts[currentLanguage].tba;
+
+
+            return `
+
+                <article class="full-match-card">
+
+                    <div class="full-match-date">
+
+                        <strong>
+                            ${day}
+                        </strong>
+
+                        <span>
+                            ${months[currentLanguage][month]}
+                        </span>
+
+                    </div>
+
+
+                    <div class="full-match-info">
+
+                        <span
+                            class="full-match-badge ${badge}">
+
+                            ${statusName(match)}
+
+                        </span>
+
+                        <p class="${
+                            match.competition === "cup"
+                                ? "cup-name"
+                                : ""
+                        }">
+
+                            ${competitionName(match)}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="full-match-teams">
+
+
+                        <div>
+
+                            <span>
+                                ${homeTeam}
+                            </span>
+
+                            <strong>
+                                ${homeScore}
+                            </strong>
+
+                        </div>
+
+
+                        <span class="full-match-divider">
+                            ${divider}
+                        </span>
+
+
+                        <div>
+
+                            <strong>
+                                ${awayScore}
+                            </strong>
+
+                            <span>
+                                ${awayTeam}
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="full-match-location">
+
+                        <span>
+                            ${venueName(match)}
+                        </span>
+
+                        <strong>
+                            ${time}
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =====================================================
+   FEATURED NEXT MATCH
+===================================================== */
+
+function renderNextMatch() {
+
+    const next =
+        matches.find(
+            match =>
+                match.status === "upcoming"
+        );
+
+
+    if (!next) {
+        return;
+    }
+
+
+    const [
+        year,
+        month,
+        day
+    ] = next.date.split("-");
+
+
+    const ordabasy =
+        teamName("ordabasy");
+
+    const opponent =
+        teamName(next.opponent);
+
+
+    const homeKey =
+        next.venue === "home"
+            ? "ordabasy"
+            : next.opponent;
+
+
+    const awayKey =
+        next.venue === "home"
+            ? next.opponent
+            : "ordabasy";
+
+
+    function clubHTML(key) {
+
+        if (key === "ordabasy") {
+
+            return `
+
+                <img
+                    src="images/logo.png"
+                    alt="${ordabasy}">
+
+                <h3>
+                    ${ordabasy}
+                </h3>
+
+            `;
+
+        }
+
+
+        const name =
+            teamName(key);
+
+
+        return `
+
+            <div class="club-placeholder-logo">
+
+                ${name.charAt(0)}
+
+            </div>
+
+            <h3>
+                ${name}
+            </h3>
+
+        `;
+
+    }
+
+
+    document.getElementById(
+        "featuredHome"
+    ).innerHTML =
+        clubHTML(homeKey);
+
+
+    document.getElementById(
+        "featuredAway"
+    ).innerHTML =
+        clubHTML(awayKey);
+
+
+    document.getElementById(
+        "featuredDate"
+    ).textContent =
+        `${day} ${months[currentLanguage][month]}`;
+
+
+    document.getElementById(
+        "featuredTime"
+    ).textContent =
+        next.time
+        || pageTexts[currentLanguage].tba;
+
+
+    document.getElementById(
+        "featuredCompetition"
+    ).textContent =
+        competitionName(next);
+
+
+    document.getElementById(
+        "featuredVenue"
+    ).textContent =
+        venueName(next);
+
+
+    document.getElementById(
+        "featuredFullDate"
+    ).textContent =
+        `${day}.${month}.${year}`;
+
+}
+
+
+/* =====================================================
+   PAGE LANGUAGE
+===================================================== */
+
+function applyLanguage(language) {
+
+    currentLanguage = language;
+
+
+    const t =
+        pageTexts[language];
+
+
+    document.documentElement.lang =
+        language;
+
+
+    document.title =
+        t.title;
+
+
+    localStorage.setItem(
+        "selectedLanguage",
+        language
+    );
+
+
+    document.querySelectorAll(
+        "[data-nav]"
+    ).forEach(link => {
+
+        const key =
+            link.dataset.nav;
+
+        link.textContent =
+            t.nav[key];
+
+    });
+
+
+    document.getElementById(
+        "heroLabel"
+    ).textContent =
+        t.heroLabel;
+
+
+    document.getElementById(
+        "heroFirst"
+    ).textContent =
+        t.heroFirst;
+
+
+    document.getElementById(
+        "heroSecond"
+    ).textContent =
+        t.heroSecond;
+
+
+    document.getElementById(
+        "heroDescription"
+    ).textContent =
+        t.heroDescription;
+
+
+    document.getElementById(
+        "nextMatchLabel"
+    ).textContent =
+        t.nextMatch;
+
+
+    document.getElementById(
+        "featuredStatus"
+    ).textContent =
+        t.upcoming;
+
+
+    document.getElementById(
+        "matchTypeLabel"
+    ).textContent =
+        t.matchType;
+
+
+    document.getElementById(
+        "matchDateLabel"
+    ).textContent =
+        t.matchDate;
+
+
+    document.getElementById(
+        "scheduleLabel"
+    ).textContent =
+        t.scheduleLabel;
+
+
+    document.getElementById(
+        "scheduleTitle"
+    ).textContent =
+        t.scheduleTitle;
+
+
+    document.getElementById(
+        "filterAll"
+    ).textContent =
+        t.all;
+
+
+    document.getElementById(
+        "filterUpcoming"
+    ).textContent =
+        t.filterUpcoming;
+
+
+    document.getElementById(
+        "filterFinished"
+    ).textContent =
+        t.filterFinished;
+
+
+    document.getElementById(
+        "ctaLabel"
+    ).textContent =
+        t.ctaLabel;
+
+
+    document.getElementById(
+        "ctaTitle"
+    ).textContent =
+        t.ctaTitle;
+
+
+    document.getElementById(
+        "ctaButton"
+    ).textContent =
+        t.ctaButton;
+
+
+    document.getElementById(
+        "footerText"
+    ).textContent =
+        t.footer;
+
+
+    document.querySelectorAll(
+        ".lang-btn"
+    ).forEach(button => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.lang === language
+        );
+
+    });
+
+
+    renderMatches();
+
+    renderNextMatch();
+
+}
+
+
+/* =====================================================
+   LANGUAGE BUTTONS
+===================================================== */
+
+document.querySelectorAll(
+    ".lang-btn"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            applyLanguage(
+                button.dataset.lang
+            );
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   FILTERS
+===================================================== */
+
+document.querySelectorAll(
+    ".match-filter-btn"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            currentFilter =
+                button.dataset.filter;
+
+
+            document.querySelectorAll(
+                ".match-filter-btn"
+            ).forEach(btn => {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            renderMatches();
+
+        }
+    );
+
+});
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+
+const navbar =
+    document.getElementById("navbar");
+
+
+if (
+    menuBtn &&
+    navbar
+) {
+
+    menuBtn.addEventListener(
+        "click",
+        () => {
+
+            navbar.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    navbar.querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navbar.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   HEADER SCROLL
+===================================================== */
+
+const header =
+    document.getElementById("header");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (window.scrollY > 40) {
+
+            header.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const backToTop =
+    document.getElementById("backToTop");
+
+
+backToTop.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+applyLanguage(
+    currentLanguage
+);
+
+</script>
+
+
+</body>
+
+</html>

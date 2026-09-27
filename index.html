@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ордабасы ФК</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header" id="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+
+                <img src="images/logo.png"
+                     alt="Ордабасы ФК"
+                     onerror="this.style.display='none'">
+
+                <div class="logo-text">
+                    <strong>ОРДАБАСЫ</strong>
+                    <small>FOOTBALL CLUB</small>
+                </div>
+
+            </a>
+
+
+            <nav class="navbar" id="navbar">
+
+                <a href="index.html"
+                   class="active"
+                   data-i18n="home">
+                    Басты бет
+                </a>
+
+                <a href="about.html"
+                   data-i18n="about">
+                    Клуб туралы
+                </a>
+
+                <a href="team.html"
+                   data-i18n="team">
+                    Команда
+                </a>
+
+                <a href="matches.html"
+                   data-i18n="matches">
+                    Матчтар
+                </a>
+
+                <a href="news.html"
+                   data-i18n="news">
+                    Жаңалықтар
+                </a>
+
+                <a href="#gallery"
+                   data-i18n="gallery">
+                    Галерея
+                </a>
+
+            </nav>
+
+
+            <div class="language-switcher">
+
+                <button class="lang-btn active"
+                        data-lang="kk">
+                    KZ
+                </button>
+
+                <button class="lang-btn"
+                        data-lang="ru">
+                    RU
+                </button>
+
+                <button class="lang-btn"
+                        data-lang="en">
+                    EN
+                </button>
+
+            </div>
+
+
+            <button class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <p class="hero-label"
+                       data-i18n="location">
+                        ШЫМКЕНТ • ҚАЗАҚСТАН
+                    </p>
+
+                    <h1>
+
+                        <span class="hero-first"
+                              data-i18n="heroFirst">
+                            ШЫМКЕНТТІҢ
+                        </span>
+
+                        <span class="hero-second"
+                              data-i18n="heroSecond">
+                            МАҚТАНЫШЫ
+                        </span>
+
+                    </h1>
+
+                    <p class="hero-description"
+                       data-i18n="description">
+
+                        «Ордабасы» футбол клубының сайтына қош келдіңіз.
+                        Мұнда клубтың тарихы, команда құрамы,
+                        матчтар және маңызды футбол жаңалықтары
+                        туралы ақпарат таба аласыз.
+
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="about.html"
+                           class="btn btn-primary"
+                           data-i18n="aboutButton">
+                            Клуб туралы
+                        </a>
+
+                        <a href="matches.html"
+                           class="btn btn-secondary"
+                           data-i18n="matchesButton">
+                            Матчтарды көру
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NEXT MATCH -->
+
+                <div class="match-card">
+
+                    <p class="match-title"
+                       data-i18n="nextMatch">
+                        КЕЛЕСІ МАТЧ
+                    </p>
+
+                    <div class="teams">
+
+                        <div class="team">
+
+                            <div class="team-logo">
+                                О
+                            </div>
+
+                            <h3 data-i18n="ordabasy">
+                                Ордабасы
+                            </h3>
+
+                        </div>
+
+
+                        <div class="match-info">
+
+                            <span class="match-date"
+                                  data-i18n="sep27">
+                                27 ҚЫР
+                            </span>
+
+                            <strong>VS</strong>
+
+                            <span class="match-time">
+                                19:00
+                            </span>
+
+                        </div>
+
+
+                        <div class="team">
+
+                            <div class="team-logo opponent">
+                                Қ
+                            </div>
+
+                            <h3 data-i18n="opponent">
+                                Қарсылас
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <p class="stadium"
+                       data-i18n="stadium">
+                        Орталық стадион, Шымкент
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="club-stats">
+
+            <div class="container stats-grid">
+
+                <div class="stat-item">
+                    <h2>2000</h2>
+
+                    <p data-i18n="founded">
+                        Құрылған жылы
+                    </p>
+                </div>
+
+
+                <div class="stat-item">
+
+                    <h2 data-i18n="cityName">
+                        Шымкент
+                    </h2>
+
+                    <p data-i18n="city">
+                        Клуб қаласы
+                    </p>
+
+                </div>
+
+
+                <div class="stat-item">
+
+                    <h2>3+</h2>
+
+                    <p data-i18n="trophies">
+                        Ірі жүлделер
+                    </p>
+
+                </div>
+
+
+                <div class="stat-item">
+
+                    <h2>20 000+</h2>
+
+                    <p data-i18n="fans">
+                        Жанкүйерлер
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section class="about-section">
+
+            <div class="container about-container">
+
+                <div class="about-left">
+
+                    <p class="section-label"
+                       data-i18n="aboutLabel">
+                        БІЗДІҢ КЛУБ
+                    </p>
+
+                    <h2 data-i18n="aboutTitle">
+                        Шымкент футболының жүрегі
+                    </h2>
+
+                    <p class="about-text"
+                       data-i18n="aboutText">
+
+                        «Ордабасы» футбол клубы Шымкент футболының
+                        маңызды символдарының бірі.
+
+                    </p>
+
+                    <p class="about-text"
+                       data-i18n="aboutTextSecond">
+
+                        Команда әр маусымда жоғары нәтижеге ұмтылып,
+                        Шымкент қаласының намысын қорғайды.
+
+                    </p>
+
+                    <a href="about.html"
+                       class="about-link"
+                       data-i18n="learnMore">
+                        Толығырақ білу →
+                    </a>
+
+                </div>
+
+
+                <div class="about-right">
+
+                    <div class="about-visual">
+
+                        <span class="visual-number">
+                            20
+                        </span>
+
+                        <span class="visual-number second">
+                            00
+                        </span>
+
+                        <div class="visual-content">
+
+                            <span data-i18n="since">
+                                2000 жылдан бері
+                            </span>
+
+                            <h3 data-i18n="footballHistory">
+                                ФУТБОЛ ТАРИХЫ
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MATCHES
+        ========================== -->
+
+        <section class="matches-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label"
+                           data-i18n="matchesLabel">
+                            МАТЧТАР
+                        </p>
+
+                        <h2 data-i18n="matchesTitle">
+                            Соңғы және алдағы матчтар
+                        </h2>
+
+                    </div>
+
+                    <a href="matches.html"
+                       class="section-link"
+                       data-i18n="allMatches">
+                        Барлық матчтар →
+                    </a>
+
+                </div>
+
+
+                <div class="matches-grid">
+
+                    <!-- MATCH 1 -->
+
+                    <article class="game-card">
+
+                        <div class="game-card-top">
+
+                            <span class="game-status finished"
+                                  data-i18n="finished">
+                                АЯҚТАЛДЫ
+                            </span>
+
+                            <span class="game-date"
+                                  data-i18n="sep18">
+                                18 ҚЫР
+                            </span>
+
+                        </div>
+
+                        <div class="game-teams">
+
+                            <div class="game-team">
+
+                                <div class="small-logo blue-logo">
+                                    О
+                                </div>
+
+                                <span data-i18n="ordabasy">
+                                    Ордабасы
+                                </span>
+
+                            </div>
+
+                            <div class="score">
+                                2 <span>:</span> 1
+                            </div>
+
+                            <div class="game-team">
+
+                                <div class="small-logo dark-logo">
+                                    Қ
+                                </div>
+
+                                <span data-i18n="opponentOne">
+                                    Қарсылас
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="game-footer"
+                             data-i18n="homeStadium">
+                            Шымкент • Орталық стадион
+                        </div>
+
+                    </article>
+
+
+                    <!-- MATCH 2 -->
+
+                    <article class="game-card">
+
+                        <div class="game-card-top">
+
+                            <span class="game-status finished"
+                                  data-i18n="finished">
+                                АЯҚТАЛДЫ
+                            </span>
+
+                            <span class="game-date"
+                                  data-i18n="sep22">
+                                22 ҚЫР
+                            </span>
+
+                        </div>
+
+                        <div class="game-teams">
+
+                            <div class="game-team">
+
+                                <div class="small-logo dark-logo">
+                                    Қ
+                                </div>
+
+                                <span data-i18n="opponentTwo">
+                                    Қарсылас
+                                </span>
+
+                            </div>
+
+                            <div class="score">
+                                1 <span>:</span> 1
+                            </div>
+
+                            <div class="game-team">
+
+                                <div class="small-logo blue-logo">
+                                    О
+                                </div>
+
+                                <span data-i18n="ordabasy">
+                                    Ордабасы
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="game-footer"
+                             data-i18n="awayMatch">
+                            Қонақтағы матч
+                        </div>
+
+                    </article>
+
+
+                    <!-- MATCH 3 -->
+
+                    <article class="game-card upcoming-card">
+
+                        <div class="game-card-top">
+
+                            <span class="game-status upcoming"
+                                  data-i18n="upcoming">
+                                АЛДА
+                            </span>
+
+                            <span class="game-date"
+                                  data-i18n="sep27">
+                                27 ҚЫР
+                            </span>
+
+                        </div>
+
+                        <div class="game-teams">
+
+                            <div class="game-team">
+
+                                <div class="small-logo blue-logo">
+                                    О
+                                </div>
+
+                                <span data-i18n="ordabasy">
+                                    Ордабасы
+                                </span>
+
+                            </div>
+
+                            <div class="score upcoming-score">
+                                VS
+                            </div>
+
+                            <div class="game-team">
+
+                                <div class="small-logo dark-logo">
+                                    Қ
+                                </div>
+
+                                <span data-i18n="opponentThree">
+                                    Қарсылас
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="game-footer">
+
+                            <span data-i18n="kickoff">
+                                Басталуы
+                            </span>
+
+                            • 19:00
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TEAM
+        ========================== -->
+
+        <section class="team-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label"
+                           data-i18n="teamLabel">
+                            БІЗДІҢ КОМАНДА
+                        </p>
+
+                        <h2 data-i18n="teamTitle">
+                            Негізгі ойыншылар
+                        </h2>
+
+                    </div>
+
+                    <a href="team.html"
+                       class="section-link"
+                       data-i18n="allPlayers">
+                        Барлық ойыншылар →
+                    </a>
+
+                </div>
+
+
+                <div class="players-grid">
+
+                    <article class="player-card">
+
+                        <div class="player-image">
+
+                            <div class="player-number">
+                                1
+                            </div>
+
+                            <img src="images/player1.jpeg"
+                                 alt="Player 1"
+                                 class="player-photo"
+                                 onerror="this.style.display='none'">
+
+                        </div>
+
+                        <div class="player-info">
+
+                            <p class="player-position"
+                               data-i18n="goalkeeper">
+                                Қақпашы
+                            </p>
+
+                            <h3>
+                                Бекхан Шайзада
+                            </h3>
+
+                            <span>#1</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="player-card">
+
+                        <div class="player-image">
+
+                            <div class="player-number">
+                                25
+                            </div>
+
+                            <img src="images/player2.jpeg"
+                                 alt="Player 2"
+                                 class="player-photo"
+                                 onerror="this.style.display='none'">
+
+                        </div>
+
+                        <div class="player-info">
+
+                            <p class="player-position"
+                               data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                           <h3>
+                                Сергей Малый
+                           </h3>
+
+                            <span>#25</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="player-card">
+
+                        <div class="player-image">
+
+                            <div class="player-number">
+                                77
+                            </div>
+
+                            <img src="images/player3.jpeg"
+                                 alt="Player 3"
+                                 class="player-photo"
+                                 onerror="this.style.display='none'">
+
+                        </div>
+
+                        <div class="player-info">
+
+                            <p class="player-position"
+                               data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                           <h3>
+                                Давид Абагна 
+                           </h3>
+
+                            <span>#77</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="player-card">
+
+                        <div class="player-image">
+
+                            <div class="player-number">
+                                9
+                            </div>
+
+                            <img src="images/player4.jpeg"
+                                 alt="Player 4"
+                                 class="player-photo"
+                                 onerror="this.style.display='none'">
+
+                        </div>
+
+                        <div class="player-info">
+
+                            <p class="player-position"
+                               data-i18n="forward">
+                                Шабуылшы
+                            </p>
+
+                           <h3>
+                               Эвертон Мораес
+                           </h3>
+
+                            <span>#9</span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACHIEVEMENTS
+        ========================== -->
+
+        <section class="achievements-section">
+
+            <div class="container">
+
+                <div class="achievements-heading">
+
+                    <p class="section-label"
+                       data-i18n="achievementsLabel">
+                        ЖЕТІСТІКТЕР
+                    </p>
+
+                    <h2 data-i18n="achievementsTitle">
+                        Клуб тарихындағы маңызды сәттер
+                    </h2>
+
+                    <p class="achievements-description"
+                       data-i18n="achievementsDescription">
+
+                        Клубтың есте қаларлық кезеңдері мен
+                        футболдағы жетістіктері.
+
+                    </p>
+
+                </div>
+
+
+                <div class="achievements-grid">
+
+                    <article class="achievement-card main-achievement">
+
+                        <div class="achievement-year">
+                            2023
+                        </div>
+
+                        <div class="trophy-icon">
+                            🏆
+                        </div>
+
+                        <p class="achievement-type"
+                           data-i18n="championship">
+                            ҚАЗАҚСТАН ЧЕМПИОНАТЫ
+                        </p>
+
+                        <h3 data-i18n="championTitle">
+                            Қазақстан чемпионы
+                        </h3>
+
+                        <p data-i18n="championText">
+                            Клуб тарихындағы маңызды жетістіктердің бірі.
+                        </p>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-year">
+                            2011
+                        </div>
+
+                        <div class="trophy-icon">
+                            🏆
+                        </div>
+
+                        <p class="achievement-type"
+                           data-i18n="cup">
+                            ҚАЗАҚСТАН КУБОГЫ
+                        </p>
+
+                        <h3 data-i18n="cupTitle">
+                            Кубок иегері
+                        </h3>
+
+                        <p data-i18n="cupText">
+                            Қазақстан Кубогындағы маңызды жеңіс.
+                        </p>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-year">
+                            ★
+                        </div>
+
+                        <div class="trophy-icon">
+                            ⚽
+                        </div>
+
+                        <p class="achievement-type"
+                           data-i18n="league">
+                            ПРЕМЬЕР-ЛИГА
+                        </p>
+
+                        <h3 data-i18n="leagueTitle">
+                            Жоғары мақсат
+                        </h3>
+
+                        <p data-i18n="leagueText">
+                            Әр маусымда жоғары нәтиже үшін күрес.
+                        </p>
+
+                    </article>
+
+
+                    <article class="achievement-card">
+
+                        <div class="achievement-year">
+                            2000
+                        </div>
+
+                        <div class="trophy-icon">
+                            ◉
+                        </div>
+
+                        <p class="achievement-type"
+                           data-i18n="history">
+                            КЛУБ ТАРИХЫ
+                        </p>
+
+                        <h3 data-i18n="historyTitle">
+                            Жаңа кезең
+                        </h3>
+
+                        <p data-i18n="historyText">
+                            Шымкент футболының жаңа кезеңінің басталуы.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NEWS
+        ========================== -->
+
+        <section class="news-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="section-label"
+                           data-i18n="newsLabel">
+                            ЖАҢАЛЫҚТАР
+                        </p>
+
+                        <h2 data-i18n="newsTitle">
+                            Клубтағы соңғы жаңалықтар
+                        </h2>
+
+                    </div>
+
+                    <a href="news.html"
+                       class="section-link"
+                       data-i18n="allNews">
+                        Барлық жаңалықтар →
+                    </a>
+
+                </div>
+
+
+                <div class="news-layout">
+
+                    <!-- MAIN NEWS -->
+
+                    <article class="main-news-card">
+
+                        <div class="news-image big-news-image">
+
+                            <img src="images/news1.jpg"
+                                 alt="Ordabasy news"
+                                 onerror="this.style.display='none'">
+
+                            <span class="news-category"
+                                  data-i18n="clubNews">
+                                КЛУБ ЖАҢАЛЫҒЫ
+                            </span>
+
+                        </div>
+
+                        <div class="main-news-content">
+
+                            <p class="news-date">
+                                26.09.2026
+                            </p>
+
+                            <h3 data-i18n="newsOneTitle">
+                                Команда жаңа матчқа дайындықты жалғастыруда
+                            </h3>
+
+                            <p data-i18n="newsOneText">
+                                Футболшылар алдағы ойынға дайындық
+                                жұмыстарын өткізуде.
+                            </p>
+
+                            <a href="news.html"
+                               class="news-read"
+                               data-i18n="readMore">
+                                Толығырақ →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SMALL NEWS -->
+
+                    <div class="small-news-column">
+
+                        <article class="small-news-card">
+
+                            <div class="small-news-image">
+
+                                <img src="images/news2.jpg"
+                                     alt="Team"
+                                     onerror="this.style.display='none'">
+
+                            </div>
+
+                            <div class="small-news-content">
+
+                                <p class="news-date">
+                                    25.09.2026
+                                </p>
+
+                                <p class="small-news-category"
+                                   data-i18n="teamNews">
+                                    КОМАНДА
+                                </p>
+
+                                <h3 data-i18n="newsTwoTitle">
+                                   Командамыз бір апталық үзілістен кейін жаттығу жұмыстарына кірісті
+                                </h3>
+
+                                <a href="news.html"
+                                   data-i18n="readMore">
+                                    Толығырақ →
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="small-news-card">
+
+                            <div class="small-news-image">
+
+                                <img src="images/news3.jpg"
+                                     alt="Match"
+                                     onerror="this.style.display='none'">
+
+                            </div>
+
+                            <div class="small-news-content">
+
+                                <p class="news-date">
+                                    27.09.2026
+                                </p>
+
+                                <p class="small-news-category"
+                                   data-i18n="matchNews">
+                                    МАТЧ
+                                </p>
+
+                                <h3 data-i18n="newsThreeTitle">
+                                    Келесі матчқа дайындық басталды
+                                </h3>
+
+                                <a href="news.html"
+                                   data-i18n="readMore">
+                                    Толығырақ →
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GALLERY
+        ========================== -->
+
+        <section class="gallery-section"
+                 id="gallery">
+
+            <div class="container">
+
+                <div class="gallery-heading">
+
+                    <p class="section-label"
+                       data-i18n="galleryLabel">
+                        ГАЛЕРЕЯ
+                    </p>
+
+                    <h2 data-i18n="galleryTitle">
+                        Ордабасы сәттері
+                    </h2>
+
+                    <p data-i18n="galleryDescription">
+                        Команда, матчтар, стадион және
+                        жанкүйерлердің есте қаларлық сәттері.
+                    </p>
+
+                </div>
+
+
+               <div class="gallery-grid">
+
+    <!-- 01 VIDEO -->
+    <div class="gallery-item gallery-large">
+
+        <video
+            class="gallery-video"
+            autoplay
+            muted
+            loop
+            playsinline>
+
+            <source src="images/gallery1.mp4" type="video/mp4">
+
+        </video>
+
+        <div class="gallery-overlay">
+            <span>01</span>
+
+            <h3 data-i18n="galleryMatch">
+                Матч сәті
+            </h3>
+        </div>
+
+    </div>
+
+
+    <!-- 02 -->
+    <div class="gallery-item"
+         data-image="images/gallery2.jpg">
+
+        <img src="images/gallery2.jpg"
+             alt="Команда">
+
+        <div class="gallery-overlay">
+            <span>02</span>
+
+            <h3 data-i18n="galleryTeam">
+                Команда
+            </h3>
+        </div>
+
+    </div>
+
+
+    <!-- 03 -->
+    <div class="gallery-item"
+         data-image="images/gallery3.jpg">
+
+        <img src="images/gallery3.jpg"
+             alt="Стадион">
+
+        <div class="gallery-overlay">
+            <span>03</span>
+
+            <h3 data-i18n="galleryStadium">
+                Стадион
+            </h3>
+        </div>
+
+    </div>
+
+
+    <!-- 04 -->
+    <div class="gallery-item"
+         data-image="images/gallery4.jpg">
+
+        <img src="images/gallery4.jpg"
+             alt="Жанкүйерлер">
+
+        <div class="gallery-overlay">
+            <span>04</span>
+
+            <h3 data-i18n="galleryFans">
+                Жанкүйерлер
+            </h3>
+        </div>
+
+    </div>
+
+
+    <!-- 05 -->
+    <div class="gallery-item gallery-wide"
+         data-image="images/gallery5.jpg">
+
+        <img src="images/gallery5.jpg"
+             alt="Жаттығу">
+
+        <div class="gallery-overlay">
+            <span>05</span>
+
+            <h3 data-i18n="galleryTraining">
+                Жаттығу
+            </h3>
+        </div>
+
+    </div>
+
+
+    <!-- 06 -->
+    <div class="gallery-item"
+         data-image="images/gallery6.jpg">
+
+        <img src="images/gallery6.jpg"
+             alt="Жеңіс">
+
+        <div class="gallery-overlay">
+            <span>06</span>
+
+            <h3 data-i18n="galleryVictory">
+                Жеңіс сәті
+            </h3>
+        </div>
+
+    </div>
+
+</div>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section class="contact-section">
+
+            <div class="container contact-box">
+
+                <div class="contact-content">
+
+                    <p class="contact-label"
+                       data-i18n="contactLabel">
+                        ОРДАБАСЫМЕН БІРГЕ
+                    </p>
+
+                    <h2 data-i18n="contactTitle">
+                        Клуб жаңалықтарынан хабардар бол
+                    </h2>
+
+                    <p data-i18n="contactDescription">
+                        Матчтар, команда және клуб жаңалықтарын
+                        бірінші болып біл.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-buttons">
+
+                    <a href="news.html"
+                       class="contact-btn primary-contact"
+                       data-i18n="latestNews">
+                        Жаңалықтарды көру
+                    </a>
+
+                    <a href="matches.html"
+                       class="contact-btn secondary-contact"
+                       data-i18n="nextMatches">
+                        Матчтар
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a href="index.html"
+                   class="footer-logo">
+
+                    <span>ФК</span>
+                    ОРДАБАСЫ
+
+                </a>
+
+                <p data-i18n="footerText">
+                    Шымкент футболына арналған заманауи ақпараттық сайт.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#"
+                       aria-label="Instagram">
+                        IG
+                    </a>
+
+                    <a href="#"
+                       aria-label="YouTube">
+                        YT
+                    </a>
+
+                    <a href="#"
+                       aria-label="Telegram">
+                        TG
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3 data-i18n="navigation">
+                    Навигация
+                </h3>
+
+                <a href="index.html"
+                   data-i18n="home">
+                    Басты бет
+                </a>
+
+                <a href="about.html"
+                   data-i18n="about">
+                    Клуб туралы
+                </a>
+
+                <a href="team.html"
+                   data-i18n="team">
+                    Команда
+                </a>
+
+                <a href="matches.html"
+                   data-i18n="matches">
+                    Матчтар
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3 data-i18n="media">
+                    Медиа
+                </h3>
+
+                <a href="news.html"
+                   data-i18n="news">
+                    Жаңалықтар
+                </a>
+
+                <a href="#gallery"
+                   data-i18n="gallery">
+                    Галерея
+                </a>
+
+                <a href="#"
+                   data-i18n="videos">
+                    Видеолар
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3 data-i18n="clubInfo">
+                    Клуб
+                </h3>
+
+                <p>
+                    📍
+                    <span data-i18n="footerCity">
+                        Шымкент, Қазақстан
+                    </span>
+                </p>
+
+                <p>
+                    ⚽
+                    <span data-i18n="footerClub">
+                        «Ордабасы» футбол клубы
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 FC Ordabasy.
+                <span data-i18n="rights">
+                    Барлық құқықтар қорғалған.
+                </span>
+            </p>
+
+            <button class="back-to-top"
+                    id="backToTop"
+                    aria-label="Back to top">
+                ↑
+            </button>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         LIGHTBOX
+    ========================== -->
+
+    <div class="lightbox"
+         id="lightbox">
+
+        <button class="lightbox-close"
+                id="lightboxClose"
+                aria-label="Close">
+            ×
+        </button>
+
+        <img id="lightboxImage"
+             src=""
+             alt="Gallery">
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

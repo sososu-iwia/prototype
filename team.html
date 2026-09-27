@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Команда | Ордабасы ФК</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header team-header" id="header">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+
+                <img src="images/logo.png"
+                     alt="Ордабасы ФК логотипі">
+
+                <div class="logo-text">
+                    <strong>ОРДАБАСЫ</strong>
+                    <small>FOOTBALL CLUB</small>
+                </div>
+
+            </a>
+
+
+            <nav class="navbar" id="navbar">
+
+                <a href="index.html"
+                   data-i18n="home">
+                    Басты бет
+                </a>
+
+                <a href="about.html"
+                   data-i18n="about">
+                    Клуб туралы
+                </a>
+
+                <a href="team.html"
+                   class="active"
+                   data-i18n="team">
+                    Команда
+                </a>
+
+                <a href="matches.html"
+                   data-i18n="matches">
+                    Матчтар
+                </a>
+
+                <a href="news.html"
+                   data-i18n="news">
+                    Жаңалықтар
+                </a>
+
+                <a href="index.html#gallery"
+                   data-i18n="gallery">
+                    Галерея
+                </a>
+
+            </nav>
+
+
+            <div class="language-switcher">
+
+                <button class="lang-btn active"
+                        data-lang="kk">
+                    KZ
+                </button>
+
+                <button class="lang-btn"
+                        data-lang="ru">
+                    RU
+                </button>
+
+                <button class="lang-btn"
+                        data-lang="en">
+                    EN
+                </button>
+
+            </div>
+
+
+            <button class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             TEAM HERO
+        ========================== -->
+
+        <section class="team-page-hero">
+
+            <div class="container">
+
+                <p class="hero-label"
+                   data-i18n="teamPageLabel">
+                    БІЗДІҢ КОМАНДА
+                </p>
+
+                <h1>
+                    <span data-i18n="teamHeroFirst">
+                        АЛАҢДАҒЫ
+                    </span>
+
+                    <span data-i18n="teamHeroSecond">
+                        КҮШ
+                    </span>
+                </h1>
+
+                <p class="team-hero-description"
+                   data-i18n="teamPageDescription">
+                    «Ордабасы» футбол клубының негізгі құрамымен танысыңыз.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PLAYERS
+        ========================== -->
+
+        <section class="team-page-section">
+
+            <div class="container">
+
+                <div class="team-page-heading">
+
+                    <div>
+
+                        <p class="section-label"
+                           data-i18n="squadLabel">
+                            НЕГІЗГІ ҚҰРАМ
+                        </p>
+
+                        <h2 data-i18n="squadTitle">
+                            Ойыншылар
+                        </h2>
+
+                    </div>
+
+
+                    <!-- FILTERS -->
+
+                    <div class="team-filters">
+
+                        <button class="filter-btn active"
+                                data-filter="all"
+                                data-i18n="filterAll">
+                            Барлығы
+                        </button>
+
+                        <button class="filter-btn"
+                                data-filter="goalkeeper"
+                                data-i18n="filterGoalkeepers">
+                            Қақпашылар
+                        </button>
+
+                        <button class="filter-btn"
+                                data-filter="defender"
+                                data-i18n="filterDefenders">
+                            Қорғаушылар
+                        </button>
+
+                        <button class="filter-btn"
+                                data-filter="midfielder"
+                                data-i18n="filterMidfielders">
+                            Жартылай қорғаушылар
+                        </button>
+
+                        <button class="filter-btn"
+                                data-filter="forward"
+                                data-i18n="filterForwards">
+                            Шабуылшылар
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     GOALKEEPERS
+                ========================== -->
+
+                <div class="position-title">
+                    <span>01</span>
+
+                    <h3 data-i18n="filterGoalkeepers">
+                        Қақпашылар
+                    </h3>
+                </div>
+
+
+                <div class="team-page-grid">
+
+                    <!-- BEKHAN -->
+                    <article class="team-player-card"
+                             data-position="goalkeeper">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                1
+                            </span>
+
+                            <img src="images/players/bekhan-shaizada.jpg"
+                                 alt="Бекхан Шайзада">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="goalkeeper">
+                                Қақпашы
+                            </p>
+
+                            <h3>
+                                Бекхан Шайзада
+                            </h3>
+
+                            <span>#1</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- KAZHYMUKAN -->
+                    <article class="team-player-card"
+                             data-position="goalkeeper">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                13
+                            </span>
+
+                            <img src="images/players/kazhymukan-tolepbergen.jpg"
+                                 alt="Қажымұқан Төлепберген">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="goalkeeper">
+                                Қақпашы
+                            </p>
+
+                            <h3>
+                                Қажымұқан Төлепберген
+                            </h3>
+
+                            <span>#13</span>
+
+                        </div>
+
+                    </article>
+<!-- AYAN -->
+                    <article class="team-player-card"
+                             data-position="goalkeeper">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                24
+                            </span>
+
+                            <img src="images/players/ayan-abduhalyk.jpg"
+                                 alt="Аян Абдухалық">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="goalkeeper">
+                                Қақпашы
+                            </p>
+
+                            <h3>
+                                Аян Абдухалық
+                            </h3>
+
+                            <span>#24</span>
+
+                        </div>
+
+                    </article>
+                </div>
+                    
+
+                <!-- =========================
+                     DEFENDERS
+                ========================== -->
+
+                <div class="position-title">
+                    <span>02</span>
+
+                    <h3 data-i18n="filterDefenders">
+                        Қорғаушылар
+                    </h3>
+                </div>
+
+
+                <div class="team-page-grid">
+
+
+
+
+
+                    <!-- ALI -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                14
+                            </span>
+
+                            <img src="images/players/ali-turganov.jpg"
+                                 alt="Әли Тұрғанов">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Әли Тұрғанов
+                            </h3>
+
+                            <span>#14</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ALEKSA -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                55
+                            </span>
+
+                            <img src="images/players/aleksa-amanovic.jpg"
+                                 alt="Алекса Аманович">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Алекса Аманович
+                            </h3>
+
+                            <span>#55</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- KILAMA -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                3
+                            </span>
+
+                            <img src="images/players/guy-kilama.jpg"
+                                 alt="Ги-Марселин Килама">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Ги-Марселин Килама
+                            </h3>
+
+                            <span>#3</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ANTIC -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                5
+                            </span>
+
+                            <img src="images/players/nikola-antic.jpg"
+                                 alt="Никола Антич">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Никола Антич
+                            </h3>
+
+                            <span>#5</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ZHASULAN -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                15
+                            </span>
+
+                            <img src="images/players/zhasulan-amir.jpg"
+                                 alt="Жасұлан Әмір">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Жасұлан Әмір
+                            </h3>
+
+                            <span>#15</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ULAR -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                8
+                            </span>
+
+                            <img src="images/players/ular-zhaksybayev.jpg"
+                                 alt="Ұлар Жақсыбаев">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Ұлар Жақсыбаев
+                            </h3>
+
+                            <span>#8</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SERGEY -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                25
+                            </span>
+
+                            <img src="images/players/sergey-maly.jpg"
+                                 alt="Сергей Малый">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Сергей Малый
+                            </h3>
+
+                            <span>#25</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- SULTANBEK -->
+                    <article class="team-player-card"
+                             data-position="defender">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                22
+                            </span>
+
+                            <img src="images/players/sultanbek-astanov.jpg"
+                                 alt="Сұлтанбек Астанов">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="defender">
+                                Қорғаушы
+                            </p>
+
+                            <h3>
+                                Сұлтанбек Астанов
+                            </h3>
+
+                            <span>#22</span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- =========================
+                     MIDFIELDERS
+                ========================== -->
+
+                <div class="position-title">
+
+                    <span>03</span>
+
+                    <h3 data-i18n="filterMidfielders">
+                        Жартылай қорғаушылар
+                    </h3>
+
+                </div>
+
+
+                <div class="team-page-grid">
+
+
+                    <!-- BIRZHAN -->
+                    <article class="team-player-card"
+                             data-position="midfielder">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                21
+                            </span>
+
+                            <img src="images/players/birzhan-toktibai.jpg"
+                                 alt="Біржан Тоқтыбай">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                            <h3>
+                                Біржан Тоқтыбай
+                            </h3>
+
+                            <span>#21</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ELKHAN -->
+                    <article class="team-player-card"
+                             data-position="midfielder">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                10
+                            </span>
+
+                            <img src="images/players/elkhan-astanov.jpg"
+                                 alt="Эльхан Астанов">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                            <h3>
+                                Эльхан Астанов
+                            </h3>
+
+                            <span>#10</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VAKULKO -->
+                    <article class="team-player-card"
+                             data-position="midfielder">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                11
+                            </span>
+
+                            <img src="images/players/yuriy-vakulko.jpg"
+                                 alt="Юрий Вакулко">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                            <h3>
+                                Юрий Вакулко
+                            </h3>
+
+                            <span>#11</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- CAPATINA -->
+                    <article class="team-player-card"
+                             data-position="midfielder">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                16
+                            </span>
+
+                            <img src="images/players/cristian-capatina.jpg"
+                                 alt="Кристиан-Михай Капацина">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                            <h3>
+                                Кристиан-Михай Капацина
+                            </h3>
+
+                            <span>#16</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ABAGNA -->
+                    <article class="team-player-card"
+                             data-position="midfielder">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                77
+                            </span>
+
+                            <img src="images/players/david-abagna.jpg"
+                                 alt="Давид Абагна">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="midfielder">
+                                Жартылай қорғаушы
+                            </p>
+
+                            <h3>
+                                Давид Абагна
+                            </h3>
+
+                            <span>#77</span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- =========================
+                     FORWARDS
+                ========================== -->
+
+                <div class="position-title">
+
+                    <span>04</span>
+
+                    <h3 data-i18n="filterForwards">
+                        Шабуылшылар
+                    </h3>
+
+                </div>
+
+
+                <div class="team-page-grid">
+
+
+                    <!-- NATEL -->
+                    <article class="team-player-card"
+                             data-position="forward">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                19
+                            </span>
+
+                            <img src="images/players/leonardo-natel.jpg"
+                                 alt="Леонардо Натель">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="forward">
+                                Шабуылшы
+                            </p>
+
+                            <h3>
+                                Леонардо Натель
+                            </h3>
+
+                            <span>#19</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MAGZHAN -->
+                    <article class="team-player-card"
+                             data-position="forward">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                20
+                            </span>
+
+                            <img src="images/players/magzhan-toktibai.jpg"
+                                 alt="Мағжан Тоқтыбай">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="forward">
+                                Шабуылшы
+                            </p>
+
+                            <h3>
+                                Мағжан Тоқтыбай
+                            </h3>
+
+                            <span>#20</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- BJORN JOHNSEN -->
+                    <article class="team-player-card"
+                             data-position="forward">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                28
+                            </span>
+
+                            <img src="images/players/bjorn-johnsen.jpg"
+                                 alt="Бьорн Йонсен">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="forward">
+                                Шабуылшы
+                            </p>
+
+                            <h3>
+                                Бьорн Йонсен
+                            </h3>
+
+                            <span>#28</span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- EVERTON -->
+                    <article class="team-player-card"
+                             data-position="forward">
+
+                        <div class="team-player-image">
+
+                            <span class="team-player-number">
+                                9
+                            </span>
+
+                            <img src="images/players/everton-moraes.jpg"
+                                 alt="Эвертон Мораес">
+
+                        </div>
+
+                        <div class="team-player-content">
+
+                            <p data-i18n="forward">
+                                Шабуылшы
+                            </p>
+
+                            <h3>
+                                Эвертон Мораес
+                            </h3>
+
+                            <span>#9</span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+
+        <section class="team-page-cta">
+
+            <div class="container team-page-cta-box">
+
+                <div>
+
+                    <p class="contact-label"
+                       data-i18n="teamCtaLabel">
+                        КЕЛЕСІ МАТЧ
+                    </p>
+
+                    <h2 data-i18n="teamCtaTitle">
+                        Команданы алаңда қолда
+                    </h2>
+
+                </div>
+
+                <a href="matches.html"
+                   class="btn btn-primary"
+                   data-i18n="matchesButton">
+                    Матчтарды көру
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 FC Ordabasy.
+
+                <span data-i18n="rights">
+                    Барлық құқықтар қорғалған.
+                </span>
+            </p>
+
+            <button class="back-to-top"
+                    id="backToTop">
+                ↑
+            </button>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
