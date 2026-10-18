@@ -1,0 +1,1824 @@
+{
+  "sourceDate": "2026-09-27T00:00:00.000Z",
+  "players": [
+    {
+      "id": "legacy-bekhan-shaizada",
+      "slug": "bekhan-shaizada",
+      "names": {
+        "kk": "Бекхан Шайзада",
+        "ru": "Бекхан Шайзада",
+        "en": "Bekhan Shaizada"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "images/players/bekhan-shaizada.jpg",
+      "number": 1,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-kazhymukan-tolepbergen",
+      "slug": "kazhymukan-tolepbergen",
+      "names": {
+        "kk": "Қажымұқан Төлепберген",
+        "ru": "Қажымұқан Төлепберген",
+        "en": "Kazhymukan Tolepbergen"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "images/players/kazhymukan-tolepbergen.jpg",
+      "number": 13,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-ayan-abduhalyk",
+      "slug": "ayan-abduhalyk",
+      "names": {
+        "kk": "Аян Абдухалық",
+        "ru": "Аян Абдухалық",
+        "en": "Ayan Abduhalyk"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "images/players/ayan-abduhalyk.jpg",
+      "number": 24,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-ali-turganov",
+      "slug": "ali-turganov",
+      "names": {
+        "kk": "Әли Тұрғанов",
+        "ru": "Әли Тұрғанов",
+        "en": "Ali Turganov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/ali-turganov.jpg",
+      "number": 14,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-aleksa-amanovic",
+      "slug": "aleksa-amanovic",
+      "names": {
+        "kk": "Алекса Аманович",
+        "ru": "Алекса Аманович",
+        "en": "Aleksa Amanovic"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/aleksa-amanovic.jpg",
+      "number": 55,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-guy-kilama",
+      "slug": "guy-kilama",
+      "names": {
+        "kk": "Ги-Марселин Килама",
+        "ru": "Ги-Марселин Килама",
+        "en": "Guy Kilama"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/guy-kilama.jpg",
+      "number": 3,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-nikola-antic",
+      "slug": "nikola-antic",
+      "names": {
+        "kk": "Никола Антич",
+        "ru": "Никола Антич",
+        "en": "Nikola Antic"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/nikola-antic.jpg",
+      "number": 5,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-zhasulan-amir",
+      "slug": "zhasulan-amir",
+      "names": {
+        "kk": "Жасұлан Әмір",
+        "ru": "Жасұлан Әмір",
+        "en": "Zhasulan Amir"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/zhasulan-amir.jpg",
+      "number": 15,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-ular-zhaksybayev",
+      "slug": "ular-zhaksybayev",
+      "names": {
+        "kk": "Ұлар Жақсыбаев",
+        "ru": "Ұлар Жақсыбаев",
+        "en": "Ular Zhaksybayev"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/ular-zhaksybayev.jpg",
+      "number": 8,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-sergey-maly",
+      "slug": "sergey-maly",
+      "names": {
+        "kk": "Сергей Малый",
+        "ru": "Сергей Малый",
+        "en": "Sergey Maly"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/sergey-maly.jpg",
+      "number": 25,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-sultanbek-astanov",
+      "slug": "sultanbek-astanov",
+      "names": {
+        "kk": "Сұлтанбек Астанов",
+        "ru": "Сұлтанбек Астанов",
+        "en": "Sultanbek Astanov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "images/players/sultanbek-astanov.jpg",
+      "number": 22,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-birzhan-toktibai",
+      "slug": "birzhan-toktibai",
+      "names": {
+        "kk": "Біржан Тоқтыбай",
+        "ru": "Біржан Тоқтыбай",
+        "en": "Birzhan Toktibai"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "images/players/birzhan-toktibai.jpg",
+      "number": 21,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-elkhan-astanov",
+      "slug": "elkhan-astanov",
+      "names": {
+        "kk": "Эльхан Астанов",
+        "ru": "Эльхан Астанов",
+        "en": "Elkhan Astanov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "images/players/elkhan-astanov.jpg",
+      "number": 10,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-yuriy-vakulko",
+      "slug": "yuriy-vakulko",
+      "names": {
+        "kk": "Юрий Вакулко",
+        "ru": "Юрий Вакулко",
+        "en": "Yuriy Vakulko"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "images/players/yuriy-vakulko.jpg",
+      "number": 11,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-cristian-capatina",
+      "slug": "cristian-capatina",
+      "names": {
+        "kk": "Кристиан-Михай Капацина",
+        "ru": "Кристиан-Михай Капацина",
+        "en": "Cristian Capatina"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "images/players/cristian-capatina.jpg",
+      "number": 16,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-david-abagna",
+      "slug": "david-abagna",
+      "names": {
+        "kk": "Давид Абагна",
+        "ru": "Давид Абагна",
+        "en": "David Abagna"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "images/players/david-abagna.jpg",
+      "number": 77,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-leonardo-natel",
+      "slug": "leonardo-natel",
+      "names": {
+        "kk": "Леонардо Натель",
+        "ru": "Леонардо Натель",
+        "en": "Leonardo Natel"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "images/players/leonardo-natel.jpg",
+      "number": 19,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-magzhan-toktibai",
+      "slug": "magzhan-toktibai",
+      "names": {
+        "kk": "Мағжан Тоқтыбай",
+        "ru": "Мағжан Тоқтыбай",
+        "en": "Magzhan Toktibai"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "images/players/magzhan-toktibai.jpg",
+      "number": 20,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-bjorn-johnsen",
+      "slug": "bjorn-johnsen",
+      "names": {
+        "kk": "Бьорн Йонсен",
+        "ru": "Бьорн Йонсен",
+        "en": "Bjorn Johnsen"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "images/players/bjorn-johnsen.jpg",
+      "number": 28,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    },
+    {
+      "id": "legacy-everton-moraes",
+      "slug": "everton-moraes",
+      "names": {
+        "kk": "Эвертон Мораес",
+        "ru": "Эвертон Мораес",
+        "en": "Everton Moraes"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "images/players/everton-moraes.jpg",
+      "number": 9,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z"
+    }
+  ],
+  "matches": [
+    {
+      "id": "legacy-match-01",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "irtysh",
+      "kickoff": "2026-03-07T12:30:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-03-07",
+        "time": "17:30",
+        "competition": "league",
+        "opponent": "irtysh",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 2,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-02",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "zhenis",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-03-16T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-03-16",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "zhenis",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 2,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-03",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kaisar",
+      "kickoff": "2026-03-20T11:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-03-20",
+        "time": "16:00",
+        "competition": "league",
+        "opponent": "kaisar",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-04",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "atyrau",
+      "kickoff": "2026-04-04T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-04",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "atyrau",
+        "venue": "home",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-05",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "ontustik",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-04-08T08:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 4,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-08",
+        "time": "13:00",
+        "competition": "cup",
+        "opponent": "ontustik",
+        "venue": "away",
+        "homeScore": 2,
+        "awayScore": 4,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-06",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "astana",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-04-11T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-11",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "astana",
+        "venue": "away",
+        "homeScore": 1,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-07",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "okzhetpes",
+      "kickoff": "2026-04-18T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-18",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "okzhetpes",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-08",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "kyzylzhar",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-04-25T10:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-25",
+        "time": "15:00",
+        "competition": "league",
+        "opponent": "kyzylzhar",
+        "venue": "away",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-09",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kaspiy",
+      "kickoff": "2026-04-30T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-04-30",
+        "time": "18:00",
+        "competition": "cup",
+        "opponent": "kaspiy",
+        "venue": "home",
+        "homeScore": 3,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-10",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "aktobe",
+      "kickoff": "2026-05-03T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-03",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "aktobe",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-11",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "altai",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-05-10T09:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-10",
+        "time": "14:00",
+        "competition": "league",
+        "opponent": "altai",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-12",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "zhetysu",
+      "kickoff": "2026-05-13T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-13",
+        "time": "18:00",
+        "competition": "cup",
+        "opponent": "zhetysu",
+        "venue": "home",
+        "homeScore": 1,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-13",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "zhetysu",
+      "kickoff": "2026-05-17T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-17",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "zhetysu",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-14",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "tobol",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-05-23T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-23",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "tobol",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 3,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-15",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kairat",
+      "kickoff": "2026-05-28T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-05-28",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "kairat",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-16",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "yelimay",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-06-14T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-06-14",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "yelimay",
+        "venue": "away",
+        "homeScore": 1,
+        "awayScore": 3,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-17",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kaspiy",
+      "kickoff": "2026-06-20T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-06-20",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "kaspiy",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-18",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ulytau",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-06-28T11:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-06-28",
+        "time": "16:00",
+        "competition": "league",
+        "opponent": "ulytau",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-19",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "ulytau",
+      "kickoff": "2026-07-05T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-07-05",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "ulytau",
+        "venue": "home",
+        "homeScore": 1,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-20",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "kaspiy",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-07-11T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-07-11",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "kaspiy",
+        "venue": "away",
+        "homeScore": 3,
+        "awayScore": 2,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-21",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "altai",
+      "kickoff": "2026-07-15T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-07-15",
+        "time": "18:00",
+        "competition": "cup",
+        "opponent": "altai",
+        "venue": "home",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-22",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "yelimay",
+      "kickoff": "2026-07-19T14:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-07-19",
+        "time": "19:00",
+        "competition": "league",
+        "opponent": "yelimay",
+        "venue": "home",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-23",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "kairat",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-07-26T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-07-26",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "kairat",
+        "venue": "away",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-24",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "tobol",
+      "kickoff": "2026-08-02T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-08-02",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "tobol",
+        "venue": "home",
+        "homeScore": 2,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-25",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "zhetysu",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-08-08T11:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-08-08",
+        "time": "16:00",
+        "competition": "league",
+        "opponent": "zhetysu",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 4,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-26",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "altai",
+      "kickoff": "2026-08-15T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-08-15",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "altai",
+        "venue": "home",
+        "homeScore": 3,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-27",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "altai",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-08-19T11:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-08-19",
+        "time": "16:00",
+        "competition": "cup",
+        "opponent": "altai",
+        "venue": "away",
+        "homeScore": 1,
+        "awayScore": 2,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-28",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kyzylzhar",
+      "kickoff": "2026-08-29T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-08-29",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "kyzylzhar",
+        "venue": "home",
+        "homeScore": 3,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-29",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "okzhetpes",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-09-05T09:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-09-05",
+        "time": "14:00",
+        "competition": "league",
+        "opponent": "okzhetpes",
+        "venue": "away",
+        "homeScore": 2,
+        "awayScore": 1,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-30",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "astana",
+      "kickoff": "2026-09-12T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-09-12",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "astana",
+        "venue": "home",
+        "homeScore": 1,
+        "awayScore": 0,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-31",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "atyrau",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-09-17T13:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "FINISHED",
+      "homeScore": 0,
+      "awayScore": 3,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-09-17",
+        "time": "18:00",
+        "competition": "league",
+        "opponent": "atyrau",
+        "venue": "away",
+        "homeScore": 0,
+        "awayScore": 3,
+        "status": "finished"
+      }
+    },
+    {
+      "id": "legacy-match-32",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "kaisar",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-10-11T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "SCHEDULED",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-10-11",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "kaisar",
+        "venue": "away",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "legacy-match-33",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "aktobe",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-10-17T12:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "SCHEDULED",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-10-17",
+        "time": "17:00",
+        "competition": "league",
+        "opponent": "aktobe",
+        "venue": "away",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "legacy-match-34",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "zhenis",
+      "kickoff": "2026-10-24T11:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "SCHEDULED",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-10-24",
+        "time": "16:00",
+        "competition": "league",
+        "opponent": "zhenis",
+        "venue": "home",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "legacy-match-35",
+      "seasonId": "2026",
+      "competitionId": "league",
+      "homeTeamId": "irtysh",
+      "awayTeamId": "ordabasy",
+      "kickoff": "2026-10-31T08:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "SCHEDULED",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-10-31",
+        "time": "13:00",
+        "competition": "league",
+        "opponent": "irtysh",
+        "venue": "away",
+        "status": "upcoming"
+      }
+    },
+    {
+      "id": "legacy-match-36",
+      "seasonId": "2026",
+      "competitionId": "cup",
+      "homeTeamId": "ordabasy",
+      "awayTeamId": "kaisar",
+      "kickoff": "2026-11-07T07:00:00.000Z",
+      "stadium": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "matchStatus": "SCHEDULED",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "DRAFT",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy matches.html; unverified manual schedule",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "original": {
+        "date": "2026-11-07",
+        "time": "",
+        "competition": "cup",
+        "opponent": "kaisar",
+        "venue": "home",
+        "status": "upcoming"
+      }
+    }
+  ],
+  "teams": [
+    {
+      "id": "ordabasy",
+      "slug": "ordabasy",
+      "names": {
+        "kk": "Ордабасы",
+        "ru": "Ордабасы",
+        "en": "Ordabasy"
+      }
+    },
+    {
+      "id": "irtysh",
+      "slug": "irtysh",
+      "names": {
+        "kk": "Ертіс Павлодар",
+        "ru": "Иртыш Павлодар",
+        "en": "Irtysh Pavlodar"
+      }
+    },
+    {
+      "id": "zhenis",
+      "slug": "zhenis",
+      "names": {
+        "kk": "Жеңіс",
+        "ru": "Женис",
+        "en": "Zhenis"
+      }
+    },
+    {
+      "id": "kaisar",
+      "slug": "kaisar",
+      "names": {
+        "kk": "Қайсар",
+        "ru": "Кайсар",
+        "en": "Kaisar"
+      }
+    },
+    {
+      "id": "atyrau",
+      "slug": "atyrau",
+      "names": {
+        "kk": "Атырау",
+        "ru": "Атырау",
+        "en": "Atyrau"
+      }
+    },
+    {
+      "id": "ontustik",
+      "slug": "ontustik",
+      "names": {
+        "kk": "Академия Оңтүстік",
+        "ru": "Академия Онтустик",
+        "en": "Akademia Ontustik"
+      }
+    },
+    {
+      "id": "astana",
+      "slug": "astana",
+      "names": {
+        "kk": "Астана",
+        "ru": "Астана",
+        "en": "Astana"
+      }
+    },
+    {
+      "id": "okzhetpes",
+      "slug": "okzhetpes",
+      "names": {
+        "kk": "Оқжетпес",
+        "ru": "Окжетпес",
+        "en": "Okzhetpes"
+      }
+    },
+    {
+      "id": "kyzylzhar",
+      "slug": "kyzylzhar",
+      "names": {
+        "kk": "Қызыл-Жар",
+        "ru": "Кызыл-Жар",
+        "en": "Kyzyl-Zhar"
+      }
+    },
+    {
+      "id": "kaspiy",
+      "slug": "kaspiy",
+      "names": {
+        "kk": "Каспий",
+        "ru": "Каспий",
+        "en": "Kaspiy"
+      }
+    },
+    {
+      "id": "aktobe",
+      "slug": "aktobe",
+      "names": {
+        "kk": "Ақтөбе",
+        "ru": "Актобе",
+        "en": "Aktobe"
+      }
+    },
+    {
+      "id": "altai",
+      "slug": "altai",
+      "names": {
+        "kk": "Алтай",
+        "ru": "Алтай",
+        "en": "Altai"
+      }
+    },
+    {
+      "id": "zhetysu",
+      "slug": "zhetysu",
+      "names": {
+        "kk": "Жетісу",
+        "ru": "Жетысу",
+        "en": "Zhetysu"
+      }
+    },
+    {
+      "id": "tobol",
+      "slug": "tobol",
+      "names": {
+        "kk": "Тобыл",
+        "ru": "Тобол",
+        "en": "Tobol"
+      }
+    },
+    {
+      "id": "kairat",
+      "slug": "kairat",
+      "names": {
+        "kk": "Қайрат",
+        "ru": "Кайрат",
+        "en": "Kairat"
+      }
+    },
+    {
+      "id": "yelimay",
+      "slug": "yelimay",
+      "names": {
+        "kk": "Елімай",
+        "ru": "Елимай",
+        "en": "Yelimay"
+      }
+    },
+    {
+      "id": "ulytau",
+      "slug": "ulytau",
+      "names": {
+        "kk": "Ұлытау",
+        "ru": "Улытау",
+        "en": "Ulytau"
+      }
+    }
+  ],
+  "news": [
+    {
+      "id": "legacy-news-0",
+      "slug": "legacy-news-0",
+      "status": "DRAFT",
+      "cover": "images/news1.jpg",
+      "publishedAt": null,
+      "source": "Legacy index.html; promotional copy, not verified reporting",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "verification": "LEGACY_UNVERIFIED",
+      "translations": [
+        {
+          "locale": "kk",
+          "title": "Команда жаңа матчқа дайындықты жалғастыруда",
+          "excerpt": "Футболшылар алдағы ойынға дайындық жұмыстарын өткізуде.",
+          "body": "Футболшылар алдағы ойынға дайындық жұмыстарын өткізуде."
+        },
+        {
+          "locale": "ru",
+          "title": "Команда продолжает подготовку к новому матчу",
+          "excerpt": "Футболисты продолжают подготовку к предстоящей игре.",
+          "body": "Футболисты продолжают подготовку к предстоящей игре."
+        },
+        {
+          "locale": "en",
+          "title": "The Team Continues Preparation for the Next Match",
+          "excerpt": "The players continue preparing for the upcoming match.",
+          "body": "The players continue preparing for the upcoming match."
+        }
+      ]
+    },
+    {
+      "id": "legacy-news-1",
+      "slug": "legacy-news-1",
+      "status": "DRAFT",
+      "cover": "images/news2.jpg",
+      "publishedAt": null,
+      "source": "Legacy index.html; promotional copy, not verified reporting",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "verification": "LEGACY_UNVERIFIED",
+      "translations": [
+        {
+          "locale": "kk",
+          "title": "Командамыз бір апталық үзілістен кейін жаттығу жұмыстарына кірісті",
+          "excerpt": "Командамыз бір апталық үзілістен кейін жаттығу жұмыстарына кірісті",
+          "body": "Командамыз бір апталық үзілістен кейін жаттығу жұмыстарына кірісті"
+        },
+        {
+          "locale": "ru",
+          "title": "Команда вернулась к тренировкам после недельного перерыва",
+          "excerpt": "Команда вернулась к тренировкам после недельного перерыва",
+          "body": "Команда вернулась к тренировкам после недельного перерыва"
+        },
+        {
+          "locale": "en",
+          "title": "Our team returned to training after a one-week break.",
+          "excerpt": "Our team returned to training after a one-week break.",
+          "body": "Our team returned to training after a one-week break."
+        }
+      ]
+    },
+    {
+      "id": "legacy-news-2",
+      "slug": "legacy-news-2",
+      "status": "DRAFT",
+      "cover": "images/news3.jpg",
+      "publishedAt": null,
+      "source": "Legacy index.html; promotional copy, not verified reporting",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "verification": "LEGACY_UNVERIFIED",
+      "translations": [
+        {
+          "locale": "kk",
+          "title": "Келесі матчқа дайындық басталды",
+          "excerpt": "Келесі матчқа дайындық басталды",
+          "body": "Келесі матчқа дайындық басталды"
+        },
+        {
+          "locale": "ru",
+          "title": "Началась подготовка к следующему матчу",
+          "excerpt": "Началась подготовка к следующему матчу",
+          "body": "Началась подготовка к следующему матчу"
+        },
+        {
+          "locale": "en",
+          "title": "Preparation for the Next Match Begins",
+          "excerpt": "Preparation for the Next Match Begins",
+          "body": "Preparation for the Next Match Begins"
+        }
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "id": "legacy-gallery-1",
+      "title": {
+        "kk": "Матч сәті",
+        "ru": "Момент матча",
+        "en": "Match Moment"
+      },
+      "url": "images/gallery1.MP4",
+      "kind": "video",
+      "sortOrder": 0,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    },
+    {
+      "id": "legacy-gallery-2",
+      "title": {
+        "kk": "Команда",
+        "ru": "Команда",
+        "en": "Team"
+      },
+      "url": "images/gallery2.jpg",
+      "kind": "image",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    },
+    {
+      "id": "legacy-gallery-3",
+      "title": {
+        "kk": "Стадион",
+        "ru": "Стадион",
+        "en": "Stadium"
+      },
+      "url": "images/gallery3.jpg",
+      "kind": "image",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    },
+    {
+      "id": "legacy-gallery-4",
+      "title": {
+        "kk": "Жанкүйерлер",
+        "ru": "Болельщики",
+        "en": "Supporters"
+      },
+      "url": "images/gallery4.jpg",
+      "kind": "image",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    },
+    {
+      "id": "legacy-gallery-5",
+      "title": {
+        "kk": "Жаттығу",
+        "ru": "Тренировка",
+        "en": "Training"
+      },
+      "url": "images/gallery5.jpg",
+      "kind": "image",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    },
+    {
+      "id": "legacy-gallery-6",
+      "title": {
+        "kk": "Жеңіс сәті",
+        "ru": "Момент победы",
+        "en": "Victory Moment"
+      },
+      "url": "images/gallery6.jpg",
+      "kind": "image",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media"
+    }
+  ]
+}

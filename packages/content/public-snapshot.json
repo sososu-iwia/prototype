@@ -1,0 +1,1797 @@
+{
+  "players": [
+    {
+      "id": "legacy-bekhan-shaizada",
+      "slug": "bekhan-shaizada",
+      "names": {
+        "kk": "Бекхан Шайзада",
+        "ru": "Бекхан Шайзада",
+        "en": "Bekhan Shaizada"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "/media/players-bekhan-shaizada-640.webp",
+      "number": 1,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-bekhan-shaizada",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 1,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-kazhymukan-tolepbergen",
+      "slug": "kazhymukan-tolepbergen",
+      "names": {
+        "kk": "Қажымұқан Төлепберген",
+        "ru": "Қажымұқан Төлепберген",
+        "en": "Kazhymukan Tolepbergen"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "/media/players-kazhymukan-tolepbergen-640.webp",
+      "number": 13,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-kazhymukan-tolepbergen",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 13,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-ayan-abduhalyk",
+      "slug": "ayan-abduhalyk",
+      "names": {
+        "kk": "Аян Абдухалық",
+        "ru": "Аян Абдухалық",
+        "en": "Ayan Abduhalyk"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "goalkeeper",
+      "photo": "/media/players-ayan-abduhalyk-640.webp",
+      "number": 24,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-ayan-abduhalyk",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 24,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-ali-turganov",
+      "slug": "ali-turganov",
+      "names": {
+        "kk": "Әли Тұрғанов",
+        "ru": "Әли Тұрғанов",
+        "en": "Ali Turganov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-ali-turganov-640.webp",
+      "number": 14,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-ali-turganov",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 14,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-aleksa-amanovic",
+      "slug": "aleksa-amanovic",
+      "names": {
+        "kk": "Алекса Аманович",
+        "ru": "Алекса Аманович",
+        "en": "Aleksa Amanovic"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-aleksa-amanovic-640.webp",
+      "number": 55,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-aleksa-amanovic",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 55,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-guy-kilama",
+      "slug": "guy-kilama",
+      "names": {
+        "kk": "Ги-Марселин Килама",
+        "ru": "Ги-Марселин Килама",
+        "en": "Guy Kilama"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-guy-kilama-640.webp",
+      "number": 3,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-guy-kilama",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 3,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-nikola-antic",
+      "slug": "nikola-antic",
+      "names": {
+        "kk": "Никола Антич",
+        "ru": "Никола Антич",
+        "en": "Nikola Antic"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-nikola-antic-640.webp",
+      "number": 5,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-nikola-antic",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 5,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-zhasulan-amir",
+      "slug": "zhasulan-amir",
+      "names": {
+        "kk": "Жасұлан Әмір",
+        "ru": "Жасұлан Әмір",
+        "en": "Zhasulan Amir"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-zhasulan-amir-640.webp",
+      "number": 15,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-zhasulan-amir",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 15,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-ular-zhaksybayev",
+      "slug": "ular-zhaksybayev",
+      "names": {
+        "kk": "Ұлар Жақсыбаев",
+        "ru": "Ұлар Жақсыбаев",
+        "en": "Ular Zhaksybayev"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-ular-zhaksybayev-640.webp",
+      "number": 8,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-ular-zhaksybayev",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 8,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-sergey-maly",
+      "slug": "sergey-maly",
+      "names": {
+        "kk": "Сергей Малый",
+        "ru": "Сергей Малый",
+        "en": "Sergey Maly"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-sergey-maly-640.webp",
+      "number": 25,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-sergey-maly",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 25,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-sultanbek-astanov",
+      "slug": "sultanbek-astanov",
+      "names": {
+        "kk": "Сұлтанбек Астанов",
+        "ru": "Сұлтанбек Астанов",
+        "en": "Sultanbek Astanov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "defender",
+      "photo": "/media/players-sultanbek-astanov-640.webp",
+      "number": 22,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-sultanbek-astanov",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 22,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-birzhan-toktibai",
+      "slug": "birzhan-toktibai",
+      "names": {
+        "kk": "Біржан Тоқтыбай",
+        "ru": "Біржан Тоқтыбай",
+        "en": "Birzhan Toktibai"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "/media/players-birzhan-toktibai-640.webp",
+      "number": 21,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-birzhan-toktibai",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 21,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-elkhan-astanov",
+      "slug": "elkhan-astanov",
+      "names": {
+        "kk": "Эльхан Астанов",
+        "ru": "Эльхан Астанов",
+        "en": "Elkhan Astanov"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "/media/players-elkhan-astanov-640.webp",
+      "number": 10,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-elkhan-astanov",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 10,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-yuriy-vakulko",
+      "slug": "yuriy-vakulko",
+      "names": {
+        "kk": "Юрий Вакулко",
+        "ru": "Юрий Вакулко",
+        "en": "Yuriy Vakulko"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "/media/players-yuriy-vakulko-640.webp",
+      "number": 11,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-yuriy-vakulko",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 11,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-cristian-capatina",
+      "slug": "cristian-capatina",
+      "names": {
+        "kk": "Кристиан-Михай Капацина",
+        "ru": "Кристиан-Михай Капацина",
+        "en": "Cristian Capatina"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "/media/players-cristian-capatina-640.webp",
+      "number": 16,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-cristian-capatina",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 16,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-david-abagna",
+      "slug": "david-abagna",
+      "names": {
+        "kk": "Давид Абагна",
+        "ru": "Давид Абагна",
+        "en": "David Abagna"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "midfielder",
+      "photo": "/media/players-david-abagna-640.webp",
+      "number": 77,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-david-abagna",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 77,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-leonardo-natel",
+      "slug": "leonardo-natel",
+      "names": {
+        "kk": "Леонардо Натель",
+        "ru": "Леонардо Натель",
+        "en": "Leonardo Natel"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "/media/players-leonardo-natel-640.webp",
+      "number": 19,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-leonardo-natel",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 19,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-magzhan-toktibai",
+      "slug": "magzhan-toktibai",
+      "names": {
+        "kk": "Мағжан Тоқтыбай",
+        "ru": "Мағжан Тоқтыбай",
+        "en": "Magzhan Toktibai"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "/media/players-magzhan-toktibai-640.webp",
+      "number": 20,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-magzhan-toktibai",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 20,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-bjorn-johnsen",
+      "slug": "bjorn-johnsen",
+      "names": {
+        "kk": "Бьорн Йонсен",
+        "ru": "Бьорн Йонсен",
+        "en": "Bjorn Johnsen"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "/media/players-bjorn-johnsen-640.webp",
+      "number": 28,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-bjorn-johnsen",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 28,
+          "statistics": null
+        }
+      ]
+    },
+    {
+      "id": "legacy-everton-moraes",
+      "slug": "everton-moraes",
+      "names": {
+        "kk": "Эвертон Мораес",
+        "ru": "Эвертон Мораес",
+        "en": "Everton Moraes"
+      },
+      "biography": {
+        "kk": "",
+        "ru": "",
+        "en": ""
+      },
+      "position": "forward",
+      "photo": "/media/players-everton-moraes-640.webp",
+      "number": 9,
+      "status": "PUBLISHED",
+      "verification": "LEGACY_UNVERIFIED",
+      "source": "Legacy team.html; roster and shirt number require editorial verification",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "citizenship": null,
+      "birthDate": null,
+      "height": null,
+      "updatedAt": "2026-09-27T00:00:00.000Z",
+      "seasons": [
+        {
+          "id": "season-everton-moraes",
+          "seasonId": "2026",
+          "season": {
+            "id": "2026",
+            "name": "2026",
+            "current": true
+          },
+          "number": 9,
+          "statistics": null
+        }
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "archive-notice",
+      "slug": "website-archive",
+      "status": "PUBLISHED",
+      "cover": "/media/news1-960.webp",
+      "publishedAt": "2026-10-18T19:00:00.000Z",
+      "verification": "VERIFIED",
+      "source": "Original repository: team.html, matches.html, index.html",
+      "sourceDate": "2026-09-27T00:00:00.000Z",
+      "translations": [
+        {
+          "locale": "kk",
+          "title": "Сайттың мұрағаттық деректері туралы",
+          "excerpt": "Бұл сайттың бастапқы нұсқасындағы құрам, матчтар және тарихи мәтіндер мұрағат ретінде сақталған.",
+          "body": "Бұл сайттың бастапқы нұсқасындағы құрам, матчтар және тарихи мәтіндер мұрағат ретінде сақталған. Олардың бір бөлігі редакциялық тексеруді қажет етеді. Расталмаған матчтар мен бұрынғы жаңалық жобалары жаңа жаңалық ретінде жарияланбайды. Көрсетілмеген ойыншы көрсеткіштері белгісіз болып қалады."
+        },
+        {
+          "locale": "ru",
+          "title": "Об архивных данных сайта",
+          "excerpt": "Состав, матчи и исторические тексты из первоначальной версии сайта сохранены в архиве.",
+          "body": "Состав, матчи и исторические тексты из первоначальной версии сайта сохранены в архиве. Часть этих материалов требует редакционной проверки. Неподтверждённые матчи и старые черновики новостей не публикуются как новые сообщения. Отсутствующие показатели игроков остаются неизвестными."
+        },
+        {
+          "locale": "en",
+          "title": "About the website archive",
+          "excerpt": "The squad, fixtures and historical copy from the original website are retained in an archive.",
+          "body": "The squad, fixtures and historical copy from the original website are retained in an archive. Some of this material requires editorial review. Unverified fixtures and old news drafts are not published as new reporting. Missing player statistics remain unknown."
+        }
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "id": "legacy-gallery-1",
+      "title": {
+        "kk": "Матч сәті",
+        "ru": "Момент матча",
+        "en": "Match Moment"
+      },
+      "url": "/media/gallery1.mp4",
+      "kind": "video",
+      "sortOrder": 0,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": "/media/gallery1-poster.webp"
+    },
+    {
+      "id": "legacy-gallery-2",
+      "title": {
+        "kk": "Команда",
+        "ru": "Команда",
+        "en": "Team"
+      },
+      "url": "/media/gallery2-960.webp",
+      "kind": "image",
+      "sortOrder": 1,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": null
+    },
+    {
+      "id": "legacy-gallery-3",
+      "title": {
+        "kk": "Стадион",
+        "ru": "Стадион",
+        "en": "Stadium"
+      },
+      "url": "/media/gallery3-960.webp",
+      "kind": "image",
+      "sortOrder": 2,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": null
+    },
+    {
+      "id": "legacy-gallery-4",
+      "title": {
+        "kk": "Жанкүйерлер",
+        "ru": "Болельщики",
+        "en": "Supporters"
+      },
+      "url": "/media/gallery4-960.webp",
+      "kind": "image",
+      "sortOrder": 3,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": null
+    },
+    {
+      "id": "legacy-gallery-5",
+      "title": {
+        "kk": "Жаттығу",
+        "ru": "Тренировка",
+        "en": "Training"
+      },
+      "url": "/media/gallery5-960.webp",
+      "kind": "image",
+      "sortOrder": 4,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": null
+    },
+    {
+      "id": "legacy-gallery-6",
+      "title": {
+        "kk": "Жеңіс сәті",
+        "ru": "Момент победы",
+        "en": "Victory Moment"
+      },
+      "url": "/media/gallery6-960.webp",
+      "kind": "image",
+      "sortOrder": 5,
+      "status": "PUBLISHED",
+      "source": "Legacy index.html; original media",
+      "poster": null
+    }
+  ],
+  "club": {
+    "info": [
+      {
+        "id": "main",
+        "content": {
+          "title": {
+            "kk": "Ордабасы ФК",
+            "ru": "ФК Ордабасы",
+            "en": "FC Ordabasy"
+          },
+          "home": {
+            "kk": "Басты бет",
+            "ru": "Главная",
+            "en": "Home"
+          },
+          "about": {
+            "kk": "Клуб туралы",
+            "ru": "О клубе",
+            "en": "About"
+          },
+          "team": {
+            "kk": "Команда",
+            "ru": "Команда",
+            "en": "Team"
+          },
+          "matches": {
+            "kk": "Матчтар",
+            "ru": "Матчи",
+            "en": "Matches"
+          },
+          "news": {
+            "kk": "Жаңалықтар",
+            "ru": "Новости",
+            "en": "News"
+          },
+          "gallery": {
+            "kk": "Галерея",
+            "ru": "Галерея",
+            "en": "Gallery"
+          },
+          "location": {
+            "kk": "ШЫМКЕНТ • ҚАЗАҚСТАН",
+            "ru": "ШЫМКЕНТ • КАЗАХСТАН",
+            "en": "SHYMKENT • KAZAKHSTAN"
+          },
+          "heroFirst": {
+            "kk": "ШЫМКЕНТТІҢ",
+            "ru": "ГОРДОСТЬ",
+            "en": "PRIDE OF"
+          },
+          "heroSecond": {
+            "kk": "МАҚТАНЫШЫ",
+            "ru": "ШЫМКЕНТА",
+            "en": "SHYMKENT"
+          },
+          "description": {
+            "kk": "«Ордабасы» футбол клубының сайтына қош келдіңіз. Мұнда клубтың тарихы, команда құрамы, матчтар және маңызды футбол жаңалықтары туралы ақпарат таба аласыз.",
+            "ru": "Добро пожаловать на сайт футбольного клуба «Ордабасы». Здесь вы можете узнать об истории клуба, составе команды, матчах и последних футбольных новостях.",
+            "en": "Welcome to the FC Ordabasy website. Discover the club, team, matches and the latest football news."
+          },
+          "aboutButton": {
+            "kk": "Клуб туралы",
+            "ru": "О клубе",
+            "en": "About Club"
+          },
+          "matchesButton": {
+            "kk": "Матчтарды көру",
+            "ru": "Смотреть матчи",
+            "en": "View Matches"
+          },
+          "nextMatch": {
+            "kk": "КЕЛЕСІ МАТЧ",
+            "ru": "СЛЕДУЮЩИЙ МАТЧ",
+            "en": "NEXT MATCH"
+          },
+          "ordabasy": {
+            "kk": "Ордабасы",
+            "ru": "Ордабасы",
+            "en": "Ordabasy"
+          },
+          "opponent": {
+            "kk": "Қарсылас",
+            "ru": "Соперник",
+            "en": "Opponent"
+          },
+          "stadium": {
+            "kk": "Орталық стадион, Шымкент",
+            "ru": "Центральный стадион, Шымкент",
+            "en": "Central Stadium, Shymkent"
+          },
+          "sep18": {
+            "kk": "18 ҚЫР",
+            "ru": "18 СЕН",
+            "en": "18 SEP"
+          },
+          "sep22": {
+            "kk": "22 ҚЫР",
+            "ru": "22 СЕН",
+            "en": "22 SEP"
+          },
+          "sep27": {
+            "kk": "27 ҚЫР",
+            "ru": "27 СЕН",
+            "en": "27 SEP"
+          },
+          "founded": {
+            "kk": "Құрылған жылы",
+            "ru": "Год основания",
+            "en": "Founded"
+          },
+          "cityName": {
+            "kk": "Шымкент",
+            "ru": "Шымкент",
+            "en": "Shymkent"
+          },
+          "city": {
+            "kk": "Клуб қаласы",
+            "ru": "Город клуба",
+            "en": "Club City"
+          },
+          "trophies": {
+            "kk": "Ірі жүлделер",
+            "ru": "Крупные трофеи",
+            "en": "Major Trophies"
+          },
+          "fans": {
+            "kk": "Жанкүйерлер",
+            "ru": "Болельщики",
+            "en": "Supporters"
+          },
+          "aboutLabel": {
+            "kk": "БІЗДІҢ КЛУБ",
+            "ru": "НАШ КЛУБ",
+            "en": "OUR CLUB"
+          },
+          "aboutTitle": {
+            "kk": "Шымкент футболының жүрегі",
+            "ru": "Сердце футбольного Шымкента",
+            "en": "The Heart of Shymkent Football"
+          },
+          "aboutText": {
+            "kk": "«Ордабасы» футбол клубы Шымкент футболының маңызды символдарының бірі.",
+            "ru": "Футбольный клуб «Ордабасы» является одним из важных символов футбольного Шымкента.",
+            "en": "FC Ordabasy is one of the important symbols of football in Shymkent."
+          },
+          "aboutTextSecond": {
+            "kk": "Команда әр маусымда жоғары нәтижеге ұмтылып, Шымкент қаласының намысын қорғайды.",
+            "ru": "Каждый сезон команда стремится к высоким результатам и представляет Шымкент.",
+            "en": "Every season the team aims for strong results and represents Shymkent."
+          },
+          "learnMore": {
+            "kk": "Толығырақ білу →",
+            "ru": "Узнать больше →",
+            "en": "Learn more →"
+          },
+          "since": {
+            "kk": "2000 жылдан бері",
+            "ru": "С 2000 года",
+            "en": "Since 2000"
+          },
+          "footballHistory": {
+            "kk": "ФУТБОЛ ТАРИХЫ",
+            "ru": "ИСТОРИЯ ФУТБОЛА",
+            "en": "FOOTBALL HISTORY"
+          },
+          "matchesLabel": {
+            "kk": "МАТЧТАР",
+            "ru": "МАТЧИ",
+            "en": "MATCHES"
+          },
+          "matchesTitle": {
+            "kk": "Соңғы және алдағы матчтар",
+            "ru": "Последние и предстоящие матчи",
+            "en": "Latest and Upcoming Matches"
+          },
+          "allMatches": {
+            "kk": "Барлық матчтар →",
+            "ru": "Все матчи →",
+            "en": "All matches →"
+          },
+          "finished": {
+            "kk": "АЯҚТАЛДЫ",
+            "ru": "ЗАВЕРШЕН",
+            "en": "FULL TIME"
+          },
+          "upcoming": {
+            "kk": "АЛДА",
+            "ru": "СКОРО",
+            "en": "UPCOMING"
+          },
+          "opponentOne": {
+            "kk": "Қарсылас",
+            "ru": "Соперник",
+            "en": "Opponent"
+          },
+          "opponentTwo": {
+            "kk": "Қарсылас",
+            "ru": "Соперник",
+            "en": "Opponent"
+          },
+          "opponentThree": {
+            "kk": "Қарсылас",
+            "ru": "Соперник",
+            "en": "Opponent"
+          },
+          "homeStadium": {
+            "kk": "Шымкент • Орталық стадион",
+            "ru": "Шымкент • Центральный стадион",
+            "en": "Shymkent • Central Stadium"
+          },
+          "awayMatch": {
+            "kk": "Қонақтағы матч",
+            "ru": "Матч в гостях",
+            "en": "Away match"
+          },
+          "kickoff": {
+            "kk": "Басталуы",
+            "ru": "Начало",
+            "en": "Kick-off"
+          },
+          "teamLabel": {
+            "kk": "БІЗДІҢ КОМАНДА",
+            "ru": "НАША КОМАНДА",
+            "en": "OUR TEAM"
+          },
+          "teamTitle": {
+            "kk": "Негізгі ойыншылар",
+            "ru": "Основные игроки",
+            "en": "First Team Players"
+          },
+          "allPlayers": {
+            "kk": "Барлық ойыншылар →",
+            "ru": "Все игроки →",
+            "en": "All players →"
+          },
+          "goalkeeper": {
+            "kk": "Қақпашы",
+            "ru": "Вратарь",
+            "en": "Goalkeeper"
+          },
+          "defender": {
+            "kk": "Қорғаушы",
+            "ru": "Защитник",
+            "en": "Defender"
+          },
+          "midfielder": {
+            "kk": "Жартылай қорғаушы",
+            "ru": "Полузащитник",
+            "en": "Midfielder"
+          },
+          "forward": {
+            "kk": "Шабуылшы",
+            "ru": "Нападающий",
+            "en": "Forward"
+          },
+          "playerOne": {
+            "kk": "Ойыншы 1",
+            "ru": "Игрок 1",
+            "en": "Player 1"
+          },
+          "playerTwo": {
+            "kk": "Ойыншы 2",
+            "ru": "Игрок 2",
+            "en": "Player 2"
+          },
+          "playerThree": {
+            "kk": "Ойыншы 3",
+            "ru": "Игрок 3",
+            "en": "Player 3"
+          },
+          "playerFour": {
+            "kk": "Ойыншы 4",
+            "ru": "Игрок 4",
+            "en": "Player 4"
+          },
+          "achievementsLabel": {
+            "kk": "ЖЕТІСТІКТЕР",
+            "ru": "ДОСТИЖЕНИЯ",
+            "en": "ACHIEVEMENTS"
+          },
+          "achievementsTitle": {
+            "kk": "Клуб тарихындағы маңызды сәттер",
+            "ru": "Важные моменты в истории клуба",
+            "en": "Important Moments in Club History"
+          },
+          "achievementsDescription": {
+            "kk": "Клубтың есте қаларлық кезеңдері мен футболдағы жетістіктері.",
+            "ru": "Памятные этапы и достижения клуба в футболе.",
+            "en": "Memorable stages and achievements of the club in football."
+          },
+          "championship": {
+            "kk": "ҚАЗАҚСТАН ЧЕМПИОНАТЫ",
+            "ru": "ЧЕМПИОНАТ КАЗАХСТАНА",
+            "en": "KAZAKHSTAN CHAMPIONSHIP"
+          },
+          "championTitle": {
+            "kk": "Қазақстан чемпионы",
+            "ru": "Чемпион Казахстана",
+            "en": "Champions of Kazakhstan"
+          },
+          "championText": {
+            "kk": "Клуб тарихындағы маңызды жетістіктердің бірі.",
+            "ru": "Одно из важных достижений в истории клуба.",
+            "en": "One of the important achievements in the club's history."
+          },
+          "cup": {
+            "kk": "ҚАЗАҚСТАН КУБОГЫ",
+            "ru": "КУБОК КАЗАХСТАНА",
+            "en": "KAZAKHSTAN CUP"
+          },
+          "cupTitle": {
+            "kk": "Кубок иегері",
+            "ru": "Обладатель Кубка",
+            "en": "Cup Winners"
+          },
+          "cupText": {
+            "kk": "Қазақстан Кубогындағы маңызды жеңіс.",
+            "ru": "Важная победа в Кубке Казахстана.",
+            "en": "An important Kazakhstan Cup victory."
+          },
+          "league": {
+            "kk": "ПРЕМЬЕР-ЛИГА",
+            "ru": "ПРЕМЬЕР-ЛИГА",
+            "en": "PREMIER LEAGUE"
+          },
+          "leagueTitle": {
+            "kk": "Жоғары мақсат",
+            "ru": "Высокие цели",
+            "en": "High Ambitions"
+          },
+          "leagueText": {
+            "kk": "Әр маусымда жоғары нәтиже үшін күрес.",
+            "ru": "Борьба за высокий результат в каждом сезоне.",
+            "en": "Competing for strong results every season."
+          },
+          "history": {
+            "kk": "КЛУБ ТАРИХЫ",
+            "ru": "ИСТОРИЯ КЛУБА",
+            "en": "CLUB HISTORY"
+          },
+          "historyTitle": {
+            "kk": "Жаңа кезең",
+            "ru": "Новая эпоха",
+            "en": "A New Era"
+          },
+          "historyText": {
+            "kk": "Шымкент футболының жаңа кезеңінің басталуы.",
+            "ru": "Начало нового этапа футбольного Шымкента.",
+            "en": "The beginning of a new chapter in Shymkent football."
+          },
+          "newsLabel": {
+            "kk": "ЖАҢАЛЫҚТАР",
+            "ru": "НОВОСТИ",
+            "en": "NEWS"
+          },
+          "newsTitle": {
+            "kk": "Клубтағы соңғы жаңалықтар",
+            "ru": "Последние новости клуба",
+            "en": "Latest Club News"
+          },
+          "allNews": {
+            "kk": "Барлық жаңалықтар →",
+            "ru": "Все новости →",
+            "en": "All news →"
+          },
+          "clubNews": {
+            "kk": "КЛУБ ЖАҢАЛЫҒЫ",
+            "ru": "НОВОСТИ КЛУБА",
+            "en": "CLUB NEWS"
+          },
+          "teamNews": {
+            "kk": "КОМАНДА",
+            "ru": "КОМАНДА",
+            "en": "TEAM"
+          },
+          "matchNews": {
+            "kk": "МАТЧ",
+            "ru": "МАТЧ",
+            "en": "MATCH"
+          },
+          "newsOneTitle": {
+            "kk": "Команда жаңа матчқа дайындықты жалғастыруда",
+            "ru": "Команда продолжает подготовку к новому матчу",
+            "en": "The Team Continues Preparation for the Next Match"
+          },
+          "newsOneText": {
+            "kk": "Футболшылар алдағы ойынға дайындық жұмыстарын өткізуде.",
+            "ru": "Футболисты продолжают подготовку к предстоящей игре.",
+            "en": "The players continue preparing for the upcoming match."
+          },
+          "newsTwoTitle": {
+            "kk": "Командамыз бір апталық үзілістен кейін жаттығу жұмыстарына кірісті",
+            "ru": "Команда вернулась к тренировкам после недельного перерыва",
+            "en": "Our team returned to training after a one-week break."
+          },
+          "newsThreeTitle": {
+            "kk": "Келесі матчқа дайындық басталды",
+            "ru": "Началась подготовка к следующему матчу",
+            "en": "Preparation for the Next Match Begins"
+          },
+          "readMore": {
+            "kk": "Толығырақ →",
+            "ru": "Подробнее →",
+            "en": "Read more →"
+          },
+          "galleryLabel": {
+            "kk": "ГАЛЕРЕЯ",
+            "ru": "ГАЛЕРЕЯ",
+            "en": "GALLERY"
+          },
+          "galleryTitle": {
+            "kk": "Ордабасы сәттері",
+            "ru": "Моменты Ордабасы",
+            "en": "Ordabasy Moments"
+          },
+          "galleryDescription": {
+            "kk": "Команда, матчтар, стадион және жанкүйерлердің есте қаларлық сәттері.",
+            "ru": "Яркие моменты команды, матчей, стадиона и болельщиков.",
+            "en": "Memorable moments of the team, matches, stadium and supporters."
+          },
+          "galleryMatch": {
+            "kk": "Матч сәті",
+            "ru": "Момент матча",
+            "en": "Match Moment"
+          },
+          "galleryTeam": {
+            "kk": "Команда",
+            "ru": "Команда",
+            "en": "Team"
+          },
+          "galleryStadium": {
+            "kk": "Стадион",
+            "ru": "Стадион",
+            "en": "Stadium"
+          },
+          "galleryFans": {
+            "kk": "Жанкүйерлер",
+            "ru": "Болельщики",
+            "en": "Supporters"
+          },
+          "galleryTraining": {
+            "kk": "Жаттығу",
+            "ru": "Тренировка",
+            "en": "Training"
+          },
+          "galleryVictory": {
+            "kk": "Жеңіс сәті",
+            "ru": "Момент победы",
+            "en": "Victory Moment"
+          },
+          "contactLabel": {
+            "kk": "ОРДАБАСЫМЕН БІРГЕ",
+            "ru": "ВМЕСТЕ С ОРДАБАСЫ",
+            "en": "WITH ORDABASY"
+          },
+          "contactTitle": {
+            "kk": "Клуб жаңалықтарынан хабардар бол",
+            "ru": "Будьте в курсе новостей клуба",
+            "en": "Stay Updated with the Club"
+          },
+          "contactDescription": {
+            "kk": "Матчтар, команда және клуб жаңалықтарын бірінші болып біл.",
+            "ru": "Узнавайте первыми о матчах, команде и последних событиях.",
+            "en": "Be the first to know about matches, the team and the latest club news."
+          },
+          "latestNews": {
+            "kk": "Жаңалықтарды көру",
+            "ru": "Смотреть новости",
+            "en": "View News"
+          },
+          "nextMatches": {
+            "kk": "Матчтар",
+            "ru": "Матчи",
+            "en": "Matches"
+          },
+          "footerText": {
+            "kk": "Шымкент футболына арналған заманауи ақпараттық сайт.",
+            "ru": "Современный информационный сайт о футболе Шымкента.",
+            "en": "A modern information website dedicated to Shymkent football."
+          },
+          "navigation": {
+            "kk": "Навигация",
+            "ru": "Навигация",
+            "en": "Navigation"
+          },
+          "media": {
+            "kk": "Медиа",
+            "ru": "Медиа",
+            "en": "Media"
+          },
+          "videos": {
+            "kk": "Видеолар",
+            "ru": "Видео",
+            "en": "Videos"
+          },
+          "clubInfo": {
+            "kk": "Клуб",
+            "ru": "Клуб",
+            "en": "Club"
+          },
+          "footerCity": {
+            "kk": "Шымкент, Қазақстан",
+            "ru": "Шымкент, Казахстан",
+            "en": "Shymkent, Kazakhstan"
+          },
+          "footerClub": {
+            "kk": "«Ордабасы» футбол клубы",
+            "ru": "Футбольный клуб «Ордабасы»",
+            "en": "FC Ordabasy"
+          },
+          "rights": {
+            "kk": "Барлық құқықтар қорғалған.",
+            "ru": "Все права защищены.",
+            "en": "All rights reserved."
+          },
+          "aboutPageLabel": {
+            "kk": "КЛУБ ТУРАЛЫ",
+            "ru": "О КЛУБЕ",
+            "en": "ABOUT THE CLUB"
+          },
+          "aboutPageHeroTitle": {
+            "kk": "ШЫМКЕНТТІҢ ФУТБОЛ РУХЫ",
+            "ru": "ФУТБОЛЬНЫЙ ДУХ ШЫМКЕНТА",
+            "en": "THE FOOTBALL SPIRIT OF SHYMKENT"
+          },
+          "aboutPageHeroText": {
+            "kk": "«Ордабасы» — Шымкент футболының тарихы, жанкүйерлері және үлкен мақсаттары біріктіретін клуб.",
+            "ru": "«Ордабасы» — клуб, объединяющий историю футбола Шымкента, болельщиков и большие цели.",
+            "en": "Ordabasy brings together the history of Shymkent football, its supporters and ambitious goals."
+          },
+          "clubStoryLabel": {
+            "kk": "БІЗДІҢ ТАРИХ",
+            "ru": "НАША ИСТОРИЯ",
+            "en": "OUR STORY"
+          },
+          "clubStoryTitle": {
+            "kk": "Бір қала. Бір команда. Бір мақсат.",
+            "ru": "Один город. Одна команда. Одна цель.",
+            "en": "One City. One Team. One Goal."
+          },
+          "clubStoryTextOne": {
+            "kk": "«Ордабасы» футбол клубы Шымкент қаласын Қазақстан футболында танытып келе жатқан командалардың бірі.",
+            "ru": "Футбольный клуб «Ордабасы» представляет Шымкент в казахстанском футболе.",
+            "en": "FC Ordabasy represents Shymkent in Kazakhstani football."
+          },
+          "clubStoryTextTwo": {
+            "kk": "Клубтың басты күші — команда, жанкүйерлер және футболға деген ортақ құштарлық.",
+            "ru": "Главная сила клуба — команда, болельщики и общая любовь к футболу.",
+            "en": "The club's strength comes from the team, supporters and a shared passion for football."
+          },
+          "timelineLabel": {
+            "kk": "ТАРИХ",
+            "ru": "ИСТОРИЯ",
+            "en": "HISTORY"
+          },
+          "timelineTitle": {
+            "kk": "Клубтың даму жолы",
+            "ru": "Путь развития клуба",
+            "en": "The Club Journey"
+          },
+          "timelineOneTitle": {
+            "kk": "Жаңа кезең",
+            "ru": "Новый этап",
+            "en": "A New Era"
+          },
+          "timelineOneText": {
+            "kk": "Шымкент футболының жаңа кезеңі басталды.",
+            "ru": "Начался новый этап в истории футбола Шымкента.",
+            "en": "A new chapter in Shymkent football began."
+          },
+          "timelineTwoTitle": {
+            "kk": "Үлкен жетістік",
+            "ru": "Большое достижение",
+            "en": "Major Achievement"
+          },
+          "timelineTwoText": {
+            "kk": "Клуб маңызды ұлттық жетістікке қол жеткізді.",
+            "ru": "Клуб добился важного национального результата.",
+            "en": "The club achieved an important national result."
+          },
+          "timelineThreeTitle": {
+            "kk": "Тарихи маусым",
+            "ru": "Исторический сезон",
+            "en": "Historic Season"
+          },
+          "timelineThreeText": {
+            "kk": "Клуб тарихындағы есте қаларлық маусымдардың бірі.",
+            "ru": "Один из самых памятных сезонов в истории клуба.",
+            "en": "One of the memorable seasons in club history."
+          },
+          "timelineFourTitle": {
+            "kk": "Алға қарай",
+            "ru": "Вперёд",
+            "en": "Moving Forward"
+          },
+          "timelineFourText": {
+            "kk": "Команда жаңа мақсаттар мен жеңістерге ұмтылуда.",
+            "ru": "Команда продолжает стремиться к новым целям и победам.",
+            "en": "The team continues pursuing new goals and victories."
+          },
+          "stadiumLabel": {
+            "kk": "ҮЙ АЛАҢЫ",
+            "ru": "ДОМАШНЯЯ АРЕНА",
+            "en": "HOME GROUND"
+          },
+          "stadiumTitle": {
+            "kk": "Шымкенттегі футбол атмосферасы",
+            "ru": "Футбольная атмосфера Шымкента",
+            "en": "The Football Atmosphere of Shymkent"
+          },
+          "stadiumAboutText": {
+            "kk": "Матч күндері стадион команда мен жанкүйерлерді біріктіретін ерекше орынға айналады.",
+            "ru": "В дни матчей стадион становится особым местом, объединяющим команду и болельщиков.",
+            "en": "On match days, the stadium becomes a special place that brings the team and supporters together."
+          },
+          "locationWord": {
+            "kk": "Орналасуы",
+            "ru": "Расположение",
+            "en": "Location"
+          },
+          "homeTeam": {
+            "kk": "Үй командасы",
+            "ru": "Домашняя команда",
+            "en": "Home Team"
+          },
+          "valuesLabel": {
+            "kk": "БІЗДІҢ ҚҰНДЫЛЫҚТАР",
+            "ru": "НАШИ ЦЕННОСТИ",
+            "en": "OUR VALUES"
+          },
+          "valuesTitle": {
+            "kk": "Алаңнан да үлкен ұғым",
+            "ru": "Больше, чем футбол",
+            "en": "More Than Football"
+          },
+          "valueOneTitle": {
+            "kk": "Бірлік",
+            "ru": "Единство",
+            "en": "Unity"
+          },
+          "valueOneText": {
+            "kk": "Команда мен жанкүйерлерді біріктіретін ортақ рух.",
+            "ru": "Общий дух, объединяющий команду и болельщиков.",
+            "en": "A shared spirit connecting the team and supporters."
+          },
+          "valueTwoTitle": {
+            "kk": "Мақсат",
+            "ru": "Цель",
+            "en": "Ambition"
+          },
+          "valueTwoText": {
+            "kk": "Әр матчта жоғары нәтиже үшін күресу.",
+            "ru": "Борьба за высокий результат в каждом матче.",
+            "en": "Competing for strong results in every match."
+          },
+          "valueThreeTitle": {
+            "kk": "Қала",
+            "ru": "Город",
+            "en": "City"
+          },
+          "valueThreeText": {
+            "kk": "Шымкенттің намысын футбол алаңында қорғау.",
+            "ru": "Представлять Шымкент на футбольном поле.",
+            "en": "Representing Shymkent on the football field."
+          },
+          "aboutCtaLabel": {
+            "kk": "КОМАНДАМЕН ТАНЫС",
+            "ru": "ПОЗНАКОМЬТЕСЬ С КОМАНДОЙ",
+            "en": "MEET THE TEAM"
+          },
+          "aboutCtaTitle": {
+            "kk": "Ордабасы ойыншыларын көр",
+            "ru": "Посмотрите игроков Ордабасы",
+            "en": "Discover the Ordabasy Players"
+          },
+          "teamPageLabel": {
+            "kk": "БІЗДІҢ КОМАНДА",
+            "ru": "НАША КОМАНДА",
+            "en": "OUR TEAM"
+          },
+          "teamHeroFirst": {
+            "kk": "АЛАҢДАҒЫ",
+            "ru": "СИЛА",
+            "en": "POWER ON"
+          },
+          "teamHeroSecond": {
+            "kk": "КҮШ",
+            "ru": "НА ПОЛЕ",
+            "en": "THE PITCH"
+          },
+          "teamPageDescription": {
+            "kk": "«Ордабасы» футбол клубының негізгі құрамымен танысыңыз.",
+            "ru": "Познакомьтесь с основным составом футбольного клуба «Ордабасы».",
+            "en": "Meet the first-team squad of FC Ordabasy."
+          },
+          "squadLabel": {
+            "kk": "НЕГІЗГІ ҚҰРАМ",
+            "ru": "ОСНОВНОЙ СОСТАВ",
+            "en": "FIRST TEAM"
+          },
+          "squadTitle": {
+            "kk": "Ойыншылар",
+            "ru": "Игроки",
+            "en": "Players"
+          },
+          "filterAll": {
+            "kk": "Барлығы",
+            "ru": "Все",
+            "en": "All"
+          },
+          "filterGoalkeepers": {
+            "kk": "Қақпашылар",
+            "ru": "Вратари",
+            "en": "Goalkeepers"
+          },
+          "filterDefenders": {
+            "kk": "Қорғаушылар",
+            "ru": "Защитники",
+            "en": "Defenders"
+          },
+          "filterMidfielders": {
+            "kk": "Жартылай қорғаушылар",
+            "ru": "Полузащитники",
+            "en": "Midfielders"
+          },
+          "filterForwards": {
+            "kk": "Шабуылшылар",
+            "ru": "Нападающие",
+            "en": "Forwards"
+          },
+          "teamCtaLabel": {
+            "kk": "КЕЛЕСІ МАТЧ",
+            "ru": "СЛЕДУЮЩИЙ МАТЧ",
+            "en": "NEXT MATCH"
+          },
+          "teamCtaTitle": {
+            "kk": "Команданы алаңда қолда",
+            "ru": "Поддержите команду на поле",
+            "en": "Support the Team on the Pitch"
+          },
+          "standingsTitle": {
+            "kk": "Турнирлік кесте",
+            "ru": "Турнирная таблица",
+            "en": "League standings"
+          },
+          "standingsTeam": {
+            "kk": "Команда",
+            "ru": "Команда",
+            "en": "Team"
+          },
+          "standingsPlayed": {
+            "kk": "И",
+            "ru": "И",
+            "en": "P"
+          },
+          "standingsWin": {
+            "kk": "В",
+            "ru": "В",
+            "en": "W"
+          },
+          "standingsDraw": {
+            "kk": "Н",
+            "ru": "Н",
+            "en": "D"
+          },
+          "standingsLose": {
+            "kk": "П",
+            "ru": "П",
+            "en": "L"
+          },
+          "standingsGF": {
+            "kk": "ЗМ",
+            "ru": "ЗМ",
+            "en": "GF"
+          },
+          "standingsGA": {
+            "kk": "ПМ",
+            "ru": "ПМ",
+            "en": "GA"
+          },
+          "standingsGD": {
+            "kk": "РМ",
+            "ru": "РМ",
+            "en": "GD"
+          },
+          "standingsPoints": {
+            "kk": "О",
+            "ru": "О",
+            "en": "Pts"
+          },
+          "standingsForm": {
+            "kk": "Форма",
+            "ru": "Форма",
+            "en": "Form"
+          },
+          "standingsLoading": {
+            "kk": "Кесте жүктелуде...",
+            "ru": "Таблица загружается...",
+            "en": "Loading standings..."
+          },
+          "standingsError": {
+            "kk": "Турнирлік кестені жүктеу мүмкін болмады.",
+            "ru": "Не удалось загрузить турнирную таблицу.",
+            "en": "Unable to load standings."
+          }
+        },
+        "source": "Legacy index.html / about.html; historical claims pending verification",
+        "verification": "LEGACY_UNVERIFIED"
+      }
+    ],
+    "achievements": [
+      {
+        "id": "legacy-achievement-0",
+        "title": {
+          "kk": "Қазақстан чемпионы",
+          "ru": "Чемпион Казахстана",
+          "en": "Champions of Kazakhstan"
+        },
+        "description": {
+          "kk": "Клуб тарихындағы маңызды жетістіктердің бірі.",
+          "ru": "Одно из важных достижений в истории клуба.",
+          "en": "One of the important achievements in the club's history."
+        },
+        "year": 2023,
+        "source": "Legacy index.html; pending verification",
+        "verification": "LEGACY_UNVERIFIED"
+      },
+      {
+        "id": "legacy-achievement-1",
+        "title": {
+          "kk": "Кубок иегері",
+          "ru": "Обладатель Кубка",
+          "en": "Cup Winners"
+        },
+        "description": {
+          "kk": "Қазақстан Кубогындағы маңызды жеңіс.",
+          "ru": "Важная победа в Кубке Казахстана.",
+          "en": "An important Kazakhstan Cup victory."
+        },
+        "year": 2011,
+        "source": "Legacy index.html; pending verification",
+        "verification": "LEGACY_UNVERIFIED"
+      },
+      {
+        "id": "legacy-achievement-2",
+        "title": {
+          "kk": "Жоғары мақсат",
+          "ru": "Высокие цели",
+          "en": "High Ambitions"
+        },
+        "description": {
+          "kk": "Әр маусымда жоғары нәтиже үшін күрес.",
+          "ru": "Борьба за высокий результат в каждом сезоне.",
+          "en": "Competing for strong results every season."
+        },
+        "year": null,
+        "source": "Legacy index.html; pending verification",
+        "verification": "LEGACY_UNVERIFIED"
+      },
+      {
+        "id": "legacy-achievement-3",
+        "title": {
+          "kk": "Жаңа кезең",
+          "ru": "Новая эпоха",
+          "en": "A New Era"
+        },
+        "description": {
+          "kk": "Шымкент футболының жаңа кезеңінің басталуы.",
+          "ru": "Начало нового этапа футбольного Шымкента.",
+          "en": "The beginning of a new chapter in Shymkent football."
+        },
+        "year": 2000,
+        "source": "Legacy index.html; pending verification",
+        "verification": "LEGACY_UNVERIFIED"
+      }
+    ],
+    "staff": [],
+    "sections": [
+      "hero",
+      "club-stats",
+      "about",
+      "matches",
+      "team",
+      "achievements",
+      "news",
+      "gallery",
+      "contact"
+    ],
+    "timezone": "Asia/Almaty"
+  },
+  "seasons": [
+    {
+      "id": "2026",
+      "name": "2026",
+      "current": true
+    }
+  ],
+  "competitions": [
+    {
+      "id": "league",
+      "names": {
+        "kk": "Қазақстан Премьер-Лигасы",
+        "ru": "Премьер-лига Казахстана",
+        "en": "Kazakhstan Premier League"
+      }
+    },
+    {
+      "id": "cup",
+      "names": {
+        "kk": "Қазақстан Кубогы",
+        "ru": "Кубок Казахстана",
+        "en": "Kazakhstan Cup"
+      }
+    }
+  ]
+}

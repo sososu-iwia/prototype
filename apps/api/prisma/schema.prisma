@@ -1,0 +1,334 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+}
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+}
+enum PublicationStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+enum Verification {
+  LEGACY_UNVERIFIED
+  VERIFIED
+}
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  passwordHash String
+  role Role @default(EDITOR)
+  active Boolean @default(true)
+  sessions Session[]
+  posts NewsPost[]
+  createdAt DateTime @default(now())
+  version Int @default(1)
+}
+model Session {
+  id String @id @default(uuid())
+  tokenHash String @unique
+  csrfHash String
+  userId String
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([expiresAt])
+}
+model AuditLog {
+  id String @id @default(uuid())
+  actorId String
+  action String
+  entity String
+  entityId String
+  changes Json @default("{}")
+  result String @default("SUCCESS")
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+}
+model Season {
+  version Int @default(1)
+  id String @id
+  name String
+  current Boolean @default(false)
+  year Int?
+  startsAt DateTime? @db.Date
+  endsAt DateTime? @db.Date
+  state String @default("PLANNED")
+  memberships RosterMembership[]
+  achievements ClubAchievement[]
+  players PlayerSeason[]
+  matches Match[]
+}
+model Team {
+  version Int @default(1)
+  id String @id @default(uuid())
+  slug String @unique
+  names Json
+  logo String?
+  managed Boolean @default(false)
+  memberships RosterMembership[]
+  events MatchEvent[]
+  players PlayerSeason[]
+  homeMatches Match[] @relation("home")
+  awayMatches Match[] @relation("away")
+}
+model Player {
+  version Int @default(1)
+  id String @id @default(uuid())
+  slug String @unique
+  names Json
+  biography Json @default("{}")
+  rosterStatus String @default("ACTIVE")
+  archivedAt DateTime?
+  memberships RosterMembership[]
+  matchStatistics PlayerMatchStatistics[]
+  events MatchEvent[]
+  achievements ClubAchievement[]
+  position String
+  photo String?
+  citizenship String?
+  birthDate DateTime? @db.Date
+  height Int?
+  status PublicationStatus @default(DRAFT)
+  verification Verification @default(LEGACY_UNVERIFIED)
+  source String
+  sourceDate DateTime
+  seasons PlayerSeason[]
+  updatedAt DateTime @updatedAt
+}
+model PlayerSeason {
+  version Int @default(1)
+  id String @id @default(uuid())
+  playerId String
+  player Player @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  seasonId String
+  season Season @relation(fields:[seasonId],references:[id])
+  teamId String
+  team Team @relation(fields:[teamId],references:[id])
+  number Int?
+  statistics PlayerStatistics?
+  @@unique([playerId,seasonId])
+}
+model PlayerStatistics {
+  version Int @default(1)
+  id String @id @default(uuid())
+  playerSeasonId String @unique
+  playerSeason PlayerSeason @relation(fields:[playerSeasonId],references:[id],onDelete:Restrict)
+  mode String @default("CONFIRMED")
+  verified Boolean @default(true)
+  yellowCards Int?
+  redCards Int?
+  cleanSheets Int?
+  appearances Int
+  goals Int
+  assists Int
+  minutes Int
+  source String
+  updatedAt DateTime @updatedAt
+}
+model Competition {
+  version Int @default(1)
+  id String @id
+  names Json
+  matches Match[]
+}
+model Match {
+  version Int @default(1)
+  id String @id @default(uuid())
+  seasonId String
+  season Season @relation(fields:[seasonId],references:[id])
+  competitionId String
+  competition Competition @relation(fields:[competitionId],references:[id])
+  homeTeamId String
+  homeTeam Team @relation("home",fields:[homeTeamId],references:[id])
+  awayTeamId String
+  awayTeam Team @relation("away",fields:[awayTeamId],references:[id])
+  kickoff DateTime
+  stadium Json @default("{}")
+  matchStatus String @default("SCHEDULED")
+  homeScore Int?
+  awayScore Int?
+  status PublicationStatus @default(DRAFT)
+  verification Verification @default(LEGACY_UNVERIFIED)
+  source String
+  sourceDate DateTime
+  events MatchEvent[]
+  playerStatistics PlayerMatchStatistics[]
+  updatedAt DateTime @updatedAt
+  @@index([kickoff,status])
+}
+model MatchEvent {
+  version Int @default(1)
+  id String @id @default(uuid())
+  matchId String
+  match Match @relation(fields:[matchId],references:[id],onDelete:Restrict)
+  playerId String?
+  player Player? @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  teamId String?
+  team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
+  eventKey String @default(uuid())
+  cancelled Boolean @default(false)
+  source String @default("Legacy import — unverified")
+  minute Int
+  type String
+  description Json
+  @@unique([matchId,eventKey])
+}
+model NewsPost {
+  version Int @default(1)
+  id String @id @default(uuid())
+  slug String @unique
+  status PublicationStatus @default(DRAFT)
+  cover String?
+  images Json @default("[]")
+  categoryId String?
+  category Category? @relation(fields:[categoryId],references:[id])
+  authorId String?
+  author User? @relation(fields:[authorId],references:[id])
+  translations NewsTranslation[]
+  publishedAt DateTime?
+  source String
+  sourceDate DateTime
+  verification Verification @default(LEGACY_UNVERIFIED)
+  updatedAt DateTime @updatedAt
+}
+model NewsTranslation {
+  id String @id @default(uuid())
+  postId String
+  post NewsPost @relation(fields:[postId],references:[id],onDelete:Cascade)
+  locale String
+  title String
+  excerpt String
+  body String
+  @@unique([postId,locale])
+}
+model Category {
+  version Int @default(1)
+  id String @id @default(uuid())
+  slug String @unique
+  names Json
+  posts NewsPost[]
+}
+model MediaAsset {
+  version Int @default(1)
+  id String @id @default(uuid())
+  url String @unique
+  mime String
+  size Int
+  width Int?
+  height Int?
+  alt Json
+  variants Json @default("{}")
+  storage String @default("local")
+  uploadedBy String
+  createdAt DateTime @default(now())
+}
+model GalleryItem {
+  version Int @default(1)
+  id String @id @default(uuid())
+  title Json
+  url String
+  poster String?
+  kind String
+  sortOrder Int @default(0)
+  status PublicationStatus @default(DRAFT)
+  source String
+  updatedAt DateTime @updatedAt
+}
+model ClubInfo {
+  version Int @default(1)
+  id String @id
+  content Json
+  source String
+  verification Verification @default(LEGACY_UNVERIFIED)
+  updatedAt DateTime @updatedAt
+}
+model ClubAchievement {
+  version Int @default(1)
+  id String @id @default(uuid())
+  playerId String?
+  player Player? @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  seasonId String?
+  season Season? @relation(fields:[seasonId],references:[id],onDelete:Restrict)
+  year Int?
+  title Json
+  description Json
+  source String
+  verification Verification @default(LEGACY_UNVERIFIED)
+}
+model StaffMember {
+  version Int @default(1)
+  id String @id @default(uuid())
+  names Json
+  title Json
+  photo String?
+  group String
+  status PublicationStatus @default(DRAFT)
+  source String
+  verification Verification @default(LEGACY_UNVERIFIED)
+}
+model LeagueStandingSnapshot {
+  id String @id @default(uuid())
+  leagueId String
+  season String
+  rows Json
+  source String
+  fetchedAt DateTime @default(now())
+  @@index([leagueId,season,fetchedAt])
+}
+model ClubSettings {
+  version Int @default(1)
+  id String @id @default("main")
+  sections Json
+  leagueId String?
+  externalSeason String?
+  timezone String @default("Asia/Almaty")
+  updatedAt DateTime @updatedAt
+}
+
+model RosterMembership {
+  datesVerified Boolean @default(true)
+  id String @id @default(uuid())
+  playerId String
+  player Player @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  teamId String
+  team Team @relation(fields:[teamId],references:[id],onDelete:Restrict)
+  seasonId String
+  season Season @relation(fields:[seasonId],references:[id],onDelete:Restrict)
+  number Int?
+  startsAt DateTime
+  endsAt DateTime?
+  departureReason String?
+  nextClub String?
+  version Int @default(1)
+  @@index([playerId,seasonId])
+  @@index([teamId,seasonId,endsAt])
+}
+model PlayerMatchStatistics {
+  id String @id @default(uuid())
+  matchId String
+  match Match @relation(fields:[matchId],references:[id],onDelete:Restrict)
+  playerId String
+  player Player @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  appearances Int @default(1)
+  minutes Int
+  cleanSheets Int?
+  verified Boolean @default(false)
+  source String
+  version Int @default(1)
+  @@unique([matchId,playerId])
+}
+model MutationKey {
+  id String @id @default(uuid())
+  key String
+  userId String
+  response Json
+  createdAt DateTime @default(now())
+  @@unique([userId,key])
+  @@index([createdAt])
+}

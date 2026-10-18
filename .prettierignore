@@ -1,0 +1,14 @@
+node_modules
+**/.next
+**/dist
+**/generated
+images
+legacy
+css
+js
+*.html
+package-lock.json
+packages/content
+apps/web/styles/legacy.css
+docs/verification
+docs/baseline

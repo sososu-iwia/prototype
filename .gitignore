@@ -1,5 +1,15 @@
-# Local Netlify folder
-.netlify/
 node_modules/
 .env
 .env.*
+!.env.example
+.next/
+dist/
+coverage/
+test-results/
+playwright-report/
+.netlify/
+media-data/
+*.tsbuildinfo
+
+backups/
+*.dump

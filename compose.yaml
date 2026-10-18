@@ -1,0 +1,88 @@
+services:
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ordabasy}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-ordabasy}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ordabasy}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-ordabasy}?schema=public
+    command: [sh, -c, "npm run db:migrate && node dist/seed.js"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ordabasy}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-ordabasy}?schema=public
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:3000}
+      TRUSTED_ORIGINS: ${TRUSTED_ORIGINS:-http://localhost:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      ALLOW_LOCAL_HTTP: ${ALLOW_LOCAL_HTTP:-true}
+      API_FOOTBALL_KEY: ${API_FOOTBALL_KEY:-}
+      FOOTBALL_LEAGUE_ID: ${FOOTBALL_LEAGUE_ID:-}
+      FOOTBALL_SEASON: ${FOOTBALL_SEASON:-}
+      STANDINGS_TTL_SECONDS: ${STANDINGS_TTL_SECONDS:-3600}
+      DISPLAY_TIMEZONE: ${DISPLAY_TIMEZONE:-Asia/Almaty}
+    volumes:
+      - media_data:/app/media-data
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://127.0.0.1:4000/api/v1/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      API_INTERNAL_URL: http://api:4000/api/v1
+      PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:3000}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://127.0.0.1:3000/kk').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 20s
+      timeout: 8s
+      retries: 10
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  media_data:

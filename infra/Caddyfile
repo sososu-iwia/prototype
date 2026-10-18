@@ -1,0 +1,16 @@
+{
+ email {$ACME_EMAIL}
+}
+{$DOMAIN} {
+ encode zstd gzip
+ header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+ handle /api/* {
+  reverse_proxy api:4000
+ }
+ handle /uploads/* {
+  reverse_proxy api:4000
+ }
+ handle {
+  reverse_proxy web:3000
+ }
+}

@@ -1,0 +1,33 @@
+FROM node:24-bookworm-slim AS deps
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/package.json
+COPY apps/web/package.json apps/web/package.json
+RUN npm ci --no-audit --no-fund
+FROM deps AS build
+COPY tsconfig.base.json ./
+COPY apps/api apps/api
+RUN npm run build -w apps/api
+FROM node:24-bookworm-slim AS production-deps
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates libpq5 liblz4-1 libzstd1 zlib1g libxml2 && rm -rf /var/lib/apt/lists/*
+COPY package.json package-lock.json ./
+COPY apps/api/package.json apps/api/package.json
+COPY apps/web/package.json apps/web/package.json
+RUN npm ci --omit=dev --workspace=@ordabasy/api --include-workspace-root=false --no-audit --no-fund
+FROM postgres:17-bookworm AS postgres-tools
+FROM production-deps AS runtime
+COPY --from=postgres-tools /usr/lib/postgresql/17/bin/pg_dump /usr/local/bin/pg_dump
+COPY --from=postgres-tools /usr/lib/postgresql/17/bin/pg_restore /usr/local/bin/pg_restore
+COPY --from=postgres-tools /usr/lib/*-linux-gnu/libpq.so.5* /usr/local/lib/
+RUN ldconfig
+ENV NODE_ENV=production API_PORT=4000 MEDIA_DIR=/app/media-data
+COPY --from=build --chown=node:node /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=build --chown=node:node /app/apps/api/dist ./apps/api/dist
+COPY --from=build --chown=node:node /app/apps/api/prisma ./apps/api/prisma
+COPY --from=build --chown=node:node /app/apps/api/prisma.config.ts ./apps/api/prisma.config.ts
+RUN mkdir -p /app/media-data && chown node:node /app/media-data
+USER node
+WORKDIR /app/apps/api
+EXPOSE 4000
+CMD ["node","dist/main.js"]

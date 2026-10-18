@@ -1,0 +1,706 @@
+{
+  "images/gallery2.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/gallery2-320.webp",
+        "avif": "/media/gallery2-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/gallery2-640.webp",
+        "avif": "/media/gallery2-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/gallery2-960.webp",
+        "avif": "/media/gallery2-960.avif"
+      }
+    ]
+  },
+  "images/gallery3.jpg": {
+    "width": 1114,
+    "height": 553,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/gallery3-320.webp",
+        "avif": "/media/gallery3-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/gallery3-640.webp",
+        "avif": "/media/gallery3-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/gallery3-960.webp",
+        "avif": "/media/gallery3-960.avif"
+      }
+    ]
+  },
+  "images/gallery4.jpg": {
+    "width": 1538,
+    "height": 730,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/gallery4-320.webp",
+        "avif": "/media/gallery4-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/gallery4-640.webp",
+        "avif": "/media/gallery4-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/gallery4-960.webp",
+        "avif": "/media/gallery4-960.avif"
+      }
+    ]
+  },
+  "images/gallery5.jpg": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/gallery5-320.webp",
+        "avif": "/media/gallery5-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/gallery5-640.webp",
+        "avif": "/media/gallery5-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/gallery5-960.webp",
+        "avif": "/media/gallery5-960.avif"
+      }
+    ]
+  },
+  "images/gallery6.jpg": {
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/gallery6-320.webp",
+        "avif": "/media/gallery6-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/gallery6-640.webp",
+        "avif": "/media/gallery6-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/gallery6-960.webp",
+        "avif": "/media/gallery6-960.avif"
+      }
+    ]
+  },
+  "images/hero.jpg": {
+    "width": 1600,
+    "height": 994,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/hero-320.webp",
+        "avif": "/media/hero-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/hero-640.webp",
+        "avif": "/media/hero-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/hero-960.webp",
+        "avif": "/media/hero-960.avif"
+      },
+      {
+        "width": 1600,
+        "url": "/media/hero-1600.webp",
+        "avif": "/media/hero-1600.avif"
+      }
+    ]
+  },
+  "images/logo.png": {
+    "width": 355,
+    "height": 362,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/logo-320.webp",
+        "avif": "/media/logo-320.avif"
+      }
+    ]
+  },
+  "images/news1.jpg": {
+    "width": 1280,
+    "height": 853,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/news1-320.webp",
+        "avif": "/media/news1-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/news1-640.webp",
+        "avif": "/media/news1-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/news1-960.webp",
+        "avif": "/media/news1-960.avif"
+      }
+    ]
+  },
+  "images/news2.jpg": {
+    "width": 959,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/news2-320.webp",
+        "avif": "/media/news2-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/news2-640.webp",
+        "avif": "/media/news2-640.avif"
+      }
+    ]
+  },
+  "images/news3.jpg": {
+    "width": 960,
+    "height": 1280,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/news3-320.webp",
+        "avif": "/media/news3-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/news3-640.webp",
+        "avif": "/media/news3-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/news3-960.webp",
+        "avif": "/media/news3-960.avif"
+      }
+    ]
+  },
+  "images/player1.jpeg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/player1-320.webp",
+        "avif": "/media/player1-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/player1-640.webp",
+        "avif": "/media/player1-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/player1-960.webp",
+        "avif": "/media/player1-960.avif"
+      }
+    ]
+  },
+  "images/player2.jpeg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/player2-320.webp",
+        "avif": "/media/player2-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/player2-640.webp",
+        "avif": "/media/player2-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/player2-960.webp",
+        "avif": "/media/player2-960.avif"
+      }
+    ]
+  },
+  "images/player3.jpeg": {
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/player3-320.webp",
+        "avif": "/media/player3-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/player3-640.webp",
+        "avif": "/media/player3-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/player3-960.webp",
+        "avif": "/media/player3-960.avif"
+      }
+    ]
+  },
+  "images/player4.jpeg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/player4-320.webp",
+        "avif": "/media/player4-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/player4-640.webp",
+        "avif": "/media/player4-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/player4-960.webp",
+        "avif": "/media/player4-960.avif"
+      }
+    ]
+  },
+  "images/players/aleksa-amanovic.jpg": {
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-aleksa-amanovic-320.webp",
+        "avif": "/media/players-aleksa-amanovic-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-aleksa-amanovic-640.webp",
+        "avif": "/media/players-aleksa-amanovic-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-aleksa-amanovic-960.webp",
+        "avif": "/media/players-aleksa-amanovic-960.avif"
+      }
+    ]
+  },
+  "images/players/ali-turganov.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-ali-turganov-320.webp",
+        "avif": "/media/players-ali-turganov-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-ali-turganov-640.webp",
+        "avif": "/media/players-ali-turganov-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-ali-turganov-960.webp",
+        "avif": "/media/players-ali-turganov-960.avif"
+      }
+    ]
+  },
+  "images/players/ayan-abduhalyk.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-ayan-abduhalyk-320.webp",
+        "avif": "/media/players-ayan-abduhalyk-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-ayan-abduhalyk-640.webp",
+        "avif": "/media/players-ayan-abduhalyk-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-ayan-abduhalyk-960.webp",
+        "avif": "/media/players-ayan-abduhalyk-960.avif"
+      }
+    ]
+  },
+  "images/players/bekhan-shaizada.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-bekhan-shaizada-320.webp",
+        "avif": "/media/players-bekhan-shaizada-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-bekhan-shaizada-640.webp",
+        "avif": "/media/players-bekhan-shaizada-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-bekhan-shaizada-960.webp",
+        "avif": "/media/players-bekhan-shaizada-960.avif"
+      }
+    ]
+  },
+  "images/players/birzhan-toktibai.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-birzhan-toktibai-320.webp",
+        "avif": "/media/players-birzhan-toktibai-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-birzhan-toktibai-640.webp",
+        "avif": "/media/players-birzhan-toktibai-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-birzhan-toktibai-960.webp",
+        "avif": "/media/players-birzhan-toktibai-960.avif"
+      }
+    ]
+  },
+  "images/players/bjorn-johnsen.jpg": {
+    "width": 1316,
+    "height": 881,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-bjorn-johnsen-320.webp",
+        "avif": "/media/players-bjorn-johnsen-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-bjorn-johnsen-640.webp",
+        "avif": "/media/players-bjorn-johnsen-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-bjorn-johnsen-960.webp",
+        "avif": "/media/players-bjorn-johnsen-960.avif"
+      }
+    ]
+  },
+  "images/players/cristian-capatina.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-cristian-capatina-320.webp",
+        "avif": "/media/players-cristian-capatina-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-cristian-capatina-640.webp",
+        "avif": "/media/players-cristian-capatina-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-cristian-capatina-960.webp",
+        "avif": "/media/players-cristian-capatina-960.avif"
+      }
+    ]
+  },
+  "images/players/david-abagna.jpg": {
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-david-abagna-320.webp",
+        "avif": "/media/players-david-abagna-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-david-abagna-640.webp",
+        "avif": "/media/players-david-abagna-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-david-abagna-960.webp",
+        "avif": "/media/players-david-abagna-960.avif"
+      }
+    ]
+  },
+  "images/players/elkhan-astanov.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-elkhan-astanov-320.webp",
+        "avif": "/media/players-elkhan-astanov-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-elkhan-astanov-640.webp",
+        "avif": "/media/players-elkhan-astanov-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-elkhan-astanov-960.webp",
+        "avif": "/media/players-elkhan-astanov-960.avif"
+      }
+    ]
+  },
+  "images/players/everton-moraes.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-everton-moraes-320.webp",
+        "avif": "/media/players-everton-moraes-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-everton-moraes-640.webp",
+        "avif": "/media/players-everton-moraes-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-everton-moraes-960.webp",
+        "avif": "/media/players-everton-moraes-960.avif"
+      }
+    ]
+  },
+  "images/players/guy-kilama.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-guy-kilama-320.webp",
+        "avif": "/media/players-guy-kilama-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-guy-kilama-640.webp",
+        "avif": "/media/players-guy-kilama-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-guy-kilama-960.webp",
+        "avif": "/media/players-guy-kilama-960.avif"
+      }
+    ]
+  },
+  "images/players/kazhymukan-tolepbergen.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-kazhymukan-tolepbergen-320.webp",
+        "avif": "/media/players-kazhymukan-tolepbergen-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-kazhymukan-tolepbergen-640.webp",
+        "avif": "/media/players-kazhymukan-tolepbergen-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-kazhymukan-tolepbergen-960.webp",
+        "avif": "/media/players-kazhymukan-tolepbergen-960.avif"
+      }
+    ]
+  },
+  "images/players/leonardo-natel.jpg": {
+    "width": 6000,
+    "height": 4000,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-leonardo-natel-320.webp",
+        "avif": "/media/players-leonardo-natel-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-leonardo-natel-640.webp",
+        "avif": "/media/players-leonardo-natel-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-leonardo-natel-960.webp",
+        "avif": "/media/players-leonardo-natel-960.avif"
+      }
+    ]
+  },
+  "images/players/magzhan-toktibai.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-magzhan-toktibai-320.webp",
+        "avif": "/media/players-magzhan-toktibai-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-magzhan-toktibai-640.webp",
+        "avif": "/media/players-magzhan-toktibai-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-magzhan-toktibai-960.webp",
+        "avif": "/media/players-magzhan-toktibai-960.avif"
+      }
+    ]
+  },
+  "images/players/nikola-antic.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-nikola-antic-320.webp",
+        "avif": "/media/players-nikola-antic-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-nikola-antic-640.webp",
+        "avif": "/media/players-nikola-antic-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-nikola-antic-960.webp",
+        "avif": "/media/players-nikola-antic-960.avif"
+      }
+    ]
+  },
+  "images/players/sergey-maly.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-sergey-maly-320.webp",
+        "avif": "/media/players-sergey-maly-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-sergey-maly-640.webp",
+        "avif": "/media/players-sergey-maly-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-sergey-maly-960.webp",
+        "avif": "/media/players-sergey-maly-960.avif"
+      }
+    ]
+  },
+  "images/players/sultanbek-astanov.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-sultanbek-astanov-320.webp",
+        "avif": "/media/players-sultanbek-astanov-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-sultanbek-astanov-640.webp",
+        "avif": "/media/players-sultanbek-astanov-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-sultanbek-astanov-960.webp",
+        "avif": "/media/players-sultanbek-astanov-960.avif"
+      }
+    ]
+  },
+  "images/players/ular-zhaksybayev.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-ular-zhaksybayev-320.webp",
+        "avif": "/media/players-ular-zhaksybayev-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-ular-zhaksybayev-640.webp",
+        "avif": "/media/players-ular-zhaksybayev-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-ular-zhaksybayev-960.webp",
+        "avif": "/media/players-ular-zhaksybayev-960.avif"
+      }
+    ]
+  },
+  "images/players/yuriy-vakulko.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-yuriy-vakulko-320.webp",
+        "avif": "/media/players-yuriy-vakulko-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-yuriy-vakulko-640.webp",
+        "avif": "/media/players-yuriy-vakulko-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-yuriy-vakulko-960.webp",
+        "avif": "/media/players-yuriy-vakulko-960.avif"
+      }
+    ]
+  },
+  "images/players/zhasulan-amir.jpg": {
+    "width": 7008,
+    "height": 3944,
+    "variants": [
+      {
+        "width": 320,
+        "url": "/media/players-zhasulan-amir-320.webp",
+        "avif": "/media/players-zhasulan-amir-320.avif"
+      },
+      {
+        "width": 640,
+        "url": "/media/players-zhasulan-amir-640.webp",
+        "avif": "/media/players-zhasulan-amir-640.avif"
+      },
+      {
+        "width": 960,
+        "url": "/media/players-zhasulan-amir-960.webp",
+        "avif": "/media/players-zhasulan-amir-960.avif"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+name: Quality
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: ordabasy
+          POSTGRES_PASSWORD: ci-test-only
+          POSTGRES_DB: ordabasy_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U ordabasy -d ordabasy_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      DATABASE_URL: postgresql://ordabasy:ci-test-only@localhost:5432/ordabasy_test
+      PUBLIC_ORIGIN: http://localhost:3000
+      TRUSTED_ORIGINS: http://localhost:3000
+      COOKIE_SECURE: "false"
+      ALLOW_LOCAL_HTTP: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx prisma generate --config apps/api/prisma.config.ts
+      - run: npm run db:migrate && npm run db:seed
+      - run: npm run lint && npm run typecheck && npm test
+      - run: npm run build -w apps/api
+      - run: npm run test:integration
+      - run: npm run test:restore
+      - run: npm run test:migrations
+      - run: npm run security:scan && npm audit --audit-level=low
+      - run: npm run build
+      - run: npx playwright install --with-deps chrome
+      - run: |
+          npm run start -w apps/api > /tmp/api.log 2>&1 &
+          npm run start -w apps/web > /tmp/web.log 2>&1 &
+          node scripts/wait-ready.mjs
+          npm run test:e2e
+      - run: docker compose config --quiet
+        env:
+          POSTGRES_PASSWORD: ci-test-only
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-report
+          path: |
+            playwright-report
+            test-results

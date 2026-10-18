@@ -1,0 +1,50 @@
+{
+  "name": "ordabasy-fc",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm run dev -w apps/api\" \"npm run dev -w apps/web\"",
+    "build": "npm run build -w apps/api && npm run build -w apps/web",
+    "lint": "eslint apps scripts tests --max-warnings=0",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "tsx --test tests/*.test.ts",
+    "test:integration": "tsx --tsconfig apps/api/tsconfig.json --test tests/integration/*.test.ts",
+    "test:e2e": "playwright test",
+    "db:migrate": "npm run db:migrate -w apps/api",
+    "db:seed": "npm run db:seed -w apps/api",
+    "admin:create": "npm run admin:create -w apps/api",
+    "media:build": "node scripts/process-media.mjs",
+    "content:import": "node scripts/import-legacy.mjs",
+    "docker:up": "docker compose up --build -d",
+    "security:scan": "node scripts/security-scan.mjs",
+    "backup:create": "tsx apps/api/src/backup.ts create",
+    "backup:restore": "tsx apps/api/src/backup.ts restore",
+    "test:restore": "node --import tsx scripts/verify-backup.mjs",
+    "media:migrate-storage": "tsx apps/api/src/migrate-media.ts",
+    "test:migrations": "node --import tsx scripts/verify-migrations.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@fontsource-variable/noto-sans": "5.3.0",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "cheerio": "1.2.0",
+    "concurrently": "9.2.5",
+    "esbuild": "0.28.2",
+    "eslint": "9.39.5",
+    "fontkit": "2.0.4",
+    "lighthouse": "13.5.0",
+    "prettier": "3.9.10",
+    "sharp": "0.35.5",
+    "subset-font": "^2.9.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.71.2"
+  }
+}
