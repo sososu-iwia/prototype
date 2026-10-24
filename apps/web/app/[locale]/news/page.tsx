@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loading from "../../../components/ui/Loading";
 import { Pagination } from "../../../components/ui/Pagination";
 import { HeroPreload } from "../../../components/ui/HeroPreload";
 import { getTranslations } from "next-intl/server";
@@ -15,7 +17,14 @@ export async function generateMetadata({
     t = await getTranslations({ locale, namespace: "site" });
   return metadata(locale, "/news", t("news"), t("newsTitle"));
 }
-export default async function News({
+export default function News(props: Parameters<typeof NewsContent>[0]) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <NewsContent {...props} />
+    </Suspense>
+  );
+}
+async function NewsContent({
   params,
   searchParams,
 }: {

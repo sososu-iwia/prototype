@@ -6,6 +6,8 @@
 
 Миграция существующего сайта на Next.js App Router / React / TypeScript strict и NestJS / PostgreSQL / Prisma. Исходные HTML, CSS, JS и все 331 МБ медиа сохранены в корне как архив; Next.js публикует только `apps/web/public`. Navy/голубая палитра, hero, фотографии, классы карточек и порядок основных секций сохранены. Контраст текста и элементов управления исправлен для доступности.
 
+Railway: [инструкция, переменные и условия запуска](docs/RAILWAY.md). Подготовка конфигурации не означает успешный внешний deployment.
+
 ## Быстрый запуск в Docker
 
 Требуются Docker Engine с Compose v2, свободный порт 3000 и `.env`.
@@ -95,3 +97,5 @@ node scripts/build-snapshot.mjs
 
 
 Профессиональная панель: [руководство администратора](docs/ADMIN_GUIDE.md), [результаты внедрения](docs/ADMIN_IMPLEMENTATION.md). Новые команды: `npm run test:restore`, `npm run backup:create -- /absolute/new-backup-directory`, `npm run backup:restore -- /absolute/backup-directory`, `npm run media:migrate-storage`. Production требует отдельный S3 bucket; параметры находятся в `.env.example`.
+
+Render: бесплатное временное демо, отдельные миграции и режим медиа — [docs/RENDER.md](docs/RENDER.md).

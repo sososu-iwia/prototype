@@ -1,5 +1,6 @@
 import "server-only";
 import { cache } from "react";
+import { apiEndpoint, apiFetchTimeout } from "./endpoint";
 import snapshot from "../../../../packages/content/public-snapshot.json";
 import type {
   Player,
@@ -11,7 +12,7 @@ import type {
   Standings,
   RankedStatistic,
 } from "./types";
-const base = process.env.API_INTERNAL_URL || "http://127.0.0.1:4000/api/v1";
+const base = apiEndpoint();
 export type Result<T> = { data: T; offline: boolean };
 export const readApi = cache(async function <T>(
   path: string,
@@ -21,7 +22,7 @@ export const readApi = cache(async function <T>(
   try {
     const res = await fetch(`${base}/${path}`, {
       cache: "no-store",
-      signal: AbortSignal.timeout(3500),
+      signal: AbortSignal.timeout(apiFetchTimeout()),
     });
     if (res.status === 404) return { data: missing, offline: false };
     if (!res.ok) throw new Error("API_UNAVAILABLE");
