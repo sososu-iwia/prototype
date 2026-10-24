@@ -1,19 +1,19 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
 export default function Lightbox({
   url,
   title,
   onClose,
   returnFocus,
+  closeLabel,
 }: {
   url: string;
   title: string;
   onClose: () => void;
   returnFocus: HTMLElement | null;
+  closeLabel: string;
 }) {
-  const dialog = useRef<HTMLDialogElement>(null),
-    t = useTranslations("ui");
+  const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const d = dialog.current,
       previous = returnFocus || (document.activeElement as HTMLElement);
@@ -57,7 +57,7 @@ export default function Lightbox({
         className="dialog-close"
         autoFocus
         onClick={onClose}
-        aria-label={t("close")}
+        aria-label={closeLabel}
       >
         ×
       </button>

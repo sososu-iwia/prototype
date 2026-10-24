@@ -1,0 +1,9 @@
+# Optional immutable-image overlay. Use together with compose.yaml and
+# compose.prod.yaml. Deploy/rollback with --no-build after building/loading tags.
+services:
+  migrate:
+    image: ${API_IMAGE:?Set an immutable API image tag or digest}
+  api:
+    image: ${API_IMAGE:?Set an immutable API image tag or digest}
+  web:
+    image: ${WEB_IMAGE:?Set an immutable web image tag or digest}

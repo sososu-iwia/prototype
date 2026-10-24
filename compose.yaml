@@ -5,6 +5,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-ordabasy}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: ${POSTGRES_DB:-ordabasy}
+      POSTGRES_INITDB_ARGS: --encoding=UTF8 --locale=en_US.utf8
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -67,7 +68,7 @@ services:
       PUBLIC_ORIGIN: ${PUBLIC_ORIGIN:-http://localhost:3000}
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
     ports:
-      - "127.0.0.1:3000:3000"
+      - "127.0.0.1:${WEB_PORT:-3000}:3000"
     healthcheck:
       test:
         [

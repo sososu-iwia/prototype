@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
+import { ErrorLabelsProvider } from "../components/ui/ErrorLabels";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 
 import { origin } from "../lib/metadata";
 import "../styles/fonts.css";
+import "../styles/primary-font.css";
 import "../styles/legacy.css";
 import "../styles/app.css";
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title: { default: "FC Ordabasy", template: "%s" },
   description: "FC Ordabasy · Shymkent · Қазақстан",
-  icons: { icon: "/media/logo-320.webp" },
+  icons: { icon: "/media/logo-header-96.webp" },
 };
 export default async function RootLayout({
   children,
@@ -24,30 +25,24 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
-        {(locale === "en"
-          ? ["latin"]
-          : ["cyrillic-ext", "cyrillic", "latin"]
-        ).map((subset) => (
-          <link
-            key={subset}
-            rel="preload"
-            href={`/fonts/noto-sans-${subset}-wght-normal.woff2`}
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-        ))}
+        <link
+          rel="preload"
+          href="/fonts/noto-sans-2.015-primary-wght-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <div id="top-sentinel" />
         <a className="skip-link" href="#content">
           {u("skip")}
         </a>
-        <NextIntlClientProvider>
-          <Header />
+        <Header />
+        <ErrorLabelsProvider labels={{ error: u("error"), retry: u("retry") }}>
           {children}
-          <Footer />
-        </NextIntlClientProvider>
+        </ErrorLabelsProvider>
+        <Footer />
       </body>
     </html>
   );

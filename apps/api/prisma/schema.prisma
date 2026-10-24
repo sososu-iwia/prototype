@@ -72,6 +72,7 @@ model Team {
   logo String?
   managed Boolean @default(false)
   memberships RosterMembership[]
+  matchStatistics PlayerMatchStatistics[]
   events MatchEvent[]
   players PlayerSeason[]
   homeMatches Match[] @relation("home")
@@ -161,6 +162,7 @@ model Match {
   playerStatistics PlayerMatchStatistics[]
   updatedAt DateTime @updatedAt
   @@index([kickoff,status])
+  @@index([seasonId,matchStatus,status])
 }
 model MatchEvent {
   version Int @default(1)
@@ -292,6 +294,7 @@ model ClubSettings {
 }
 
 model RosterMembership {
+  cancelled Boolean @default(false)
   datesVerified Boolean @default(true)
   id String @id @default(uuid())
   playerId String
@@ -310,6 +313,8 @@ model RosterMembership {
   @@index([teamId,seasonId,endsAt])
 }
 model PlayerMatchStatistics {
+  teamId String?
+  team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
   id String @id @default(uuid())
   matchId String
   match Match @relation(fields:[matchId],references:[id],onDelete:Restrict)
@@ -322,6 +327,7 @@ model PlayerMatchStatistics {
   source String
   version Int @default(1)
   @@unique([matchId,playerId])
+  @@index([playerId,teamId])
 }
 model MutationKey {
   id String @id @default(uuid())

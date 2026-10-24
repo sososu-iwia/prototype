@@ -25,7 +25,7 @@ h4,
 h5,
 h6,
 .matches-page-hero h1 {
-  font-family: "Noto Sans Variable", Arial, sans-serif;
+  font-family: "Noto Sans Primary", "Noto Sans Variable", Arial, sans-serif;
 }
 button,
 input,
@@ -187,6 +187,7 @@ body:has(.detail-page) .header {
   margin-bottom: 22px;
 }
 .footer .back-to-top {
+  font-family: Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,6 +255,31 @@ body:has(.detail-page) .header {
   width: 100%;
   height: 100%;
 }
+.featured-club {
+  min-width: 0;
+}
+.featured-club picture {
+  display: block;
+}
+.featured-club h3 {
+  overflow-wrap: anywhere;
+}
+.featured-match-status {
+  background: #0369a1;
+}
+.featured-match-bottom span {
+  color: #94a3b8;
+}
+.featured-match-empty {
+  padding: 0 35px 25px;
+  color: #cbd5e1;
+  line-height: 1.65;
+}
+@media (min-width: 651px) {
+  .matches-page-hero {
+    min-height: 68vh;
+  }
+}
 .small-news-column {
   min-width: 0;
 }
@@ -271,6 +297,17 @@ body:has(.detail-page) .header {
 }
 .gallery-item:focus-visible {
   outline-offset: 4px;
+}
+.gallery-item picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+.gallery-item:hover picture img {
+  transform: scale(1.08);
 }
 .gallery-overlay {
   pointer-events: none;
@@ -644,12 +681,11 @@ body:has(.detail-page) .header {
   .hero {
     background-image:
       linear-gradient(90deg, rgba(2, 11, 28, 0.97), rgba(4, 31, 69, 0.8)),
-      url("/media/hero-640.webp");
+      var(--hero-image);
   }
   .hero h1 {
-    font-size: clamp(29px, 8.1vw, 48px);
-    letter-spacing: -1px;
-    line-height: 1.1;
+    font-size: clamp(36px, 12.3vw, 48px);
+    letter-spacing: -2px;
   }
   .hero-content {
     width: 100%;
@@ -760,6 +796,9 @@ body:has(.detail-page) .header {
 .small-news-category {
   color: #0369a1;
 }
+.section-link {
+  min-height: 24px;
+}
 .news-category {
   background: #e0f2fe;
 }
@@ -791,6 +830,34 @@ body:has(.detail-page) .header {
   :root {
     --hero-image: url("/media/hero-640.webp");
     --team-hero-image: url("/media/gallery2-640.webp");
+  }
+}
+@supports (
+  background-image: image-set(
+      url("/media/hero-background-640.avif") type("image/avif")
+    )
+) {
+  :root {
+    --hero-image: image-set(
+      url("/media/hero-background-1600.avif") type("image/avif"),
+      url("/media/hero-1600.webp") type("image/webp")
+    );
+    --team-hero-image: image-set(
+      url("/media/gallery2-background-960.avif") type("image/avif"),
+      url("/media/gallery2-960.webp") type("image/webp")
+    );
+  }
+  @media (max-width: 600px) {
+    :root {
+      --hero-image: image-set(
+        url("/media/hero-background-640.avif") type("image/avif"),
+        url("/media/hero-640.webp") type("image/webp")
+      );
+      --team-hero-image: image-set(
+        url("/media/gallery2-background-640.avif") type("image/avif"),
+        url("/media/gallery2-640.webp") type("image/webp")
+      );
+    }
   }
 }
 .news-date {
@@ -1099,11 +1166,11 @@ body:has(.detail-page) .header {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
-.admin-form > .admin-toolbar,
-.admin-form > fieldset,
-.admin-form > .admin-help,
-.admin-form > .source-notice,
-.admin-form > .preview-panel {
+.admin-form-body > .admin-toolbar,
+.admin-form-body > fieldset,
+.admin-form-body > .admin-help,
+.admin-form-body > .source-notice,
+.admin-form-body > .preview-panel {
   grid-column: 1/-1;
 }
 .admin-form label {
@@ -1126,6 +1193,14 @@ body:has(.detail-page) .header {
   padding: 0 8px;
   font-weight: 700;
   font-size: 13px;
+}
+.admin-form .admin-form-body {
+  grid-column: 1/-1;
+  grid-template-columns: subgrid;
+  border: 0;
+  padding: 0;
+  gap: inherit;
+  min-width: 0;
 }
 .admin-form small {
   font-size: 10px;
@@ -1314,6 +1389,25 @@ body:has(.detail-page) .header {
   background: #fff;
   color: #234f73;
   border: 1px solid #b6cadd;
+}
+/* The workspace scrolls independently of the public site's fixed header. */
+body:has(.admin-page) .header {
+  position: static;
+}
+.admin-page {
+  padding: 24px 0 32px;
+}
+.admin-page .admin-message.has-message {
+  top: 12px;
+}
+@media (min-width: 701px) {
+  .admin-page .admin-nav {
+    top: 16px;
+    max-height: min(680px, calc(100dvh - 32px));
+  }
+  .admin-page .admin-workspace {
+    min-height: 540px;
+  }
 }
 .admin-shell .btn-secondary:hover {
   background: #eaf3fb;

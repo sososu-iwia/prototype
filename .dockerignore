@@ -1,6 +1,14 @@
 .git
 .env
 .env.*
+**/.env
+**/.env.*
+**/.aws
+**/.ssh
+**/.codex
+**/.agents
+**/*.pem
+**/*.key
 node_modules
 **/node_modules
 **/.next
@@ -17,3 +25,8 @@ docs/verification
 test-results
 playwright-report
 media-data
+backups
+**/backups
+*.dump
+**/*.dump
+verification

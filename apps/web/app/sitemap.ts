@@ -2,8 +2,26 @@ export const dynamic = "force-dynamic";
 import type { MetadataRoute } from "next";
 import { getPlayers, getNews } from "../lib/api/server";
 import { origin } from "../lib/metadata";
+import type { List, Player, News } from "../lib/api/types";
+import type { Result } from "../lib/api/server";
+async function allPages<T>(read: (page: number) => Promise<Result<List<T>>>) {
+  const first = await read(1);
+  const items = [...first.data.items];
+  if (first.offline) return items;
+  for (let page = 2; items.length < first.data.total; page++) {
+    const next = await read(page);
+    if (next.offline || !next.data.items.length) break;
+    items.push(...next.data.items);
+  }
+  return items;
+}
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [players, news] = await Promise.all([getPlayers("archive=true"), getNews()]);
+  const [players, news] = await Promise.all([
+    allPages<Player>((page) =>
+      getPlayers(`archive=true&page=${page}&limit=100`),
+    ),
+    allPages<News>((page) => getNews(`page=${page}&limit=100`)),
+  ]);
   const paths = [
     "",
     "/about",
@@ -14,8 +32,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/news",
     "/gallery",
     "/statistics",
-    ...players.data.items.map((p) => `/players/${p.slug}`),
-    ...news.data.items.map((p) => `/news/${p.slug}`),
+    ...players.map((p) => `/players/${p.slug}`),
+    ...news.map((p) => `/news/${p.slug}`),
   ];
   return paths.flatMap((path) =>
     ["kk", "ru", "en"].map((locale) => ({

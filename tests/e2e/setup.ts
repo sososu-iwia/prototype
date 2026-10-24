@@ -1,14 +1,15 @@
+import { assertTestDatabase } from "../helpers/test-database";
 import { randomUUID } from "node:crypto";
 import * as argon2 from "argon2";
-import { unlink } from "node:fs/promises";
+import { unlink, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { db } from "../../apps/api/src/db";
 import { mediaDir } from "../../apps/api/src/config";
 export default async function setup() {
-  if (!/test|codex/.test(process.env.DATABASE_URL || ""))
-    throw new Error(
-      "E2E requires an isolated database with test or codex in its name.",
-    );
+  assertTestDatabase();
+  await mkdir(process.env.VERIFICATION_DIR || "docs/verification", {
+    recursive: true,
+  });
   const prefix = `e2e-${randomUUID().slice(0, 8)}`;
   const password = randomUUID() + randomUUID();
   const email = `${prefix}@example.invalid`;

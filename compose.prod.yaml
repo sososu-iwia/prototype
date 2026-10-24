@@ -1,6 +1,9 @@
 services:
   api:
     environment:
+      DATABASE_URL: ${API_DATABASE_URL:?Set a separate least-privilege runtime PostgreSQL URL}
+      # API has no host port. Caddy replaces untrusted incoming forwarding headers.
+      TRUST_PROXY_CIDRS: uniquelocal
       MEDIA_STORAGE: s3
       S3_REGION: ${S3_REGION:-us-east-1}
       S3_BUCKET: ${S3_BUCKET:?Set an independent S3 bucket}

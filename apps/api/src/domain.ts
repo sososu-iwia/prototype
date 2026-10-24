@@ -78,8 +78,23 @@ export const schemas = {
     .superRefine((m, c) => {
       if (m.homeTeamId === m.awayTeamId)
         c.addIssue({ code: "custom", message: "Different teams required" });
+      if ((m.homeScore === null) !== (m.awayScore === null))
+        c.addIssue({
+          code: "custom",
+          path: ["homeScore"],
+          message: "Both scores must be entered together",
+        });
       if (
-        m.matchStatus === "FINISHED" &&
+        ["LIVE", "FINISHED"].includes(m.matchStatus) &&
+        new Date(m.kickoff) > new Date()
+      )
+        c.addIssue({
+          code: "custom",
+          path: ["kickoff"],
+          message: "A played match cannot start in the future",
+        });
+      if (
+        ["LIVE", "FINISHED"].includes(m.matchStatus) &&
         (m.homeScore === null || m.awayScore === null)
       )
         c.addIssue({
@@ -196,6 +211,10 @@ export const schemas = {
     .refine(
       (v) => !v.startsAt || !v.endsAt || v.endsAt > v.startsAt,
       "Invalid season dates",
+    )
+    .refine(
+      (v) => !v.current || v.state !== "ARCHIVED",
+      "An archived season cannot be current",
     ),
   teams: z
     .object({
@@ -229,11 +248,24 @@ export const schemas = {
       minutes: z.number().int().min(0).max(100000),
       source,
     })
-    .strict(),
+    .strict()
+    .superRefine((v, c) => {
+      if (v.mode !== "CONFIRMED") return;
+      if (
+        v.minutes > v.appearances * 150 ||
+        (v.appearances === 0 && (v.goals > 0 || v.assists > 0)) ||
+        (v.cleanSheets ?? 0) > v.appearances
+      )
+        c.addIssue({
+          code: "custom",
+          message: "Season totals are inconsistent",
+        });
+    }),
 };
 export const membershipSchema = z
   .object({
     datesVerified: z.boolean().default(true),
+    cancelled: z.boolean().default(false),
     playerId: id,
     teamId: id,
     seasonId: id,
@@ -263,6 +295,7 @@ export const eventSchema = z
   .strict();
 export const matchStatisticsSchema = z
   .object({
+    teamId: id.nullable().optional(),
     matchId: id,
     playerId: id,
     appearances: z.number().int().min(0).max(1),
@@ -271,7 +304,13 @@ export const matchStatisticsSchema = z
     verified: z.boolean(),
     source,
   })
-  .strict();
+  .strict()
+  .refine(
+    (v) =>
+      !(v.appearances === 0 && v.minutes > 0) &&
+      (!v.cleanSheets || (v.appearances === 1 && v.minutes > 0)),
+    "Match totals are inconsistent",
+  );
 export const cmsSchemas = {
   ...schemas,
   memberships: membershipSchema,

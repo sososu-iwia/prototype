@@ -23,8 +23,9 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBeTruthy();
+  await page.evaluate(() => scrollTo(0, 0));
   await page.screenshot({
-    path: `docs/verification/admin-${info.project.name}.png`,
+    path: `${process.env.VERIFICATION_DIR || "docs/verification"}/admin-${info.project.name}.png`,
     fullPage: true,
   });
   await nav.getByRole("button", { name: "Players", exact: true }).click();
@@ -54,8 +55,31 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
   await page
     .getByRole("combobox", { name: "Publication status", exact: true })
     .selectOption("PUBLISHED");
-  await page.getByRole("button", { name: "Save", exact: true }).click();
+  let releaseSave!: () => void;
+  const pendingSave = new Promise<void>((resolve) => {
+    releaseSave = resolve;
+  });
+  await page.route("**/api/v1/admin/players", async (route) => {
+    if (route.request().method() === "POST") await pendingSave;
+    await route.continue();
+  });
+  try {
+    await page.getByRole("button", { name: "Save", exact: true }).click();
+    await expect(
+      nav.getByRole("button", { name: "News", exact: true }),
+    ).toBeDisabled();
+    await expect(
+      page.getByRole("button", { name: "Sign out", exact: true }),
+    ).toBeDisabled();
+    await expect(page.getByLabel("URL slug", { exact: true })).toBeDisabled();
+    await expect(page.getByLabel("URL slug", { exact: true })).toHaveValue(
+      prefix,
+    );
+  } finally {
+    releaseSave();
+  }
   await expect(page.locator(".admin-table")).toBeVisible();
+  await page.unroute("**/api/v1/admin/players");
   await page.getByRole("textbox", { name: "Search", exact: true }).fill(prefix);
   await page.getByRole("button", { name: "Search", exact: true }).click();
   const player = page
@@ -93,8 +117,9 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
   await expect(page.locator(".admin-table")).toBeVisible();
   await assign("2026-07-01T10:00", "27");
   await expect(page.locator(".admin-table tbody tr")).toHaveCount(2);
+  await page.evaluate(() => scrollTo(0, 0));
   await page.screenshot({
-    path: `docs/verification/admin-roster-${info.project.name}.png`,
+    path: `${process.env.VERIFICATION_DIR || "docs/verification"}/admin-roster-${info.project.name}.png`,
     fullPage: true,
   });
   await page.goto(`/en/players/${prefix}`);
@@ -108,8 +133,9 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
   await page.goto("/en/admin");
   await nav.getByRole("button", { name: "Activity logs", exact: true }).click();
   await expect(page.locator(".admin-table tbody tr").first()).toBeVisible();
+  await page.evaluate(() => scrollTo(0, 0));
   await page.screenshot({
-    path: `docs/verification/admin-audit-${info.project.name}.png`,
+    path: `${process.env.VERIFICATION_DIR || "docs/verification"}/admin-audit-${info.project.name}.png`,
     fullPage: true,
   });
 });

@@ -41,7 +41,11 @@ export default async function Team({
         <div className="container">
           <Offline show={players.offline} />
           <div className="admin-toolbar">
-            <Link className="section-link" href={`/${locale}/players`}>
+            <Link
+              prefetch={false}
+              className="section-link"
+              href={`/${locale}/players`}
+            >
               {u("archiveRoster")} →
             </Link>
           </div>

@@ -1,80 +1,34 @@
-"use client";
-import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
-import type { Player } from "../../lib/api/types";
-import { PlayerCard } from "./PlayerCard";
-export function Squad({ players }: { players: Player[] }) {
-  const [position, setPosition] = useState("all"),
-    t = useTranslations("site"),
-    u = useTranslations("ui"),
-    locale = useLocale();
-  const positions = [
+import { getLocale, getTranslations } from "next-intl/server";
+import { SquadClient, type SquadLabels } from "./SquadClient";
+import { toCardPlayer, type CardPlayer } from "./PlayerCard";
+
+export async function Squad({ players }: { players: CardPlayer[] }) {
+  const locale = await getLocale(),
+    site = await getTranslations("site"),
+    ui = await getTranslations("ui");
+  const keys = [
+    "squadLabel",
+    "squadTitle",
+    "filterAll",
+    "filterGoalkeepers",
+    "filterDefenders",
+    "filterMidfielders",
+    "filterForwards",
     "goalkeeper",
     "defender",
     "midfielder",
     "forward",
   ] as const;
-  const keys = {
-    goalkeeper: "filterGoalkeepers",
-    defender: "filterDefenders",
-    midfielder: "filterMidfielders",
-    forward: "filterForwards",
-  } as const;
+  const labels = {
+    ...Object.fromEntries(keys.map((key) => [key, site(key)])),
+    archive: ui("archive"),
+    empty: ui("empty"),
+  } as SquadLabels;
   return (
-    <>
-      <div className="team-page-heading">
-        <div>
-          <p className="section-label">{t("squadLabel")}</p>
-          <h2>{t("squadTitle")}</h2>
-        </div>
-        <div className="team-filters">
-          <button
-            className={`filter-btn ${position === "all" ? "active" : ""}`}
-            aria-pressed={position === "all"}
-            onClick={() => setPosition("all")}
-          >
-            {t("filterAll")}
-          </button>
-          {positions.map((p) => (
-            <button
-              className={`filter-btn ${position === p ? "active" : ""}`}
-              aria-pressed={position === p}
-              key={p}
-              onClick={() => setPosition(p)}
-            >
-              {t(keys[p])}
-            </button>
-          ))}
-        </div>
-      </div>
-      {players.some((p) => p.verification === "LEGACY_UNVERIFIED") && (
-        <p className="archive-badge">{u("archive")}</p>
-      )}
-      {positions
-        .filter((p) => position === "all" || position === p)
-        .map((p, i) => (
-          <div key={p}>
-            <div className="position-title">
-              <span>0{i + 1}</span>
-              <h3>{t(keys[p])}</h3>
-            </div>
-            <div className="team-page-grid">
-              {players
-                .filter((player) => player.position === p)
-                .map((player) => (
-                  <PlayerCard
-                    key={player.id}
-                    player={player}
-                    locale={locale}
-                    positionLabel={t(p)}
-                  />
-                ))}
-            </div>
-            {!players.some((player) => player.position === p) && (
-              <p className="empty-state">{u("empty")}</p>
-            )}
-          </div>
-        ))}
-    </>
+    <SquadClient
+      players={players.map(toCardPlayer)}
+      locale={locale}
+      labels={labels}
+    />
   );
 }

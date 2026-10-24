@@ -20,6 +20,24 @@ export function proxy(req: NextRequest) {
   headers.set("Content-Security-Policy", csp);
   const res = NextResponse.next({ request: { headers } });
   res.headers.set("Content-Security-Policy", csp);
+  // These routes already preload this same hero in HTML. HTTP hints expose it
+  // before parsing the document; media conditions prevent a second size fetch.
+  const route = path.split("/").slice(2).join("/");
+  if (
+    req.headers.get("sec-fetch-dest") === "document" &&
+    ["team", "matches", "news", "about"].includes(route)
+  ) {
+    const image = route === "team" ? "gallery2" : "hero";
+    const desktopWidth = route === "team" ? 960 : 1600;
+    res.headers.append(
+      "Link",
+      `</media/${image}-background-640.avif>; rel=preload; as=image; type="image/avif"; media="(max-width: 600px)"; fetchpriority=high`,
+    );
+    res.headers.append(
+      "Link",
+      `</media/${image}-background-${desktopWidth}.avif>; rel=preload; as=image; type="image/avif"; media="(min-width: 601px)"; fetchpriority=high`,
+    );
+  }
   if (https)
     res.headers.set(
       "Strict-Transport-Security",

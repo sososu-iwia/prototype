@@ -1,22 +1,29 @@
 FROM node:24-bookworm-slim AS deps
 WORKDIR /app
+# Prisma detects its engine target during npm ci, before the build stage.
+RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json ./
 COPY apps/api/package.json apps/api/package.json
 COPY apps/web/package.json apps/web/package.json
-RUN npm ci --no-audit --no-fund
+RUN --mount=type=cache,id=ordabasy-node24-npm,target=/root/.npm,sharing=locked openssl version && npm ci --no-audit --no-fund --foreground-scripts
 FROM deps AS build
 COPY tsconfig.base.json ./
 COPY apps/api apps/api
+COPY packages/content packages/content
 RUN npm run build -w apps/api
+FROM build AS verification-code
+COPY tests tests
+COPY scripts/build-integration-tests.mjs scripts/build-integration-tests.mjs
+RUN node scripts/build-integration-tests.mjs
 FROM node:24-bookworm-slim AS production-deps
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates libpq5 liblz4-1 libzstd1 zlib1g libxml2 && rm -rf /var/lib/apt/lists/*
 COPY package.json package-lock.json ./
 COPY apps/api/package.json apps/api/package.json
 COPY apps/web/package.json apps/web/package.json
-RUN npm ci --omit=dev --workspace=@ordabasy/api --include-workspace-root=false --no-audit --no-fund
+RUN --mount=type=cache,id=ordabasy-node24-npm,target=/root/.npm,sharing=locked npm ci --omit=dev --workspace=@ordabasy/api --include-workspace-root=false --no-audit --no-fund
 FROM postgres:17-bookworm AS postgres-tools
-FROM production-deps AS runtime
+FROM production-deps AS runtime-base
 COPY --from=postgres-tools /usr/lib/postgresql/17/bin/pg_dump /usr/local/bin/pg_dump
 COPY --from=postgres-tools /usr/lib/postgresql/17/bin/pg_restore /usr/local/bin/pg_restore
 COPY --from=postgres-tools /usr/lib/*-linux-gnu/libpq.so.5* /usr/local/lib/
@@ -31,3 +38,8 @@ USER node
 WORKDIR /app/apps/api
 EXPOSE 4000
 CMD ["node","dist/main.js"]
+FROM runtime-base AS verification
+WORKDIR /app
+COPY --from=verification-code --chown=node:node /app/verification ./verification
+CMD ["node","--enable-source-maps","--test","--test-concurrency=1","verification/api.test.js","verification/cms.test.js","verification/integrity.test.js"]
+FROM runtime-base AS runtime

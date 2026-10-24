@@ -1,18 +1,18 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useErrorLabels } from "../../components/ui/ErrorLabels";
 export default function ErrorPage({
   reset,
 }: {
   error: Error;
   reset: () => void;
 }) {
-  const t = useTranslations("ui");
+  const labels = useErrorLabels();
   return (
     <main id="content" className="detail-page">
       <div className="container">
-        <h1>{t("error")}</h1>
+        <h1>{labels.error}</h1>
         <button className="btn btn-primary" onClick={reset}>
-          {t("retry")}
+          {labels.retry}
         </button>
       </div>
     </main>

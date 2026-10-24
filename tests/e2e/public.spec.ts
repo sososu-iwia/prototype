@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+test.setTimeout(60000);
 import AxeBuilder from "@axe-core/playwright";
 const names = {
   kk: {
@@ -32,10 +33,35 @@ for (const locale of ["kk", "ru", "en"] as const) {
     isMobile,
   }) => {
     const errors: string[] = [];
+    const fonts: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
+    page.on("request", (request) => {
+      if (request.resourceType() === "font")
+        fonts.push(new URL(request.url()).pathname);
+    });
     await page.goto(`/${locale}`);
     await expect(page.locator("html")).toHaveAttribute("lang", locale);
     await expect(page.locator("h1")).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    expect([...new Set(fonts)]).toEqual([
+      "/fonts/noto-sans-2.015-primary-wght-normal.woff2",
+    ]);
+    expect(
+      await page.evaluate(() =>
+        [...document.fonts].some(
+          (font) =>
+            font.family === "Noto Sans Primary" && font.status === "loaded",
+        ),
+      ),
+    ).toBe(true);
+    if (page.viewportSize()?.width === 390)
+      expect(
+        await page
+          .locator("h1")
+          .evaluate((heading) =>
+            parseFloat(getComputedStyle(heading).fontSize),
+          ),
+      ).toBeGreaterThanOrEqual(47);
     if (isMobile) {
       const menu = page.getByRole("button", {
         name: names[locale].menu,
@@ -69,11 +95,34 @@ for (const locale of ["kk", "ru", "en"] as const) {
   }) => {
     await page.goto(`/${locale}/matches`);
     await expect(page.locator("h1")).toBeVisible();
+    await expect(page.locator(".matches-page-hero .match-card")).toHaveCount(0);
+    const placement = await page.evaluate(() => ({
+      heroBottom: document
+        .querySelector(".matches-page-hero")!
+        .getBoundingClientRect().bottom,
+      nextTop: document
+        .querySelector(".featured-match-section")!
+        .getBoundingClientRect().top,
+    }));
+    expect(placement.nextTop).toBeGreaterThanOrEqual(placement.heroBottom - 1);
     await expect(page.locator("select[name=status]")).toBeVisible();
     await page.goto(`/${locale}/news`);
     await page.locator(".main-news-content :is(h2,h3) a").first().click();
     await expect(page.locator(".article-body")).toBeVisible();
     await page.goto(`/${locale}/gallery`);
+    expect(
+      await page.locator(".gallery-item picture img").evaluateAll((images) =>
+        images.every((image) => {
+          const style = getComputedStyle(image);
+          return (
+            style.objectFit === "cover" &&
+            Math.abs(
+              image.clientHeight - image.closest(".gallery-item")!.clientHeight,
+            ) < 1
+          );
+        }),
+      ),
+    ).toBeTruthy();
     const image = page.locator("button.gallery-item").first();
     await image.click();
     await expect(page.getByRole("dialog")).toBeVisible();
@@ -89,6 +138,7 @@ for (const locale of ["kk", "ru", "en"] as const) {
     await expect(page.locator(".admin-table")).toHaveCount(0);
   });
   test(`${locale}: accessibility on main public pages`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
     for (const route of ["", "/team", "/matches", "/news", "/gallery"]) {
       await page.goto(`/${locale}${route}`);
       const result = await new AxeBuilder({ page })
@@ -129,6 +179,13 @@ test("all old URLs permanently redirect; no full-size legacy images are requeste
   });
   await page.goto("/kk/team");
   await page.locator(".team-player-card").last().scrollIntoViewIfNeeded();
+  expect([
+    ...new Set(images.filter((url) => url.includes("gallery2-background-"))),
+  ]).toEqual([
+    expect.stringContaining(
+      `gallery2-background-${page.viewportSize()!.width <= 600 ? 640 : 960}.avif`,
+    ),
+  ]);
   expect(images.some((x) => /\.jpe?g/i.test(x) || x.includes("/images/"))).toBe(
     false,
   );

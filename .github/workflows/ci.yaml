@@ -21,17 +21,27 @@ jobs:
       COOKIE_SECURE: "false"
       ALLOW_LOCAL_HTTP: "true"
       NEXT_TELEMETRY_DISABLED: "1"
+      VERIFICATION_DIR: docs/verification/ci
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
+      - name: PostgreSQL 17 client tools
+        run: |
+          sudo apt-get update
+          if ! apt-cache show postgresql-client-17 >/dev/null 2>&1; then
+            sudo apt-get install -y postgresql-common
+            sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          fi
+          sudo apt-get install -y postgresql-client-17
+          echo "/usr/lib/postgresql/17/bin" >> "$GITHUB_PATH"
+          /usr/lib/postgresql/17/bin/pg_dump --version
       - run: npm ci
       - run: npx prisma generate --config apps/api/prisma.config.ts
       - run: npm run db:migrate && npm run db:seed
       - run: npm run lint && npm run typecheck && npm test
-      - run: npm run build -w apps/api
       - run: npm run test:integration
       - run: npm run test:restore
       - run: npm run test:migrations
@@ -39,17 +49,31 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chrome
       - run: |
-          npm run start -w apps/api > /tmp/api.log 2>&1 &
+          NODE_ENV=production npm run start -w apps/api > /tmp/api.log 2>&1 &
           npm run start -w apps/web > /tmp/web.log 2>&1 &
           node scripts/wait-ready.mjs
           npm run test:e2e
       - run: docker compose config --quiet
         env:
           POSTGRES_PASSWORD: ci-test-only
+      - run: npm run test:compose
+      - name: Production and immutable release configuration
+        run: docker compose -f compose.yaml -f compose.prod.yaml -f compose.release.yaml config --quiet
+        env:
+          POSTGRES_PASSWORD: ci-test-only
+          DOMAIN: club.example
+          ACME_EMAIL: test@example.invalid
+          S3_BUCKET: ci-config-only
+          API_IMAGE: ordabasy-api:ci-config-only
+          WEB_IMAGE: ordabasy-web:ci-config-only
+          API_DATABASE_URL: postgresql://runtime:ci-test-only@db:5432/ordabasy_test
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
           name: browser-report
           path: |
             playwright-report
             test-results
+            docs/verification/ci
+            /tmp/api.log
+            /tmp/web.log

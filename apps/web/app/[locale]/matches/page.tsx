@@ -47,19 +47,30 @@ export default async function Matches({
     <main id="content">
       <HeroPreload />
       <section className="matches-page-hero">
-        <div className="container matches-page-hero-grid">
+        <div className="container">
           <div className="matches-page-hero-content">
             <p className="hero-label">{t("heroLabel")}</p>
             <h1>
               <span>{t("heroFirst")}</span>
               <span>{t("heroSecond")}</span>
             </h1>
-            <p>{t("heroDescription")}</p>
+            <p className="matches-hero-description">{t("heroDescription")}</p>
           </div>
+        </div>
+      </section>
+      <section
+        className="featured-match-section"
+        aria-labelledby="next-match-title"
+      >
+        <div className="container">
+          <h2 className="section-label" id="next-match-title">
+            {t("nextMatch")}
+          </h2>
           <NextMatch
             matches={matches.data.items}
             locale={locale}
             timeZone={club.data.timezone}
+            featured
           />
         </div>
       </section>

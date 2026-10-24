@@ -16,6 +16,7 @@ export const playerInclude = {
     orderBy: { seasonId: "desc" as const },
   },
   memberships: {
+    where: { cancelled: false },
     include: { team: true, season: true },
     orderBy: { startsAt: "desc" as const },
   },

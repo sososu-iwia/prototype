@@ -33,7 +33,10 @@ export default async function Profile({
   const p = result.data;
   if (!p) notFound();
   const activeMembership = p.memberships?.find(
-    (m) => !m.endsAt && new Date(m.startsAt) <= new Date(),
+    (m) =>
+      m.team.managed &&
+      new Date(m.startsAt) <= new Date() &&
+      (!m.endsAt || new Date(m.endsAt) > new Date()),
   );
   const u = await getTranslations("ui"),
     s = await getTranslations("site");

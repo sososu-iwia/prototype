@@ -94,10 +94,10 @@ export async function validateRelations(
       tx.player.findUnique({ where: { id: m.playerId } }),
       tx.team.findUnique({ where: { id: m.teamId } }),
     ]);
-    if (!season || !player || !team || player.archivedAt)
+    if (!season || !player || !team || (!id && player.archivedAt))
       throw new BadRequestException({ code: "INVALID_RELATION" });
     if (
-      season.state === "ARCHIVED" ||
+      (!id && season.state === "ARCHIVED") ||
       (season.startsAt && new Date(m.startsAt) < season.startsAt) ||
       (season.endsAt &&
         new Date(m.endsAt || m.startsAt).getTime() >
@@ -114,11 +114,25 @@ export async function validateRelations(
       )
         throw new ConflictException({ code: "HISTORY_PROTECTED" });
       const history = await tx.playerMatchStatistics.findMany({
-        where: { playerId: m.playerId, match: { seasonId: m.seasonId } },
+        where: {
+          playerId: m.playerId,
+          OR: [{ teamId: m.teamId }, { teamId: null }],
+          match: {
+            seasonId: m.seasonId,
+            OR: [{ homeTeamId: m.teamId }, { awayTeamId: m.teamId }],
+          },
+        },
         include: { match: true },
       });
       const events = await tx.matchEvent.findMany({
-        where: { playerId: m.playerId, match: { seasonId: m.seasonId } },
+        where: {
+          playerId: m.playerId,
+          teamId: m.teamId,
+          match: {
+            seasonId: m.seasonId,
+            OR: [{ homeTeamId: m.teamId }, { awayTeamId: m.teamId }],
+          },
+        },
         include: { match: true },
       });
       if (
@@ -126,21 +140,31 @@ export async function validateRelations(
           (record) =>
             record.match.kickoff >= before!.startsAt &&
             (!before!.endsAt || record.match.kickoff < before!.endsAt) &&
-            (record.match.kickoff < new Date(m.startsAt) ||
+            (m.cancelled ||
+              record.match.kickoff < new Date(m.startsAt) ||
               (m.endsAt && record.match.kickoff >= new Date(m.endsAt))),
         )
       )
         throw new ConflictException({ code: "HISTORY_PROTECTED" });
     }
-    const overlap = await tx.rosterMembership.findFirst({
-      where: {
-        playerId: m.playerId,
-        teamId: m.teamId,
-        ...(id ? { id: { not: id } } : {}),
-        ...(m.endsAt ? { startsAt: { lt: new Date(m.endsAt) } } : {}),
-        OR: [{ endsAt: null }, { endsAt: { gt: new Date(m.startsAt) } }],
-      },
-    });
+    if (
+      player.archivedAt &&
+      !m.cancelled &&
+      (!m.endsAt || new Date(m.endsAt) > new Date())
+    )
+      throw new ConflictException({ code: "HISTORY_PROTECTED" });
+    const overlap =
+      !m.cancelled &&
+      (await tx.rosterMembership.findFirst({
+        where: {
+          playerId: m.playerId,
+          teamId: m.teamId,
+          cancelled: false,
+          ...(id ? { id: { not: id } } : {}),
+          ...(m.endsAt ? { startsAt: { lt: new Date(m.endsAt) } } : {}),
+          OR: [{ endsAt: null }, { endsAt: { gt: new Date(m.startsAt) } }],
+        },
+      }));
     if (overlap) throw new ConflictException({ code: "MEMBERSHIP_OVERLAP" });
     // Historical aggregate remains a stable player+season record across transfers and returns.
     await tx.playerSeason.upsert({
@@ -164,18 +188,22 @@ export async function validateRelations(
     const match = await tx.match.findUnique({ where: { id: data.matchId } });
     if (!match || !["LIVE", "FINISHED"].includes(match.matchStatus))
       throw new BadRequestException({ code: "MATCH_NOT_PLAYED" });
-    const membership = await tx.rosterMembership.findFirst({
+    const memberships = await tx.rosterMembership.findMany({
       where: {
         playerId: data.playerId,
         seasonId: match.seasonId,
+        cancelled: false,
         teamId:
-          "teamId" in data
+          "teamId" in data && data.teamId
             ? data.teamId
             : { in: [match.homeTeamId, match.awayTeamId] },
         startsAt: { lte: match.kickoff },
         OR: [{ endsAt: null }, { endsAt: { gt: match.kickoff } }],
       },
     });
+    if (new Set(memberships.map((m) => m.teamId)).size > 1)
+      throw new ConflictException({ code: "AMBIGUOUS_TEAM" });
+    const membership = memberships[0];
     if (
       !membership ||
       ![match.homeTeamId, match.awayTeamId].includes(membership.teamId)
@@ -222,10 +250,11 @@ export async function validateRelations(
       if (player?.position !== "goalkeeper" || conceded !== 0)
         throw new BadRequestException({ code: "INVALID_CLEAN_SHEET" });
     }
+    if (entity === "match-statistics") return { teamId: membership.teamId };
   }
   if (entity === "matches" && id) {
     const m = cmsSchemas.matches.parse(body);
-    if (m.matchStatus === "FINISHED") {
+    if (["LIVE", "FINISHED"].includes(m.matchStatus)) {
       for (const [teamId, score] of [
         [m.homeTeamId, m.homeScore],
         [m.awayTeamId, m.awayScore],
@@ -252,22 +281,26 @@ export async function validateRelations(
     )
       throw new ConflictException({ code: "MATCH_HAS_HISTORY" });
   }
+  if (entity === "matches") {
+    const match = cmsSchemas.matches.parse(body);
+    const season = await tx.season.findUnique({
+      where: { id: match.seasonId },
+    });
+    if (!season) throw new BadRequestException({ code: "INVALID_RELATION" });
+    if (
+      (season.startsAt && new Date(match.kickoff) < season.startsAt) ||
+      (season.endsAt &&
+        new Date(match.kickoff).getTime() > season.endsAt.getTime() + 86400000)
+    )
+      throw new BadRequestException({ code: "INVALID_SEASON_PERIOD" });
+  }
   if (entity === "matches" && id) {
     const m = cmsSchemas.matches.parse(body);
     const lines = await tx.playerMatchStatistics.findMany({
       where: { matchId: id, cleanSheets: 1 },
     });
     for (const line of lines) {
-      const membership = await tx.rosterMembership.findFirst({
-        where: {
-          playerId: line.playerId,
-          seasonId: m.seasonId,
-          startsAt: { lte: new Date(m.kickoff) },
-          OR: [{ endsAt: null }, { endsAt: { gt: new Date(m.kickoff) } }],
-        },
-      });
-      const conceded =
-        membership?.teamId === m.homeTeamId ? m.awayScore : m.homeScore;
+      const conceded = line.teamId === m.homeTeamId ? m.awayScore : m.homeScore;
       if (conceded && conceded > 0)
         await tx.playerMatchStatistics.update({
           where: { id: line.id },
@@ -275,18 +308,55 @@ export async function validateRelations(
         });
     }
   }
-  if (entity === "players" && id) {
-    const player = cmsSchemas.players.parse(body);
-    if (
-      player.archivedAt &&
-      (await tx.rosterMembership.count({
-        where: { playerId: id, startsAt: { gte: new Date() }, endsAt: null },
-      }))
-    )
-      throw new ConflictException({ code: "HISTORY_PROTECTED" });
+  if (entity === "statistics") {
+    const data = cmsSchemas.statistics.parse(body);
+    const period = await tx.playerSeason.findUnique({
+      where: { id: data.playerSeasonId },
+      include: { player: true },
+    });
+    if (!period) throw new BadRequestException({ code: "INVALID_RELATION" });
+    if (data.cleanSheets != null && period.player.position !== "goalkeeper")
+      throw new BadRequestException({ code: "INVALID_CLEAN_SHEET" });
   }
   if (entity === "seasons") {
     const season = cmsSchemas.seasons.parse(body);
+    if (id && (season.startsAt || season.endsAt)) {
+      const outside: Prisma.RosterMembershipWhereInput[] = [];
+      const matchDates: Prisma.DateTimeFilter = {};
+      if (season.startsAt) {
+        const start = new Date(season.startsAt);
+        outside.push({ startsAt: { lt: start } });
+        matchDates.lt = start;
+      }
+      if (season.endsAt) {
+        const end = new Date(new Date(season.endsAt).getTime() + 86400000);
+        outside.push({ startsAt: { gt: end } }, { endsAt: { gt: end } });
+      }
+      const period = await tx.rosterMembership.findFirst({
+        where: { seasonId: id, cancelled: false, OR: outside },
+      });
+      const match = await tx.match.findFirst({
+        where: {
+          seasonId: id,
+          OR: [
+            ...(season.startsAt ? [{ kickoff: matchDates }] : []),
+            ...(season.endsAt
+              ? [
+                  {
+                    kickoff: {
+                      gt: new Date(
+                        new Date(season.endsAt).getTime() + 86400000,
+                      ),
+                    },
+                  },
+                ]
+              : []),
+          ],
+        },
+      });
+      if (period || match)
+        throw new ConflictException({ code: "INVALID_SEASON_PERIOD" });
+    }
     if (season.current)
       await tx.season.updateMany({
         where: { current: true, id: { not: season.id } },
@@ -318,4 +388,60 @@ export async function validateAssetReferences(
       }))
     )
       throw new BadRequestException({ code: "MISSING_MEDIA" });
+}
+
+export async function archivePlayerMemberships(
+  tx: Tx,
+  req: AuthRequest,
+  playerId: string,
+) {
+  const now = new Date();
+  const periods = await tx.rosterMembership.findMany({
+    where: {
+      playerId,
+      cancelled: false,
+      OR: [{ endsAt: null }, { endsAt: { gt: now } }],
+    },
+  });
+  for (const before of periods) {
+    if (before.startsAt >= now) {
+      const match = {
+        seasonId: before.seasonId,
+        OR: [{ homeTeamId: before.teamId }, { awayTeamId: before.teamId }],
+        kickoff: {
+          gte: before.startsAt,
+          ...(before.endsAt ? { lt: before.endsAt } : {}),
+        },
+      };
+      const recorded = await tx.playerMatchStatistics.count({
+        where: {
+          playerId,
+          OR: [{ teamId: before.teamId }, { teamId: null }],
+          match,
+        },
+      });
+      const events = await tx.matchEvent.count({
+        where: { playerId, teamId: before.teamId, match },
+      });
+      if (recorded || events)
+        throw new ConflictException({ code: "HISTORY_PROTECTED" });
+    }
+    const saved = await tx.rosterMembership.update({
+      where: { id: before.id },
+      data: {
+        ...(before.startsAt >= now ? { cancelled: true } : { endsAt: now }),
+        departureReason: before.departureReason,
+        version: { increment: 1 },
+      },
+    });
+    await audit(
+      tx,
+      req,
+      "memberships",
+      before.id,
+      before.startsAt >= now ? "CANCEL" : "END",
+      before,
+      saved,
+    );
+  }
 }

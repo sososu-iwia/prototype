@@ -1,3 +1,4 @@
+import { assertTestDatabase } from "../helpers/test-database";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
@@ -10,8 +11,7 @@ import { db } from "../../apps/api/src/db";
 import { deleteMedia } from "../../apps/api/src/storage";
 
 test("professional CMS preserves club history, permissions and durable content", async (t) => {
-  if (!/test|codex/.test(process.env.DATABASE_URL || ""))
-    throw new Error("An isolated database is required");
+  assertTestDatabase();
   const prefix = `cms-${randomUUID().slice(0, 8)}`,
     password = randomUUID() + randomUUID(),
     passwordHash = await argon2.hash(password, { type: argon2.argon2id });
@@ -105,8 +105,13 @@ test("professional CMS preserves club history, permissions and durable content",
   let spawned: ReturnType<typeof spawn> | undefined;
   const assets: { id: string; url: string; version: number }[] = [];
   const objects = new Map<string, Buffer>();
+  let unavailable = false;
   const objectServer = createServer(async (req, res) => {
     const key = req.url!;
+    if (unavailable && req.method === "GET") {
+      res.writeHead(503).end("Storage temporarily unavailable");
+      return;
+    }
     if (req.method === "PUT") {
       const parts: Buffer[] = [];
       for await (const chunk of req) parts.push(Buffer.from(chunk));
@@ -486,6 +491,33 @@ test("professional CMS preserves club history, permissions and durable content",
     await t.test(
       "users and roles prevent privilege escalation and revoke inactive sessions",
       async () => {
+        const managedAdmin = await create("users", {
+          email: `${prefix}-managed-admin@example.invalid`,
+          password,
+          role: "ADMIN",
+          active: true,
+        });
+        const safeAdmin = await (
+          await call(`/admin/users/${managedAdmin.id}`)
+        ).json();
+        assert.equal(safeAdmin.role, "ADMIN");
+        assert.ok(!("passwordHash" in safeAdmin));
+        assert.equal(
+          (
+            await call(
+              `/admin/users/${user.id}`,
+              "PUT",
+              {
+                email: user.email,
+                role: "SUPER_ADMIN",
+                active: false,
+              },
+              (await db.user.findUniqueOrThrow({ where: { id: user.id } }))
+                .version,
+            )
+          ).status,
+          409,
+        );
         const created = await create("users", {
           email: `${prefix}-managed@example.invalid`,
           password,
@@ -581,8 +613,37 @@ test("professional CMS preserves club history, permissions and durable content",
         assert.equal(r.status, 201);
         const asset = await r.json();
         assets.push(asset);
+        const alt = {
+          kk: "Ә Ғ Қ Ң Ө Ұ Ү Һ І",
+          ru: "Фото игрока",
+          en: "Player photo",
+        };
+        const updatedMedia = await call(
+          `/admin/media/${asset.id}`,
+          "PUT",
+          { alt },
+          asset.version,
+        );
+        assert.equal(updatedMedia.status, 200);
+        asset.version = (await updatedMedia.json()).version;
+        assert.deepEqual(
+          (await (await call(`/admin/media/${asset.id}`)).json()).alt,
+          alt,
+        );
         assert.equal(objects.size, 3);
         assert.equal(asset.storage, "s3");
+        assert.equal(
+          (await fetch(base.replace("/api/v1", "") + asset.url)).status,
+          200,
+        );
+        unavailable = true;
+        try {
+          const outage = await fetch(base.replace("/api/v1", "") + asset.url);
+          assert.equal(outage.status, 503);
+          assert.equal(outage.headers.get("cache-control"), "no-store");
+        } finally {
+          unavailable = false;
+        }
         assert.equal(
           (await fetch(base.replace("/api/v1", "") + asset.url)).status,
           200,
@@ -612,6 +673,91 @@ test("professional CMS preserves club history, permissions and durable content",
           ).status,
           409,
         );
+        for (const format of ["jpeg", "webp"] as const) {
+          const image = await sharp(png)[format]().toBuffer();
+          const upload = new FormData();
+          upload.set(
+            "file",
+            new Blob([image], { type: `image/${format}` }),
+            `photo.${format}`,
+          );
+          const uploaded = await fetch(base + "/admin/media/upload", {
+            method: "POST",
+            headers: {
+              cookie,
+              "X-CSRF-Token": csrf,
+              Origin: "http://localhost:3000",
+            },
+            body: upload,
+          });
+          assert.equal(uploaded.status, 201);
+          const extra = await uploaded.json();
+          assets.push(extra);
+          assert.equal(objects.size, 6);
+          if (format === "jpeg") {
+            const articleBody = {
+              ...source,
+              slug: `${prefix}-media-story`,
+              status: "DRAFT",
+              cover: null,
+              images: [extra.variants.avif],
+              publishedAt: new Date(Date.now() - 1000).toISOString(),
+              translations: [
+                {
+                  locale: "kk",
+                  title: "Сынақ",
+                  excerpt: "Сынақ мәтіні",
+                  body: "Сынақ жаңалығы",
+                },
+              ],
+            };
+            let article = await create("news", articleBody);
+            assert.equal(
+              (
+                await call(
+                  `/admin/media/${extra.id}`,
+                  "DELETE",
+                  undefined,
+                  extra.version,
+                )
+              ).status,
+              409,
+              "A draft article's image variant protects the entire asset",
+            );
+            for (const status of ["PUBLISHED", "DRAFT", "PUBLISHED"]) {
+              const saved = await call(
+                `/admin/news/${article.id}`,
+                "PUT",
+                { ...articleBody, status },
+                article.version,
+              );
+              assert.equal(saved.status, 200);
+              article = await saved.json();
+              assert.equal(
+                (await call(`/news/${articleBody.slug}`)).status,
+                status === "PUBLISHED" ? 200 : 404,
+              );
+            }
+            await db.newsPost.delete({ where: { id: article.id } });
+          }
+          assert.equal(
+            (
+              await call(
+                `/admin/media/${extra.id}`,
+                "DELETE",
+                undefined,
+                extra.version,
+              )
+            ).status,
+            200,
+          );
+          assets.pop();
+          assert.equal(objects.size, 3, "All unused variants must be removed");
+          assert.equal(
+            (await fetch(base.replace("/api/v1", "") + extra.url)).status,
+            404,
+          );
+        }
       },
     );
     await t.test(
@@ -622,14 +768,26 @@ test("professional CMS preserves club history, permissions and durable content",
         await app.close();
         spawned = spawn(process.execPath, ["apps/api/dist/main.js"], {
           env: { ...process.env, API_PORT: port },
-          stdio: "ignore",
+          stdio: ["ignore", "pipe", "pipe"],
         });
-        for (let i = 0; i < 100; i++) {
+        let startupLog = "",
+          ready = false;
+        for (const stream of [spawned.stdout, spawned.stderr])
+          stream?.on("data", (chunk) => {
+            startupLog = (startupLog + chunk.toString()).slice(-2000);
+          });
+        const deadline = Date.now() + 30000;
+        while (Date.now() < deadline) {
+          assert.equal(spawned.exitCode, null, startupLog);
           try {
-            if ((await fetch(base + "/ready")).ok) break;
+            if ((await fetch(base + "/ready")).ok) {
+              ready = true;
+              break;
+            }
           } catch {}
-          await new Promise((r) => setTimeout(r, 50));
+          await new Promise((r) => setTimeout(r, 100));
         }
+        assert.ok(ready, `Restarted API did not become ready: ${startupLog}`);
         const response = await fetch(base + `/players/${playerBody.slug}`);
         assert.equal(response.status, 200);
         const p = await response.json();
@@ -666,6 +824,7 @@ test("professional CMS preserves club history, permissions and durable content",
     );
   } finally {
     spawned?.kill("SIGTERM");
+    await db.newsPost.deleteMany({ where: { source: prefix } });
     await db.player.updateMany({
       where: { slug: { startsWith: prefix } },
       data: { photo: null },

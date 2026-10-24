@@ -1,7 +1,11 @@
+import { assertTestDatabase } from "../helpers/test-database";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
+import { connect } from "node:net";
+import { deflateSync } from "node:zlib";
 import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
 import { unlink } from "node:fs/promises";
 import { join } from "node:path";
 import * as argon2 from "argon2";
@@ -10,10 +14,7 @@ import { createApp } from "../../apps/api/src/main";
 import { db } from "../../apps/api/src/db";
 import { mediaDir } from "../../apps/api/src/config";
 test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads and logout", async (t) => {
-  if (!/test|codex/.test(process.env.DATABASE_URL || ""))
-    throw new Error(
-      "Integration tests require an isolated test/codex database.",
-    );
+  assertTestDatabase();
   const prefix = `qa-${randomUUID().slice(0, 8)}`,
     password = randomUUID() + randomUUID();
   const passwordHash = await argon2.hash(password, { type: argon2.argon2id });
@@ -76,6 +77,43 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
   }
   try {
     await t.test(
+      "the actual API and Nest parser resolutions use security-patched versions",
+      (t) => {
+        const apiRequire = createRequire(
+          process.cwd() + "/apps/api/package.json",
+        );
+        const platformRequire = createRequire(
+          apiRequire.resolve("@nestjs/platform-express"),
+        );
+        const versions = {
+          node: process.version,
+          multer: [] as string[],
+          bodyParser: [] as string[],
+        };
+        for (const from of [apiRequire, platformRequire]) {
+          const uploadVersion = from("multer/package.json").version as string;
+          const jsonVersion = createRequire(
+            from.resolve("express"),
+          )("body-parser/package.json").version as string;
+          const [uploadMajor, uploadMinor] = uploadVersion
+            .split(".")
+            .map(Number);
+          const [jsonMajor, jsonMinor] = jsonVersion.split(".").map(Number);
+          assert.ok(
+            uploadMajor > 2 || (uploadMajor === 2 && uploadMinor >= 5),
+            `Unpatched Multer resolution: ${uploadVersion}`,
+          );
+          assert.ok(
+            jsonMajor > 2 || (jsonMajor === 2 && jsonMinor >= 4),
+            `Unpatched body-parser resolution: ${jsonVersion}`,
+          );
+          versions.multer.push(uploadVersion);
+          versions.bodyParser.push(jsonVersion);
+        }
+        t.diagnostic(JSON.stringify(versions));
+      },
+    );
+    await t.test(
       "console bootstrap creates an admin and never overwrites an existing password",
       async () => {
         const email = `${prefix}-bootstrap@example.invalid`;
@@ -87,7 +125,7 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
         };
         const result = spawnSync(
           process.execPath,
-          ["--import", "tsx", "apps/api/src/bootstrap-admin.ts"],
+          ["apps/api/dist/bootstrap-admin.js"],
           { env, encoding: "utf8" },
         );
         assert.equal(result.status, 0, result.stderr);
@@ -96,7 +134,7 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
           assert.equal(created.role, "SUPER_ADMIN");
           const again = spawnSync(
             process.execPath,
-            ["--import", "tsx", "apps/api/src/bootstrap-admin.ts"],
+            ["apps/api/dist/bootstrap-admin.js"],
             { env, encoding: "utf8" },
           );
           assert.equal(again.status, 1);
@@ -124,6 +162,88 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
         (await request("/admin/players", "GET", undefined, false)).status,
         401,
       ),
+    );
+    await t.test(
+      "malformed and oversized JSON produce safe client errors",
+      async () => {
+        for (const [body, expected] of [
+          ["{", 400],
+          [JSON.stringify({ padding: "x".repeat(270000) }), 413],
+        ] as const) {
+          const response = await fetch(base + "/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Origin: "http://localhost:3000",
+            },
+            body,
+          });
+          assert.equal(
+            response.status,
+            expected,
+            await response.clone().text(),
+          );
+          const result = await response.json();
+          assert.ok(result.error.code);
+          assert.ok(!JSON.stringify(result).includes("padding"));
+          assert.ok(!JSON.stringify(result).includes("stack"));
+        }
+      },
+    );
+    await t.test(
+      "late bytes after a compressed request cannot crash the API",
+      async () => {
+        const target = new URL(base);
+        const frame = Buffer.concat([
+          deflateSync(Buffer.from("{}")),
+          Buffer.from([0]),
+        ]);
+        const tail = Buffer.from("trailing-bytes");
+        await new Promise<void>((resolve, reject) => {
+          const socket = connect({
+            host: "127.0.0.1",
+            port: Number(target.port),
+          });
+          let responded = false,
+            received = "";
+          const timeout = setTimeout(() => {
+            socket.destroy();
+            reject(new Error("Compressed request did not finish"));
+          }, 5000);
+          socket.on("error", reject);
+          socket.on("close", () => {
+            clearTimeout(timeout);
+            if (responded) resolve();
+            else
+              reject(
+                new Error(
+                  "API closed before responding to a valid compressed frame",
+                ),
+              );
+          });
+          socket.on("data", (chunk) => {
+            received += chunk.toString();
+            if (!responded && received.includes("\r\n\r\n")) {
+              responded = true;
+              // Send the remainder only AFTER the decompressor has returned the
+              // parsed body and the application has sent its response.
+              socket.write(tail);
+              setTimeout(() => socket.end(), 60);
+            }
+          });
+          socket.once("connect", () =>
+            socket.write(
+              Buffer.concat([
+                Buffer.from(
+                  `POST /api/v1/health HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\nContent-Encoding: deflate\r\nContent-Length: ${frame.length + tail.length}\r\nConnection: keep-alive\r\n\r\n`,
+                ),
+                frame,
+              ]),
+            ),
+          );
+        });
+        assert.equal((await request("/health")).status, 200);
+      },
     );
     await t.test(
       "login establishes an HttpOnly SameSite cookie with no exposed session token",
@@ -411,10 +531,158 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
         audit.items.some((a: { action: string }) => a.action === "ARCHIVE"),
       );
     });
+    await t.test(
+      "media library browsing does not consume the upload-only limit",
+      async () => {
+        for (let page = 1; page <= 21; page++)
+          assert.equal(
+            (await request(`/admin/media?page=${page}`)).status,
+            200,
+          );
+      },
+    );
+    await t.test(
+      "deactivation during password verification cannot establish a later session",
+      async (t) => {
+        const module = createRequire(process.cwd() + "/package.json")(
+          "argon2",
+        ) as { verify: typeof argon2.verify };
+        const verify = module.verify;
+        let entered!: () => void, release!: () => void;
+        const paused = new Promise<void>((resolve) => {
+          entered = resolve;
+        });
+        const resumed = new Promise<void>((resolve) => {
+          release = resolve;
+        });
+        const spy = t.mock.method(
+          module,
+          "verify",
+          async (...args: Parameters<typeof argon2.verify>) => {
+            entered();
+            await resumed;
+            return verify(...args);
+          },
+        );
+        let pending: Promise<Response> | undefined;
+        let verificationTimer: ReturnType<typeof setTimeout> | undefined;
+        try {
+          pending = request(
+            "/auth/login",
+            "POST",
+            { email: editor.email, password },
+            false,
+          );
+          await Promise.race([
+            paused,
+            new Promise<never>((_, reject) => {
+              verificationTimer = setTimeout(
+                () =>
+                  reject(
+                    new Error("Password verification gate was not reached"),
+                  ),
+                10000,
+              );
+            }),
+          ]);
+          clearTimeout(verificationTimer);
+          const current = await db.user.findUniqueOrThrow({
+            where: { id: editor.id },
+          });
+          const disabled = await request(
+            `/admin/users/${editor.id}`,
+            "PUT",
+            { email: editor.email, role: "EDITOR", active: false },
+            true,
+            { "If-Match": String(current.version) },
+          );
+          assert.equal(disabled.status, 200);
+          release();
+          assert.equal((await pending).status, 401);
+          assert.equal(
+            await db.session.count({ where: { userId: editor.id } }),
+            0,
+          );
+        } finally {
+          clearTimeout(verificationTimer);
+          release();
+          spy.mock.restore();
+          await pending?.catch(() => {});
+          await db.session.deleteMany({ where: { userId: editor.id } });
+          await db.user.update({
+            where: { id: editor.id },
+            data: { active: true },
+          });
+        }
+      },
+    );
     await t.test("logout revokes the server session immediately", async () => {
       assert.equal((await request("/auth/logout", "POST", {})).status, 201);
       assert.equal((await request("/auth/me")).status, 401);
     });
+    await t.test(
+      "repeated incorrect logins are rate limited without exposing credentials",
+      async () => {
+        let blocked: Response | undefined;
+        for (let attempt = 0; attempt < 12; attempt++) {
+          const response = await request(
+            "/auth/login",
+            "POST",
+            {
+              email: `missing-${prefix}@example.invalid`,
+              password: "incorrect-" + password,
+            },
+            false,
+            { "X-Forwarded-For": `192.0.2.${attempt + 1}` },
+          );
+          if (response.status === 429) {
+            blocked = response;
+            break;
+          }
+          assert.equal(response.status, 401);
+        }
+        assert.ok(
+          blocked,
+          "The login limiter must block repeated unsuccessful attempts",
+        );
+        assert.ok(blocked.headers.has("ratelimit"));
+        assert.ok(!(await blocked.text()).includes(password));
+      },
+    );
+    await t.test(
+      "configured trusted proxies give different clients independent login limits",
+      async () => {
+        const previous = process.env.TRUST_PROXY_CIDRS;
+        let proxyApp: Awaited<ReturnType<typeof createApp>> | undefined;
+        try {
+          process.env.TRUST_PROXY_CIDRS = "loopback";
+          proxyApp = await createApp();
+          await proxyApp.listen(0, "127.0.0.1");
+          const url = (await proxyApp.getUrl()) + "/api/v1/auth/login";
+          const attempt = (ip: string) =>
+            fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Origin: "http://localhost:3000",
+                "X-Forwarded-For": ip,
+              },
+              body: JSON.stringify({
+                email: `missing-${prefix}@example.invalid`,
+                password,
+              }),
+            });
+          for (let n = 0; n < 10; n++)
+            assert.equal((await attempt("192.0.2.1")).status, 401);
+          assert.equal((await attempt("192.0.2.1")).status, 429);
+          assert.equal((await attempt("192.0.2.2")).status, 401);
+        } finally {
+          if (previous === undefined) delete process.env.TRUST_PROXY_CIDRS;
+          else process.env.TRUST_PROXY_CIDRS = previous;
+          await proxyApp?.close();
+        }
+      },
+    );
   } finally {
     for (const entry of ids) {
       const delegates = {

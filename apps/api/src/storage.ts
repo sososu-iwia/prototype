@@ -182,16 +182,16 @@ export async function mediaReferences(
   tx: Prisma.TransactionClient,
   url: string,
 ) {
-  const [players, news, gallery, staff, teams] = await Promise.all([
-    tx.player.findMany({ select: { photo: true } }),
-    tx.newsPost.findMany({ select: { cover: true, images: true } }),
-    tx.galleryItem.findMany({ select: { url: true, poster: true } }),
-    tx.staffMember.findMany({ select: { photo: true } }),
-    tx.team.findMany({ select: { logo: true } }),
+  const counts = await Promise.all([
+    tx.player.count({ where: { photo: url } }),
+    tx.newsPost.count({
+      where: { OR: [{ cover: url }, { images: { array_contains: [url] } }] },
+    }),
+    tx.galleryItem.count({ where: { OR: [{ url }, { poster: url }] } }),
+    tx.staffMember.count({ where: { photo: url } }),
+    tx.team.count({ where: { logo: url } }),
   ]);
-  return [...players, ...news, ...gallery, ...staff, ...teams].filter((row) =>
-    JSON.stringify(row).includes(url),
-  ).length;
+  return counts.reduce((sum, count) => sum + count, 0);
 }
 export async function deleteMedia(id: string, req: AuthRequest) {
   return db.$transaction(

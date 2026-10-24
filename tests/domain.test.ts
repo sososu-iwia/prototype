@@ -83,11 +83,11 @@ test("all roster records and 36 original fixtures are imported with provenance; 
   assert.equal(snapshot.news.length, 1);
 });
 test("local Noto font files cover every Kazakh, Russian and English sample glyph", () => {
-  const fonts = ["cyrillic-ext", "cyrillic", "latin"].map((subset) =>
+  const fonts = [
     fontkit.openSync(
-      `apps/web/public/fonts/noto-sans-${subset}-wght-normal.woff2`,
+      "apps/web/public/fonts/noto-sans-2.015-primary-wght-normal.woff2",
     ),
-  );
+  ];
   const sample =
     "ӘәҒғҚқҢңӨөҰұҮүҺһІіАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?.,:;—–«»";
   for (const char of sample)

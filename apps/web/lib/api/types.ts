@@ -57,7 +57,7 @@ export type Player = {
   updatedAt: string;
   seasons: PlayerSeason[];
 };
-export type Team = { id: string; slug: string; names: Text };
+export type Team = { id: string; slug: string; names: Text; managed?: boolean };
 export type Match = {
   id: string;
   kickoff: string;

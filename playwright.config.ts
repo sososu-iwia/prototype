@@ -12,7 +12,8 @@ export default defineConfig({
   timeout: 30000,
   expect: { timeout: 8000 },
   fullyParallel: false,
-  workers: 2,
+  // Keep browser/axe and shared database fixtures sequential on CI and small hosts.
+  workers: 1,
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
     baseURL: process.env.E2E_BASE_URL || "http://localhost:3000",
@@ -22,6 +23,14 @@ export default defineConfig({
   },
   projects: [
     { name: "desktop", use: { viewport: { width: 1440, height: 1000 } } },
+    {
+      name: "tablet",
+      use: {
+        viewport: { width: 768, height: 1024 },
+        isMobile: true,
+        hasTouch: true,
+      },
+    },
     {
       name: "mobile",
       use: {

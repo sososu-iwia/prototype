@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 import type { Locale } from "../../../lib/i18n/config";
 import { cookies } from "next/headers";
 import { Admin } from "../../../features/admin/Admin";
@@ -32,9 +33,11 @@ export default async function AdminPage() {
     }
   } catch {}
   return (
-    <main id="content" className="detail-page">
+    <main id="content" className="detail-page admin-page">
       <div className="container">
-        <Admin initialUser={user} />
+        <NextIntlClientProvider messages={await getMessages()}>
+          <Admin initialUser={user} />
+        </NextIntlClientProvider>
       </div>
     </main>
   );

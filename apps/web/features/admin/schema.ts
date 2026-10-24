@@ -178,6 +178,7 @@ export const entityFields: Record<string, Field[]> = {
     text("source"),
   ],
   memberships: [
+    { key: "cancelled", type: "boolean" },
     { key: "datesVerified", type: "boolean" },
     relation("playerId", "players"),
     relation("teamId", "teams"),
@@ -200,6 +201,7 @@ export const entityFields: Record<string, Field[]> = {
     text("source"),
   ],
   "match-statistics": [
+    relation("teamId", "teams", true),
     relation("matchId", "matches"),
     relation("playerId", "players"),
     number("appearances"),

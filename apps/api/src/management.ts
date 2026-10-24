@@ -11,6 +11,7 @@ import {
   UseGuards,
   ForbiddenException,
   ConflictException,
+  NotFoundException,
 } from "@nestjs/common";
 import { z } from "zod";
 import * as argon2 from "argon2";
@@ -41,6 +42,23 @@ const userInput = z
 @Controller("api/v1/admin")
 @UseGuards(SessionGuard)
 export class ManagementController {
+  @Get("users/:id") async user(
+    @Param("id") id: string,
+    @Req() req: AuthRequest,
+  ) {
+    requireAdmin(req);
+    const user = await db.user.findUnique({
+      where: { id },
+      select: userSelect,
+    });
+    if (!user) throw new NotFoundException({ code: "NOT_FOUND" });
+    return user;
+  }
+  @Get("media/:id") async asset(@Param("id") id: string) {
+    const asset = await db.mediaAsset.findUnique({ where: { id } });
+    if (!asset) throw new NotFoundException({ code: "NOT_FOUND" });
+    return asset;
+  }
   @Get("users") async users(
     @Req() req: AuthRequest,
     @Query() query: Record<string, string>,

@@ -1,3 +1,4 @@
+import { assertTestDatabase } from "../tests/helpers/test-database.ts";
 import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { mkdtemp, mkdir, writeFile, readFile, rm } from "node:fs/promises";
@@ -7,12 +8,12 @@ import { Client } from "pg";
 import sharp from "sharp";
 import { db } from "../apps/api/src/db.ts";
 import { mediaDir } from "../apps/api/src/config.ts";
-if (!/test|codex/.test(process.env.DATABASE_URL || ""))
-  throw new Error("Use an isolated test database");
+assertTestDatabase();
 const folder = await mkdtemp(join(tmpdir(), "ordabasy-restore-check-")),
-  name = `ordabasy_restore_${randomUUID().replaceAll("-", "")}`;
+  name = `ordabasy_restore_test_${randomUUID().replaceAll("-", "")}`;
 const target = new URL(process.env.DATABASE_URL);
 target.pathname = `/${name}`;
+assertTestDatabase(target.toString());
 const owner = new Client({ connectionString: process.env.DATABASE_URL });
 await owner.connect();
 const objectName = `${randomUUID()}.webp`,

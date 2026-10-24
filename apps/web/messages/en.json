@@ -375,7 +375,7 @@
     "unsaved": "You have unsaved changes. Leave without saving?",
     "confirm": "Confirm",
     "cancelledAction": "Action cancelled",
-    "editConflict": "This record changed. Refresh the list and reopen it.",
+    "editConflict": "This record changed. Your edits remain in the form. Load the latest version to merge changes.",
     "historyProtected": "Historical records are protected. End the period instead.",
     "membershipOverlap": "Membership periods overlap in this team.",
     "mediaInUse": "This file is in use.",
@@ -408,6 +408,19 @@
     "clubIdentity": "ORDABASY · Control centre",
     "passwordHint": "New password: 16–128 characters. Leave empty to keep the current password.",
     "datesVerified": "Period dates verified",
-    "snapshotDate": "Archive snapshot date; exact transfer date unknown"
+    "snapshotDate": "Archive snapshot date; exact transfer date unknown",
+    "membershipCancelled": "Erroneous or planned period cancelled",
+    "invalidRelation": "A related record is missing or archived.",
+    "playerNotInRoster": "The player is not in this team at kickoff.",
+    "matchNotPlayed": "Set the match to LIVE or FINISHED first.",
+    "teamRequired": "The player is in both rosters. Select the team explicitly.",
+    "missingMedia": "Select an existing file from the media library.",
+    "invalidCleanSheet": "A clean sheet requires a goalkeeper appearance with no goals conceded.",
+    "invalidSeasonPeriod": "The membership period is outside the season dates.",
+    "refreshVersion": "Refresh version and keep edits",
+    "overlappingChanges": "Another editor also changed these fields:",
+    "keepLocalChanges": "Keep your values for these fields?",
+    "versionRefreshed": "Latest version loaded. Your edits are preserved in the form. Review and save.",
+    "requestTooLarge": "The request is too large. Shorten the text or image list."
   }
 }

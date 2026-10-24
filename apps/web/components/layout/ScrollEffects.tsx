@@ -16,11 +16,13 @@ export function ScrollEffects() {
     const elements = document.querySelectorAll(
       ".section-heading,.about-left,.about-right,.achievement-card,.main-news-card,.small-news-card,.gallery-item,.contact-container",
     );
-    for (const el of elements) {
-      if (el.getBoundingClientRect().top > innerHeight) {
-        el.classList.add("reveal");
-        observer.observe(el);
-      }
+    // Measure first, then write classes; alternating reads/writes forces repeated layout.
+    const belowFold = [...elements].filter(
+      (el) => el.getBoundingClientRect().top > innerHeight,
+    );
+    for (const el of belowFold) {
+      el.classList.add("reveal");
+      observer.observe(el);
     }
     return () => {
       observer.disconnect();

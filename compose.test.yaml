@@ -1,0 +1,37 @@
+services:
+  checks:
+    profiles: [checks]
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+      target: verification
+    environment:
+      DATABASE_URL: ${TEST_RUNTIME_DATABASE_URL:?Use scripts/verify-compose.mjs to provision an isolated runtime role}
+      PUBLIC_ORIGIN: http://localhost:3000
+      TRUSTED_ORIGINS: http://localhost:3000
+      ALLOW_LOCAL_HTTP: "true"
+      COOKIE_SECURE: "false"
+      MEDIA_DIR: /app/media-data
+  object-storage:
+    image: adobe/s3mock:5.1.0
+    environment:
+      COM_ADOBE_TESTING_S3MOCK_STORE_INITIAL_BUCKETS: ordabasy-test,ordabasy-restore
+      COM_ADOBE_TESTING_S3MOCK_STORE_ROOT: /s3mockroot
+      COM_ADOBE_TESTING_S3MOCK_STORE_RETAIN_FILES_ON_EXIT: "true"
+    volumes:
+      - test_objects:/s3mockroot
+  api:
+    environment:
+      DATABASE_URL: ${TEST_RUNTIME_DATABASE_URL:?Use scripts/verify-compose.mjs to provision an isolated runtime role}
+      MEDIA_STORAGE: s3
+      S3_ENDPOINT: http://object-storage:9090
+      S3_BUCKET: ordabasy-test
+      S3_REGION: us-east-1
+      S3_FORCE_PATH_STYLE: "true"
+      S3_ACCESS_KEY_ID: local-test
+      S3_SECRET_ACCESS_KEY: local-test
+    depends_on:
+      object-storage:
+        condition: service_started
+volumes:
+  test_objects:

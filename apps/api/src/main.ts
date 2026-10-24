@@ -40,12 +40,10 @@ class ErrorFilter implements ExceptionFilter {
     if (error instanceof ZodError) {
       status = 400;
       code = "VALIDATION_ERROR";
-      fields = error.issues
-        .slice(0, 10)
-        .map((issue) => ({
-          path: issue.path.join("."),
-          message: issue.message.slice(0, 200),
-        }));
+      fields = error.issues.slice(0, 10).map((issue) => ({
+        path: issue.path.join("."),
+        message: issue.message.slice(0, 200),
+      }));
     } else if (error instanceof HttpException) {
       status = error.getStatus();
       const r = error.getResponse();
@@ -53,6 +51,20 @@ class ErrorFilter implements ExceptionFilter {
         typeof r === "object" && "code" in r
           ? String(r.code)
           : `HTTP_${status}`;
+    } else if (error instanceof Error && "type" in error) {
+      // Express body-parser errors are not Nest HttpExceptions. Never expose
+      // their messages or bodies, and do not turn client payload errors into 500s.
+      const parserErrors: Record<string, [number, string]> = {
+        "entity.too.large": [413, "PAYLOAD_TOO_LARGE"],
+        "entity.parse.failed": [400, "INVALID_JSON"],
+        "request.aborted": [400, "INVALID_REQUEST"],
+        "encoding.unsupported": [415, "UNSUPPORTED_ENCODING"],
+        "charset.unsupported": [415, "UNSUPPORTED_ENCODING"],
+      };
+      [status, code] = parserErrors[String(error.type)] || [
+        500,
+        "INTERNAL_ERROR",
+      ];
     } else if (error instanceof Prisma.PrismaClientKnownRequestError) {
       status = ["P2002", "P2003", "P2034", "P2004"].includes(error.code)
         ? 409
@@ -108,6 +120,14 @@ export async function createApp() {
     bodyParser: false,
     logger: ["error", "warn"],
   });
+  // Trust only operator-specified proxy networks. With no setting, forwarding
+  // headers are ignored. Production API ports must stay private behind Caddy.
+  const trustedProxies = (process.env.TRUST_PROXY_CIDRS || "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (trustedProxies.length)
+    app.getHttpAdapter().getInstance().set("trust proxy", trustedProxies);
   app.use(
     (
       req: express.Request,
@@ -115,7 +135,8 @@ export async function createApp() {
       next: express.NextFunction,
     ) => {
       const start = Date.now(),
-        requestId = randomUUID();
+        requestId = randomUUID(),
+        path = req.path;
       res.setHeader("X-Request-Id", requestId);
       res.on("finish", () =>
         console.log(
@@ -123,7 +144,7 @@ export async function createApp() {
             event: "request",
             requestId,
             method: req.method,
-            path: req.path,
+            path,
             status: res.statusCode,
             durationMs: Date.now() - start,
           }),
@@ -144,9 +165,20 @@ export async function createApp() {
       "Idempotency-Key",
     ],
   });
+  app.use(
+    ["/api/v1/admin", "/api/v1/auth"],
+    (
+      _req: express.Request,
+      res: express.Response,
+      next: express.NextFunction,
+    ) => {
+      res.setHeader("Cache-Control", "no-store");
+      next();
+    },
+  );
   app.use(express.json({ limit: "256kb" }));
   app.use(cookieParser());
-  // The API is private behind Caddy in production; do not trust client-supplied forwarding headers.
+  // req.ip uses the verified proxy chain when configured above.
   app.use(
     "/api/v1",
     rateLimit({
@@ -167,7 +199,7 @@ export async function createApp() {
     }),
   );
   app.use(
-    "/api/v1/admin/media",
+    "/api/v1/admin/media/upload",
     rateLimit({
       windowMs: 60000,
       limit: 20,
@@ -190,22 +222,26 @@ export async function createApp() {
           res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
           res.setHeader("Content-Security-Policy", "default-src 'none'");
           res.send(data);
-        } catch {
-          res.status(404).json({ error: { code: "NOT_FOUND" } });
+        } catch (error) {
+          const missing =
+            (error instanceof HttpException && error.getStatus() === 404) ||
+            (error as NodeJS.ErrnoException)?.code === "ENOENT" ||
+            (error as { $metadata?: { httpStatusCode?: number } })?.$metadata
+              ?.httpStatusCode === 404;
+          res.setHeader("Cache-Control", "no-store");
+          if (!missing)
+            console.error(
+              JSON.stringify({
+                event: "media_read_failed",
+                code: "MEDIA_UNAVAILABLE",
+              }),
+            );
+          res.status(missing ? 404 : 503).json({
+            error: { code: missing ? "NOT_FOUND" : "MEDIA_UNAVAILABLE" },
+          });
         }
       },
     );
-  app.use(
-    ["/api/v1/admin", "/api/v1/auth"],
-    (
-      _req: express.Request,
-      res: express.Response,
-      next: express.NextFunction,
-    ) => {
-      res.setHeader("Cache-Control", "no-store");
-      next();
-    },
-  );
   app.useGlobalFilters(new ErrorFilter());
   const doc = SwaggerModule.createDocument(
     app,
@@ -246,7 +282,10 @@ export async function createApp() {
 if (require.main === module) {
   createApp()
     .then(async (app) => {
-      await app.listen(Number(process.env.API_PORT) || 4000, "0.0.0.0");
+      await app.listen(
+        Number(process.env.API_PORT) || 4000,
+        process.env.API_HOST || "0.0.0.0",
+      );
     })
     .catch(() => {
       console.error(

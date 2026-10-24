@@ -1,0 +1,141 @@
+# Файлы миграции
+
+Это инвентаризация добавленных/переработанных файлов, не git diff: в исходной папке отсутствует `.git`.
+
+Исходные `index.html`, `about.html`, `team.html`, `matches.html`, `news.html`, `css/style.css`, `js/script.js`, `images/**` сохранены вне публичной Next-сборки. Прежние Netlify provider-реализации скопированы в `legacy/netlify`. `.env`, node_modules, compiled artifacts, временные uploads и test traces в этот перечень не включены.
+
+- `.dockerignore`
+- `.env.example`
+- `.github/workflows/ci.yaml`
+- `.gitignore`
+- `.prettierignore`
+- `Dockerfile.api`
+- `Dockerfile.web`
+- `README.md`
+- `apps/api/package.json`
+- `apps/api/prisma.config.ts`
+- `apps/api/prisma/migrations/20261019000000_initial/migration.sql`
+- `apps/api/prisma/migrations/migration_lock.toml`
+- `apps/api/prisma/schema.prisma`
+- `apps/api/prisma/seed.ts`
+- `apps/api/src/auth.ts`
+- `apps/api/src/bootstrap-admin.ts`
+- `apps/api/src/config.ts`
+- `apps/api/src/controllers.ts`
+- `apps/api/src/db.ts`
+- `apps/api/src/domain.ts`
+- `apps/api/src/main.ts`
+- `apps/api/src/standings.ts`
+- `apps/api/tsconfig.json`
+- `apps/web/app/[locale]/about/loading.tsx`
+- `apps/web/app/[locale]/about/page.tsx`
+- `apps/web/app/[locale]/admin/page.tsx`
+- `apps/web/app/[locale]/error.tsx`
+- `apps/web/app/[locale]/gallery/loading.tsx`
+- `apps/web/app/[locale]/gallery/page.tsx`
+- `apps/web/app/[locale]/layout.tsx`
+- `apps/web/app/[locale]/matches/loading.tsx`
+- `apps/web/app/[locale]/matches/page.tsx`
+- `apps/web/app/[locale]/news/[slug]/page.tsx`
+- `apps/web/app/[locale]/news/page.tsx`
+- `apps/web/app/[locale]/page.tsx`
+- `apps/web/app/[locale]/standings/loading.tsx`
+- `apps/web/app/[locale]/standings/page.tsx`
+- `apps/web/app/[locale]/statistics/loading.tsx`
+- `apps/web/app/[locale]/statistics/page.tsx`
+- `apps/web/app/[locale]/team/[slug]/page.tsx`
+- `apps/web/app/[locale]/team/page.tsx`
+- `apps/web/app/layout.tsx`
+- `apps/web/app/not-found.tsx`
+- `apps/web/app/robots.ts`
+- `apps/web/app/sitemap.ts`
+- `apps/web/components/club/PreservedSections.tsx`
+- `apps/web/components/layout/Footer.tsx`
+- `apps/web/components/layout/Header.tsx`
+- `apps/web/components/layout/ScrollEffects.tsx`
+- `apps/web/components/ui/HeroPreload.tsx`
+- `apps/web/components/ui/Loading.tsx`
+- `apps/web/components/ui/Media.tsx`
+- `apps/web/components/ui/Pagination.tsx`
+- `apps/web/components/ui/SectionHeading.tsx`
+- `apps/web/components/ui/State.tsx`
+- `apps/web/features/admin/Admin.tsx`
+- `apps/web/features/admin/schema.ts`
+- `apps/web/features/club/Achievements.tsx`
+- `apps/web/features/gallery/Gallery.tsx`
+- `apps/web/features/gallery/Lightbox.tsx`
+- `apps/web/features/matches/MatchCard.tsx`
+- `apps/web/features/matches/NextMatch.tsx`
+- `apps/web/features/news/NewsGrid.tsx`
+- `apps/web/features/players/PlayerCard.tsx`
+- `apps/web/features/players/Squad.tsx`
+- `apps/web/features/standings/Table.tsx`
+- `apps/web/lib/api/server.ts`
+- `apps/web/lib/api/types.ts`
+- `apps/web/lib/i18n/config.ts`
+- `apps/web/lib/i18n/request.ts`
+- `apps/web/lib/metadata.ts`
+- `apps/web/messages/en.json`
+- `apps/web/messages/kk.json`
+- `apps/web/messages/ru.json`
+- `apps/web/next-env.d.ts`
+- `apps/web/next.config.ts`
+- `apps/web/package.json`
+- `apps/web/proxy.ts`
+- `apps/web/public/fonts/OFL.txt`
+- `apps/web/styles/app.css`
+- `apps/web/styles/fonts.css`
+- `apps/web/styles/legacy.css`
+- `apps/web/tsconfig.json`
+- `compose.prod.yaml`
+- `compose.yaml`
+- `docs/API.md`
+- `docs/ARCHITECTURE.md`
+- `docs/BASELINE_AUDIT.md`
+- `docs/DEPLOYMENT.md`
+- `docs/FONT_REPORT.json`
+- `docs/MEDIA_REPORT.json`
+- `docs/MIGRATION.md`
+- `docs/SECURITY.md`
+- `docs/VERIFICATION.md`
+- `docs/baseline/errors.json`
+- `eslint.config.mjs`
+- `infra/Caddyfile`
+- `legacy/netlify/function-standings.mjs`
+- `legacy/netlify/standings.mjs`
+- `netlify/functions/standings.mjs`
+- `netlify/standings.mjs`
+- `package-lock.json`
+- `package.json`
+- `packages/content/legacy-en.json`
+- `packages/content/legacy-import.json`
+- `packages/content/legacy-kk.json`
+- `packages/content/legacy-ru.json`
+- `packages/content/matches-en.json`
+- `packages/content/matches-kk.json`
+- `packages/content/matches-ru.json`
+- `packages/content/media-manifest.json`
+- `packages/content/public-snapshot.json`
+- `playwright.config.ts`
+- `scripts/accessibility.mjs`
+- `scripts/baseline.mjs`
+- `scripts/build-messages.mjs`
+- `scripts/build-snapshot.mjs`
+- `scripts/generate-preserved-sections.mjs`
+- `scripts/import-legacy.mjs`
+- `scripts/lighthouse.mjs`
+- `scripts/process-media.mjs`
+- `scripts/security-scan.mjs`
+- `scripts/seed-container.mjs`
+- `scripts/seo-check.mjs`
+- `scripts/start-web.mjs`
+- `scripts/visual-check.mjs`
+- `scripts/wait-ready.mjs`
+- `tsconfig.base.json`
+
+Обработанные ресурсы: 34 исходных изображения → responsive WebP/AVIF в `apps/web/public/media`; там же `gallery1.mp4` и `gallery1-poster.webp`. Три локальных WOFF2 + OFL находятся в `apps/web/public/fonts`. Снимки: 12 baseline и 12 final PNG; исходники и отчёты размеров — `docs/MEDIA_REPORT.json`, `docs/FONT_REPORT.json`.
+
+
+## Professional Admin & CMS — последующее расширение
+
+Новые backend-модули: cms.ts (история/версии/аудит), management.ts (users/media), statistics.ts, storage.ts, backup.ts, migrate-media.ts. Обновлены controllers/domain/auth/config/main/db/bootstrap и Prisma schema/seed; добавлены две отдельные миграции без изменения первой. UI: Admin/schema/ConfirmDialog/MediaPicker и только scoped admin CSS, три словаря. Публичные: players archive/profile, redirect старого team profile, номер из membership, news images, sitemap. Добавлены CMS integration/E2E, backup/restore и fresh migration/seed drills; обновлены package lock, CI, Docker runtime tools, prod S3 env, API/security/deployment/architecture docs и ADMIN_GUIDE/ADMIN_IMPLEMENTATION. Исходные legacy HTML/CSS/JS и originals не изменялись.

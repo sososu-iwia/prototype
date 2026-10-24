@@ -13,3 +13,10 @@ media-data/
 
 backups/
 *.dump
+verification/
+
+# Release documentation is part of the handoff. Large screenshots/traces remain local/CI artifacts.
+!README.md
+!docs/
+docs/*
+!docs/*.md

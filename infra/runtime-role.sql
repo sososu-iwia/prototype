@@ -1,0 +1,14 @@
+-- Run as the migration/schema owner through psql, after creating a LOGIN role
+-- with createuser --pwprompt. APP_ROLE is an identifier, never a password.
+-- Example: psql <owner-connection> -v APP_ROLE=ordabasy_app -f infra/runtime-role.sql
+\set ON_ERROR_STOP on
+BEGIN;
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+REVOKE CREATE ON SCHEMA public FROM :"APP_ROLE";
+GRANT CONNECT ON DATABASE :"DBNAME" TO :"APP_ROLE";
+GRANT USAGE ON SCHEMA public TO :"APP_ROLE";
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO :"APP_ROLE";
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO :"APP_ROLE";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO :"APP_ROLE";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE, SELECT ON SEQUENCES TO :"APP_ROLE";
+COMMIT;

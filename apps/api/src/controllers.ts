@@ -48,6 +48,7 @@ import {
   mutationLock,
   validateRelations,
   validateAssetReferences,
+  archivePlayerMemberships,
 } from "./cms";
 import { seasonStatistics } from "./statistics";
 import { uploadImage } from "./storage";
@@ -72,6 +73,47 @@ const publishedNews = () => ({
   ...published,
   publishedAt: { lte: new Date() },
 });
+async function publicPlayerRows(
+  players: Prisma.PlayerGetPayload<{ include: typeof playerInclude }>[],
+  season?: string,
+) {
+  const totals = (
+    await Promise.all(
+      [
+        ...new Set(players.flatMap((p) => p.seasons.map((s) => s.seasonId))),
+      ].map((id) =>
+        seasonStatistics(
+          id,
+          true,
+          players.map((p) => p.id),
+        ),
+      ),
+    )
+  ).flat();
+  const byPeriod = new Map(
+    totals.map((row) => {
+      const { playerSeason: _relation, ...statistics } = row;
+      return [row.playerSeasonId, statistics] as const;
+    }),
+  );
+  const now = new Date();
+  return players.map((player) => ({
+    ...player,
+    rosterNumber:
+      player.memberships.find(
+        (m) =>
+          m.team.managed &&
+          !m.cancelled &&
+          (season
+            ? m.seasonId === season
+            : m.startsAt <= now && (!m.endsAt || m.endsAt > now)),
+      )?.number ?? null,
+    seasons: player.seasons.map((period) => ({
+      ...period,
+      statistics: byPeriod.get(period.id) || null,
+    })),
+  }));
+}
 @ApiTags("Public")
 @Controller("api/v1")
 export class PublicController {
@@ -100,6 +142,7 @@ export class PublicController {
             memberships: {
               some: {
                 team: { managed: true },
+                cancelled: false,
                 ...(season
                   ? { seasonId: season }
                   : {
@@ -122,16 +165,7 @@ export class PublicController {
       db.player.count({ where }),
     ]);
     return {
-      items: items.map((player) => ({
-        ...player,
-        rosterNumber:
-          player.memberships.find((m) =>
-            season
-              ? m.seasonId === season
-              : m.startsAt <= new Date() &&
-                (!m.endsAt || m.endsAt > new Date()),
-          )?.number ?? null,
-      })),
+      items: await publicPlayerRows(items, season),
       total,
       page: p.page,
       limit: p.limit,
@@ -143,17 +177,7 @@ export class PublicController {
       include: playerInclude,
     });
     if (!player) throw new NotFoundException({ code: "NOT_FOUND" });
-    const seasonIds = player.seasons.map((s) => s.seasonId);
-    const totals = (
-      await Promise.all(seasonIds.map((id) => seasonStatistics(id)))
-    ).flat();
-    return {
-      ...player,
-      seasons: player.seasons.map((s) => ({
-        ...s,
-        statistics: totals.find((t) => t.playerSeasonId === s.id) || null,
-      })),
-    };
+    return (await publicPlayerRows([player]))[0];
   }
   @Get("matches") async matches(@Query() query: Record<string, string>) {
     const p = pagination.parse(query);
@@ -318,6 +342,20 @@ export class AuthController {
     const token = newToken(),
       csrf = hash(`csrf:${token}`);
     await db.$transaction(async (tx) => {
+      // Password verification is deliberately outside the mutation lock. Recheck
+      // under the same lock as role/password/deactivation changes before writing
+      // a session, so an in-flight login cannot outlive their revocation.
+      await mutationLock(tx);
+      const current = await tx.user.findUnique({
+        where: { id: user.id },
+        select: { active: true, version: true, passwordHash: true },
+      });
+      if (
+        !current?.active ||
+        current.version !== user.version ||
+        current.passwordHash !== user.passwordHash
+      )
+        throw new UnauthorizedException({ code: "INVALID_CREDENTIALS" });
       await tx.session.deleteMany({ where: { expiresAt: { lt: new Date() } } });
       await tx.session.create({
         data: {
@@ -557,7 +595,11 @@ export class AdminController {
                   },
                 ]
               : ["kk", "ru", "en"].map((l) => ({
-                  names: { path: [l], string_contains: p.q },
+                  names: {
+                    path: [l],
+                    string_contains: p.q,
+                    mode: "insensitive",
+                  },
                 }))),
           ],
         };
@@ -581,7 +623,9 @@ export class AdminController {
           OR: [
             { id: { contains: p.q, mode: "insensitive" } },
             ...["kk", "ru", "en"].map((l) => ({
-              player: { names: { path: [l], string_contains: p.q } },
+              player: {
+                names: { path: [l], string_contains: p.q, mode: "insensitive" },
+              },
             })),
           ],
         };
@@ -639,6 +683,18 @@ export class AdminController {
     @Req() req: AuthRequest,
   ) {
     return this.save(name, undefined, body, req);
+  }
+  @Get(":entity/:id") async detail(
+    @Param("entity") name: string,
+    @Param("id") id: string,
+  ) {
+    const entity = entityName(name);
+    const record = await delegate(db, entity).findUnique({
+      where: { id: idSchema.parse(id) },
+      include: includes(entity),
+    });
+    if (!record) throw new NotFoundException({ code: "NOT_FOUND" });
+    return record;
   }
   @Put(":entity/:id") async update(
     @Param("entity") name: string,
@@ -708,17 +764,15 @@ export class AdminController {
         before.authorId !== req.auth.userId
       )
         throw new ForbiddenException({ code: "NOT_OWNER" });
-      await validateRelations(tx, entity, body, id);
+      Object.assign(data, await validateRelations(tx, entity, body, id));
       await validateAssetReferences(tx, data);
-      if (entity === "players" && data.archivedAt && !before?.archivedAt) {
-        await tx.rosterMembership.updateMany({
-          where: { playerId: id, endsAt: null },
-          data: {
-            endsAt: new Date(),
-            departureReason: "Profile archived",
-            version: { increment: 1 },
-          },
-        });
+      if (
+        entity === "players" &&
+        id &&
+        data.archivedAt &&
+        !before?.archivedAt
+      ) {
+        await archivePlayerMemberships(tx, req, id);
       }
       const saved = await (id
         ? d.update({
@@ -729,8 +783,17 @@ export class AdminController {
         : d.create({ data, include: includes(entity) }));
       // Touch match timestamps when event/line changes so public provenance is current.
       if (entity === "match-events" || entity === "match-statistics")
-        await tx.match.update({
-          where: { id: String(saved.matchId) },
+        await tx.match.updateMany({
+          where: {
+            id: {
+              in: [
+                ...new Set([
+                  String(saved.matchId),
+                  ...(before?.matchId ? [String(before.matchId)] : []),
+                ]),
+              ],
+            },
+          },
           data: { version: { increment: 1 } },
         });
       await audit(
@@ -773,15 +836,7 @@ export class AdminController {
           entity === "players"
             ? { archivedAt: new Date() }
             : { status: "ARCHIVED" };
-        if (entity === "players")
-          await tx.rosterMembership.updateMany({
-            where: { playerId: id, endsAt: null, startsAt: { lt: new Date() } },
-            data: {
-              endsAt: new Date(),
-              departureReason: "Archived",
-              version: { increment: 1 },
-            },
-          });
+        if (entity === "players") await archivePlayerMemberships(tx, req, id);
         const saved = await d.update({
           where: { id },
           data: { ...data, version: { increment: 1 } },

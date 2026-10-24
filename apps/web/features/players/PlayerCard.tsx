@@ -2,19 +2,46 @@ import Link from "next/link";
 import type { Player } from "../../lib/api/types";
 import { localized, type Locale } from "../../lib/i18n/config";
 import { Media } from "../../components/ui/Media";
+export type CardPlayer = Pick<
+  Player,
+  | "id"
+  | "slug"
+  | "names"
+  | "position"
+  | "photo"
+  | "verification"
+  | "rosterNumber"
+> & { seasons?: Player["seasons"] };
+export function toCardPlayer(player: CardPlayer): CardPlayer {
+  const current =
+    player.seasons?.find((period) => period.season.current) ||
+    player.seasons?.[0];
+  return {
+    id: player.id,
+    slug: player.slug,
+    names: player.names,
+    position: player.position,
+    photo: player.photo,
+    verification: player.verification,
+    rosterNumber:
+      player.rosterNumber !== undefined
+        ? player.rosterNumber
+        : (current?.number ?? null),
+  };
+}
 export function PlayerCard({
   player,
   locale,
   positionLabel,
   compact = false,
 }: {
-  player: Player;
+  player: CardPlayer;
   locale: Locale;
   positionLabel: string;
   compact?: boolean;
 }) {
   const current =
-    player.seasons.find((s) => s.season.current) || player.seasons[0];
+    player.seasons?.find((s) => s.season.current) || player.seasons?.[0];
   const number =
     player.rosterNumber !== undefined ? player.rosterNumber : current?.number;
   return (

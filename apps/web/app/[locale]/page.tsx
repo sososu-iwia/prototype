@@ -63,7 +63,7 @@ export default async function Home({
   const cards = featured.length ? featured : players.data.items.slice(0, 4);
   return (
     <main id="content">
-      <HeroPreload />
+      <HeroPreload priority="low" />
       {enabled("hero") && (
         <section className="hero">
           <div className="container hero-container">
@@ -75,10 +75,18 @@ export default async function Home({
               </h1>
               <p className="hero-description">{t("description")}</p>
               <div className="hero-buttons">
-                <Link href={`/${locale}/about`} className="btn btn-primary">
+                <Link
+                  prefetch={false}
+                  href={`/${locale}/about`}
+                  className="btn btn-primary"
+                >
                   {t("aboutButton")}
                 </Link>
-                <Link href={`/${locale}/matches`} className="btn btn-secondary">
+                <Link
+                  prefetch={false}
+                  href={`/${locale}/matches`}
+                  className="btn btn-secondary"
+                >
                   {t("matchesButton")}
                 </Link>
               </div>

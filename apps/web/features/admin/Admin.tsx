@@ -6,6 +6,7 @@ import { localized, locales, type UiKey } from "../../lib/i18n/config";
 import { MediaPicker } from "./MediaPicker";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { entityFields, blank, editable, type Field } from "./schema";
+import { AdminApiError, rebaseDraft } from "./drafts";
 type Row = Record<string, unknown>;
 type User = {
   id: string;
@@ -34,6 +35,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     [sort, setSort] = useState("id"),
     [direction, setDirection] = useState("asc"),
     [dirty, setDirty] = useState(false),
+    [conflict, setConflict] = useState(false),
     [version, setVersion] = useState<number | undefined>(),
     [confirmRequest, setConfirmRequest] = useState<{
       message: string;
@@ -45,6 +47,8 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       {},
     ),
     [dashboard, setDashboard] = useState<Record<string, number>>({});
+  const loadSequence = useRef(0);
+  const baseDraft = useRef<Row>({});
   const csrf = useRef(""),
     formRef = useRef<HTMLFormElement>(null),
     submissionKey = useRef("");
@@ -85,6 +89,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     };
   }, [dirty, u]);
   async function navigate(next: string, filters: Record<string, string> = {}) {
+    if (busy) return;
     if (dirty && !(await ask(u("unsaved")))) return;
     setEntity(next);
     setRows([]);
@@ -92,6 +97,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     setDraft(null);
     setDirty(false);
     setVersion(undefined);
+    setConflict(false);
     setPage(1);
     setQ("");
     setSearch("");
@@ -102,6 +108,8 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
   }
   const label = useCallback(
     (key: string) => {
+      if (key === "cancelled" && entity === "memberships")
+        return u("membershipCancelled");
       if (["goalkeeper", "defender", "midfielder", "forward"].includes(key))
         return s(key as "goalkeeper");
       const states: Record<string, UiKey> = {
@@ -114,7 +122,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       if (states[key]) return u(states[key]);
       return u.has(key as UiKey) ? u(key as UiKey) : key;
     },
-    [u, s],
+    [u, s, entity],
   );
   const api = useCallback(
     async (path: string, init: RequestInit = {}) => {
@@ -134,12 +142,25 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       const body = await res.json().catch(() => ({}));
       if (!res.ok) {
         const code = body.error?.code;
+        const messages = {
+          INVALID_RELATION: "invalidRelation",
+          PLAYER_NOT_IN_ROSTER: "playerNotInRoster",
+          MATCH_NOT_PLAYED: "matchNotPlayed",
+          AMBIGUOUS_TEAM: "teamRequired",
+          MISSING_MEDIA: "missingMedia",
+          INVALID_CLEAN_SHEET: "invalidCleanSheet",
+          INVALID_SEASON_PERIOD: "invalidSeasonPeriod",
+          MATCH_HAS_HISTORY: "historyProtected",
+          PAYLOAD_TOO_LARGE: "requestTooLarge",
+        } as const;
+        if (code in messages)
+          throw new Error(u(messages[code as keyof typeof messages]));
         if (res.status === 401) {
           setUser(null);
           csrf.current = "";
           throw new Error(u("authError"));
         }
-        throw new Error(
+        throw new AdminApiError(
           code === "EDIT_CONFLICT" || code === "VERSION_REQUIRED"
             ? u("editConflict")
             : code === "MEMBERSHIP_OVERLAP"
@@ -161,6 +182,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                             : res.status === 429
                               ? u("rateLimited")
                               : u("error"),
+          String(code || ""),
         );
       }
       return body;
@@ -169,44 +191,50 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
   );
   const load = useCallback(async () => {
     if (!user) return;
+    const sequence = ++loadSequence.current;
     setBusy(true);
     try {
       if (!csrf.current) {
         const response = await api("auth/csrf");
+        if (sequence !== loadSequence.current) return;
         csrf.current = response.csrfToken;
       }
       if (entity === "dashboard") {
-        setDashboard(await api("admin/dashboard"));
+        const result = await api("admin/dashboard");
+        if (sequence !== loadSequence.current) return;
+        setDashboard(result);
       } else if (entity === "settings") {
         const result = await api("admin/settings");
+        if (sequence !== loadSequence.current) return;
         setVersion(result?.version);
         setDirty(false);
-        setDraft(
-          result
-            ? {
-                sections: result.sections,
-                leagueId: result.leagueId,
-                externalSeason: result.externalSeason,
-                timezone: result.timezone,
-              }
-            : {
-                sections: [],
-                leagueId: null,
-                externalSeason: null,
-                timezone: "Asia/Almaty",
-              },
-        );
+        const next = result
+          ? {
+              sections: result.sections,
+              leagueId: result.leagueId,
+              externalSeason: result.externalSeason,
+              timezone: result.timezone,
+            }
+          : {
+              sections: [],
+              leagueId: null,
+              externalSeason: null,
+              timezone: "Asia/Almaty",
+            };
+        baseDraft.current = next;
+        setDraft(next);
       } else {
         const response = await api(
           `admin/${entity}?${new URLSearchParams({ page: String(page), limit: "20", q: search, status: statusFilter, sort, direction, ...relationFilters })}`,
         );
+        if (sequence !== loadSequence.current) return;
         setRows(response.items);
         setTotal(response.total);
       }
     } catch (e) {
-      setMessage((e as Error).message);
+      if (sequence === loadSequence.current) setMessage((e as Error).message);
     } finally {
-      setBusy(false);
+      if (sequence === loadSequence.current) setBusy(false);
     }
   }, [
     user,
@@ -221,6 +249,9 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
   ]);
   useEffect(() => {
     void load();
+    return () => {
+      loadSequence.current++;
+    };
   }, [load]);
   useEffect(() => {
     if (!user || ["settings", "dashboard", "audit", "media"].includes(entity))
@@ -251,7 +282,9 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       .then((result) => {
         if (!cancelled) setRelations(Object.fromEntries(result));
       })
-      .catch((e) => setMessage(e.message));
+      .catch((e) => {
+        if (!cancelled) setMessage(e.message);
+      });
     return () => {
       cancelled = true;
     };
@@ -261,27 +294,31 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     setDirty(true);
   }
   function begin(row?: Row) {
-    setDraft(
-      row
-        ? editable(entity, row)
-        : {
-            ...blank(entity),
-            ...Object.fromEntries(
-              Object.entries(relationFilters).filter(([key]) =>
-                (entityFields[entity] || []).some((f) => f.key === key),
-              ),
+    if (busy) return;
+    const next = row
+      ? editable(entity, row)
+      : {
+          ...blank(entity),
+          ...Object.fromEntries(
+            Object.entries(relationFilters).filter(([key]) =>
+              (entityFields[entity] || []).some((f) => f.key === key),
             ),
-          },
-    );
+          ),
+        };
+    baseDraft.current = next;
+    setDraft(next);
+    setConflict(false);
     setVersion(row?.version as number | undefined);
     submissionKey.current = crypto.randomUUID();
     setDirty(false);
     setEditingId(row ? String(row.id) : undefined);
     setMessage("");
     setPreview(false);
-    requestAnimationFrame(() =>
-      formRef.current?.querySelector<HTMLInputElement>("input")?.focus(),
-    );
+    requestAnimationFrame(() => {
+      const form = formRef.current;
+      if (form && !form.contains(document.activeElement))
+        form.querySelector<HTMLInputElement>("input")?.focus();
+    });
   }
   async function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -306,7 +343,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
   }
   async function save(event: React.FormEvent) {
     event.preventDefault();
-    if (!draft) return;
+    if (!draft || busy) return;
     setBusy(true);
     setMessage("");
     const data = { ...draft };
@@ -331,9 +368,55 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
         },
       });
       setDirty(false);
+      setConflict(false);
       setMessage(u("saved"));
       if (entity !== "settings") setDraft(null);
       await load();
+    } catch (e) {
+      if (
+        e instanceof AdminApiError &&
+        ["EDIT_CONFLICT", "VERSION_REQUIRED"].includes(e.code)
+      )
+        setConflict(true);
+      setMessage((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+  async function refreshVersion() {
+    if (!draft || busy) return;
+    setBusy(true);
+    try {
+      const record = await api(
+        `admin/${entity}${editingId ? `/${editingId}` : ""}`,
+      );
+      const remote =
+        entity === "settings"
+          ? {
+              sections: record.sections,
+              leagueId: record.leagueId,
+              externalSeason: record.externalSeason,
+              timezone: record.timezone,
+            }
+          : editable(entity, record);
+      const { merged, conflicts } = rebaseDraft(
+        baseDraft.current,
+        draft,
+        remote,
+      );
+      if (
+        conflicts.length &&
+        !(await ask(
+          `${u("overlappingChanges")} ${conflicts.map(label).join(", ")}. ${u("keepLocalChanges")}`,
+        ))
+      )
+        return;
+      baseDraft.current = remote;
+      setDraft(merged);
+      setVersion(record.version);
+      setConflict(false);
+      setDirty(true);
+      setMessage(u("versionRefreshed"));
     } catch (e) {
       setMessage((e as Error).message);
     } finally {
@@ -341,6 +424,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     }
   }
   async function remove(row: Row) {
+    if (busy) return;
     if (
       !(await ask(
         entity === "media" ? u("deleteConfirm") : u("archiveConfirm"),
@@ -349,6 +433,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       setMessage(u("cancelledAction"));
       return;
     }
+    setBusy(true);
     try {
       await api(`admin/${entity}/${row.id}`, {
         method: "DELETE",
@@ -358,6 +443,8 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
       await load();
     } catch (e) {
       setMessage((e as Error).message);
+    } finally {
+      setBusy(false);
     }
   }
   async function upload(file: File | undefined) {
@@ -689,6 +776,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
         </span>
         <button
           className="btn btn-secondary"
+          disabled={busy}
           onClick={async () => {
             if (dirty && !(await ask(u("unsaved")))) return;
             try {
@@ -715,6 +803,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
               key={e}
               className={`filter-btn${entity === e ? " active" : ""}`}
               aria-pressed={entity === e}
+              disabled={busy}
               onClick={() => void navigate(e)}
             >
               {label(e)}
@@ -762,7 +851,11 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                     <button className="btn btn-primary">{u("search")}</button>
                   </form>
                   {!["audit", "media"].includes(entity) && (
-                    <button className="btn btn-primary" onClick={() => begin()}>
+                    <button
+                      className="btn btn-primary"
+                      disabled={busy}
+                      onClick={() => begin()}
+                    >
                       {u("create")}
                     </button>
                   )}
@@ -916,6 +1009,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                         <code>{String(asset.url)}</code>
                         <button
                           className="text-action"
+                          disabled={busy}
                           onClick={() => begin(asset)}
                         >
                           {u("edit")}
@@ -1044,6 +1138,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                               <>
                                 <button
                                   className="text-action"
+                                  disabled={busy}
                                   onClick={() => begin(row)}
                                 >
                                   {u("edit")}
@@ -1058,6 +1153,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                   ].includes(entity) && (
                                     <button
                                       className="text-action danger"
+                                      disabled={busy}
                                       onClick={() => remove(row)}
                                     >
                                       {u("archiveAction")}
@@ -1077,6 +1173,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                 {entity === "players" && (
                                   <button
                                     className="text-action"
+                                    disabled={busy}
                                     onClick={() =>
                                       void navigate("memberships", {
                                         playerId: String(row.id),
@@ -1090,6 +1187,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                   <>
                                     <button
                                       className="text-action"
+                                      disabled={busy}
                                       onClick={() =>
                                         void navigate("match-events", {
                                           matchId: String(row.id),
@@ -1100,6 +1198,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                     </button>
                                     <button
                                       className="text-action"
+                                      disabled={busy}
                                       onClick={() =>
                                         void navigate("match-statistics", {
                                           matchId: String(row.id),
@@ -1140,79 +1239,99 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
             )}
             {draft && (
               <form ref={formRef} className="admin-form" onSubmit={save}>
-                <div className="admin-toolbar">
-                  <h2>{editingId ? u("edit") : label(entity)}</h2>
-                  {dirty && <span className="status-badge">● {u("save")}</span>}
-                  <div className="language-switcher">
-                    {locales.map((l) => (
+                <fieldset
+                  className="admin-form-body"
+                  disabled={busy}
+                  aria-label={label(entity)}
+                >
+                  <div className="admin-toolbar">
+                    <h2>{editingId ? u("edit") : label(entity)}</h2>
+                    {dirty && (
+                      <span className="status-badge">● {u("save")}</span>
+                    )}
+                    <div className="language-switcher">
+                      {locales.map((l) => (
+                        <button
+                          type="button"
+                          className={`lang-btn${tab === l ? " active" : ""}`}
+                          key={l}
+                          aria-pressed={tab === l}
+                          onClick={() => setTab(l)}
+                        >
+                          {l.toUpperCase()}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="admin-help">{u("sourceHint")}</p>
+                  {conflict && (
+                    <div className="source-notice" role="alert">
+                      <p>{u("editConflict")}</p>
                       <button
                         type="button"
-                        className={`lang-btn${tab === l ? " active" : ""}`}
-                        key={l}
-                        aria-pressed={tab === l}
-                        onClick={() => setTab(l)}
+                        className="btn btn-secondary"
+                        onClick={() => void refreshVersion()}
                       >
-                        {l.toUpperCase()}
+                        {u("refreshVersion")}
                       </button>
-                    ))}
-                  </div>
-                </div>
-                <p className="admin-help">{u("sourceHint")}</p>
-                {["statistics", "match-statistics"].includes(entity) && (
-                  <p className="source-notice">{u("statisticsHint")}</p>
-                )}
-                {entity === "settings" ? (
-                  <>
-                    <fieldset>
-                      <legend>{u("sections")}</legend>
-                      {[
-                        "hero",
-                        "club-stats",
-                        "about",
-                        "matches",
-                        "team",
-                        "achievements",
-                        "news",
-                        "gallery",
-                        "contact",
-                      ].map((section) => (
-                        <label className="checkbox-field" key={section}>
-                          <input
-                            type="checkbox"
-                            checked={(draft.sections as string[]).includes(
-                              section,
-                            )}
-                            onChange={(e) =>
-                              change(
-                                "sections",
-                                e.target.checked
-                                  ? [...(draft.sections as string[]), section]
-                                  : (draft.sections as string[]).filter(
-                                      (v) => v !== section,
-                                    ),
-                              )
+                    </div>
+                  )}
+                  {["statistics", "match-statistics"].includes(entity) && (
+                    <p className="source-notice">{u("statisticsHint")}</p>
+                  )}
+                  {entity === "settings" ? (
+                    <>
+                      <fieldset>
+                        <legend>{u("sections")}</legend>
+                        {[
+                          "hero",
+                          "club-stats",
+                          "about",
+                          "matches",
+                          "team",
+                          "achievements",
+                          "news",
+                          "gallery",
+                          "contact",
+                        ].map((section) => (
+                          <label className="checkbox-field" key={section}>
+                            <input
+                              type="checkbox"
+                              checked={(draft.sections as string[]).includes(
+                                section,
+                              )}
+                              onChange={(e) =>
+                                change(
+                                  "sections",
+                                  e.target.checked
+                                    ? [...(draft.sections as string[]), section]
+                                    : (draft.sections as string[]).filter(
+                                        (v) => v !== section,
+                                      ),
+                                )
+                              }
+                            />
+                            {
+                              (
+                                {
+                                  hero: s("home"),
+                                  "club-stats": u("stats"),
+                                  about: s("about"),
+                                  matches: s("matches"),
+                                  team: s("team"),
+                                  achievements: u("achievements"),
+                                  news: s("news"),
+                                  gallery: s("gallery"),
+                                  contact: s("contactTitle"),
+                                } as Record<string, string>
+                              )[section]
                             }
-                          />
-                          {
-                            (
-                              {
-                                hero: s("home"),
-                                "club-stats": u("stats"),
-                                about: s("about"),
-                                matches: s("matches"),
-                                team: s("team"),
-                                achievements: u("achievements"),
-                                news: s("news"),
-                                gallery: s("gallery"),
-                                contact: s("contactTitle"),
-                              } as Record<string, string>
-                            )[section]
-                          }
-                        </label>
-                      ))}
-                    </fieldset>
-                    {(["leagueId", "externalSeason", "timezone"] as const).map(
-                      (key) => (
+                          </label>
+                        ))}
+                      </fieldset>
+                      {(
+                        ["leagueId", "externalSeason", "timezone"] as const
+                      ).map((key) => (
                         <label key={key}>
                           {u(key)}
                           <input
@@ -1224,146 +1343,147 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                             maxLength={80}
                           />
                         </label>
-                      ),
-                    )}
-                  </>
-                ) : (
-                  (entityFields[entity] || []).map(field)
-                )}
-                {entity === "news" && (
-                  <fieldset>
-                    <legend>
-                      {u("news")} ({tab.toUpperCase()})
-                    </legend>
-                    {(["title", "excerpt", "body"] as const).map((key) => {
-                      const translations = (draft.translations || []) as Row[];
-                      const current = translations.find(
-                        (t) => t.locale === tab,
-                      ) || { locale: tab, title: "", excerpt: "", body: "" };
-                      return (
-                        <label key={key}>
-                          {u(key)}
-                          {key === "title" ? (
-                            <input
-                              maxLength={200}
-                              required={tab === "kk"}
-                              value={String(current[key] || "")}
-                              onChange={(e) =>
-                                change("translations", [
-                                  ...translations.filter(
-                                    (t) => t.locale !== tab,
-                                  ),
-                                  { ...current, [key]: e.target.value },
-                                ])
-                              }
-                            />
-                          ) : (
-                            <textarea
-                              rows={key === "body" ? 12 : 3}
-                              maxLength={key === "body" ? 50000 : 500}
-                              required={tab === "kk"}
-                              value={String(current[key] || "")}
-                              onChange={(e) =>
-                                change("translations", [
-                                  ...translations.filter(
-                                    (t) => t.locale !== tab,
-                                  ),
-                                  { ...current, [key]: e.target.value },
-                                ])
-                              }
-                            />
-                          )}
-                        </label>
-                      );
-                    })}
-                  </fieldset>
-                )}
-                {String(
-                  draft.photo || draft.cover || draft.url || draft.logo || "",
-                ).startsWith("/") && (
-                  <img
-                    className="admin-photo-preview"
-                    src={String(
-                      draft.photo || draft.cover || draft.url || draft.logo,
-                    )}
-                    alt={u("preview")}
-                  />
-                )}
-                {["players", "news", "gallery", "staff", "teams"].includes(
-                  entity,
-                ) && (
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={async () => {
-                      try {
-                        setAssets((await api("admin/media?limit=100")).items);
-                        setMediaPicker(true);
-                      } catch (e) {
-                        setMessage((e as Error).message);
-                      }
-                    }}
-                  >
-                    {u("chooseMedia")}
-                  </button>
-                )}
-                {["players", "news", "gallery", "staff", "teams"].includes(
-                  entity,
-                ) && (
-                  <label>
-                    {u("upload")}
-                    <input
-                      type="file"
-                      accept="image/jpeg,image/png,image/webp"
-                      onChange={(e) => void upload(e.target.files?.[0])}
+                      ))}
+                    </>
+                  ) : (
+                    (entityFields[entity] || []).map(field)
+                  )}
+                  {entity === "news" && (
+                    <fieldset>
+                      <legend>
+                        {u("news")} ({tab.toUpperCase()})
+                      </legend>
+                      {(["title", "excerpt", "body"] as const).map((key) => {
+                        const translations = (draft.translations ||
+                          []) as Row[];
+                        const current = translations.find(
+                          (t) => t.locale === tab,
+                        ) || { locale: tab, title: "", excerpt: "", body: "" };
+                        return (
+                          <label key={key}>
+                            {u(key)}
+                            {key === "title" ? (
+                              <input
+                                maxLength={200}
+                                required={tab === "kk"}
+                                value={String(current[key] || "")}
+                                onChange={(e) =>
+                                  change("translations", [
+                                    ...translations.filter(
+                                      (t) => t.locale !== tab,
+                                    ),
+                                    { ...current, [key]: e.target.value },
+                                  ])
+                                }
+                              />
+                            ) : (
+                              <textarea
+                                rows={key === "body" ? 12 : 3}
+                                maxLength={key === "body" ? 50000 : 500}
+                                required={tab === "kk"}
+                                value={String(current[key] || "")}
+                                onChange={(e) =>
+                                  change("translations", [
+                                    ...translations.filter(
+                                      (t) => t.locale !== tab,
+                                    ),
+                                    { ...current, [key]: e.target.value },
+                                  ])
+                                }
+                              />
+                            )}
+                          </label>
+                        );
+                      })}
+                    </fieldset>
+                  )}
+                  {String(
+                    draft.photo || draft.cover || draft.url || draft.logo || "",
+                  ).startsWith("/") && (
+                    <img
+                      className="admin-photo-preview"
+                      src={String(
+                        draft.photo || draft.cover || draft.url || draft.logo,
+                      )}
+                      alt={u("preview")}
                     />
-                  </label>
-                )}
-                {entity === "news" && (
-                  <>
-                    <button
-                      type="button"
-                      className="text-action"
-                      onClick={() => setPreview((v) => !v)}
-                    >
-                      {u("preview")}
-                    </button>
-                    {preview && (
-                      <article className="preview-panel">
-                        {((draft.translations || []) as Row[])
-                          .filter((t) => t.locale === tab)
-                          .map((t) => (
-                            <div key={String(t.locale)}>
-                              <h2>{String(t.title)}</h2>
-                              <p>{String(t.excerpt)}</p>
-                              <div className="article-body">
-                                {String(t.body)}
-                              </div>
-                            </div>
-                          ))}
-                      </article>
-                    )}
-                  </>
-                )}
-                <div className="admin-toolbar">
-                  <button className="btn btn-primary" disabled={busy}>
-                    {u("save")}
-                  </button>
-                  {entity !== "settings" && (
+                  )}
+                  {["players", "news", "gallery", "staff", "teams"].includes(
+                    entity,
+                  ) && (
                     <button
                       type="button"
                       className="btn btn-secondary"
                       onClick={async () => {
-                        if (dirty && !(await ask(u("unsaved")))) return;
-                        setDraft(null);
-                        setDirty(false);
-                        setMessage(u("cancelledAction"));
+                        try {
+                          setAssets((await api("admin/media?limit=100")).items);
+                          setMediaPicker(true);
+                        } catch (e) {
+                          setMessage((e as Error).message);
+                        }
                       }}
                     >
-                      {u("cancel")}
+                      {u("chooseMedia")}
                     </button>
                   )}
-                </div>
+                  {["players", "news", "gallery", "staff", "teams"].includes(
+                    entity,
+                  ) && (
+                    <label>
+                      {u("upload")}
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                        onChange={(e) => void upload(e.target.files?.[0])}
+                      />
+                    </label>
+                  )}
+                  {entity === "news" && (
+                    <>
+                      <button
+                        type="button"
+                        className="text-action"
+                        onClick={() => setPreview((v) => !v)}
+                      >
+                        {u("preview")}
+                      </button>
+                      {preview && (
+                        <article className="preview-panel">
+                          {((draft.translations || []) as Row[])
+                            .filter((t) => t.locale === tab)
+                            .map((t) => (
+                              <div key={String(t.locale)}>
+                                <h2>{String(t.title)}</h2>
+                                <p>{String(t.excerpt)}</p>
+                                <div className="article-body">
+                                  {String(t.body)}
+                                </div>
+                              </div>
+                            ))}
+                        </article>
+                      )}
+                    </>
+                  )}
+                  <div className="admin-toolbar">
+                    <button className="btn btn-primary" disabled={busy}>
+                      {u("save")}
+                    </button>
+                    {entity !== "settings" && (
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={async () => {
+                          if (dirty && !(await ask(u("unsaved")))) return;
+                          setDraft(null);
+                          setDirty(false);
+                          setMessage(u("cancelledAction"));
+                        }}
+                      >
+                        {u("cancel")}
+                      </button>
+                    )}
+                  </div>
+                </fieldset>
               </form>
             )}
           </>

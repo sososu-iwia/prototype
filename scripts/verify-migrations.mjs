@@ -1,13 +1,14 @@
+import { assertTestDatabase } from "../tests/helpers/test-database.ts";
 import "../apps/api/src/config.ts";
 import { Client } from "pg";
 import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
-if (!/test|codex/.test(process.env.DATABASE_URL || ""))
-  throw new Error("Use an isolated test/codex database");
-const name = `ordabasy_migration_${randomUUID().replaceAll("-", "")}`,
+assertTestDatabase();
+const name = `ordabasy_migration_test_${randomUUID().replaceAll("-", "")}`,
   owner = new Client({ connectionString: process.env.DATABASE_URL }),
   target = new URL(process.env.DATABASE_URL);
 target.pathname = `/${name}`;
+assertTestDatabase(target.toString());
 await owner.connect();
 const env = { ...process.env, DATABASE_URL: target.toString() };
 function run(script) {

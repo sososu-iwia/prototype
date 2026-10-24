@@ -13,19 +13,45 @@ export const mediaDir = resolve(
   "../../..",
   process.env.MEDIA_DIR || "media-data",
 );
+function localHttpPreview() {
+  return (
+    process.env.ALLOW_LOCAL_HTTP === "true" &&
+    [...origins, process.env.PUBLIC_ORIGIN || origins[0]].every((o) =>
+      /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o),
+    )
+  );
+}
+function validOrigin(value: string, httpsOnly = false) {
+  try {
+    const url = new URL(value);
+    return (
+      url.origin === value &&
+      !url.username &&
+      !url.password &&
+      !url.hostname.includes("*") &&
+      (httpsOnly
+        ? url.protocol === "https:"
+        : ["http:", "https:"].includes(url.protocol))
+    );
+  } catch {
+    return false;
+  }
+}
 export function validateConfig() {
   if (!process.env.DATABASE_URL)
     throw new Error(
       "DATABASE_URL is required. Copy .env.example and configure PostgreSQL.",
     );
-  const localHttp =
-    process.env.ALLOW_LOCAL_HTTP === "true" &&
-    origins.every((o) => /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(o));
+  const publicOrigin = process.env.PUBLIC_ORIGIN || origins[0];
+  if (![...origins, publicOrigin].every((value) => validOrigin(value)))
+    throw new Error(
+      "PUBLIC_ORIGIN and TRUSTED_ORIGINS must contain exact HTTP(S) origins without paths, credentials or wildcards.",
+    );
   if (
     production &&
-    !localHttp &&
+    !localHttpPreview() &&
     (!secureCookie ||
-      origins.some((o) => !o.startsWith("https://") || o.includes("*")))
+      ![...origins, publicOrigin].every((value) => validOrigin(value, true)))
   )
     throw new Error(
       "Production requires HTTPS trusted origins and COOKIE_SECURE=true.",
@@ -33,12 +59,13 @@ export function validateConfig() {
 }
 
 export function validateStorage() {
+  if (
+    process.env.MEDIA_STORAGE &&
+    !["local", "s3"].includes(process.env.MEDIA_STORAGE)
+  )
+    throw new Error("MEDIA_STORAGE must be local or s3");
   if (process.env.MEDIA_STORAGE === "s3" && !process.env.S3_BUCKET)
     throw new Error("S3_BUCKET required");
-  if (
-    production &&
-    process.env.ALLOW_LOCAL_HTTP !== "true" &&
-    process.env.MEDIA_STORAGE !== "s3"
-  )
+  if (production && !localHttpPreview() && process.env.MEDIA_STORAGE !== "s3")
     throw new Error("Production requires independent S3 media storage");
 }
