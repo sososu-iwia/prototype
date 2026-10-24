@@ -152,6 +152,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
           INVALID_SEASON_PERIOD: "invalidSeasonPeriod",
           MATCH_HAS_HISTORY: "historyProtected",
           PAYLOAD_TOO_LARGE: "requestTooLarge",
+          MEDIA_STORAGE_DISABLED: "mediaDisabled",
         } as const;
         if (code in messages)
           throw new Error(u(messages[code as keyof typeof messages]));

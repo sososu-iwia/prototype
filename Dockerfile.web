@@ -10,10 +10,13 @@ WORKDIR /app
 COPY tsconfig.base.json ./
 COPY apps/web apps/web
 COPY packages/content packages/content
-# Railway passes service variables to declared Docker build arguments.
+# Railway and Render pass service variables to declared Docker build arguments.
 # Next.js serializes rewrites at build time; runtime env alone cannot change them.
 ARG API_INTERNAL_URL=http://api:4000/api/v1
-ENV NEXT_TELEMETRY_DISABLED=1 API_INTERNAL_URL=${API_INTERNAL_URL}
+ARG API_ORIGIN=
+ARG PUBLIC_ORIGIN=
+ARG RENDER=
+ENV NEXT_TELEMETRY_DISABLED=1 API_INTERNAL_URL=${API_INTERNAL_URL} API_ORIGIN=${API_ORIGIN} PUBLIC_ORIGIN=${PUBLIC_ORIGIN} RENDER=${RENDER}
 RUN npm run build -w apps/web
 FROM node:24-bookworm-slim AS runtime
 WORKDIR /app

@@ -140,7 +140,9 @@ async function main() {
         update: {},
       });
     },
-    { timeout: 30000 },
+    // The one-off Render Free release connects over external TLS. Its initial
+    // transaction acquisition and seed round trips need a bounded WAN budget.
+    { maxWait: 15000, timeout: 120000 },
   );
   console.log(
     "Imported 20 archive players, 36 draft matches, 3 draft articles, 6 gallery items. No fabricated statistics. Existing editorial changes retained.",

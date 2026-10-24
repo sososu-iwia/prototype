@@ -97,3 +97,5 @@ node scripts/build-snapshot.mjs
 
 
 Профессиональная панель: [руководство администратора](docs/ADMIN_GUIDE.md), [результаты внедрения](docs/ADMIN_IMPLEMENTATION.md). Новые команды: `npm run test:restore`, `npm run backup:create -- /absolute/new-backup-directory`, `npm run backup:restore -- /absolute/backup-directory`, `npm run media:migrate-storage`. Production требует отдельный S3 bucket; параметры находятся в `.env.example`.
+
+Render: бесплатное временное демо, отдельные миграции и режим медиа — [docs/RENDER.md](docs/RENDER.md).

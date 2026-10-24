@@ -322,6 +322,7 @@
     "conflict": "This record exists or is referenced by other records.",
     "forbidden": "You do not have permission for this action.",
     "invalidUpload": "Choose a JPEG, PNG or WebP image up to 10 MB.",
+    "mediaDisabled": "Image uploads are disabled in this demo until persistent S3 storage is connected.",
     "archivedContent": "Archived copy. Historical claims await editorial verification.",
     "rateLimited": "Too many requests. Please try again shortly.",
     "memberships": "Roster history",

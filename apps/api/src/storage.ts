@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ConflictException,
   NotFoundException,
+  ServiceUnavailableException,
 } from "@nestjs/common";
 import {
   S3Client,
@@ -36,7 +37,15 @@ const s3 = () =>
   });
 const bucket = () => process.env.S3_BUCKET!;
 export const storageDriver = () =>
-  process.env.MEDIA_STORAGE === "s3" ? "s3" : "local";
+  process.env.MEDIA_STORAGE === "disabled"
+    ? "disabled"
+    : process.env.MEDIA_STORAGE === "s3"
+      ? "s3"
+      : "local";
+function requireMediaStorage() {
+  if (storageDriver() === "disabled")
+    throw new ServiceUnavailableException({ code: "MEDIA_STORAGE_DISABLED" });
+}
 async function put(name: string, data: Buffer, mime: string, driver: string) {
   if (driver === "s3") {
     const client = s3();
@@ -74,6 +83,7 @@ async function removeFile(name: string, driver: string) {
     });
 }
 export async function readUpload(name: string) {
+  requireMediaStorage();
   if (!/^[a-f0-9-]{36}(?:-thumb)?\.(webp|avif)$/.test(name))
     throw new NotFoundException({ code: "NOT_FOUND" });
   const path = `/uploads/${name}`;
@@ -102,6 +112,7 @@ export async function readUpload(name: string) {
   return readFile(join(mediaDir, name));
 }
 export async function uploadImage(file: Express.Multer.File, req: AuthRequest) {
+  requireMediaStorage();
   if (
     !file ||
     !["image/jpeg", "image/png", "image/webp"].includes(file.mimetype) ||
@@ -194,6 +205,7 @@ export async function mediaReferences(
   return counts.reduce((sum, count) => sum + count, 0);
 }
 export async function deleteMedia(id: string, req: AuthRequest) {
+  requireMediaStorage();
   return db.$transaction(
     async (tx) => {
       await mutationLock(tx);

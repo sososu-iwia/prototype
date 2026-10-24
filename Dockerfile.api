@@ -34,6 +34,7 @@ COPY --from=build --chown=node:node /app/apps/api/dist ./apps/api/dist
 COPY --from=build --chown=node:node /app/apps/api/prisma ./apps/api/prisma
 COPY --from=build --chown=node:node /app/apps/api/prisma.config.ts ./apps/api/prisma.config.ts
 COPY --chown=node:node scripts/railway-predeploy.mjs ./apps/api/railway-predeploy.mjs
+COPY --chown=node:node scripts/render-check.mjs scripts/render-start.mjs ./apps/api/
 RUN mkdir -p /app/media-data && chown node:node /app/media-data
 USER node
 WORKDIR /app/apps/api

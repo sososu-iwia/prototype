@@ -237,6 +237,20 @@ try {
       RAILWAY_SEED_ON_DEPLOY: "true",
     },
   );
+  // A real DML connection must pass the Render startup gate without owner credentials.
+  await compose(
+    [
+      "run",
+      "--rm",
+      "--no-deps",
+      "-e",
+      "DATABASE_URL",
+      "migrate",
+      "node",
+      "render-check.mjs",
+    ],
+    { DATABASE_URL: runtimeDatabaseUrl },
+  );
   await compose(["up", "--no-build", "-d", "--wait", "--wait-timeout", "300"]);
   await compose(["run", "--rm", "--no-deps", "checks"]);
   await compose([
