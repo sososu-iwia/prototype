@@ -213,6 +213,30 @@ try {
     "-c",
     "SELECT rolname,rolsuper,rolcreatedb,rolcreaterole,rolbypassrls FROM pg_roles WHERE rolname='ordabasy_runtime'",
   ]);
+  // Exercise the actual Railway command in the production image, including the
+  // repeat seed and ledger permissions used later by the backup/restore drill.
+  // Pass secret values via environment, never Docker argv or log messages.
+  await compose(
+    [
+      "run",
+      "--rm",
+      "--no-deps",
+      "-e",
+      "DATABASE_URL",
+      "-e",
+      "MIGRATION_DATABASE_URL",
+      "-e",
+      "RAILWAY_SEED_ON_DEPLOY",
+      "migrate",
+      "node",
+      "railway-predeploy.mjs",
+    ],
+    {
+      DATABASE_URL: runtimeDatabaseUrl,
+      MIGRATION_DATABASE_URL: `postgresql://ordabasy:${password}@db:5432/ordabasy_test`,
+      RAILWAY_SEED_ON_DEPLOY: "true",
+    },
+  );
   await compose(["up", "--no-build", "-d", "--wait", "--wait-timeout", "300"]);
   await compose(["run", "--rm", "--no-deps", "checks"]);
   await compose([

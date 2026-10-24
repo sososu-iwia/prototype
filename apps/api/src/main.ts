@@ -121,7 +121,7 @@ export async function createApp() {
     logger: ["error", "warn"],
   });
   // Trust only operator-specified proxy networks. With no setting, forwarding
-  // headers are ignored. Production API ports must stay private behind Caddy.
+  // headers are ignored. Production API ports must stay private behind the trusted reverse proxy.
   const trustedProxies = (process.env.TRUST_PROXY_CIDRS || "")
     .split(",")
     .map((value) => value.trim())
@@ -283,7 +283,7 @@ if (require.main === module) {
   createApp()
     .then(async (app) => {
       await app.listen(
-        Number(process.env.API_PORT) || 4000,
+        Number(process.env.PORT || process.env.API_PORT) || 4000,
         process.env.API_HOST || "0.0.0.0",
       );
     })
