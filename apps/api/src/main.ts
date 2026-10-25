@@ -319,7 +319,9 @@ export async function createApp() {
   await app.init();
   return app;
 }
-if (require.main === module) {
+// Vercel loads the framework entrypoint as a module and intercepts listen().
+// Ordinary Node imports (integration tests and operator tools) stay side-effect free.
+if (require.main === module || process.env.VERCEL === "1") {
   createApp()
     .then(async (app) => {
       await app.listen(
