@@ -26,7 +26,7 @@
 
 Файлы apps/web/vercel.json и apps/api/vercel.json содержат команды сборки. В API явно задан dist: официальный NestJS-сборщик выбирает dist/main.js, сохраняя TypeScript decorator metadata. При старте createApp проверяет роль, маркер окружения и SHA-256 каждой миграции. Он не выполняет DDL, migrate или seed. Vercel управляет обработкой HTTP и жизненным циклом Function; собственного постоянного сервера/диска не требуется.
 
-Для API задайте в Functions максимальное время 300 секунд (Hobby Fluid). Конфигурация functions для dist/main.js также сохранена в vercel.json; фактическое значение нужно проверить в облачном deployment. Не полагайтесь на 5 GB Large Functions beta: целевой обычный лимит пакета 250 MB.
+Для API задайте в Functions максимальное время 300 секунд (Hobby Fluid). Не добавляйте functions glob для dist/main.js: облачный валидатор Vercel считает его несопоставленным. Предел 300 секунд задаётся в Dashboard; фактическое значение нужно проверить в облачном deployment. Не полагайтесь на 5 GB Large Functions beta: целевой обычный лимит пакета 250 MB.
 
 ## Environment Variables
 

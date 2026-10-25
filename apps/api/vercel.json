@@ -6,11 +6,6 @@
   "regions": [
     "fra1"
   ],
-  "functions": {
-    "dist/main.js": {
-      "maxDuration": 300
-    }
-  },
   "crons": [
     {
       "path": "/internal/media-cleanup",
