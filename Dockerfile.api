@@ -10,6 +10,7 @@ FROM deps AS build
 COPY tsconfig.base.json ./
 COPY apps/api apps/api
 COPY packages/content packages/content
+COPY scripts/build-api-release.mjs scripts/render-check.mjs scripts/
 RUN npm run build -w apps/api
 FROM build AS verification-code
 COPY tests tests
