@@ -20,3 +20,7 @@ verification/
 !docs/
 docs/*
 !docs/*.md
+
+.vercel/
+
+apps/api/src/release-manifest.json

@@ -338,3 +338,30 @@ model MutationKey {
   @@unique([userId,key])
   @@index([createdAt])
 }
+
+// Ephemeral coordination is shared by all serverless instances.
+model RateLimitWindow {
+  key String @id
+  hits Int
+  resetAt DateTime
+  @@index([resetAt])
+}
+model DeploymentEnvironment {
+  id String @id
+  stage String
+}
+model PendingUpload {
+  id String @id
+  userId String
+  key String @unique
+  size Int
+  mime String
+  filename String
+  checksum String
+  state String @default("PENDING")
+  mediaId String?
+  expiresAt DateTime
+  processingAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([expiresAt])
+}

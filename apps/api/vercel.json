@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nestjs",
+  "installCommand": "cd ../.. && npm ci",
+  "buildCommand": "cd ../.. && npm run build -w apps/api",
+  "regions": [
+    "fra1"
+  ],
+  "functions": {
+    "dist/main.js": {
+      "maxDuration": 300
+    }
+  },
+  "crons": [
+    {
+      "path": "/internal/media-cleanup",
+      "schedule": "0 3 * * *"
+    }
+  ],
+  "outputDirectory": "dist"
+}

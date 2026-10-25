@@ -3,7 +3,7 @@ import { apiEndpoint } from "./lib/api/endpoint";
 const withNextIntl = createNextIntlPlugin("./lib/i18n/request.ts");
 const api = apiEndpoint();
 export default withNextIntl({
-  output: "standalone",
+  ...(process.env.VERCEL === "1" ? {} : { output: "standalone" as const }),
   poweredByHeader: false,
   experimental: { proxyTimeout: process.env.RENDER === "true" ? 90000 : 30000 },
   outputFileTracingRoot: process.cwd() + "/../..",

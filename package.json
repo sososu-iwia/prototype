@@ -29,10 +29,16 @@
     "test:restore": "node --import tsx scripts/verify-backup.mjs",
     "media:migrate-storage": "tsx apps/api/src/migrate-media.ts",
     "test:migrations": "node --import tsx scripts/verify-migrations.mjs",
-    "test:compose": "node scripts/verify-compose.mjs"
+    "test:compose": "node scripts/verify-compose.mjs",
+    "test:direct-upload": "node scripts/verify-direct-upload.mjs",
+    "test:vercel-release": "node scripts/verify-vercel-release.mjs"
   },
   "overrides": {
-    "multer": "2.5.0"
+    "multer": "2.5.0",
+    "zod": "4.6.7",
+    "@vercel/cli-config": {
+      "zod": "4.6.7"
+    }
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

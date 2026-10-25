@@ -42,6 +42,35 @@ export function validateConfig() {
     throw new Error(
       "DATABASE_URL is required. Copy .env.example and configure PostgreSQL.",
     );
+  if (
+    process.env.VERCEL === "1" &&
+    (process.env.MIGRATION_DATABASE_URL ||
+      process.env.ALLOW_LOCAL_HTTP === "true" ||
+      (process.env.CRON_SECRET || "").length < 32)
+  )
+    throw new Error(
+      "Vercel requires HTTPS, a cleanup secret and runtime-only database credentials.",
+    );
+  if (process.env.VERCEL === "1") {
+    const stage = process.env.VERCEL_ENV;
+    const database = new URL(process.env.DATABASE_URL);
+    if (
+      !["production", "preview", "development"].includes(stage || "") ||
+      !["postgres:", "postgresql:"].includes(database.protocol) ||
+      !database.hostname.endsWith(".neon.tech") ||
+      !database.hostname.includes("-pooler.") ||
+      decodeURIComponent(database.username) !== `ordabasy_${stage}` ||
+      database.searchParams.get("sslmode") !== "verify-full"
+    )
+      throw new Error(
+        "Configure the pooled, TLS-verified runtime role for this Vercel environment.",
+      );
+    if (
+      process.env.S3_ENDPOINT &&
+      new URL(process.env.S3_ENDPOINT).protocol !== "https:"
+    )
+      throw new Error("Vercel media storage requires HTTPS.");
+  }
   const publicOrigin = process.env.PUBLIC_ORIGIN || origins[0];
   if (![...origins, publicOrigin].every((value) => validOrigin(value)))
     throw new Error(
@@ -59,6 +88,13 @@ export function validateConfig() {
 }
 
 export function validateStorage() {
+  if (
+    process.env.VERCEL === "1" &&
+    process.env.S3_BUCKET !== `fc-ordabasy-${process.env.VERCEL_ENV}`
+  )
+    throw new Error("Use a separate media bucket for this Vercel environment.");
+  if (process.env.VERCEL === "1" && process.env.MEDIA_STORAGE !== "s3")
+    throw new Error("Vercel deployments require permanent S3 storage.");
   if (
     process.env.MEDIA_STORAGE &&
     !["local", "s3", "disabled"].includes(process.env.MEDIA_STORAGE)
