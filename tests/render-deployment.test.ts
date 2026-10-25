@@ -65,7 +65,7 @@ test("Render runtime URL uses only the DML role and encodes credentials", () => 
 
 test("Render release gate accepts finished checksums and rejects failed, missing, changed or privileged deployments", async () => {
   const expected = await expectedMigrations();
-  assert.equal(expected.length, 5);
+  assert.equal(expected.length, 6);
   const complete = expected.map(
     ({ name, checksum }: { name: string; checksum: string }) => ({
       migration_name: name,

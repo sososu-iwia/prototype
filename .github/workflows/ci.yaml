@@ -43,6 +43,8 @@ jobs:
       - run: npm run db:migrate && npm run db:seed
       - run: npm run lint && npm run typecheck && npm test
       - run: npm run test:integration
+      - run: npm run test:direct-upload
+      - run: npm run test:vercel-release
       - run: npm run test:restore
       - run: npm run test:migrations
       - run: npm run security:scan && npm audit --audit-level=low

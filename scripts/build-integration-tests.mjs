@@ -8,6 +8,7 @@ await build({
     "tests/integration/api.test.ts",
     "tests/integration/cms.test.ts",
     "tests/integration/integrity.test.ts",
+    "tests/integration/serverless.test.ts",
   ],
   outdir: "verification",
   bundle: true,
