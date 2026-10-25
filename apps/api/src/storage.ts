@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ConflictException,
   NotFoundException,
+  ServiceUnavailableException,
 } from "@nestjs/common";
 import {
   S3Client,
@@ -18,13 +19,14 @@ import { db } from "./db";
 import { mediaDir } from "./config";
 import type { AuthRequest } from "./auth";
 import { audit, mutationLock } from "./cms";
-const s3 = () =>
+export const s3 = () =>
   new S3Client({
     maxAttempts: 2,
     requestHandler: { connectionTimeout: 3000, requestTimeout: 10000 },
     region: process.env.S3_REGION || "us-east-1",
     endpoint: process.env.S3_ENDPOINT || undefined,
     forcePathStyle: process.env.S3_FORCE_PATH_STYLE === "true",
+    requestChecksumCalculation: "WHEN_REQUIRED",
     ...(process.env.S3_ACCESS_KEY_ID && process.env.S3_SECRET_ACCESS_KEY
       ? {
           credentials: {
@@ -34,9 +36,17 @@ const s3 = () =>
         }
       : {}),
   });
-const bucket = () => process.env.S3_BUCKET!;
+export const bucket = () => process.env.S3_BUCKET!;
 export const storageDriver = () =>
-  process.env.MEDIA_STORAGE === "s3" ? "s3" : "local";
+  process.env.MEDIA_STORAGE === "disabled"
+    ? "disabled"
+    : process.env.MEDIA_STORAGE === "s3"
+      ? "s3"
+      : "local";
+function requireMediaStorage() {
+  if (storageDriver() === "disabled")
+    throw new ServiceUnavailableException({ code: "MEDIA_STORAGE_DISABLED" });
+}
 async function put(name: string, data: Buffer, mime: string, driver: string) {
   if (driver === "s3") {
     const client = s3();
@@ -74,6 +84,7 @@ async function removeFile(name: string, driver: string) {
     });
 }
 export async function readUpload(name: string) {
+  requireMediaStorage();
   if (!/^[a-f0-9-]{36}(?:-thumb)?\.(webp|avif)$/.test(name))
     throw new NotFoundException({ code: "NOT_FOUND" });
   const path = `/uploads/${name}`;
@@ -94,6 +105,13 @@ export async function readUpload(name: string) {
         new GetObjectCommand({ Bucket: bucket(), Key: name }),
       );
       if (!result.Body) throw new NotFoundException();
+      if (
+        process.env.VERCEL === "1" &&
+        (result.ContentLength || 0) > 4 * 1024 * 1024
+      ) {
+        (result.Body as import("node:stream").Readable).destroy();
+        throw new ServiceUnavailableException({ code: "MEDIA_UNAVAILABLE" });
+      }
       return Buffer.from(await result.Body.transformToByteArray());
     } finally {
       client.destroy();
@@ -101,9 +119,16 @@ export async function readUpload(name: string) {
   }
   return readFile(join(mediaDir, name));
 }
-export async function uploadImage(file: Express.Multer.File, req: AuthRequest) {
+export async function uploadImage(
+  file: Express.Multer.File,
+  req: AuthRequest,
+  ticketId?: string,
+) {
+  requireMediaStorage();
   if (
     !file ||
+    !file.buffer?.length ||
+    file.buffer.length > 10 * 1024 * 1024 ||
     !["image/jpeg", "image/png", "image/webp"].includes(file.mimetype) ||
     !/\.(jpe?g|png|webp)$/i.test(file.originalname)
   )
@@ -123,7 +148,7 @@ export async function uploadImage(file: Express.Multer.File, req: AuthRequest) {
       b.toString("ascii", 8, 12) === "WEBP")
   ))
     throw new BadRequestException({ code: "INVALID_UPLOAD" });
-  const id = randomUUID(),
+  const id = ticketId || randomUUID(),
     driver = storageDriver();
   let main, avif, thumb;
   try {
@@ -142,6 +167,10 @@ export async function uploadImage(file: Express.Multer.File, req: AuthRequest) {
   } catch {
     throw new BadRequestException({ code: "INVALID_UPLOAD" });
   }
+  // Leave headroom below the Functions 4.5 MB response limit. Extremely complex
+  // images can be retried at a lower resolution, without storing an oversized asset.
+  if ([main.data, avif, thumb].some((data) => data.length > 4 * 1024 * 1024))
+    throw new BadRequestException({ code: "INVALID_UPLOAD" });
   const files = [
     { name: `${id}.webp`, data: main.data, mime: "image/webp" },
     { name: `${id}.avif`, data: avif, mime: "image/avif" },
@@ -171,10 +200,23 @@ export async function uploadImage(file: Express.Multer.File, req: AuthRequest) {
         },
       });
       await audit(tx, req, "media", asset.id, "UPLOAD", null, asset);
+      if (ticketId)
+        await tx.pendingUpload.update({
+          where: { id: ticketId, userId: req.auth.userId, state: "PROCESSING" },
+          data: { state: "COMPLETED", mediaId: asset.id },
+        });
       return asset;
     });
   } catch (e) {
-    await Promise.allSettled(uploaded.map((n) => removeFile(n, driver)));
+    // A lost COMMIT response must not remove an already linked image. On an
+    // uncertain receipt, the scoped cleanup job can decide after DB recovery.
+    const receipt = ticketId
+      ? await db.pendingUpload
+          .findUnique({ where: { id: ticketId } })
+          .catch(() => null)
+      : undefined;
+    if (!ticketId || (receipt && receipt.state !== "COMPLETED"))
+      await Promise.allSettled(uploaded.map((n) => removeFile(n, driver)));
     throw e;
   }
 }
@@ -194,6 +236,7 @@ export async function mediaReferences(
   return counts.reduce((sum, count) => sum + count, 0);
 }
 export async function deleteMedia(id: string, req: AuthRequest) {
+  requireMediaStorage();
   return db.$transaction(
     async (tx) => {
       await mutationLock(tx);

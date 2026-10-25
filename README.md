@@ -1,3 +1,5 @@
+> Vercel: инструкция для двух обычных проектов, безопасного release и отдельных Preview/Production окружений — [docs/VERCEL.md](docs/VERCEL.md). Успешный облачный запуск подтверждается отдельно реальными URL и проверками.
+
 # FC Ordabasy
 
 Актуальная приёмка от 24 октября 2026: [финальный отчёт](docs/RELEASE_FINALIZATION.md). Проверки предыдущего этапа не подтверждают внешний production deployment. Текущая ветка — `codex/production-hardening-20261024`; исходные незакоммиченные изменения сохранены.
@@ -5,6 +7,8 @@
 Финальный локальный прогон: unit **14/14**, integration **41/41**, E2E **57/57**, audit **0 vulnerabilities**, Docker PG17/S3/persistence/restore **PASS**, HTTPS drill **8/8**. Через Caddy/H2 все четыре median LCP <2,5 с; direct HTTP/1.1 preview не проходит цель на двух страницах. Реального внешнего deployment нет; инфраструктура и редакционная приёмка перечислены в отчёте.
 
 Миграция существующего сайта на Next.js App Router / React / TypeScript strict и NestJS / PostgreSQL / Prisma. Исходные HTML, CSS, JS и все 331 МБ медиа сохранены в корне как архив; Next.js публикует только `apps/web/public`. Navy/голубая палитра, hero, фотографии, классы карточек и порядок основных секций сохранены. Контраст текста и элементов управления исправлен для доступности.
+
+Railway: [инструкция, переменные и условия запуска](docs/RAILWAY.md). Подготовка конфигурации не означает успешный внешний deployment.
 
 ## Быстрый запуск в Docker
 
@@ -95,3 +99,5 @@ node scripts/build-snapshot.mjs
 
 
 Профессиональная панель: [руководство администратора](docs/ADMIN_GUIDE.md), [результаты внедрения](docs/ADMIN_IMPLEMENTATION.md). Новые команды: `npm run test:restore`, `npm run backup:create -- /absolute/new-backup-directory`, `npm run backup:restore -- /absolute/backup-directory`, `npm run media:migrate-storage`. Production требует отдельный S3 bucket; параметры находятся в `.env.example`.
+
+Render: бесплатное временное демо, отдельные миграции и режим медиа — [docs/RENDER.md](docs/RENDER.md).

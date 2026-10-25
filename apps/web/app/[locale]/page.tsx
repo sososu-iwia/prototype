@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loading from "../../components/ui/Loading";
 import { ScrollEffects } from "../../components/layout/ScrollEffects";
 import { HeroPreload } from "../../components/ui/HeroPreload";
 import Link from "next/link";
@@ -33,7 +35,14 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "site" });
   return metadata(locale, "", t("title"), t("description"));
 }
-export default async function Home({
+export default function Home(props: Parameters<typeof HomeContent>[0]) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <HomeContent {...props} />
+    </Suspense>
+  );
+}
+async function HomeContent({
   params,
 }: {
   params: Promise<{ locale: Locale }>;

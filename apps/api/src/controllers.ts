@@ -52,6 +52,7 @@ import {
 } from "./cms";
 import { seasonStatistics } from "./statistics";
 import { uploadImage } from "./storage";
+import { directUploadConfig, presignUpload, completeUpload } from "./direct-upload";
 const pagination = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(24),
@@ -846,6 +847,9 @@ export class AdminController {
       return { ok: true };
     });
   }
+  @Get("media/direct/config") directConfig() { return directUploadConfig(); }
+  @Post("media/direct/presign") presign(@Body() body: unknown, @Req() req: AuthRequest) { return presignUpload(body, req); }
+  @Post("media/direct/complete") complete(@Body() body: unknown, @Req() req: AuthRequest) { return completeUpload(body, req); }
   @Post("media/upload")
   @UseInterceptors(
     FileInterceptor("file", {

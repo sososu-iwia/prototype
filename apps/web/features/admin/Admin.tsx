@@ -152,6 +152,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
           INVALID_SEASON_PERIOD: "invalidSeasonPeriod",
           MATCH_HAS_HISTORY: "historyProtected",
           PAYLOAD_TOO_LARGE: "requestTooLarge",
+          MEDIA_STORAGE_DISABLED: "mediaDisabled",
         } as const;
         if (code in messages)
           throw new Error(u(messages[code as keyof typeof messages]));
@@ -457,10 +458,36 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     const data = new FormData();
     data.set("file", file);
     try {
-      const asset = await api("admin/media/upload", {
-        method: "POST",
-        body: data,
-      });
+      const config = await api("admin/media/direct/config");
+      let asset;
+      if (config.direct) {
+        const digest = new Uint8Array(
+          await crypto.subtle.digest("SHA-256", await file.arrayBuffer()),
+        );
+        const checksum = btoa(String.fromCharCode(...digest));
+        const ticket = await api("admin/media/direct/presign", {
+          method: "POST",
+          body: JSON.stringify({
+            filename: file.name,
+            mime: file.type,
+            size: file.size,
+            checksum,
+          }),
+        });
+        const uploaded = await fetch(ticket.url, {
+          method: ticket.method,
+          headers: ticket.headers,
+          body: file,
+          credentials: "omit",
+        });
+        if (!uploaded.ok) throw new Error(u("invalidUpload"));
+        asset = await api("admin/media/direct/complete", {
+          method: "POST",
+          body: JSON.stringify({ id: ticket.id }),
+        });
+      } else {
+        asset = await api("admin/media/upload", { method: "POST", body: data });
+      }
       if (entity === "media") await load();
       else
         change(

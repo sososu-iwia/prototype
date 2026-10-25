@@ -9,10 +9,11 @@ import {
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import express from "express";
-import { randomUUID } from "node:crypto";
+import { randomUUID, timingSafeEqual } from "node:crypto";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
+import { sharedRateLimit } from "./rate-limit";
 import { ZodError, z } from "zod";
 import type { SchemaObject } from "@nestjs/swagger/dist/interfaces/open-api-spec.interface";
 import { cmsSchemas as schemas, settingsSchema } from "./domain";
@@ -24,6 +25,7 @@ import {
 } from "./controllers";
 import { ManagementController } from "./management";
 import { readUpload } from "./storage";
+import { cleanupExpiredUploads } from "./direct-upload";
 import { SessionGuard } from "./auth";
 import { validateConfig, validateStorage, origins, production } from "./config";
 import { db } from "./db";
@@ -116,12 +118,18 @@ class AppModule {}
 export async function createApp() {
   validateConfig();
   validateStorage();
+  if (process.env.VERCEL === "1") {
+    const { verifyVercelRuntime } = await import("./vercel-runtime");
+    // The compiled manifest is a static import so Vercel traces it into the bundle.
+    const manifest = await import("./release-manifest.json");
+    await verifyVercelRuntime(manifest.default);
+  }
   const app = await NestFactory.create(AppModule, {
     bodyParser: false,
     logger: ["error", "warn"],
   });
   // Trust only operator-specified proxy networks. With no setting, forwarding
-  // headers are ignored. Production API ports must stay private behind Caddy.
+  // headers are ignored. Production API ports must stay private behind the trusted reverse proxy.
   const trustedProxies = (process.env.TRUST_PROXY_CIDRS || "")
     .split(",")
     .map((value) => value.trim())
@@ -182,6 +190,7 @@ export async function createApp() {
   app.use(
     "/api/v1",
     rateLimit({
+      ...sharedRateLimit("api"),
       windowMs: 60000,
       limit: 1000,
       standardHeaders: "draft-8",
@@ -191,16 +200,22 @@ export async function createApp() {
   app.use(
     "/api/v1/auth/login",
     rateLimit({
+      ...sharedRateLimit("login"),
       windowMs: 15 * 60000,
       limit: 10,
-      skipSuccessfulRequests: true,
+      skipSuccessfulRequests: process.env.VERCEL !== "1",
       standardHeaders: "draft-8",
       legacyHeaders: false,
     }),
   );
   app.use(
-    "/api/v1/admin/media/upload",
+    [
+      "/api/v1/admin/media/upload",
+      "/api/v1/admin/media/direct/presign",
+      "/api/v1/admin/media/direct/complete",
+    ],
     rateLimit({
+      ...sharedRateLimit("upload"),
       windowMs: 60000,
       limit: 20,
       standardHeaders: "draft-8",
@@ -210,11 +225,36 @@ export async function createApp() {
   app
     .getHttpAdapter()
     .get(
+      "/internal/media-cleanup",
+      async (req: express.Request, res: express.Response) => {
+        res.setHeader("Cache-Control", "no-store");
+        const expected = `Bearer ${process.env.CRON_SECRET || ""}`;
+        const actual = req.header("authorization") || "";
+        if (
+          !process.env.CRON_SECRET ||
+          actual.length !== expected.length ||
+          !timingSafeEqual(Buffer.from(actual), Buffer.from(expected))
+        ) {
+          res.status(401).json({ error: { code: "UNAUTHORIZED" } });
+          return;
+        }
+        try {
+          res.json(await cleanupExpiredUploads());
+        } catch {
+          res.status(503).json({ error: { code: "MEDIA_UNAVAILABLE" } });
+        }
+      },
+    );
+  app
+    .getHttpAdapter()
+    .get(
       "/uploads/:name",
       async (req: express.Request, res: express.Response) => {
         try {
           const name = String(req.params.name);
           const data = await readUpload(name);
+          if (process.env.VERCEL === "1" && data.length > 4 * 1024 * 1024)
+            throw new Error("Media exceeds the function response budget");
           res.setHeader(
             "Content-Type",
             name.endsWith(".avif") ? "image/avif" : "image/webp",
@@ -279,11 +319,13 @@ export async function createApp() {
   await app.init();
   return app;
 }
-if (require.main === module) {
+// Vercel loads the framework entrypoint as a module and intercepts listen().
+// Ordinary Node imports (integration tests and operator tools) stay side-effect free.
+if (require.main === module || process.env.VERCEL === "1") {
   createApp()
     .then(async (app) => {
       await app.listen(
-        Number(process.env.API_PORT) || 4000,
+        Number(process.env.PORT || process.env.API_PORT) || 4000,
         process.env.API_HOST || "0.0.0.0",
       );
     })
