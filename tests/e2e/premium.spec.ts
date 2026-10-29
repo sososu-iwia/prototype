@@ -1,5 +1,32 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+
+test("footer-to-page navigation keeps the heading below the sticky header with smooth scrolling", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: page.viewportSize()!.width, height: 835 });
+  await page.goto("/en/academy/admission");
+  await page.locator(".site-footer").scrollIntoViewIfNeeded();
+  const mobile = await page.locator(".site-menu-toggle").isVisible();
+  if (mobile) await page.locator(".site-menu-toggle").click();
+  const nav = page.locator(mobile ? "#mobile-navbar" : "#navbar");
+  await nav
+    .locator(`button[aria-controls="${mobile ? "mobile" : "desktop"}-club"]`)
+    .click();
+  await nav.locator('a[href="/en/partners"]').click();
+  await expect(page).toHaveURL(/\/en\/partners$/);
+  await expect(page.locator("h1")).toHaveText("Partners");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          document.querySelector("h1")!.getBoundingClientRect().top >=
+          document.querySelector("#header")!.getBoundingClientRect().bottom - 1,
+      ),
+    )
+    .toBe(true);
+});
 for (const locale of ["kk", "ru", "en"] as const) {
   test(`${locale}: honours, approved logo and unpublished team shell`, async ({
     page,
