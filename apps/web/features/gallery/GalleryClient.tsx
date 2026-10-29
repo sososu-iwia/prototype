@@ -5,10 +5,22 @@ import { localized, type Locale } from "../../lib/i18n/config";
 import type { GalleryItem } from "../../lib/api/types";
 import { Media } from "../../components/ui/Media";
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
-function Video({ item, title }: { item: GalleryItem; title: string }) {
+function Video({
+  item,
+  title,
+  priority = false,
+}: {
+  item: GalleryItem;
+  title: string;
+  priority?: boolean;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const inView = useRef(false);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(priority);
+  const src =
+    item.url === "/media/gallery1.mp4"
+      ? "/media/gallery1-web-v1-960.mp4"
+      : item.url;
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
@@ -18,7 +30,7 @@ function Video({ item, title }: { item: GalleryItem; title: string }) {
         inView.current = entry.isIntersecting && entry.intersectionRatio >= 0.2;
         if (inView.current) {
           setVisible(true);
-          if (!reduced.matches && video.currentSrc)
+          if (!reduced.matches && video.getAttribute("src"))
             void video.play().catch(() => {});
         } else video.pause();
       },
@@ -51,33 +63,43 @@ function Video({ item, title }: { item: GalleryItem; title: string }) {
     }
   }, [visible]);
   return (
-    <video
-      className="gallery-video"
-      ref={ref}
-      src={visible ? item.url : undefined}
-      poster={visible ? item.poster || undefined : undefined}
-      muted
-      loop
-      playsInline
-      controls
-      preload="none"
-      aria-label={title}
-      onPlay={() => {
-        // A pending play request can finish after the observer has paused it.
-        if (!inView.current || document.hidden) ref.current?.pause();
-      }}
-      onLoadedData={() => {
-        const rect = ref.current?.getBoundingClientRect();
-        if (
-          rect &&
-          inView.current &&
-          rect.top < innerHeight &&
-          rect.bottom > 0 &&
-          !matchMedia("(prefers-reduced-motion: reduce)").matches
-        )
-          void ref.current?.play().catch(() => {});
-      }}
-    />
+    <>
+      {priority && item.poster && (
+        <link
+          rel="preload"
+          as="image"
+          href={item.poster}
+          fetchPriority="high"
+        />
+      )}
+      <video
+        className="gallery-video"
+        ref={ref}
+        src={visible ? src : undefined}
+        poster={visible ? item.poster || undefined : undefined}
+        muted
+        loop
+        playsInline
+        controls
+        preload="none"
+        aria-label={title}
+        onPlay={() => {
+          // A pending play request can finish after the observer has paused it.
+          if (!inView.current || document.hidden) ref.current?.pause();
+        }}
+        onLoadedData={() => {
+          const rect = ref.current?.getBoundingClientRect();
+          if (
+            rect &&
+            inView.current &&
+            rect.top < innerHeight &&
+            rect.bottom > 0 &&
+            !matchMedia("(prefers-reduced-motion: reduce)").matches
+          )
+            void ref.current?.play().catch(() => {});
+        }}
+      />
+    </>
   );
 }
 export function GalleryClient({
@@ -114,7 +136,11 @@ export function GalleryClient({
           );
           return item.kind === "video" ? (
             <div key={item.id} className="gallery-item gallery-large">
-              <Video item={item} title={title} />
+              <Video
+                item={item}
+                title={title}
+                priority={headingLevel === 2 && i === 0}
+              />
               <div className="gallery-overlay video-overlay">
                 <span>{String(i + 1).padStart(2, "0")}</span>
                 <Heading>{title}</Heading>
