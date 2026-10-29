@@ -553,7 +553,11 @@
   z-index: -2;
   background:
     linear-gradient(90deg, #07142cf2, #07142cd9),
-    url("/media/news1-960.webp") center/cover;
+    image-set(
+        url("/media/news1-960.avif") type("image/avif"),
+        url("/media/news1-960.webp") type("image/webp")
+      )
+      center/cover;
 }
 .honours-watermark {
   position: absolute;
@@ -730,6 +734,7 @@
 .sponsor-section .eyebrow {
   color: #526177;
 }
+.sponsor-section h1,
 .sponsor-section h2 {
   font-size: 25px;
   letter-spacing: -0.025em;
@@ -740,6 +745,9 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   justify-content: center;
+}
+#content.partners-page {
+  min-height: 0;
 }
 .sponsor-logo {
   min-height: 140px;

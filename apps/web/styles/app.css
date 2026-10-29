@@ -98,8 +98,12 @@ textarea:focus-visible,
   padding: 80px 0;
 }
 .detail-page {
-  padding: 160px 0 90px;
+  padding: 64px 0 80px;
   background: var(--surface);
+}
+.detail-page > .gallery-section {
+  padding-block: 0;
+  background: transparent;
 }
 body:has(.detail-page) .header {
   background: var(--navy);
@@ -447,6 +451,9 @@ body:has(.detail-page) .header {
   gap: 18px;
   margin: 25px 0 40px;
 }
+.filter-btn {
+  min-height: 44px;
+}
 .filter-form label {
   display: grid;
   gap: 8px;
@@ -468,6 +475,29 @@ body:has(.detail-page) .header {
   width: 100%;
   overflow-x: auto;
   margin: 25px 0;
+}
+.stats-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.stats-table th,
+.stats-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+.stats-table th {
+  color: white;
+  background: var(--navy);
+  white-space: nowrap;
+}
+.stats-table .archive-badge {
+  display: block;
+  max-width: 240px;
 }
 .league-table,
 .admin-table {
@@ -698,7 +728,7 @@ body:has(.detail-page) .header {
     grid-template-columns: 1fr;
   }
   .detail-page {
-    padding-top: 135px;
+    padding-top: 40px;
   }
   .profile-grid {
     grid-template-columns: 1fr;

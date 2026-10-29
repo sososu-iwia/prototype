@@ -7,6 +7,7 @@ import { Media } from "../../components/ui/Media";
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 function Video({ item, title }: { item: GalleryItem; title: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const inView = useRef(false);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const video = ref.current;
@@ -14,40 +15,62 @@ function Video({ item, title }: { item: GalleryItem; title: string }) {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        inView.current = entry.isIntersecting && entry.intersectionRatio >= 0.2;
+        if (inView.current) {
           setVisible(true);
-          if (!reduced.matches) void video.play().catch(() => {});
+          if (!reduced.matches && video.currentSrc)
+            void video.play().catch(() => {});
         } else video.pause();
       },
       { threshold: 0.2 },
     );
     observer.observe(video);
     const handle = () => {
-      if (document.hidden) video.pause();
+      if (document.hidden || reduced.matches) video.pause();
     };
     document.addEventListener("visibilitychange", handle);
+    reduced.addEventListener("change", handle);
     return () => {
       observer.disconnect();
       document.removeEventListener("visibilitychange", handle);
+      reduced.removeEventListener("change", handle);
       video.pause();
     };
   }, []);
+  useEffect(() => {
+    const video = ref.current;
+    if (
+      visible &&
+      inView.current &&
+      video &&
+      !matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const rect = video.getBoundingClientRect();
+      if (rect.top < innerHeight && rect.bottom > 0)
+        void video.play().catch(() => {});
+    }
+  }, [visible]);
   return (
     <video
       className="gallery-video"
       ref={ref}
       src={visible ? item.url : undefined}
-      poster={item.poster || undefined}
+      poster={visible ? item.poster || undefined : undefined}
       muted
       loop
       playsInline
       controls
       preload="none"
       aria-label={title}
+      onPlay={() => {
+        // A pending play request can finish after the observer has paused it.
+        if (!inView.current || document.hidden) ref.current?.pause();
+      }}
       onLoadedData={() => {
         const rect = ref.current?.getBoundingClientRect();
         if (
           rect &&
+          inView.current &&
           rect.top < innerHeight &&
           rect.bottom > 0 &&
           !matchMedia("(prefers-reduced-motion: reduce)").matches

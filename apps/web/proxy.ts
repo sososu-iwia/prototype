@@ -25,17 +25,18 @@ export function proxy(req: NextRequest) {
   const route = path.split("/").slice(2).join("/");
   if (
     req.headers.get("sec-fetch-dest") === "document" &&
-    ["team", "matches", "news", "about"].includes(route)
+    ["", "team", "matches", "news", "about"].includes(route)
   ) {
     const image = route === "team" ? "gallery2" : "hero";
     const desktopWidth = route === "team" ? 960 : 1600;
+    const suffix = route === "" ? "" : "-background";
     res.headers.append(
       "Link",
-      `</media/${image}-background-640.avif>; rel=preload; as=image; type="image/avif"; media="(max-width: 600px)"; fetchpriority=high`,
+      `</media/${image}${suffix}-640.avif>; rel=preload; as=image; type="image/avif"; media="(max-width: 600px)"; fetchpriority=high`,
     );
     res.headers.append(
       "Link",
-      `</media/${image}-background-${desktopWidth}.avif>; rel=preload; as=image; type="image/avif"; media="(min-width: 601px)"; fetchpriority=high`,
+      `</media/${image}${suffix}-${desktopWidth}.avif>; rel=preload; as=image; type="image/avif"; media="(min-width: 601px)"; fetchpriority=high`,
     );
   }
   if (https)

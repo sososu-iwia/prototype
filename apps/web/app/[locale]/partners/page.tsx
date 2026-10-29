@@ -15,8 +15,8 @@ export async function generateMetadata({
 export default async function Page() {
   const sponsors = await getSponsors();
   return (
-    <main id="content" className="premium">
-      <SponsorGrid items={sponsors.data.items} />
+    <main id="content" className="premium partners-page">
+      <SponsorGrid items={sponsors.data.items} headingLevel={1} />
     </main>
   );
 }

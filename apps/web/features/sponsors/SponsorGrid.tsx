@@ -1,12 +1,19 @@
 import { getTranslations } from "next-intl/server";
 import type { Sponsor } from "../../lib/api/types";
-export async function SponsorGrid({ items }: { items: Sponsor[] }) {
+export async function SponsorGrid({
+  items,
+  headingLevel = 2,
+}: {
+  items: Sponsor[];
+  headingLevel?: 1 | 2;
+}) {
   const p = await getTranslations("premium");
+  const Heading = headingLevel === 1 ? "h1" : "h2";
   return (
     <section className="sponsor-section" id="partners">
       <div className="container">
         <p className="eyebrow">FC ORDABASY</p>
-        <h2>{p("partners")}</h2>
+        <Heading>{p("partners")}</Heading>
         {items.length ? (
           <div className="sponsor-grid">
             {items.map((item) => (
