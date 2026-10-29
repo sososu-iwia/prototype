@@ -1,6 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { schemas, inquirySchema } from "../apps/api/src/domain";
+import {
+  schemas,
+  inquirySchema,
+  publicBirthDate,
+} from "../apps/api/src/domain";
 const sponsor = {
   name: "Club partner",
   description: { kk: "Серіктес" },
@@ -113,4 +117,20 @@ test("parent inquiries require consent and contact and reject spam and excess mi
     inquirySchema.safeParse({ ...inquiry, contact: "+7 (777) 111-22-33" })
       .success,
   );
+});
+
+test("exact minor birth dates stay private through the birthday boundary and leap years", () => {
+  const ordinary = new Date("2008-10-30T00:00:00Z"),
+    leap = new Date("2008-02-29T00:00:00Z");
+  assert.equal(
+    publicBirthDate(ordinary, new Date("2026-10-29T23:59:59Z")),
+    null,
+  );
+  assert.equal(
+    publicBirthDate(ordinary, new Date("2026-10-30T00:00:00Z")),
+    ordinary,
+  );
+  assert.equal(publicBirthDate(leap, new Date("2026-02-28T23:59:59Z")), null);
+  assert.equal(publicBirthDate(leap, new Date("2026-03-01T00:00:00Z")), leap);
+  assert.equal(publicBirthDate(null), null);
 });

@@ -40,6 +40,7 @@ import {
   cmsSchemas as schemas,
   settingsSchema,
   rankStatistics,
+  publicBirthDate,
 } from "./domain";
 import { getStandings } from "./standings";
 import {
@@ -100,11 +101,7 @@ async function publicPlayerRows(
   const now = new Date();
   return players.map((player) => ({
     ...player,
-    birthDate:
-      player.birthDate &&
-      now.getTime() - player.birthDate.getTime() < 18 * 365.25 * 86400000
-        ? null
-        : player.birthDate,
+    birthDate: publicBirthDate(player.birthDate, now),
     rosterNumber:
       player.memberships.find(
         (m) =>

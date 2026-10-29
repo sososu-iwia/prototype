@@ -496,3 +496,19 @@ export const inquirySchema = z
     website: z.string().max(0),
   })
   .strict();
+
+/** Keep exact dates private until the eighteenth UTC birthday; Feb 29 matures on Mar 1 in non-leap years. */
+export function publicBirthDate(
+  value: Date | null,
+  now = new Date(),
+): Date | null {
+  if (!value) return null;
+  const eighteenth = new Date(
+    Date.UTC(
+      value.getUTCFullYear() + 18,
+      value.getUTCMonth(),
+      value.getUTCDate(),
+    ),
+  );
+  return eighteenth <= now ? value : null;
+}

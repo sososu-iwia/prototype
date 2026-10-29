@@ -185,6 +185,7 @@ test("premium club publication, team separation and private academy inquiries", 
         const player = await db.player.create({
           data: {
             slug: `${prefix}-membership`,
+            birthDate: new Date("2010-01-01T00:00:00Z"),
             names: { kk: "Тест ойыншы" },
             position: "forward",
             status: "PUBLISHED",
@@ -193,6 +194,11 @@ test("premium club publication, team separation and private academy inquiries", 
             sourceDate: new Date(),
           },
         });
+        assert.equal(
+          (await (await fetch(base + "/players/" + player.slug)).json())
+            .birthDate,
+          null,
+        );
         const historical = await db.season.create({
           data: {
             id: `${prefix}-past`,

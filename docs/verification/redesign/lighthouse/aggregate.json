@@ -1,0 +1,82 @@
+[
+  {
+    "route": "/",
+    "samples": 3,
+    "scores": {
+      "performance": 0.93,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 3171.1059499999997,
+    "LCPRange": [
+      3170.8327999999997,
+      3259.0942000000005
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.93,
+      0.93
+    ]
+  },
+  {
+    "route": "/team",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2942.9039999999995,
+    "LCPRange": [
+      2557.9692499999996,
+      2971.0144999999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.95,
+      0.97
+    ]
+  },
+  {
+    "route": "/matches",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2432.239625,
+    "LCPRange": [
+      2428.9157499999997,
+      2441.4682500000004
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.98,
+      0.98
+    ]
+  },
+  {
+    "route": "/news",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2653.5015999999996,
+    "LCPRange": [
+      2556.9241,
+      2667.7652000000003
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.97
+    ]
+  }
+]
