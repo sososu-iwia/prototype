@@ -242,6 +242,16 @@ test("gallery video stays unloaded above the fold, plays on screen and pauses of
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/en");
+  const tiles = page.locator("#gallery .gallery-grid > .gallery-item");
+  await expect(tiles).toHaveCount(4);
+  if (page.viewportSize()!.width > 600) {
+    const tops = await tiles.evaluateAll((items) =>
+      items.map((item) => (item as HTMLElement).offsetTop),
+    );
+    expect(tops[0]).toBe(tops[1]);
+    expect(tops[2]).toBe(tops[3]);
+    expect(tops[2]).toBeGreaterThan(tops[0]);
+  }
   const video = page.locator("video").first();
   await expect(video).not.toHaveAttribute("src");
   await expect(video).not.toHaveAttribute("poster");

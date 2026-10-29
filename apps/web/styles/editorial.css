@@ -726,6 +726,32 @@
 .premium .gallery-grid > button {
   border-radius: 0;
 }
+.gallery-grid:empty {
+  display: none;
+}
+@media (min-width: 601px) {
+  .gallery-grid:has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+    grid-auto-rows: clamp(240px, 29vw, 430px);
+  }
+  .gallery-grid:has(> :nth-child(4):last-child) > .gallery-item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    height: 100%;
+  }
+}
+@media (min-width: 601px) and (max-width: 950px) {
+  .gallery-grid:has(> :nth-child(6):last-child) {
+    grid-template-rows: none;
+    grid-auto-rows: 280px;
+  }
+  .gallery-grid:has(> :nth-child(6):last-child) > .gallery-item:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+    height: 100%;
+  }
+}
 .sponsor-section {
   padding: 65px 0;
   background: #fff;

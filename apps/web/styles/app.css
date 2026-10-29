@@ -1420,6 +1420,10 @@ body:has(.detail-page) .header {
   color: #234f73;
   border: 1px solid #b6cadd;
 }
+/* Form focus and sticky navigation must settle before the next pointer action. */
+html:has(.admin-page) {
+  scroll-behavior: auto;
+}
 /* The workspace scrolls independently of the public site's fixed header. */
 body:has(.admin-page) .header {
   position: static;
