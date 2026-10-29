@@ -82,6 +82,20 @@ export class PremiumController {
     });
     const selected =
       season || seasons.find((s) => s.current)?.id || seasons[0]?.id;
+    const now = new Date();
+    const current = seasons.some((s) => s.id === selected && s.current);
+    const membership = {
+      teamId: team.id,
+      seasonId: selected,
+      cancelled: false,
+      datesVerified: true,
+      ...(current
+        ? {
+            startsAt: { lte: now },
+            OR: [{ endsAt: null }, { endsAt: { gt: now } }],
+          }
+        : {}),
+    };
     const [players, matches, staff, news] = await Promise.all([
       selected
         ? db.player.findMany({
@@ -89,12 +103,7 @@ export class PremiumController {
               status: "PUBLISHED",
               verification: "VERIFIED",
               memberships: {
-                some: {
-                  teamId: team.id,
-                  seasonId: selected,
-                  cancelled: false,
-                  datesVerified: true,
-                },
+                some: membership,
               },
             },
             include: playerInclude,
@@ -146,7 +155,12 @@ export class PremiumController {
         rosterNumber:
           p.memberships.find(
             (m) =>
-              m.teamId === team.id && m.seasonId === selected && !m.cancelled,
+              m.teamId === team.id &&
+              m.seasonId === selected &&
+              !m.cancelled &&
+              m.datesVerified &&
+              (!current ||
+                (m.startsAt <= now && (!m.endsAt || m.endsAt > now))),
           )?.number ?? null,
       })),
       matches,

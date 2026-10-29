@@ -177,6 +177,104 @@ test("premium club publication, team separation and private academy inquiries", 
       },
     );
     await t.test(
+      "team pages exclude departed players, preserve past seasons and use the active return number",
+      async () => {
+        const first = await db.team.findUniqueOrThrow({
+          where: { category: "first-team" },
+        });
+        const player = await db.player.create({
+          data: {
+            slug: `${prefix}-membership`,
+            names: { kk: "Тест ойыншы" },
+            position: "forward",
+            status: "PUBLISHED",
+            verification: "VERIFIED",
+            source: prefix,
+            sourceDate: new Date(),
+          },
+        });
+        const historical = await db.season.create({
+          data: {
+            id: `${prefix}-past`,
+            name: "Past test season",
+            year: 2025,
+            state: "COMPLETED",
+          },
+        });
+        try {
+          await db.rosterMembership.create({
+            data: {
+              playerId: player.id,
+              teamId: first.id,
+              seasonId: "2026",
+              number: 8,
+              startsAt: new Date("2026-01-01T00:00:00Z"),
+              endsAt: new Date("2026-06-01T00:00:00Z"),
+            },
+          });
+          await db.rosterMembership.create({
+            data: {
+              playerId: player.id,
+              teamId: first.id,
+              seasonId: historical.id,
+              number: 7,
+              startsAt: new Date("2025-01-01T00:00:00Z"),
+              endsAt: new Date("2025-12-31T00:00:00Z"),
+            },
+          });
+          const read = async (season: string) =>
+            (
+              await (
+                await fetch(base + `/team-pages/first-team?season=${season}`)
+              ).json()
+            ).players;
+          assert.ok(
+            !(await read("2026")).some(
+              (p: { id: string }) => p.id === player.id,
+            ),
+          );
+          assert.equal(
+            (await read(historical.id)).find(
+              (p: { id: string }) => p.id === player.id,
+            )?.rosterNumber,
+            7,
+          );
+          const future = new Date(Date.now() + 3600000);
+          await db.rosterMembership.create({
+            data: {
+              playerId: player.id,
+              teamId: first.id,
+              seasonId: "2026",
+              number: 9,
+              startsAt: new Date(Date.now() - 3600000),
+              endsAt: future,
+            },
+          });
+          await db.rosterMembership.create({
+            data: {
+              playerId: player.id,
+              teamId: first.id,
+              seasonId: "2026",
+              number: 10,
+              startsAt: future,
+              endsAt: null,
+            },
+          });
+          assert.equal(
+            (await read("2026")).find((p: { id: string }) => p.id === player.id)
+              ?.rosterNumber,
+            9,
+          );
+        } finally {
+          await db.rosterMembership.deleteMany({
+            where: { playerId: player.id },
+          });
+          await db.player.delete({ where: { id: player.id } });
+          await db.season.delete({ where: { id: historical.id } });
+        }
+      },
+    );
+    await t.test(
       "anonymous and editor users cannot read or mutate personal inquiry records",
       async () => {
         assert.equal(
