@@ -620,6 +620,27 @@ export class AdminController {
                 }))),
           ],
         };
+      else if (entity === "sponsors")
+        where = { name: { contains: p.q, mode: "insensitive" } };
+      else if (entity === "achievements")
+        where = {
+          OR: [
+            { source: { contains: p.q, mode: "insensitive" } },
+            ...["kk", "ru", "en"].map((locale) => ({
+              title: {
+                path: [locale],
+                string_contains: p.q,
+                mode: "insensitive",
+              },
+            })),
+          ],
+        };
+      else if (entity === "academy-inquiries")
+        where = {
+          OR: ["guardianName", "contact"].map((field) => ({
+            [field]: { contains: p.q, mode: "insensitive" },
+          })),
+        };
       else if (entity === "matches")
         where = {
           OR: [

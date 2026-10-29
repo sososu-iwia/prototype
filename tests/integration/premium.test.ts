@@ -28,7 +28,8 @@ test("premium club publication, team separation and private academy inquiries", 
   await app.listen(0, "127.0.0.1");
   const base = (await app.getUrl()) + "/api/v1";
   let cookie = "",
-    csrf = "";
+    csrf = "",
+    inquiryId = "";
   const origin = "http://localhost:3000";
   async function login(email: string) {
     const r = await fetch(base + "/auth/login", {
@@ -134,6 +135,13 @@ test("premium club publication, team separation and private academy inquiries", 
         assert.equal(r.status, 201, await r.clone().text());
         const row = await r.json();
         sponsorId = row.id;
+        const search = await (
+          await call(`/admin/sponsors?q=${prefix.toUpperCase()}`)
+        ).json();
+        assert.deepEqual(
+          search.items.map((s: { id: string }) => s.id),
+          [sponsorId],
+        );
         const list = await (await fetch(base + "/sponsors")).json();
         assert.ok(!list.items.some((v: { id: string }) => v.id === sponsorId));
         const published = await call(
@@ -317,7 +325,6 @@ test("premium club publication, team separation and private academy inquiries", 
         content: { privacyNotice: { kk: "Test privacy approval" } },
       },
     });
-    let inquiryId = "";
     await t.test(
       "origin, CSRF, consent and spam controls secure inquiry submission",
       async () => {
@@ -334,6 +341,22 @@ test("premium club publication, team separation and private academy inquiries", 
           consent: true,
           website: "",
         };
+        const malformed = `${Date.now()}.${"a".repeat(48)}.${"é".repeat(64)}`;
+        const rejected = await fetch(base + "/academy/inquiries", {
+          method: "POST",
+          headers: {
+            Origin: origin,
+            cookie: `academy_csrf=${encodeURIComponent(malformed)}`,
+            "X-CSRF-Token": malformed,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+        assert.equal(
+          rejected.status,
+          403,
+          "Malformed signature must not cause HTTP 500",
+        );
         const submit = (
           patch: Record<string, unknown> = {},
           requestOrigin = origin,
@@ -360,6 +383,10 @@ test("premium club publication, team separation and private academy inquiries", 
         );
         assert.ok(row);
         inquiryId = row.id;
+        const search = await (
+          await call(`/admin/academy-inquiries?q=GUARDIAN@EXAMPLE.INVALID`)
+        ).json();
+        assert.ok(search.items.some((v: { id: string }) => v.id === row.id));
         assert.equal(
           (
             await call(`/admin/academy-inquiries/${row.id}`, "PUT", {
@@ -395,6 +422,32 @@ test("premium club publication, team separation and private academy inquiries", 
         });
         assert.ok(!JSON.stringify(logs).includes(body.contact));
         assert.ok(!JSON.stringify(logs).includes(body.message));
+        // Fresh signed tokens from the same client must share the persisted limit.
+        const forms = await Promise.all(
+          Array.from({ length: 5 }, async () => {
+            const response = await fetch(base + "/academy/csrf");
+            return {
+              cookie: response.headers.get("set-cookie")!.split(";")[0],
+              token: (await response.json()).token,
+            };
+          }),
+        );
+        await new Promise((r) => setTimeout(r, 2100));
+        const statuses = [];
+        for (const form of forms) {
+          const response = await fetch(base + "/academy/inquiries", {
+            method: "POST",
+            headers: {
+              Origin: origin,
+              cookie: form.cookie,
+              "X-CSRF-Token": form.token,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          });
+          statuses.push(response.status);
+        }
+        assert.deepEqual(statuses, [201, 201, 201, 201, 429]);
       },
     );
     await t.test(
@@ -427,7 +480,9 @@ test("premium club publication, team separation and private academy inquiries", 
     }
     await db.sponsor.deleteMany({ where: { name: prefix } });
     await db.academyInquiry.deleteMany({
-      where: { contact: "guardian@example.invalid" },
+      where: {
+        OR: [{ contact: "guardian@example.invalid" }, { id: inquiryId }],
+      },
     });
     await db.auditLog.deleteMany({
       where: { actorId: { in: [admin.id, editor.id] } },

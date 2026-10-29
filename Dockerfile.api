@@ -41,5 +41,5 @@ CMD ["node","dist/main.js"]
 FROM runtime-base AS verification
 WORKDIR /app
 COPY --from=verification-code --chown=node:node /app/verification ./verification
-CMD ["node","--enable-source-maps","--test","--test-concurrency=1","verification/api.test.js","verification/cms.test.js","verification/integrity.test.js"]
+CMD ["node","--enable-source-maps","--test","--test-concurrency=1","verification/api.test.js","verification/cms.test.js","verification/integrity.test.js","verification/premium.test.js"]
 FROM runtime-base AS runtime

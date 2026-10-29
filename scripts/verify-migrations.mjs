@@ -3,6 +3,7 @@ import "../apps/api/src/config.ts";
 import { Client } from "pg";
 import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
+import { backupCountSql } from "../apps/api/src/backup-counts.ts";
 assertTestDatabase();
 const name = `ordabasy_migration_test_${randomUUID().replaceAll("-", "")}`,
   owner = new Client({ connectionString: process.env.DATABASE_URL }),
@@ -23,10 +24,7 @@ try {
   const client = new Client({ connectionString: target.toString() });
   await client.connect();
   try {
-    const counts = () =>
-      client.query(
-        'SELECT (SELECT count(*)::int FROM "Player") players,(SELECT count(*)::int FROM "RosterMembership") memberships,(SELECT count(*)::int FROM "Match") matches,(SELECT count(*)::int FROM "NewsPost") articles',
-      );
+    const counts = () => client.query(backupCountSql());
     const first = (await counts()).rows[0];
     if (
       first.players !== 20 ||
@@ -35,6 +33,20 @@ try {
       first.articles !== 4
     )
       throw new Error("Fresh import counts mismatch");
+    const premium = (
+      await client.query(`SELECT
+      (SELECT count(*)::int FROM "ClubAchievement" WHERE year=2026 AND "competitionKey"='kazakhstan-premier-league' AND "playerId" IS NULL) champions,
+      (SELECT count(*)::int FROM "Team" WHERE category IS NOT NULL) categories,
+      (SELECT count(*)::int FROM "AcademyPage" WHERE id='main' AND status='DRAFT' AND "inquiriesEnabled"=false) private_academy,
+      (SELECT count(*)::int FROM "Sponsor" WHERE status='PUBLISHED') published_sponsors`)
+    ).rows[0];
+    if (
+      premium.champions !== 1 ||
+      premium.categories !== 3 ||
+      premium.private_academy !== 1 ||
+      premium.published_sponsors !== 1
+    )
+      throw new Error("Premium publication defaults/uniqueness mismatch");
     await client.query(
       'UPDATE "Player" SET citizenship=$1 WHERE id=(SELECT id FROM "Player" LIMIT 1)',
       ["Migration drill"],
@@ -57,6 +69,7 @@ try {
         freshMigrations: true,
         repeatSeedPreserved: true,
         counts: first,
+        premium,
       }),
     );
   } finally {

@@ -134,3 +134,22 @@ test("exact minor birth dates stay private through the birthday boundary and lea
   assert.equal(publicBirthDate(leap, new Date("2026-03-01T00:00:00Z")), leap);
   assert.equal(publicBirthDate(null), null);
 });
+
+test("backup verification includes the new private CMS tables and rejects untrusted identifiers", async () => {
+  const { backupCountSql } = await import("../apps/api/src/backup-counts");
+  const sql = backupCountSql();
+  for (const table of [
+    "Sponsor",
+    "AcademyPage",
+    "AcademyInquiry",
+    "ClubAchievement",
+    "RosterMembership",
+  ])
+    assert.ok(sql.includes(`FROM "${table}"`));
+  assert.throws(() => backupCountSql(['players; DROP TABLE "User"']));
+  assert.ok(
+    !backupCountSql(["players", "memberships", "articles"]).includes(
+      '"Sponsor"',
+    ),
+  );
+});

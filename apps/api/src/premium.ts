@@ -241,9 +241,9 @@ export class PremiumController {
     if (
       typeof cookie !== "string" ||
       cookie !== token ||
+      !/^\d{13}\.[a-f0-9]{48}\.[a-f0-9]{64}$/.test(token) ||
       !nonce ||
       !sig ||
-      sig.length !== 64 ||
       !timingSafeEqual(
         Buffer.from(sig),
         Buffer.from(signature(`${issued}.${nonce}`)),
