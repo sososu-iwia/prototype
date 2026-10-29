@@ -9,6 +9,7 @@ import "../styles/fonts.css";
 import "../styles/primary-font.css";
 import "../styles/legacy.css";
 import "../styles/app.css";
+import "../styles/editorial.css";
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title: { default: "FC Ordabasy", template: "%s" },

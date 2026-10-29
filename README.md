@@ -1,6 +1,8 @@
 # FC Ordabasy
 
-Актуальная приёмка от 24 октября 2026: [финальный отчёт](docs/RELEASE_FINALIZATION.md). Проверки предыдущего этапа не подтверждают внешний production deployment. Текущая ветка — `codex/production-hardening-20261024`; исходные незакоммиченные изменения сохранены.
+Редизайн от 30 октября 2026: [реализация и запуск](docs/REDESIGN_IMPLEMENTATION.md), [проверки](docs/REDESIGN_VERIFICATION.md), [дизайн-анализ](docs/REDESIGN_DESIGN_ANALYSIS.md). Ветка `codex/premium-redesign-20261030`; production не развёрнут.
+
+Предыдущая приёмка от 24 октября 2026: [финальный отчёт](docs/RELEASE_FINALIZATION.md). Проверки предыдущего этапа не подтверждают внешний production deployment. Текущая ветка — `codex/production-hardening-20261024`; исходные незакоммиченные изменения сохранены.
 
 Финальный локальный прогон: unit **14/14**, integration **41/41**, E2E **57/57**, audit **0 vulnerabilities**, Docker PG17/S3/persistence/restore **PASS**, HTTPS drill **8/8**. Через Caddy/H2 все четыре median LCP <2,5 с; direct HTTP/1.1 preview не проходит цель на двух страницах. Реального внешнего deployment нет; инфраструктура и редакционная приёмка перечислены в отчёте.
 

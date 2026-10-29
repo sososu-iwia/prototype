@@ -38,6 +38,11 @@ export async function audit(
     ...Object.keys(after || {}),
   ])) {
     if (/password|token|secret|csrf/i.test(key)) continue;
+    if (
+      entity === "academy-inquiries" &&
+      !["state", "purgedAt", "version"].includes(key)
+    )
+      continue;
     if (JSON.stringify(before?.[key]) !== JSON.stringify(after?.[key])) {
       // Long article bodies are summarized, never logged verbatim.
       const summarize = (v: unknown) =>

@@ -32,9 +32,9 @@ export async function NewsGrid({
           const copy = translation(post, locale);
           return (
             <article className="main-news-card" key={post.id}>
-              {post.cover && (
+              {(post.cover || posts.length === 1) && (
                 <div className="news-image big-news-image">
-                  <Media src={post.cover} alt={copy.title} />
+                  <Media src={post.cover || "/media/news1-960.webp"} alt={post.cover ? copy.title : ""} sizes="(max-width:768px) 100vw, 60vw" />
                   <span className="news-category">{t("clubNews")}</span>
                 </div>
               )}

@@ -22,6 +22,8 @@ import {
   AuthController,
   AdminController,
 } from "./controllers";
+import { PremiumController } from "./premium";
+import { InquiryRetentionService } from "./inquiry-retention";
 import { ManagementController } from "./management";
 import { readUpload } from "./storage";
 import { SessionGuard } from "./auth";
@@ -106,11 +108,12 @@ class ErrorFilter implements ExceptionFilter {
 @Module({
   controllers: [
     PublicController,
+    PremiumController,
     AuthController,
     ManagementController,
     AdminController,
   ],
-  providers: [SessionGuard],
+  providers: [SessionGuard, InquiryRetentionService],
 })
 class AppModule {}
 export async function createApp() {

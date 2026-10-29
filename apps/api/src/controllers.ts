@@ -52,6 +52,7 @@ import {
 } from "./cms";
 import { seasonStatistics } from "./statistics";
 import { uploadImage } from "./storage";
+import { purgeExpiredInquiries } from "./inquiry-retention";
 const pagination = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(24),
@@ -99,6 +100,11 @@ async function publicPlayerRows(
   const now = new Date();
   return players.map((player) => ({
     ...player,
+    birthDate:
+      player.birthDate &&
+      now.getTime() - player.birthDate.getTime() < 18 * 365.25 * 86400000
+        ? null
+        : player.birthDate,
     rosterNumber:
       player.memberships.find(
         (m) =>
@@ -260,8 +266,12 @@ export class PublicController {
     const [info, achievements, staff, settings] = await Promise.all([
       db.clubInfo.findMany(),
       db.clubAchievement.findMany({
-        where: { playerId: null },
-        orderBy: { id: "asc" },
+        where: {
+          playerId: null,
+          status: "PUBLISHED",
+          verification: "VERIFIED",
+        },
+        orderBy: { year: "desc" },
       }),
       db.staffMember.findMany({ where: published }),
       db.clubSettings.findUnique({ where: { id: "main" } }),
@@ -438,6 +448,9 @@ function delegate(tx: Prisma.TransactionClient, entity: Entity): Delegate {
     club: tx.clubInfo,
     staff: tx.staffMember,
     achievements: tx.clubAchievement,
+    sponsors: tx.sponsor,
+    academy: tx.academyPage,
+    "academy-inquiries": tx.academyInquiry,
     seasons: tx.season,
     teams: tx.team,
     competitions: tx.competition,
@@ -471,6 +484,9 @@ const includes = (e: Entity) =>
                 ? matchInclude
                 : undefined;
 const adminOnly: Entity[] = [
+  "sponsors",
+  "academy",
+  "academy-inquiries",
   "club",
   "staff",
   "achievements",
@@ -579,6 +595,10 @@ export class AdminController {
     @Req() _req: AuthRequest,
   ) {
     const entity = entityName(name);
+    if (entity === "academy-inquiries") {
+      requireAdmin(_req);
+      await purgeExpiredInquiries();
+    }
     const p = pagination.parse(query);
     let where: Record<string, unknown> = {};
     if (p.q) {
@@ -633,7 +653,17 @@ export class AdminController {
     }
     if (
       query.status &&
-      ["players", "matches", "news", "gallery", "staff"].includes(entity)
+      [
+        "players",
+        "matches",
+        "news",
+        "gallery",
+        "staff",
+        "sponsors",
+        "academy",
+        "teams",
+        "achievements",
+      ].includes(entity)
     )
       where = {
         ...where,
@@ -687,8 +717,13 @@ export class AdminController {
   @Get(":entity/:id") async detail(
     @Param("entity") name: string,
     @Param("id") id: string,
+    @Req() req: AuthRequest,
   ) {
     const entity = entityName(name);
+    if (entity === "academy-inquiries") {
+      requireAdmin(req);
+      await purgeExpiredInquiries();
+    }
     const record = await delegate(db, entity).findUnique({
       where: { id: idSchema.parse(id) },
       include: includes(entity),
@@ -712,6 +747,8 @@ export class AdminController {
   ) {
     const entity = entityName(name);
     if (adminOnly.includes(entity)) requireAdmin(req);
+    if (entity === "academy-inquiries" && !id)
+      throw new ForbiddenException({ code: "PUBLIC_FORM_ONLY" });
     const parsed = schemas[entity].parse(body);
     const data: Record<string, unknown> = { ...parsed };
     if (entity === "news") {
@@ -757,6 +794,8 @@ export class AdminController {
         ? await d.findUnique({ where: { id }, include: includes(entity) })
         : null;
       if (id) expectedVersion(req, before);
+      if (entity === "academy-inquiries" && before?.purgedAt)
+        throw new ConflictException({ code: "HISTORY_PROTECTED" });
       if (
         entity === "news" &&
         before &&
@@ -831,7 +870,35 @@ export class AdminController {
       const d = delegate(tx, entity),
         before = await d.findUnique({ where: { id } });
       expectedVersion(req, before);
-      if (["players", "matches", "news", "gallery", "staff"].includes(entity)) {
+      if (entity === "academy-inquiries") {
+        const saved = await d.update({
+          where: { id },
+          data: {
+            guardianName: null,
+            contact: null,
+            ageGroup: null,
+            message: null,
+            state: "ARCHIVED",
+            purgedAt: new Date(),
+            version: { increment: 1 },
+          },
+        });
+        await audit(tx, req, entity, id, "PURGE_PERSONAL_DATA", before, saved);
+        return { ok: true };
+      }
+      if (
+        [
+          "players",
+          "matches",
+          "news",
+          "gallery",
+          "staff",
+          "sponsors",
+          "academy",
+          "teams",
+          "achievements",
+        ].includes(entity)
+      ) {
         const data =
           entity === "players"
             ? { archivedAt: new Date() }

@@ -4,7 +4,8 @@ import AxeBuilder from "@axe-core/playwright";
 const names = {
   kk: {
     home: "Басты бет",
-    team: "Команда",
+    team: "Командалар",
+    players: "Барлық ойыншылар",
     goals: "Қақпашылар",
     menu: "Мәзір",
     close: "Жабу",
@@ -12,7 +13,8 @@ const names = {
   },
   ru: {
     home: "Главная",
-    team: "Команда",
+    team: "Команды",
+    players: "Все игроки",
     goals: "Вратари",
     menu: "Меню",
     close: "Закрыть",
@@ -20,7 +22,8 @@ const names = {
   },
   en: {
     home: "Home",
-    team: "Team",
+    team: "Teams",
+    players: "All players",
     goals: "Goalkeepers",
     menu: "Menu",
     close: "Close",
@@ -74,10 +77,14 @@ for (const locale of ["kk", "ru", "en"] as const) {
       await menu.click();
     }
     await page
-      .locator("#navbar")
-      .getByRole("link", { name: names[locale].team, exact: true })
+      .locator(isMobile ? "#mobile-navbar" : "#navbar")
+      .getByRole("button", { name: names[locale].team, exact: true })
       .click();
-    await expect(page).toHaveURL(new RegExp(`/${locale}/team$`));
+    await page
+      .locator(isMobile ? "#mobile-navbar" : "#navbar")
+      .getByRole("link", { name: names[locale].players, exact: true })
+      .click();
+    await expect(page).toHaveURL(new RegExp(`/${locale}/players$`));
     await page
       .getByRole("button", { name: names[locale].goals, exact: true })
       .click();

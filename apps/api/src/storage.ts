@@ -190,6 +190,7 @@ export async function mediaReferences(
     tx.galleryItem.count({ where: { OR: [{ url }, { poster: url }] } }),
     tx.staffMember.count({ where: { photo: url } }),
     tx.team.count({ where: { logo: url } }),
+    tx.sponsor.count({ where: { logo: url } }),
   ]);
   return counts.reduce((sum, count) => sum + count, 0);
 }

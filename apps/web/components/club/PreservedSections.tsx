@@ -213,7 +213,7 @@ export function AboutTimeline({ t }: Props) {
 }
 export function AboutStadium({ t }: Props) {
   return (
-    <section className="stadium-section">
+    <section className="stadium-section" id="stadium">
       <div className="container stadium-grid">
         <div className="stadium-photo">
           <Media src="images/news1.jpg" alt={t("galleryTitle")} />

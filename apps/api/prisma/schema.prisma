@@ -65,6 +65,12 @@ model Season {
   matches Match[]
 }
 model Team {
+  category String? @unique
+  status PublicationStatus @default(DRAFT)
+  verification Verification @default(LEGACY_UNVERIFIED)
+  overview Json @default("{}")
+  source String @default("Pending club approval")
+  staff StaffMember[]
   version Int @default(1)
   id String @id @default(uuid())
   slug String @unique
@@ -251,6 +257,10 @@ model ClubInfo {
   updatedAt DateTime @updatedAt
 }
 model ClubAchievement {
+  clubKey String @default("ordabasy")
+  competitionKey String?
+  achievementType String @default("MILESTONE")
+  status PublicationStatus @default(DRAFT)
   version Int @default(1)
   id String @id @default(uuid())
   playerId String?
@@ -264,6 +274,8 @@ model ClubAchievement {
   verification Verification @default(LEGACY_UNVERIFIED)
 }
 model StaffMember {
+  teamId String?
+  team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
   version Int @default(1)
   id String @id @default(uuid())
   names Json
@@ -337,4 +349,58 @@ model MutationKey {
   createdAt DateTime @default(now())
   @@unique([userId,key])
   @@index([createdAt])
+}
+
+model Sponsor {
+  id String @id @default(uuid())
+  name String @unique
+  logo String?
+  description Json @default("{}")
+  websiteUrl String?
+  tier String?
+  status PublicationStatus @default(DRAFT)
+  sortOrder Int @default(0)
+  validFrom DateTime?
+  validUntil DateTime?
+  verificationSource String?
+  verifiedAt DateTime?
+  logoApproved Boolean @default(false)
+  youthSafe Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  version Int @default(1)
+}
+model AcademyPage {
+  id String @id @default("main")
+  content Json @default("{}")
+  status PublicationStatus @default(DRAFT)
+  admissionState String @default("UNCONFIRMED")
+  inquiriesEnabled Boolean @default(false)
+  contactEmail String?
+  contactPhone String?
+  source String
+  version Int @default(1)
+  updatedAt DateTime @updatedAt
+}
+model AcademyInquiry {
+  id String @id @default(uuid())
+  guardianName String?
+  contact String?
+  ageGroup String?
+  message String?
+  locale String
+  consentAt DateTime
+  privacyVersion String
+  state String @default("NEW")
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  purgedAt DateTime?
+  version Int @default(1)
+  @@index([expiresAt,purgedAt])
+}
+model InquiryRateBucket {
+  key String @id
+  count Int @default(1)
+  expiresAt DateTime
+  @@index([expiresAt])
 }
