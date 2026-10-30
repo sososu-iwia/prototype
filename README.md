@@ -1,10 +1,12 @@
 # FC Ordabasy
 
+Последняя локальная приёмка после `d4f7314`: [FINAL_VISUAL_QA.md](docs/FINAL_VISUAL_QA.md). Там приведены свежие проверки, визуальный осмотр, фактические Lighthouse-ограничения, screenshots и запуск изолированной production-сборки. Старые числа ниже относятся к указанным историческим этапам.
+
 Редизайн от 30 октября 2026: [реализация и запуск](docs/REDESIGN_IMPLEMENTATION.md), [проверки](docs/REDESIGN_VERIFICATION.md), [дизайн-анализ](docs/REDESIGN_DESIGN_ANALYSIS.md). Ветка `codex/premium-redesign-20261030`; production не развёрнут.
 
-Предыдущая приёмка от 24 октября 2026: [финальный отчёт](docs/RELEASE_FINALIZATION.md). Проверки предыдущего этапа не подтверждают внешний production deployment. Текущая ветка — `codex/production-hardening-20261024`; исходные незакоммиченные изменения сохранены.
+Предыдущая приёмка от 24 октября 2026: [финальный отчёт](docs/RELEASE_FINALIZATION.md). Проверки предыдущего этапа не подтверждают внешний production deployment. Ветка того этапа — `codex/production-hardening-20261024`; исходные незакоммиченные изменения сохранены.
 
-Финальный локальный прогон: unit **14/14**, integration **41/41**, E2E **57/57**, audit **0 vulnerabilities**, Docker PG17/S3/persistence/restore **PASS**, HTTPS drill **8/8**. Через Caddy/H2 все четыре median LCP <2,5 с; direct HTTP/1.1 preview не проходит цель на двух страницах. Реального внешнего deployment нет; инфраструктура и редакционная приёмка перечислены в отчёте.
+Архивный прогон 24 октября: unit **14/14**, integration **41/41**, E2E **57/57**, audit **0 vulnerabilities**, Docker PG17/S3/persistence/restore **PASS**, HTTPS drill **8/8**. Через Caddy/H2 все четыре median LCP <2,5 с; direct HTTP/1.1 preview не проходит цель на двух страницах. Эти результаты не заменяют проверку последней версии. Реального внешнего deployment нет.
 
 Миграция существующего сайта на Next.js App Router / React / TypeScript strict и NestJS / PostgreSQL / Prisma. Исходные HTML, CSS, JS и все 331 МБ медиа сохранены в корне как архив; Next.js публикует только `apps/web/public`. Navy/голубая палитра, hero, фотографии, классы карточек и порядок основных секций сохранены. Контраст текста и элементов управления исправлен для доступности.
 

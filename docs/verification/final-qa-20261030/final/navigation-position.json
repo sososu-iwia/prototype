@@ -1,0 +1,54 @@
+[
+  {
+    "reducedMotion": "reduce",
+    "scrollY": 0,
+    "heading": {
+      "x": 75,
+      "y": 210.6875,
+      "width": 1320,
+      "height": 34,
+      "top": 210.6875,
+      "right": 1395,
+      "bottom": 244.6875,
+      "left": 75
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1470,
+      "height": 117,
+      "top": 0,
+      "right": 1470,
+      "bottom": 117,
+      "left": 0
+    },
+    "scrollBehavior": "auto",
+    "smoothAttribute": "smooth"
+  },
+  {
+    "reducedMotion": "no-preference",
+    "scrollY": 0,
+    "heading": {
+      "x": 75,
+      "y": 210.6875,
+      "width": 1320,
+      "height": 34,
+      "top": 210.6875,
+      "right": 1395,
+      "bottom": 244.6875,
+      "left": 75
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1470,
+      "height": 117,
+      "top": 0,
+      "right": 1470,
+      "bottom": 117,
+      "left": 0
+    },
+    "scrollBehavior": "smooth",
+    "smoothAttribute": "smooth"
+  }
+]

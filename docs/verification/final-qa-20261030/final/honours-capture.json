@@ -1,0 +1,56 @@
+[
+  {
+    "locale": "kk",
+    "width": 390,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "kk",
+    "width": 768,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "kk",
+    "width": 1024,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "kk",
+    "width": 1440,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  },
+  {
+    "locale": "kk",
+    "width": 1920,
+    "headingBelowHeader": true,
+    "capture": "document crop without changing page styles"
+  }
+]

@@ -1,5 +1,7 @@
 # Redesign verification · 30 October 2026
 
+**Latest acceptance:** [FINAL_VISUAL_QA.md](FINAL_VISUAL_QA.md), including the fresh complete test run, all five viewport widths, real menu/CMS workflows and new cold Lighthouse series. The tables below are the preserved historical `d4f7314` acceptance, not fresh PASS results after follow-up changes.
+
 The redesigned frontend and additive CMS/API changes were verified locally on an isolated PostgreSQL 15 test database. Existing databases and administrator accounts were not modified. No production deployment or remote push was performed.
 
 ## Executed checks

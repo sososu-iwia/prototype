@@ -1,5 +1,7 @@
 # Premium FC Ordabasy redesign
 
+Latest follow-up: [Final visual QA and local launch](FINAL_VISUAL_QA.md). It supersedes the historical acceptance numbers below. Follow-up changes add searchable sponsors/achievements/inquiries, strict malformed-CSRF rejection, complete backup count verification, viewport-controlled 30 fps video, responsive career tables, balanced gallery grids, stable admin focus scrolling, the Next.js 16 route scroll override, corrected sticky-header spacing, explicit hero/poster preload, and expanded production-browser evidence scripts. No new schema migration was required.
+
 Review branch: `codex/premium-redesign-20261030`. This is a local implementation and review handoff. No production deployment, merge, remote push, existing database mutation or administrator replacement has been performed. The original untracked root asset ZIP is preserved.
 
 ## Implemented experience

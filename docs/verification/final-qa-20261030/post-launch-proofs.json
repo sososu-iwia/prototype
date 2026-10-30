@@ -1,0 +1,22 @@
+[
+  {
+    "name": "upload-persistence",
+    "exitCode": 0,
+    "durationMs": 18018
+  },
+  {
+    "name": "navigation-position",
+    "exitCode": 0,
+    "durationMs": 19232
+  },
+  {
+    "name": "video-playback",
+    "exitCode": 0,
+    "durationMs": 7848
+  },
+  {
+    "name": "logos",
+    "exitCode": 0,
+    "durationMs": 13896
+  }
+]
