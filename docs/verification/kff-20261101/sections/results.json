@@ -1,0 +1,110 @@
+[
+  {
+    "locale": "kk",
+    "width": 390,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 8925,
+      "width": 390,
+      "height": 2110
+    }
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 8920,
+      "width": 390,
+      "height": 2051
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 8875,
+      "width": 390,
+      "height": 2051
+    }
+  },
+  {
+    "locale": "kk",
+    "width": 768,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 5682,
+      "width": 768,
+      "height": 1508
+    }
+  },
+  {
+    "locale": "ru",
+    "width": 768,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 5682,
+      "width": 768,
+      "height": 1465
+    }
+  },
+  {
+    "locale": "en",
+    "width": 768,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 5680,
+      "width": 768,
+      "height": 1465
+    }
+  },
+  {
+    "locale": "kk",
+    "width": 1440,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 4688,
+      "width": 1440,
+      "height": 983
+    }
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 4688,
+      "width": 1440,
+      "height": 983
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "coaches": 3,
+    "seasonPlayers": 12,
+    "bounds": {
+      "left": 0,
+      "top": 4686,
+      "width": 1440,
+      "height": 983
+    }
+  }
+]

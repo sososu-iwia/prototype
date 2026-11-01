@@ -1,0 +1,21 @@
+{
+  "player": {
+    "slug": "bakdiyar-aben",
+    "version": 2,
+    "status": "DRAFT",
+    "biography": {
+      "kk": "QA: сақтау тексерісі. Жарияламаңыз.",
+      "ru": "QA: проверка сохранения. Не публиковать."
+    }
+  },
+  "staff": {
+    "externalKey": "club-2026-review-denis-romanenko",
+    "version": 2,
+    "status": "DRAFT",
+    "title": {
+      "en": "Role awaiting club approval",
+      "kk": "Рөлді клуб растауы керек",
+      "ru": "Роль требует подтверждения клуба · QA-проверка"
+    }
+  }
+}

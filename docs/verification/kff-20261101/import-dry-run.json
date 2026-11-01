@@ -1,0 +1,551 @@
+{
+  "capturedAt": "2026-11-01T12:28:06.889Z",
+  "source": "https://kffleague.kz/ru/team/81",
+  "sourceMethod": "public web reader; profile metadata, not proof of a current contract",
+  "dryRun": true,
+  "changes": null,
+  "referencePlayers": 30,
+  "proposedMatches": 20,
+  "proposedNew": 10,
+  "rows": [
+    {
+      "referenceKey": "kff-2026-1",
+      "number": 1,
+      "sourceName": "Бекхан Шайзада",
+      "localId": "legacy-bekhan-shaizada",
+      "localNames": {
+        "en": "Bekhan Shaizada",
+        "kk": "Бекхан Шайзада",
+        "ru": "Бекхан Шайзада"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1786",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "goalkeeper",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-13",
+      "number": 13,
+      "sourceName": "Кажымукан Толепберген",
+      "localId": "legacy-kazhymukan-tolepbergen",
+      "localNames": {
+        "en": "Kazhymukan Tolepbergen",
+        "kk": "Қажымұқан Төлепберген",
+        "ru": "Қажымұқан Төлепберген"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/653",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "goalkeeper",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-24",
+      "number": 24,
+      "sourceName": "Аян Абдухалык",
+      "localId": "legacy-ayan-abduhalyk",
+      "localNames": {
+        "en": "Ayan Abduhalyk",
+        "kk": "Аян Абдухалық",
+        "ru": "Аян Абдухалық"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/418",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "goalkeeper",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-3",
+      "number": 3,
+      "sourceName": "Гай Марселин Килама Килама",
+      "localId": "legacy-guy-kilama",
+      "localNames": {
+        "en": "Guy Kilama",
+        "kk": "Ги-Марселин Килама",
+        "ru": "Ги-Марселин Килама"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/2617",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "ALIAS_REVIEW",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-4",
+      "number": 4,
+      "sourceName": "Сергей Кейлер",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/1718",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-5",
+      "number": 5,
+      "sourceName": "Никола Антич",
+      "localId": "legacy-nikola-antic",
+      "localNames": {
+        "en": "Nikola Antic",
+        "kk": "Никола Антич",
+        "ru": "Никола Антич"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1728",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-8",
+      "number": 8,
+      "sourceName": "Улар Жаксыбаев",
+      "localId": "legacy-ular-zhaksybayev",
+      "localNames": {
+        "en": "Ular Zhaksybayev",
+        "kk": "Ұлар Жақсыбаев",
+        "ru": "Ұлар Жақсыбаев"
+      },
+      "profileUrl": null,
+      "profileTeam": null,
+      "proposedTeam": null,
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "PROFILE_UNAVAILABLE",
+        "AFFILIATION_UNCONFIRMED"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-14",
+      "number": 14,
+      "sourceName": "Али Турганов",
+      "localId": "legacy-ali-turganov",
+      "localNames": {
+        "en": "Ali Turganov",
+        "kk": "Әли Тұрғанов",
+        "ru": "Әли Тұрғанов"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1266",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-22",
+      "number": 22,
+      "sourceName": "Султанбек Астанов",
+      "localId": "legacy-sultanbek-astanov",
+      "localNames": {
+        "en": "Sultanbek Astanov",
+        "kk": "Сұлтанбек Астанов",
+        "ru": "Сұлтанбек Астанов"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1511",
+      "profileTeam": null,
+      "proposedTeam": null,
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "PROFILE_UNAVAILABLE",
+        "AFFILIATION_UNCONFIRMED"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-25",
+      "number": 25,
+      "sourceName": "Сергей Малый",
+      "localId": "legacy-sergey-maly",
+      "localNames": {
+        "en": "Sergey Maly",
+        "kk": "Сергей Малый",
+        "ru": "Сергей Малый"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/279",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-55",
+      "number": 55,
+      "sourceName": "Алекса Аманович",
+      "localId": "legacy-aleksa-amanovic",
+      "localNames": {
+        "en": "Aleksa Amanovic",
+        "kk": "Алекса Аманович",
+        "ru": "Алекса Аманович"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1252",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "POSITION_SOURCE_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-6",
+      "number": 6,
+      "sourceName": "Нурби Маратулы",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/1905",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-10",
+      "number": 10,
+      "sourceName": "Эльхан Астанов",
+      "localId": "legacy-elkhan-astanov",
+      "localNames": {
+        "en": "Elkhan Astanov",
+        "kk": "Эльхан Астанов",
+        "ru": "Эльхан Астанов"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/503",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-11",
+      "number": 11,
+      "sourceName": "Юрий Вакулко",
+      "localId": "legacy-yuriy-vakulko",
+      "localNames": {
+        "en": "Yuriy Vakulko",
+        "kk": "Юрий Вакулко",
+        "ru": "Юрий Вакулко"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/603",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-15",
+      "number": 15,
+      "sourceName": "Жасулан Амир",
+      "localId": "legacy-zhasulan-amir",
+      "localNames": {
+        "en": "Zhasulan Amir",
+        "kk": "Жасұлан Әмір",
+        "ru": "Жасұлан Әмір"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1540",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "CANONICAL_POSITION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-16",
+      "number": 16,
+      "sourceName": "Кристиан-Михай Капацина",
+      "localId": "legacy-cristian-capatina",
+      "localNames": {
+        "en": "Cristian Capatina",
+        "kk": "Кристиан-Михай Капацина",
+        "ru": "Кристиан-Михай Капацина"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/544",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-19",
+      "number": 19,
+      "sourceName": "Леонардо Натель Виера",
+      "localId": "legacy-leonardo-natel",
+      "localNames": {
+        "en": "Leonardo Natel",
+        "kk": "Леонардо Натель",
+        "ru": "Леонардо Натель"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/2945",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "ALIAS_REVIEW",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW",
+        "CANONICAL_POSITION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-21",
+      "number": 21,
+      "sourceName": "Биржан Токтыбай",
+      "localId": "legacy-birzhan-toktibai",
+      "localNames": {
+        "en": "Birzhan Toktibai",
+        "kk": "Біржан Тоқтыбай",
+        "ru": "Біржан Тоқтыбай"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/258",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": [
+        "POSITION_SOURCE_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-23",
+      "number": 23,
+      "sourceName": "Абинур Нурымбет",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/539",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-27",
+      "number": 27,
+      "sourceName": "Нурдаулет Серик",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/1324",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-44",
+      "number": 44,
+      "sourceName": "Тидиан Кейта",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/3403",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-77",
+      "number": 77,
+      "sourceName": "Давид Сандан Абагна",
+      "localId": "legacy-david-abagna",
+      "localNames": {
+        "en": "David Abagna",
+        "kk": "Давид Абагна",
+        "ru": "Давид Абагна"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/2944",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "ALIAS_REVIEW",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-78",
+      "number": 78,
+      "sourceName": "Рамазан Сердалы",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/630",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-80",
+      "number": 80,
+      "sourceName": "Бакдияр Абен",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/1750",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-9",
+      "number": 9,
+      "sourceName": "Эвертон Маседо",
+      "localId": "legacy-everton-moraes",
+      "localNames": {
+        "en": "Everton Moraes",
+        "kk": "Эвертон Мораес",
+        "ru": "Эвертон Мораес"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/387",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "forward",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "ALIAS_REVIEW",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-20",
+      "number": 20,
+      "sourceName": "Магжан Токтыбай",
+      "localId": "legacy-magzhan-toktibai",
+      "localNames": {
+        "en": "Magzhan Toktibai",
+        "kk": "Мағжан Тоқтыбай",
+        "ru": "Мағжан Тоқтыбай"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/1365",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "forward",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "REFERENCE_MATCH",
+      "conflicts": []
+    },
+    {
+      "referenceKey": "kff-2026-28",
+      "number": 28,
+      "sourceName": "Берн Йонсен",
+      "localId": "legacy-bjorn-johnsen",
+      "localNames": {
+        "en": "Bjorn Johnsen",
+        "kk": "Бьорн Йонсен",
+        "ru": "Бьорн Йонсен"
+      },
+      "profileUrl": "https://kffleague.kz/ru/player/3380",
+      "profileTeam": "Ордабасы",
+      "proposedTeam": "first-team",
+      "position": "forward",
+      "positionSource": "https://kffleague.kz/ru/team/81",
+      "matchKind": "ALIAS_REVIEW",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-72",
+      "number": 72,
+      "sourceName": "Нурдаулет Бейсенбай",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/2732",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/player/2732",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-81",
+      "number": 81,
+      "sourceName": "Айдын Есболов",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/2735",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "defender",
+      "positionSource": "https://kffleague.kz/ru/player/2735",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    },
+    {
+      "referenceKey": "kff-2026-93",
+      "number": 93,
+      "sourceName": "Дамир Мынжасар",
+      "localId": null,
+      "localNames": null,
+      "profileUrl": "https://kffleague.kz/ru/player/3096",
+      "profileTeam": "Ордабасы М",
+      "proposedTeam": "second-league",
+      "position": "midfielder",
+      "positionSource": "https://kffleague.kz/ru/player/3096",
+      "matchKind": "NEW",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ]
+    }
+  ]
+}

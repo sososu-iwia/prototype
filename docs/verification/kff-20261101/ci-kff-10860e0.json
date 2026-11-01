@@ -1,0 +1,21 @@
+{
+  "headSha": "10860e049b3eb057b2c7261af4f1c784a85a3ba3",
+  "runId": 41308662264,
+  "jobId": 124854254621,
+  "url": "https://github.com/sososu-iwia/prototype/actions/runs/41308662264",
+  "conclusion": "success",
+  "unitTests": 23,
+  "integrationTests": 56,
+  "e2eTests": 123,
+  "containerIntegrationTests": 56,
+  "summary": [
+    "2026-11-01T12:55:07.9564166Z found 0 vulnerabilities",
+    "2026-11-01T12:55:27.5485439Z ℹ tests 23",
+    "2026-11-01T12:55:52.9995446Z ℹ tests 56",
+    "2026-11-01T12:56:01.8996052Z found 0 vulnerabilities",
+    "2026-11-01T13:01:43.9061016Z   123 passed (4.8m)",
+    "2026-11-01T13:04:20.5600263Z ℹ tests 56",
+    "2026-11-01T13:05:05.7329539Z Compose restore verified through the actual DML-role API: readiness, Unicode profile, news, login/logout, revoked sessions, exact S3 bytes",
+    "2026-11-01T13:05:05.7919108Z Compose verified: production images, PostgreSQL 17, 30 routes, admin CRUD, S3 upload, container recreation, backup and isolated restore."
+  ]
+}

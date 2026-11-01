@@ -1,0 +1,362 @@
+[
+  {
+    "route": "/",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2933.5314,
+    "LCPRange": [
+      2917.4864500000003,
+      2967.3903999999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.94,
+      0.95
+    ]
+  },
+  {
+    "route": "/about",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 0.96,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2450.3097500000003,
+    "LCPRange": [
+      2443.2063749999998,
+      2491.8977
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.98,
+      0.98
+    ]
+  },
+  {
+    "route": "/team",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2984.279199999999,
+    "LCPRange": [
+      2970.7425000000003,
+      2986.0095499999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.95,
+      0.95
+    ]
+  },
+  {
+    "route": "/teams/first-team",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2541.48765,
+    "LCPRange": [
+      2434.7971,
+      2577.4429499999997
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.98
+    ]
+  },
+  {
+    "route": "/teams/first-league",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2902.8161999999998,
+    "LCPRange": [
+      2807.4641,
+      2921.6866499999996
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.95,
+      0.96
+    ]
+  },
+  {
+    "route": "/teams/second-league",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2910.3313500000004,
+    "LCPRange": [
+      2900.5877500000006,
+      2960.1344999999997
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.95,
+      0.95
+    ]
+  },
+  {
+    "route": "/players",
+    "samples": 3,
+    "scores": {
+      "performance": 0.96,
+      "accessibility": 0.96,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2803.9831249999997,
+    "LCPRange": [
+      2802.711375,
+      2900.1838749999997
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.95,
+      0.96
+    ]
+  },
+  {
+    "route": "/players/bekhan-shaizada",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2493.0271500000003,
+    "LCPRange": [
+      2422.1216,
+      2520.0023499999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.98
+    ]
+  },
+  {
+    "route": "/matches",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2415.1680000000006,
+    "LCPRange": [
+      2406.4032500000003,
+      2423.6324999999997
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.98,
+      0.98
+    ]
+  },
+  {
+    "route": "/statistics",
+    "samples": 3,
+    "scores": {
+      "performance": 0.99,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2205.9475,
+    "LCPRange": [
+      2192.450625,
+      2215.7983749999994
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.99,
+      0.99
+    ]
+  },
+  {
+    "route": "/standings",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2330,
+    "LCPRange": [
+      2284.3626249999998,
+      2405.8568999999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.94,
+      0.98
+    ]
+  },
+  {
+    "route": "/news",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2598.5463,
+    "LCPRange": [
+      2481.24005,
+      2608.673
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.98
+    ]
+  },
+  {
+    "route": "/news/website-archive",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2573.93145,
+    "LCPRange": [
+      2523.0273500000003,
+      2584.28905
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.97
+    ]
+  },
+  {
+    "route": "/gallery",
+    "samples": 3,
+    "scores": {
+      "performance": 0.91,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 3543.6054000000004,
+    "LCPRange": [
+      3513.2038000000002,
+      3598.9466
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.9,
+      0.91
+    ]
+  },
+  {
+    "route": "/academy",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2538.7315999999996,
+    "LCPRange": [
+      2531.9315,
+      2613.0327500000003
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.97
+    ]
+  },
+  {
+    "route": "/academy/admission",
+    "samples": 3,
+    "scores": {
+      "performance": 0.97,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2581.8624,
+    "LCPRange": [
+      2570.55925,
+      2583.4896999999996
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.97
+    ]
+  },
+  {
+    "route": "/partners",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2416.26505,
+    "LCPRange": [
+      2246.8933749999997,
+      2456.949125
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.97,
+      0.99
+    ]
+  },
+  {
+    "route": "/privacy",
+    "samples": 3,
+    "scores": {
+      "performance": 0.98,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2244.9420999999998,
+    "LCPRange": [
+      2236.1143,
+      2275.1862499999997
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.98,
+      0.99
+    ]
+  }
+]

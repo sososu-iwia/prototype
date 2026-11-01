@@ -1,0 +1,264 @@
+{
+  "database": "isolated PostgreSQL 17",
+  "counts": {
+    "players": 30,
+    "memberships": 20,
+    "coaches": 3,
+    "staff_drafts": 3
+  },
+  "playersAdded": 10,
+  "coachesAdded": 3,
+  "staffDraftsAdded": 3,
+  "membershipsAdded": 0,
+  "records": [
+    {
+      "shirtNumber": 1,
+      "sourceName": "Бекхан Шайзада",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 3,
+      "sourceName": "Гай Марселин Килама Килама",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 4,
+      "sourceName": "Сергей Кейлер",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 5,
+      "sourceName": "Никола Антич",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 6,
+      "sourceName": "Нурби Маратулы",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 8,
+      "sourceName": "Улар Жаксыбаев",
+      "profileTeam": null,
+      "conflicts": [
+        "PROFILE_UNAVAILABLE",
+        "AFFILIATION_UNCONFIRMED"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 9,
+      "sourceName": "Эвертон Маседо",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 10,
+      "sourceName": "Эльхан Астанов",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 11,
+      "sourceName": "Юрий Вакулко",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 13,
+      "sourceName": "Кажымукан Толепберген",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 14,
+      "sourceName": "Али Турганов",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 15,
+      "sourceName": "Жасулан Амир",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "CANONICAL_POSITION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 16,
+      "sourceName": "Кристиан-Михай Капацина",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 19,
+      "sourceName": "Леонардо Натель Виера",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW",
+        "CANONICAL_POSITION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 20,
+      "sourceName": "Магжан Токтыбай",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 21,
+      "sourceName": "Биржан Токтыбай",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "POSITION_SOURCE_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 22,
+      "sourceName": "Султанбек Астанов",
+      "profileTeam": null,
+      "conflicts": [
+        "PROFILE_UNAVAILABLE",
+        "AFFILIATION_UNCONFIRMED"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 23,
+      "sourceName": "Абинур Нурымбет",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 24,
+      "sourceName": "Аян Абдухалык",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 25,
+      "sourceName": "Сергей Малый",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 27,
+      "sourceName": "Нурдаулет Серик",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 28,
+      "sourceName": "Берн Йонсен",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 44,
+      "sourceName": "Тидиан Кейта",
+      "profileTeam": "Ордабасы",
+      "conflicts": [],
+      "reviewStatus": "APPROVED"
+    },
+    {
+      "shirtNumber": 55,
+      "sourceName": "Алекса Аманович",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "POSITION_SOURCE_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 72,
+      "sourceName": "Нурдаулет Бейсенбай",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 77,
+      "sourceName": "Давид Сандан Абагна",
+      "profileTeam": "Ордабасы",
+      "conflicts": [
+        "IDENTITY_ALIAS_REVIEW"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 78,
+      "sourceName": "Рамазан Сердалы",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 80,
+      "sourceName": "Бакдияр Абен",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 81,
+      "sourceName": "Айдын Есболов",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    },
+    {
+      "shirtNumber": 93,
+      "sourceName": "Дамир Мынжасар",
+      "profileTeam": "Ордабасы М",
+      "conflicts": [
+        "AFFILIATION_CONFLICT"
+      ],
+      "reviewStatus": "PENDING"
+    }
+  ]
+}

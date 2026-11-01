@@ -24,29 +24,58 @@
 
 Коммиты приложения: `892cd795626a9df927199cf115fa6d90fc53252f` — KFF/CMS/тренеры; `979502cd5d845b8f87877e6d0c44c0b195ffe25e` — совместимые общие переводы и статус контрактов. `10860e049b3eb057b2c7261af4f1c784a85a3ba3` — проверка KFF независимо от валидных контрактных fixtures других E2E.
 
-Финальный статус CI и HEAD будут записаны после завершения проверок. Автоматический Vercel deployment этой feature-ветки отключён в трёх vercel.json. Разрешённый обычный push направлен только в `sososu-iwia/prototype`, remote `prototype`.
+Полный [Quality run 41309039031](https://github.com/sososu-iwia/prototype/actions/runs/41309039031) для `c729893dce47479719c37de63475f7451f76806d` — **SUCCESS**, включая Docker. Также зелёный [run 41308662264](https://github.com/sososu-iwia/prototype/actions/runs/41308662264) на `10860e0`. Подтверждения: `verification/kff-20261101/ci-kff-{10860e0,c729893}.json`. [Draft PR #4](https://github.com/sososu-iwia/prototype/pull/4) создан без merge. Последующие отчёты и PNG не меняют исполняемый код; актуальный HEAD и проверка последнего push указаны в итоговом сообщении. Автоматический Vercel deployment этой feature-ветки отключён в трёх vercel.json. Разрешённый обычный push направлен только в `sososu-iwia/prototype`, remote `prototype`.
 
 ## E. Тесты
 
 После последнего изменения приложения прошли lint (0 warnings), typecheck обоих workspace, **23 unit**, **56 integration**, production build, security pattern scan и npm audit (0 vulnerabilities). Backup/restore действительно восстановил PostgreSQL-строки, Unicode, медиа bytes, private inquiry и новые таблицы KFF/StaffRevision. Свежие миграции и повторный seed проходят с исходными безопасными defaults: 20 legacy players, 20 memberships, 0 автоматических KFF-публикаций.
 
-Полный финальный Chrome E2E, визуальный проход и Docker CI на текущем этапе ещё выполняются; здесь не засчитаны незавершённые результаты.
+Полный финальный **Chrome E2E 123/123 — PASS (exit 0, 3.4 min)**, три viewport: 390/768/1440. **Визуальный проход 345/345 — PASS (exit 0)**: 23 маршрута × KZ/RU/EN × 390/768/1024/1440/1920, все HTTP 200; Console/Network issues, broken images, clipped headings и overflow — 0. SEO smoke **54/54 — PASS (exit 0)**. Реальный Docker CI — PASS: production images, PostgreSQL 17, **56/56 контейнерных integration**, 30 routes, S3, container recreation, backup/restore через DML-role API. Локальный `test:compose` завершился exit 1 на preflight: Docker daemon/socket на Mac отсутствует; этот локальный пропуск не выдаётся за PASS.
 
-Промежуточные дефекты не скрыты: изначально новая форма KFF не имела надёжного доступного имени textarea; добавлены явные локализованные aria-label. Полный E2E затем нашёл изменение существующего английского Sort order — восстановлено. Ещё один прогон дал 117/123: шесть KFF-проверок ошибочно ожидали общее число карточек без учёта живущих до global teardown валидных fixtures других CMS-тестов. Проверка теперь требует каждую из 12 KFF-личностей ровно один раз и отсутствие трёх source-only игроков в текущих контрактах; независимые контрактные записи не скрываются. API/integration на чистом наборе отдельно проверяет точные 12 сезонных / 0 текущих.
+Промежуточные дефекты не скрыты: изначально новая форма KFF не имела надёжного доступного имени textarea; добавлены явные локализованные aria-label. Полный E2E затем нашёл изменение существующего английского Sort order — восстановлено. Ещё один прогон дал 117/123: шесть KFF-проверок ошибочно ожидали общее число карточек без учёта живущих до global teardown валидных fixtures других CMS-тестов. Проверка теперь требует каждую из 12 KFF-личностей ровно один раз и отсутствие трёх source-only игроков в текущих контрактах; независимые контрактные записи не скрываются. Ещё один повтор дал 122/123 из-за настоящего 429: несколько полных прогонов исчерпали лимит 5 обращений/15 min в одной QA-сессии. Для итогового прогона создан новый случайный временный INQUIRY_RATE_SECRET и перезапущен только QA API, как в CI. Лимиты и защита приложения не ослаблялись; последующий полный прогон 123/123 прошёл. API/integration на чистом наборе отдельно проверяет точные 12 сезонных / 0 текущих.
 
 ## F. Безопасность и инфраструктура
 
-API запущен в production mode с отдельной DML-ролью без DDL; media directory и база изолированы. PRIVATE credentials, backup, полные auth traces и исходные пользовательские данные не включаются в Git. Проверены ADMIN/SUPER_ADMIN, запрет EDITOR/anonymous, CSRF/Origin, If-Match 428/409, audit и защита истории. HTTP разрешён только для локального QA; требования production HTTPS/private storage не ослаблены.
+API запущен в production mode с отдельной DML-ролью без DDL; финальный API/frontend/PostgreSQL привязаны к loopback; media directory и база изолированы. PRIVATE credentials, backup, полные auth traces и исходные пользовательские данные не включаются в Git. Проверены ADMIN/SUPER_ADMIN, запрет EDITOR/anonymous, CSRF/Origin, If-Match 428/409, audit и защита истории. HTTP разрешён только для локального QA; требования production HTTPS/private storage не ослаблены.
 
 ## G. Производительность
 
-Новые cold Lighthouse home/gallery и затем 18 маршрутов будут измерены последовательно, без локальной сборки/E2E/Docker в фоне, с прежними default mobile throttling и порогами. Предыдущие числа из MEDIA_UPGRADE_20261101/FINAL_VISUAL_QA не засчитываются новым замером. Цель LCP <2.5 s не объявляется достигнутой заранее.
+Измерения выполнены последовательно на последней production-сборке без параллельных Docker/E2E/build, с новым Chrome profile для каждого замера, стандартным mobile preset/throttling и исходными порогами. Сначала home + gallery × 3, затем все 18 маршрутов × 3: **60 холодных browser measurements**. Обе команды завершились **exit 1 из-за LCP gate**; runtime errors не было.
+
+Первая серия: home Performance **95 (94–95)**, LCP **2.969 s (2.922–3.018)**; gallery **90 (90–91)**, LCP **3.605 s (3.492–3.606)**. A11y/SEO/Best Practices — 100, CLS — 0. Предыдущий MEDIA_UPGRADE давал home 95 / 2.967 s и gallery 91 / 3.508 s; достижения цели LCP или причинного улучшения этим сравнением не заявляется.
+
+Полная серия по 18 маршрутам: медианы Performance **91–99**, A11y **96–100**, SEO и Best Practices **100**, CLS **0**. **LCP <2.5 s не пройден на 11/18 маршрутах**. Данные не отбирались по лучшему запуску; ниже медианы и полные min/max трёх измерений.
+
+| Маршрут /kk + | Performance median (range) | LCP median s (range) | A11y / SEO |
+| --- | --- | --- | --- |
+| `/` | 95 (94–95) | 2.934 (2.917–2.967) | 100 / 100 |
+| `/about` | 98 (98–98) | 2.450 (2.443–2.492) | 96 / 100 |
+| `/team` | 95 (95–95) | 2.984 (2.971–2.986) | 100 / 100 |
+| `/teams/first-team` | 97 (97–98) | 2.541 (2.435–2.577) | 100 / 100 |
+| `/teams/first-league` | 95 (95–96) | 2.903 (2.807–2.922) | 100 / 100 |
+| `/teams/second-league` | 95 (95–95) | 2.910 (2.901–2.960) | 100 / 100 |
+| `/players` | 96 (95–96) | 2.804 (2.803–2.900) | 96 / 100 |
+| `/players/bekhan-shaizada` | 98 (97–98) | 2.493 (2.422–2.520) | 100 / 100 |
+| `/matches` | 98 (98–98) | 2.415 (2.406–2.424) | 100 / 100 |
+| `/statistics` | 99 (99–99) | 2.206 (2.192–2.216) | 100 / 100 |
+| `/standings` | 98 (94–98) | 2.330 (2.284–2.406) | 100 / 100 |
+| `/news` | 97 (97–98) | 2.599 (2.481–2.609) | 100 / 100 |
+| `/news/website-archive` | 97 (97–97) | 2.574 (2.523–2.584) | 100 / 100 |
+| `/gallery` | 91 (90–91) | 3.544 (3.513–3.599) | 100 / 100 |
+| `/academy` | 97 (97–97) | 2.539 (2.532–2.613) | 100 / 100 |
+| `/academy/admission` | 97 (97–97) | 2.582 (2.571–2.583) | 100 / 100 |
+| `/partners` | 98 (97–99) | 2.416 (2.247–2.457) | 100 / 100 |
+| `/privacy` | 98 (98–99) | 2.245 (2.236–2.275) | 100 / 100 |
+
+LCP на главной — `img.editorial-hero-image`; в галерее — `video.gallery-video` с poster. В первой home trace actual resource-load delay 22.5 ms, render delay 1130.8 ms; preload/high priority работают, поэтому слепое уменьшение качества Hero не обосновано. Lighthouse оценивает render-blocking savings 340 ms на home / 260 ms на gallery, unused JS около 56/57 KiB; это оценки, не достигнутый и не суммируемый выигрыш. Main-thread первого запуска: home 795 ms (Style/Layout 258 ms, script evaluation 181 ms), gallery 950 ms (Style/Layout 255 ms, script evaluation 272 ms). Actual trace timings не приравниваются к simulated mobile LCP.
+
+Практический следующий шаг — выделить critical CSS/страничные стили и уменьшить клиентскую загрузку с повторной полной регрессией; затем измерить на целевом хостинге. Если видео остаётся ограничением, владелец может согласовать более лёгкий rendition или запуск после действия пользователя. Такой компромисс с качеством/автопроигрыванием этим релизом не применялся. **Строгий performance release gate остаётся открытым**, пороги/throttle не снижены. Aggregates: `verification/kff-20261101/lh-home-gallery/lighthouse/aggregate.json` и `lh-routes/lighthouse/aggregate.json`; raw reports, traces и network logs сохранены локально.
 
 ## H. Локальный просмотр и снимки
 
 Production URL: <http://localhost:3000/ru/teams/first-team?season=2026#coaches>; текущие контракты: <http://localhost:3000/ru/teams/first-team>; админка: <http://localhost:3000/ru/admin>.
 
-В отдельном настоящем окне Chrome открыты состав, три тренера, очередь KFF и Staff CMS. Проверено расхождение Аяна без изменения его истории; карточка Андрея Мартина сохранена через существующую форму. Native снимки: `verification/kff-20261101/native-chrome-coaches.png`, `native-chrome-kff-review.png`, `native-chrome-staff-admin.png`. Полный автоматизированный визуальный проход будет дополнен после завершения.
+В отдельном настоящем окне Chrome открыты состав, три тренера, очередь KFF и Staff CMS. Проверено расхождение Аяна без изменения его истории; карточка Андрея Мартина сохранена через существующую форму. DRAFT Дениса Романенко и DRAFT Бакдияра Абена действительно изменены в Chrome, сохранены, повторно загружены после restart API; JSON до/после restart совпал. Затем тестовые пометки убраны через CMS: обе версии стали 3, статусы остались DRAFT, история сохранена. Проверено обязательное заполнение казахского текста при наличии другого перевода. Повтор importer после правок вновь дал 0 добавлений и не отменил решения. Native снимки: `verification/kff-20261101/native-chrome-coaches.png`, `native-chrome-kff-review.png`, `native-chrome-staff-admin.png`. После пройденных тестов выполнена ещё одна production-сборка (exit 0) и свежий визуальный проход. Девять крупных снимков штаба в `verification/kff-20261101/sections` показывают ровно 3 тренера и 12 сезонных игроков на всех трёх языках/ширинах. Контрольные снимки 390/RU, 768/KK и 1440/EN действительно визуально осмотрены. До/после сравниваются с прежним этапом `verification/final-qa-20261030/final` (это исторический baseline, не новая приёмка).
 
 ## I. Подтверждения клуба
 
@@ -54,8 +83,8 @@ Production URL: <http://localhost:3000/ru/teams/first-team?season=2026#coaches>;
 
 ## J. Границы релиза
 
-Реальная база и публичная инфраструктура не изменены. Перенос проверенных данных требует отдельного согласования владельца и резервного копирования. Публичный production требует согласованных контента, домена, TLS, private storage/secrets и мониторинга, а также пройденных измеримых performance targets.
+Реальная база и публичная инфраструктура не изменены. Согласно пункту 6 основного документа, проверки выполняются «на отдельной тестовой PostgreSQL 17 … ни в коем случае не на production или старой пользовательской БД». Перенос проверенных данных в рабочую базу требует отдельного согласования владельца и резервного копирования. Старый `.env` не переписан. Для повторного запуска текущей изолированной среды используется закрытый launcher `/private/tmp/ordabasy-kff-qa-20261101/run.mjs` с `--runtime --production`; credentials находятся вне Git с mode 600. Публичный production требует согласованных контента, домена, TLS, private storage/secrets и мониторинга, а также пройденных измеримых performance targets.
 
 ## K. Артефакты
 
-Четыре документа пакета находятся в `docs/reference/kff-20261101`. Компактные безопасные подтверждения и скриншоты — `docs/verification/kff-20261101`. Большие traces/raw Lighthouse/логи сохранены локально и не используются как публичный каталог секретов. Сводные результаты будут обновлены после окончания приёмки.
+Четыре документа пакета находятся в `docs/reference/kff-20261101`. Компактные безопасные подтверждения и скриншоты — `docs/verification/kff-20261101`. Большие traces/raw Lighthouse/логи сохранены локально и не используются как публичный каталог секретов. Компактный итог: `verification/kff-20261101/checks.json`; свежие screenshots, source diff и Lighthouse aggregates включены в review artifacts. Полные логи/trace остаются локально.

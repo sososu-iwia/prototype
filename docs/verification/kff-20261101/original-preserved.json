@@ -1,0 +1,10 @@
+{
+  "readOnly": true,
+  "counts": {
+    "players": 20,
+    "memberships": 20,
+    "staff": 0
+  },
+  "sourcePlayersUnchanged": true,
+  "sourceMigrationsUnchanged": true
+}
