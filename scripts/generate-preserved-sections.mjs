@@ -54,7 +54,6 @@ const $ = load(await readFile("index.html", "utf8")),
 const sections = [
   ["ClubNumbers", $(".club-stats")[0]],
   ["HomeAbout", $(".about-section")[0]],
-  ["HomeAchievements", $(".achievements-section")[0]],
   ["ContactSection", $(".contact-section")[0]],
   ["AboutHero", $$(".about-page-hero")[0]],
   ["AboutIntro", $$(".about-page-intro")[0]],
@@ -80,4 +79,4 @@ css = css
   );
 await mkdir("apps/web/styles", { recursive: true });
 await writeFile("apps/web/styles/legacy.css", css);
-console.log("Preserved 11 original sections and original CSS");
+console.log("Preserved 10 original sections and original CSS");

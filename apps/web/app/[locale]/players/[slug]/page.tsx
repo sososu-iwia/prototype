@@ -6,6 +6,7 @@ import { localized, date, type Locale } from "../../../../lib/i18n/config";
 import { metadata } from "../../../../lib/metadata";
 import { Media } from "../../../../components/ui/Media";
 import { Archive, Offline, Empty } from "../../../../components/ui/State";
+import { PortraitPlaceholder } from "../../../../components/editorial/PortraitPlaceholder";
 export async function generateMetadata({
   params,
 }: {
@@ -35,10 +36,12 @@ export default async function Profile({
   const activeMembership = p.memberships?.find(
     (m) =>
       m.team.managed &&
+      m.datesVerified === true &&
       new Date(m.startsAt) <= new Date() &&
       (!m.endsAt || new Date(m.endsAt) > new Date()),
   );
   const u = await getTranslations("ui"),
+    k = await getTranslations("kff"),
     s = await getTranslations("site");
   return (
     <main id="content" className="detail-page">
@@ -49,13 +52,15 @@ export default async function Profile({
         <Offline show={result.offline} />
         <div className="profile-grid">
           <div className="profile-image">
-            {p.photo && (
+            {p.photo ? (
               <Media
                 src={p.photo}
                 alt={localized(p.names, locale)}
                 priority
                 sizes="(max-width: 768px) 90vw, 40vw"
               />
+            ) : (
+              <PortraitPlaceholder label={k("photoPending")} />
             )}
           </div>
           <div>
@@ -72,7 +77,14 @@ export default async function Profile({
               {p.rosterStatus && (
                 <>
                   <dt>{u("rosterStatus")}</dt>
-                  <dd>{u(p.rosterStatus as "ACTIVE")}</dd>
+                  <dd>
+                    {u(
+                      p.rosterStatus === "UNCONFIRMED" ||
+                        (p.rosterStatus === "ACTIVE" && !activeMembership)
+                        ? "contractUnconfirmed"
+                        : (p.rosterStatus as "ACTIVE"),
+                    )}
+                  </dd>
                 </>
               )}
               {activeMembership?.number != null && (
@@ -108,10 +120,29 @@ export default async function Profile({
             )}
           </div>
         </div>
+        {!!p.registrations?.length && (
+          <section className="season-stat">
+            <h2>{k("season")}</h2>
+            <p>{k("seasonNotice")}</p>
+            {p.registrations.map((r) => (
+              <p key={r.id}>
+                {r.seasonId} · #{r.number} · {r.sourceName} ·{" "}
+                <a href={r.sourceUrl} target="_blank" rel="noreferrer">
+                  {k("source")}
+                </a>
+              </p>
+            ))}
+          </section>
+        )}
         {!!p.memberships?.length && (
           <section className="season-stat">
             <h2>{u("careerHistory")}</h2>
-            <div className="table-scroll">
+            <div
+              className="table-scroll"
+              role="region"
+              aria-label={u("careerHistory")}
+              tabIndex={0}
+            >
               <table className="stats-table">
                 <thead>
                   <tr>
@@ -136,7 +167,15 @@ export default async function Profile({
                           </small>
                         )}
                       </td>
-                      <td>{m.endsAt ? date(m.endsAt, locale) : u("ACTIVE")}</td>
+                      <td>
+                        {m.endsAt
+                          ? date(m.endsAt, locale)
+                          : u(
+                              m.datesVerified
+                                ? "ACTIVE"
+                                : "contractUnconfirmed",
+                            )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

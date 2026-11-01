@@ -1,3 +1,5 @@
+> Доработка трёх медиаэлементов от 1 ноября 2026: [партнёры, Hero и видео](MEDIA_UPGRADE_20261101.md). Результаты ниже сохранены как история предыдущих этапов.
+
 # Текущий проверенный результат — 24 октября 2026
 
 Полный актуальный [отчёт A–I](RELEASE_FINALIZATION.md), [exit codes](verification/2026-10-24/checks-final.json), [артефакты](verification/2026-10-24/ARTIFACTS.md). Unit 14/14, integration 41/41 (native/DML/Docker), E2E 57/57 без retries, build/lint/typecheck/security/audit=0/restore/migrations/Compose smoke — PASS после последних изменений приложения. Дополнительно HTTPS production-flags drill 8 групп, 33 SEO pages +25 assertions, 12 public visual shots и admin в трёх размерах.

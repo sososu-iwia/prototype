@@ -1,0 +1,75 @@
+{
+  "assets": [
+    {
+      "path": "design-assets/sponsors/IMG_5658.png",
+      "sha256": "88676a608aed197c9dbf2aa2ab665ce1ae80d60a0168bc84a3cfd76c68cec362",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5660.webp",
+      "sha256": "20b39ec36d7a62fd94e1727f973ee937249ead725e12567f787f2517d07227b9",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5664.png",
+      "sha256": "1972f82f79a9089e6791c11db7c105abc27a65086b6793a421bb4da5360750dd",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5665.png",
+      "sha256": "3e10547f2b05bd6f00be63860113c0c43eeff3c7e40a495296300ca611fa0ef3",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5666.webp",
+      "sha256": "ab1c8089ef5c3063b31916cc8dbf7efeed5ceec4e8d650ca039431152b576914",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5672.png",
+      "sha256": "db10d32cf836c5605bf79c87f9271c9803a8f03bf287fe644216944c643df62a",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/sponsors/IMG_5673.png",
+      "sha256": "26a9f2e174ef7bac5e66bf26d8b12f5466a9c777c0f3451c0555fca89314d750",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/references/PHOTO-2026-10-28-00-05-50.jpg",
+      "sha256": "d3aad173ff4a0110b34e341b2a204fa1bf2653294836d0e7f1387f1fea485aac",
+      "matchesManifest": true
+    },
+    {
+      "path": "design-assets/references/PHOTO-2026-10-28-10-30-28.jpg",
+      "sha256": "b0ce8a1a3435a09b1cb2a8bd1ac6cd9c89054bad35f6eeb574fc45c752063f7c",
+      "matchesManifest": true
+    },
+    {
+      "path": "images/hero.jpg",
+      "sha256": "ae92147b9bbf3c0c84cea276109ff3d8a93f78feac0366bc3e6db73ed3a6553d",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "apps/web/public/media/gallery1.mp4",
+      "sha256": "ccc0a819f1b036b3d66449e5a3c43d029406d425cdf8aff067caaa7e574cc218",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "apps/web/public/media/gallery1-web-v1-960.mp4",
+      "sha256": "3707da37ac65472b0a37a894f47ffd8abdad092e1ba3d5a4e590125eae2504b3",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "design-assets/ordabasy-design-assets-reviewed.zip",
+      "sha256": "3522138e69b0df95dbe58d9a1e1d3343514ef3274e8896f50d93460801dde556",
+      "unchangedFromBaseline": true
+    },
+    {
+      "path": "images/gallery1.MP4",
+      "sha256": "dd9296bae519a2b6282e260fdbf39a84a64a8295167377ae1bd2091f909b7ae4",
+      "unchangedFromBaseline": true
+    }
+  ],
+  "originalUserZipPreservedUntracked": true
+}

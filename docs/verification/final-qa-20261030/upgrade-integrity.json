@@ -1,0 +1,85 @@
+{
+  "restoredExistingSchema": true,
+  "protectedTables": [
+    {
+      "table": "User",
+      "unchanged": true,
+      "rows": 1
+    },
+    {
+      "table": "Player",
+      "unchanged": true,
+      "rows": 20
+    },
+    {
+      "table": "RosterMembership",
+      "unchanged": true,
+      "rows": 20
+    },
+    {
+      "table": "PlayerSeason",
+      "unchanged": true,
+      "rows": 20
+    },
+    {
+      "table": "PlayerStatistics",
+      "unchanged": true,
+      "rows": 0
+    },
+    {
+      "table": "Match",
+      "unchanged": true,
+      "rows": 36
+    },
+    {
+      "table": "MatchEvent",
+      "unchanged": true,
+      "rows": 0
+    },
+    {
+      "table": "PlayerMatchStatistics",
+      "unchanged": true,
+      "rows": 0
+    },
+    {
+      "table": "NewsPost",
+      "unchanged": true,
+      "rows": 4
+    },
+    {
+      "table": "NewsTranslation",
+      "unchanged": true,
+      "rows": 12
+    },
+    {
+      "table": "MediaAsset",
+      "unchanged": true,
+      "rows": 0
+    },
+    {
+      "table": "GalleryItem",
+      "unchanged": true,
+      "rows": 6
+    },
+    {
+      "table": "Season",
+      "unchanged": true,
+      "rows": 1
+    },
+    {
+      "table": "Category",
+      "unchanged": true,
+      "rows": 0
+    },
+    {
+      "table": "Competition",
+      "unchanged": true,
+      "rows": 2
+    },
+    {
+      "table": "ClubInfo",
+      "unchanged": true,
+      "rows": 1
+    }
+  ]
+}

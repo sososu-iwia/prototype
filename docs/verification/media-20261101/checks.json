@@ -1,0 +1,84 @@
+{
+  "applicationCommit": "78048c99aaedb32468b6e51daf59739865431c65",
+  "baselineCommit": "24a78d5",
+  "clientDate": "2026-11-01",
+  "timezone": "Asia/Almaty",
+  "lint": {
+    "exitCode": 0,
+    "log": "logs/lint-handoff.log"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "log": "logs/typecheck-final.log"
+  },
+  "unit": {
+    "passed": 20,
+    "failed": 0
+  },
+  "integration": {
+    "passed": 50,
+    "failed": 0
+  },
+  "e2e": {
+    "passed": 111,
+    "failed": 0,
+    "newMediaCases": 21,
+    "viewports": [
+      390,
+      768,
+      1440
+    ],
+    "reportedDuration": "3.2m",
+    "log": "logs/e2e-complete-final.log"
+  },
+  "productionBuild": {
+    "exitCode": 0,
+    "log": "logs/final-build.log"
+  },
+  "videoDecode": {
+    "exitCode": 0
+  },
+  "securityScan": {
+    "exitCode": 0
+  },
+  "sourceIntegrity": {
+    "originalsMatched": 9,
+    "baselineFilesUnchanged": 5,
+    "evidence": "asset-integrity.json"
+  },
+  "lighthouse": {
+    "exitCode": 1,
+    "releaseLcpTargetMet": false,
+    "before": "lighthouse-before/aggregate.json",
+    "after": "lighthouse/aggregate.json",
+    "homeLcpRegression": true
+  },
+  "liveReview": {
+    "exitCode": 0,
+    "configurations": 12,
+    "browserScreenshots": 48,
+    "errors": [],
+    "heroRequestsPerView": 1,
+    "heroCLS": 0,
+    "videoFullCycles": 2,
+    "videoFrameCallbacks": 1423,
+    "fullscreen": true,
+    "desktopMarqueeFullCycles": 3,
+    "mobileMarqueeFullCycles": 1,
+    "webkitPassed": true,
+    "physicalSafariTested": false,
+    "sourceDarkLogoCardsRetained": true
+  },
+  "interactiveChrome": {
+    "reviewed": [
+      "home",
+      "gallery",
+      "public-partners",
+      "Console",
+      "Network"
+    ],
+    "homeLeftOpen": true,
+    "profileExtensionWarningsObserved": true,
+    "cleanProfileAppCspViolations": 0
+  }
+}

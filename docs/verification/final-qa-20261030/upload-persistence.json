@@ -1,0 +1,17 @@
+{
+  "name": "final-qa-upload-1793310624621",
+  "logo": "/uploads/f1cfdac0-f02e-488d-a373-cead01a6ccf4.webp",
+  "id": "f8d717ee-64f7-413f-bcd8-f1d62a4ce5a8",
+  "imageSha256": "18ad16891601a8dc33717ae3c2c192b23d7b1c4ed7f8f8357d6f67ff2f4c89fb",
+  "status": "DRAFT",
+  "beforeRestart": {
+    "previewLoaded": true,
+    "version": 1
+  },
+  "afterRestart": {
+    "sameRecord": true,
+    "sameImageBytes": true,
+    "previewLoaded": true,
+    "version": 1
+  }
+}

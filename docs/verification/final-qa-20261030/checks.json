@@ -1,0 +1,172 @@
+[
+  {
+    "name": "install",
+    "exitCode": 0,
+    "durationMs": 28849,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "lint",
+    "exitCode": 0,
+    "durationMs": 14066,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "types",
+    "exitCode": 0,
+    "durationMs": 42020,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "unit",
+    "exitCode": 0,
+    "durationMs": 3114,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec",
+    "tests": 20
+  },
+  {
+    "name": "integration",
+    "exitCode": 0,
+    "durationMs": 32882,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec",
+    "tests": 50
+  },
+  {
+    "name": "build",
+    "exitCode": 0,
+    "durationMs": 31369,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "scan",
+    "exitCode": 0,
+    "durationMs": 937,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "audit",
+    "exitCode": 0,
+    "durationMs": 1752,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "migrations",
+    "exitCode": 0,
+    "durationMs": 9961,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "restore",
+    "exitCode": 0,
+    "durationMs": 4103,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "diff",
+    "exitCode": 0,
+    "durationMs": 81,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "compose",
+    "exitCode": 0,
+    "durationMs": 459926,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "route-scroll-regression",
+    "exitCode": 0,
+    "tests": 3,
+    "reportedDuration": "13.0s",
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "e2e",
+    "exitCode": 0,
+    "tests": 90,
+    "reportedDuration": "9.2m",
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "lighthouse",
+    "exitCode": 1,
+    "coldSamples": 54,
+    "routes": 18,
+    "performanceMedianFailures": 4,
+    "lcpMedianFailures": 16,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "seo",
+    "exitCode": 0,
+    "checks": 54,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "visual-smoke",
+    "exitCode": 0,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-launch-build",
+    "exitCode": 0,
+    "log": "logs/final-launch-build.log",
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-runtime",
+    "exitCode": 0,
+    "httpChecks": 6,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "post-launch-proofs",
+    "exitCode": 0,
+    "probes": 4,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-visual",
+    "exitCode": 0,
+    "views": 285,
+    "issues": 0,
+    "routeCaptures": 171,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-navigation",
+    "exitCode": 0,
+    "checks": 303,
+    "errors": 0,
+    "adminSaveReloadLogoutLocales": 3,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "honours-anchor-and-document-crop",
+    "exitCode": 0,
+    "checks": 9,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "visual-image-review",
+    "exitCode": 0,
+    "contactSheets": 32,
+    "independentHumanReview": false,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-evidence-lint",
+    "exitCode": 0,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-qa-format-and-syntax",
+    "exitCode": 0,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  },
+  {
+    "name": "final-asset-sha256",
+    "exitCode": 0,
+    "applicationCommit": "f5d0e53c09e906c7dc04db0c633c7ff69f9932ec"
+  }
+]

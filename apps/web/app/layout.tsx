@@ -9,6 +9,7 @@ import "../styles/fonts.css";
 import "../styles/primary-font.css";
 import "../styles/legacy.css";
 import "../styles/app.css";
+import "../styles/editorial.css";
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title: { default: "FC Ordabasy", template: "%s" },
@@ -23,7 +24,7 @@ export default async function RootLayout({
   const locale = await getLocale(),
     u = await getTranslations("ui");
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <head>
         <link
           rel="preload"

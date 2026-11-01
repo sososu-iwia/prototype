@@ -33,6 +33,8 @@ COPY --from=build --chown=node:node /app/node_modules/.prisma ./node_modules/.pr
 COPY --from=build --chown=node:node /app/apps/api/dist ./apps/api/dist
 COPY --from=build --chown=node:node /app/apps/api/prisma ./apps/api/prisma
 COPY --from=build --chown=node:node /app/apps/api/prisma.config.ts ./apps/api/prisma.config.ts
+COPY --from=build --chown=node:node /app/packages/content/kff-2026-source.json ./packages/content/kff-2026-source.json
+COPY --from=build --chown=node:node /app/packages/content/kff-2026-mapping.json ./packages/content/kff-2026-mapping.json
 RUN mkdir -p /app/media-data && chown node:node /app/media-data
 USER node
 WORKDIR /app/apps/api
@@ -41,5 +43,5 @@ CMD ["node","dist/main.js"]
 FROM runtime-base AS verification
 WORKDIR /app
 COPY --from=verification-code --chown=node:node /app/verification ./verification
-CMD ["node","--enable-source-maps","--test","--test-concurrency=1","verification/api.test.js","verification/cms.test.js","verification/integrity.test.js"]
+CMD ["node","--enable-source-maps","--test","--test-concurrency=1","verification/api.test.js","verification/cms.test.js","verification/integrity.test.js","verification/premium.test.js","verification/kff.test.js"]
 FROM runtime-base AS runtime

@@ -1,0 +1,42 @@
+[
+  {
+    "route": "/",
+    "samples": 3,
+    "scores": {
+      "performance": 0.95,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 2969.01485,
+    "LCPRange": [
+      2922.31075,
+      3017.5104499999998
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.94,
+      0.95
+    ]
+  },
+  {
+    "route": "/gallery",
+    "samples": 3,
+    "scores": {
+      "performance": 0.9,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1
+    },
+    "LCP": 3605.0599999999995,
+    "LCPRange": [
+      3491.8608000000004,
+      3605.5114000000003
+    ],
+    "CLS": 0,
+    "performanceRange": [
+      0.9,
+      0.91
+    ]
+  }
+]

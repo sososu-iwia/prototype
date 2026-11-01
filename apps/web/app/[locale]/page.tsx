@@ -1,7 +1,3 @@
-import { ScrollEffects } from "../../components/layout/ScrollEffects";
-import { HeroPreload } from "../../components/ui/HeroPreload";
-import Link from "next/link";
-import { Achievements } from "../../features/club/Achievements";
 import { getTranslations } from "next-intl/server";
 import {
   getPlayers,
@@ -9,28 +5,28 @@ import {
   getNews,
   getGallery,
   getClub,
+  getSponsors,
 } from "../../lib/api/server";
-import { localized, type Locale, type SiteKey } from "../../lib/i18n/config";
+import type { Locale } from "../../lib/i18n/config";
 import { metadata } from "../../lib/metadata";
-import { NextMatch } from "../../features/matches/NextMatch";
-import { MatchCard } from "../../features/matches/MatchCard";
+import { EditorialHero } from "../../components/editorial/EditorialHero";
+import { SectionTitle } from "../../components/editorial/SectionTitle";
+import { FixtureRail } from "../../components/editorial/FixtureRail";
+import { TeamSelector } from "../../features/teams/TeamSelector";
+import { AcademyPromo } from "../../features/academy/AcademyPromo";
+import { Achievements } from "../../features/club/Achievements";
+import { SponsorGrid } from "../../features/sponsors/SponsorGrid";
 import { PlayerCard } from "../../features/players/PlayerCard";
 import { NewsGrid } from "../../features/news/NewsGrid";
 import { Gallery } from "../../features/gallery/Gallery";
-import {
-  ClubNumbers,
-  HomeAbout,
-  ContactSection,
-} from "../../components/club/PreservedSections";
-import { SectionHeading } from "../../components/ui/SectionHeading";
-import { Empty, Offline } from "../../components/ui/State";
+import { Offline } from "../../components/ui/State";
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "site" });
+  const { locale } = await params,
+    t = await getTranslations({ locale, namespace: "site" });
   return metadata(locale, "", t("title"), t("description"));
 }
 export default async function Home({
@@ -39,165 +35,116 @@ export default async function Home({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const [players, matches, news, gallery, club] = await Promise.all([
+  const [players, matches, news, gallery, club, sponsors] = await Promise.all([
     getPlayers(),
     getMatches(),
     getNews(),
     getGallery(),
     getClub(),
+    getSponsors(),
   ]);
-  const s = await getTranslations("site"),
+  const p = await getTranslations("premium"),
+    s = await getTranslations("site"),
     u = await getTranslations("ui");
-  const content = club.data.info.find((i) => i.id === "main")?.content;
-  const t = (key: SiteKey) => localized(content?.[key], locale) || s(key);
-  const props = { locale, t };
-  const enabled = (section: string) => club.data.sections.includes(section);
-  const featured = [
-    "bekhan-shaizada",
-    "sergey-maly",
-    "david-abagna",
-    "everton-moraes",
-  ]
-    .map((slug) => players.data.items.find((p) => p.slug === slug))
-    .filter((p) => p != null);
-  const cards = featured.length ? featured : players.data.items.slice(0, 4);
+  const enabled = (key: string) => club.data.sections.includes(key);
+  const cards = players.data.items
+    .filter((p) => p.verification === "VERIFIED")
+    .slice(0, 4);
   return (
-    <main id="content">
-      <HeroPreload priority="low" />
+    <main id="content" className="premium">
       {enabled("hero") && (
-        <section className="hero">
-          <div className="container hero-container">
-            <div className="hero-content">
-              <p className="hero-label">{t("location")}</p>
-              <h1>
-                <span className="hero-first">{t("heroFirst")}</span>
-                <span className="hero-second">{t("heroSecond")}</span>
-              </h1>
-              <p className="hero-description">{t("description")}</p>
-              <div className="hero-buttons">
-                <Link
-                  prefetch={false}
-                  href={`/${locale}/about`}
-                  className="btn btn-primary"
-                >
-                  {t("aboutButton")}
-                </Link>
-                <Link
-                  prefetch={false}
-                  href={`/${locale}/matches`}
-                  className="btn btn-secondary"
-                >
-                  {t("matchesButton")}
-                </Link>
-              </div>
-            </div>
-            <NextMatch
-              matches={matches.data.items}
+        <EditorialHero
+          locale={locale}
+          champion={club.data.achievements.some(
+            (a) =>
+              a.year === 2026 &&
+              a.status === "PUBLISHED" &&
+              a.verification === "VERIFIED",
+          )}
+        />
+      )}
+      {enabled("matches") && (
+        <FixtureRail
+          matches={matches.data.items}
+          locale={locale}
+          timeZone={club.data.timezone}
+        />
+      )}
+      <div className="container">
+        <Offline show={club.offline || news.offline || matches.offline} />
+      </div>
+      {enabled("news") && (
+        <section className="editorial-section editorial-news">
+          <div className="container">
+            <SectionTitle
+              label="ORDABASY TODAY"
+              title={p("latest")}
+              href={`/${locale}/news`}
+              action={p("allNews")}
+            />
+            <NewsGrid
+              posts={news.data.items.slice(0, 5)}
               locale={locale}
               timeZone={club.data.timezone}
             />
           </div>
         </section>
       )}
-      {enabled("club-stats") && <ClubNumbers {...props} />}
-      <div className="container">
-        <Offline
-          show={
-            players.offline ||
-            matches.offline ||
-            news.offline ||
-            gallery.offline ||
-            club.offline
-          }
-        />
-        {club.data.info.some((i) => i.verification === "LEGACY_UNVERIFIED") && (
-          <p className="archive-badge">{u("archivedContent")}</p>
-        )}
-      </div>
-      {enabled("about") && <HomeAbout {...props} />}
-      {enabled("matches") && (
-        <section className="matches-section">
-          <div className="container">
-            <SectionHeading
-              label={t("matchesLabel")}
-              title={t("matchesTitle")}
-              href={`/${locale}/matches`}
-              action={t("allMatches")}
-            />
-            <div className="fixtures-grid">
-              {matches.data.items.slice(-3).map((match) => (
-                <MatchCard
-                  key={match.id}
-                  match={match}
-                  locale={locale}
-                  timeZone={club.data.timezone}
-                />
-              ))}
-            </div>
-            {!matches.data.items.length && <Empty />}
-          </div>
-        </section>
+      <section className="editorial-section">
+        <div className="container">
+          <SectionTitle label={p("teamIntro")} title={p("ourTeams")} />
+          <TeamSelector locale={locale} />
+        </div>
+      </section>
+      {enabled("achievements") && (
+        <Achievements items={club.data.achievements} locale={locale} />
       )}
+      <AcademyPromo locale={locale} />
       {enabled("team") && (
-        <section className="team-section">
+        <section className="editorial-section">
           <div className="container">
-            <SectionHeading
-              label={t("teamLabel")}
-              title={t("teamTitle")}
-              href={`/${locale}/team`}
-              action={t("allPlayers")}
+            <SectionTitle
+              label="FC ORDABASY"
+              title={p("featuredPlayers")}
+              href={`/${locale}/players`}
+              action={p("allPlayers")}
             />
-            <div className="players-grid">
-              {cards.map((player) => (
-                <PlayerCard
-                  key={player.id}
-                  player={player}
-                  locale={locale}
-                  positionLabel={s(player.position)}
-                  compact
-                />
-              ))}
-            </div>
-            {cards.some((p) => p.verification === "LEGACY_UNVERIFIED") && (
-              <p className="archive-badge">{u("archive")}</p>
+            {cards.length ? (
+              <div className="players-grid">
+                {cards.map((player) => (
+                  <PlayerCard
+                    key={player.id}
+                    player={player}
+                    locale={locale}
+                    positionLabel={s(player.position)}
+                    compact
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="editorial-empty">
+                <span>01 — {p("firstTeam")}</span>
+                <p>{p("teamEmpty")}</p>
+                <p>{u("archive")}</p>
+              </div>
             )}
           </div>
         </section>
       )}
-      {enabled("achievements") && (
-        <Achievements items={club.data.achievements} locale={locale} />
-      )}
-      {enabled("news") && (
-        <section className="news-section">
-          <div className="container">
-            <SectionHeading
-              label={t("newsLabel")}
-              title={t("newsTitle")}
-              href={`/${locale}/news`}
-              action={t("allNews")}
-            />
-            <NewsGrid
-              posts={news.data.items.slice(0, 3)}
-              locale={locale}
-              timeZone={club.data.timezone}
-            />
-          </div>
-        </section>
-      )}
       {enabled("gallery") && (
-        <section className="gallery-section" id="gallery">
+        <section className="editorial-section editorial-media" id="gallery">
           <div className="container">
-            <div className="gallery-heading">
-              <p className="section-label">{t("galleryLabel")}</p>
-              <h2>{t("galleryTitle")}</h2>
-              <p>{t("galleryDescription")}</p>
-            </div>
-            <Gallery items={gallery.data.items} />
+            <SectionTitle
+              label={p("galleryLabel")}
+              title={p("galleryTitle")}
+              href={`/${locale}/gallery`}
+              action={s("gallery")}
+            />
+            <Gallery items={gallery.data.items.slice(0, 4)} />
           </div>
         </section>
       )}
-      {enabled("contact") && <ContactSection {...props} />}
-      <ScrollEffects />
+      <SponsorGrid items={sponsors.data.items} />
     </main>
   );
 }

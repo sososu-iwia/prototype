@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://kffleague.kz/ru/team/81",
+  "sourceSeason": "2026",
+  "sourceCapturedAt": "2026-11-01T12:28:06.889Z",
+  "captureMethod": "public web reader; profile metadata, not proof of a current contract",
+  "directHttpStatus": 403,
+  "roster": [
+    {
+      "number": 1,
+      "name": "Бекхан Шайзада",
+      "positionLabel": "Вратарь",
+      "country": "KZ",
+      "profile": {
+        "id": "1786",
+        "url": "https://kffleague.kz/ru/player/1786",
+        "name": "Бекхан Шайзада",
+        "positionLabel": "ВР",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 13,
+      "name": "Кажымукан Толепберген",
+      "positionLabel": "Вратарь",
+      "country": "KZ",
+      "profile": {
+        "id": "653",
+        "url": "https://kffleague.kz/ru/player/653",
+        "name": "Кажымукан Толепберген",
+        "positionLabel": "ВР",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "3 weeks ago"
+      }
+    },
+    {
+      "number": 24,
+      "name": "Аян Абдухалык",
+      "positionLabel": "Вратарь",
+      "country": "KZ",
+      "profile": {
+        "id": "418",
+        "url": "https://kffleague.kz/ru/player/418",
+        "name": "Аян Абдухалык",
+        "positionLabel": "ВР",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "last month"
+      }
+    },
+    {
+      "number": 3,
+      "name": "Гай Марселин Килама Килама",
+      "positionLabel": "Защитник",
+      "country": "CM",
+      "profile": {
+        "id": "2617",
+        "url": "https://kffleague.kz/ru/player/2617",
+        "name": "Гай Марселин Килама Килама",
+        "positionLabel": "Защитник",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 4,
+      "name": "Сергей Кейлер",
+      "positionLabel": "Защитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1718",
+        "url": "https://kffleague.kz/ru/player/1718",
+        "name": "Сергей Кейлер",
+        "positionLabel": "ЛЗ",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 5,
+      "name": "Никола Антич",
+      "positionLabel": "Защитник",
+      "country": "RS",
+      "profile": {
+        "id": "1728",
+        "url": "https://kffleague.kz/ru/player/1728",
+        "name": "Никола Антич",
+        "positionLabel": "ЛЗ",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "last month"
+      }
+    },
+    {
+      "number": 8,
+      "name": "Улар Жаксыбаев",
+      "positionLabel": "Защитник",
+      "country": "KZ",
+      "profile": {
+        "url": null,
+        "retrieval": "unavailable",
+        "teamLabel": null,
+        "positionLabel": null
+      }
+    },
+    {
+      "number": 14,
+      "name": "Али Турганов",
+      "positionLabel": "Защитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1266",
+        "url": "https://kffleague.kz/ru/player/1266",
+        "name": "Али Турганов",
+        "positionLabel": "ЦЗ",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "2 months ago"
+      }
+    },
+    {
+      "number": 22,
+      "name": "Султанбек Астанов",
+      "positionLabel": "Защитник",
+      "country": "KZ",
+      "profile": {
+        "url": "https://kffleague.kz/ru/player/1511",
+        "retrieval": "unavailable",
+        "teamLabel": null,
+        "positionLabel": null
+      }
+    },
+    {
+      "number": 25,
+      "name": "Сергей Малый",
+      "positionLabel": "Защитник",
+      "country": "KZ",
+      "profile": {
+        "id": "279",
+        "url": "https://kffleague.kz/ru/player/279",
+        "name": "Сергей Малый",
+        "positionLabel": "ЦЗ",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "4 days ago"
+      }
+    },
+    {
+      "number": 55,
+      "name": "Алекса Аманович",
+      "positionLabel": "Защитник",
+      "country": "RS",
+      "profile": {
+        "id": "1252",
+        "url": "https://kffleague.kz/ru/player/1252",
+        "name": "Алекса Аманович",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "3 weeks ago"
+      }
+    },
+    {
+      "number": 6,
+      "name": "Нурби Маратулы",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1905",
+        "url": "https://kffleague.kz/ru/player/1905",
+        "name": "Нурби Маратулы",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 10,
+      "name": "Эльхан Астанов",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "503",
+        "url": "https://kffleague.kz/ru/player/503",
+        "name": "Эльхан Астанов",
+        "positionLabel": "ЛП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "6 days ago"
+      }
+    },
+    {
+      "number": 11,
+      "name": "Юрий Вакулко",
+      "positionLabel": "Полузащитник",
+      "country": "UA",
+      "profile": {
+        "id": "603",
+        "url": "https://kffleague.kz/ru/player/603",
+        "name": "Юрий Вакулко",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "last week"
+      }
+    },
+    {
+      "number": 15,
+      "name": "Жасулан Амир",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1540",
+        "url": "https://kffleague.kz/ru/player/1540",
+        "name": "Жасулан Амир",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 16,
+      "name": "Кристиан-Михай Капацина",
+      "positionLabel": "Полузащитник",
+      "country": "RO",
+      "profile": {
+        "id": "544",
+        "url": "https://kffleague.kz/ru/player/544",
+        "name": "Кристиан-Михай Капацина",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 19,
+      "name": "Леонардо Натель Виера",
+      "positionLabel": "Полузащитник",
+      "country": "BR",
+      "profile": {
+        "id": "2945",
+        "url": "https://kffleague.kz/ru/player/2945",
+        "name": "Леонардо Натель Виера",
+        "positionLabel": "Полузащитник",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 21,
+      "name": "Биржан Токтыбай",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "258",
+        "url": "https://kffleague.kz/ru/player/258",
+        "name": "Биржан Токтыбай",
+        "positionLabel": "ЦН",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "2 months ago"
+      }
+    },
+    {
+      "number": 23,
+      "name": "Абинур Нурымбет",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "539",
+        "url": "https://kffleague.kz/ru/player/539",
+        "name": "Абинур Нурымбет",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 27,
+      "name": "Нурдаулет Серик",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1324",
+        "url": "https://kffleague.kz/ru/player/1324",
+        "name": "Нурдаулет Серик",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 44,
+      "name": "Тидиан Кейта",
+      "positionLabel": "Полузащитник",
+      "country": "FR",
+      "profile": {
+        "id": "3403",
+        "url": "https://kffleague.kz/ru/player/3403",
+        "name": "Тидиан Кейта",
+        "positionLabel": "Полузащитник",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 77,
+      "name": "Давид Сандан Абагна",
+      "positionLabel": "Полузащитник",
+      "country": "GH",
+      "profile": {
+        "id": "2944",
+        "url": "https://kffleague.kz/ru/player/2944",
+        "name": "Давид Сандан Абагна",
+        "positionLabel": "Полузащитник",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 78,
+      "name": "Рамазан Сердалы",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "630",
+        "url": "https://kffleague.kz/ru/player/630",
+        "name": "Рамазан Сердалы",
+        "positionLabel": "ОП",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 80,
+      "name": "Бакдияр Абен",
+      "positionLabel": "Полузащитник",
+      "country": "KZ",
+      "profile": {
+        "id": "1750",
+        "url": "https://kffleague.kz/ru/player/1750",
+        "name": "Бакдияр Абен",
+        "positionLabel": "ЦП",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 9,
+      "name": "Эвертон Маседо",
+      "positionLabel": "Нападающий",
+      "country": "BR",
+      "profile": {
+        "id": "387",
+        "url": "https://kffleague.kz/ru/player/387",
+        "name": "Эвертон Маседо",
+        "positionLabel": "ЦН",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 20,
+      "name": "Магжан Токтыбай",
+      "positionLabel": "Нападающий",
+      "country": "KZ",
+      "profile": {
+        "id": "1365",
+        "url": "https://kffleague.kz/ru/player/1365",
+        "name": "Магжан Токтыбай",
+        "positionLabel": "ЦН",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "last week"
+      }
+    },
+    {
+      "number": 28,
+      "name": "Берн Йонсен",
+      "positionLabel": "Нападающий",
+      "country": "NO",
+      "profile": {
+        "id": "3380",
+        "url": "https://kffleague.kz/ru/player/3380",
+        "name": "Берн Йонсен",
+        "positionLabel": "Нападающий",
+        "teamLabel": "Ордабасы",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 72,
+      "name": "Нурдаулет Бейсенбай",
+      "positionLabel": "Игрок",
+      "country": "KZ",
+      "profile": {
+        "id": "2732",
+        "url": "https://kffleague.kz/ru/player/2732",
+        "name": "Нурдаулет Бейсенбай",
+        "positionLabel": "Защитник",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 81,
+      "name": "Айдын Есболов",
+      "positionLabel": "Игрок",
+      "country": "KZ",
+      "profile": {
+        "id": "2735",
+        "url": "https://kffleague.kz/ru/player/2735",
+        "name": "Айдын Есболов",
+        "positionLabel": "Защитник",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    },
+    {
+      "number": 93,
+      "name": "Дамир Мынжасар",
+      "positionLabel": "Игрок",
+      "country": "KZ",
+      "profile": {
+        "id": "3096",
+        "url": "https://kffleague.kz/ru/player/3096",
+        "name": "Дамир Мынжасар",
+        "positionLabel": "Полузащитник",
+        "teamLabel": "Ордабасы М",
+        "retrieval": "page_metadata",
+        "crawlLabel": "today"
+      }
+    }
+  ],
+  "coaches": [
+    {
+      "key": "andrei-martin",
+      "name": "Андрей Мартин",
+      "roleCode": "HEAD_COACH",
+      "country": "MD",
+      "sortOrder": 0,
+      "aliases": []
+    },
+    {
+      "key": "farhat-dzhanibekov",
+      "name": "Фархат Джанибеков",
+      "nameKk": "Фархад Жәнібеков",
+      "roleCode": "ASSISTANT_COACH",
+      "country": "KZ",
+      "sortOrder": 10,
+      "aliases": [
+        "Фархад Жәнібеков"
+      ]
+    },
+    {
+      "key": "marcel-reshitka",
+      "name": "Марчел Решитка",
+      "roleCode": "ASSISTANT_COACH",
+      "country": "RO",
+      "sortOrder": 20,
+      "aliases": [
+        "Марчел Рещитка"
+      ]
+    }
+  ],
+  "clubStaffCandidates": [
+    {
+      "key": "igor-zaytsev",
+      "name": "Игорь Зайцев",
+      "role": "Assistant coach; KFF protocol role requires editorial reconciliation"
+    },
+    {
+      "key": "denis-romanenko",
+      "name": "Денис Романенко",
+      "role": "Goalkeeper coach; requires club approval"
+    },
+    {
+      "key": "luis-alberto-da-silva",
+      "name": "Луиш Альберту да Сильва",
+      "role": "Fitness coach; requires club approval"
+    }
+  ],
+  "clubSourceUrl": "https://fcordabasy.kz/players",
+  "excludedFields": [
+    "birthDate",
+    "height",
+    "statistics",
+    "contractDates",
+    "unlicensedPhotos"
+  ]
+}

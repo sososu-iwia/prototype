@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-30",
+  "branch": "codex/premium-redesign-20261030",
+  "unit": {
+    "passed": 19,
+    "failed": 0
+  },
+  "integration": {
+    "passed": 50,
+    "failed": 0
+  },
+  "e2e_full": {
+    "passed": 81,
+    "failed": 0
+  },
+  "e2e_affected_routes": {
+    "passed": 27,
+    "failed": 0
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "api_build": "PASS",
+  "web_build": "PASS",
+  "migration_repeat_seed": "PASS",
+  "security_pattern_scan": "PASS",
+  "npm_audit_vulnerabilities": 0,
+  "responsive": {
+    "widths": [
+      390,
+      768,
+      1024,
+      1440,
+      1920
+    ],
+    "locales": [
+      "kk",
+      "ru",
+      "en"
+    ],
+    "screenshots": 35,
+    "views": 105,
+    "issues": []
+  },
+  "video": {
+    "readyState": 4,
+    "width": 960,
+    "height": 720,
+    "error": null
+  },
+  "lighthouse": {
+    "runs": 12,
+    "performance_target": true,
+    "cls_target": true,
+    "lcp_target": false,
+    "command_exit_code": 1,
+    "transport": "local HTTP/1.1"
+  },
+  "production_deployed": false,
+  "existing_databases_modified": false,
+  "root_uploaded_zip_preserved": true
+}

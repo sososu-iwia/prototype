@@ -1,0 +1,12 @@
+{
+  "restorePassed": true,
+  "tablesVerified": 25,
+  "playersVerified": 20,
+  "membershipsVerified": 20,
+  "staffVerified": 0,
+  "playerRowsExactMatch": true,
+  "membershipRowsExactMatch": true,
+  "sourceDatabaseModified": false,
+  "isolatedTarget": "ordabasy_kff_restore_test_fb8bdfa0770b4e07acfdb38af03483e2",
+  "backupSha256": "a042b80768d9bad62488c3d0208ca398a4a5b754f61a57e13fa19d56f7e14752"
+}

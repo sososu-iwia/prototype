@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import * as argon2 from "argon2";
 import { db } from "../../apps/api/src/db";
 import { assertTestDatabase } from "../helpers/test-database";
+import en from "../../apps/web/messages/en.json";
 
 test.setTimeout(90000);
 test("SUPER_ADMIN creates roles through forms and deactivation revokes an editor session", async ({
@@ -63,6 +64,20 @@ test("SUPER_ADMIN creates roles through forms and deactivation revokes an editor
     await editor.getByLabel("Password", { exact: true }).fill(password);
     await editor.getByRole("button", { name: "Sign in", exact: true }).click();
     await expect(editor.locator(".admin-shell")).toBeVisible();
+    for (const entity of ["kff-review", "academy-inquiries", "audit"]) {
+      expect(
+        (
+          await editor.request.get(
+            new URL(`/api/v1/admin/${entity}`, page.url()).href,
+          )
+        ).status(),
+      ).toBe(403);
+    }
+    await expect(
+      editor
+        .locator(".admin-nav")
+        .getByRole("button", { name: en.ui["kff-review"], exact: true }),
+    ).toHaveCount(0);
     const csrf = (
       await (
         await editor.request.get(new URL("/api/v1/auth/csrf", page.url()).href)
@@ -76,6 +91,17 @@ test("SUPER_ADMIN creates roles through forms and deactivation revokes an editor
       },
     );
     expect(forbidden.status()).toBe(403);
+    expect(
+      (
+        await editor.request.post(
+          new URL("/api/v1/admin/staff", page.url()).href,
+          {
+            headers: { Origin: "http://localhost:3000", "X-CSRF-Token": csrf },
+            data: {},
+          },
+        )
+      ).status(),
+    ).toBe(403);
     await page
       .getByRole("textbox", { name: "Search", exact: true })
       .fill(editorEmail);

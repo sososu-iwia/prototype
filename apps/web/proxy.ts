@@ -20,8 +20,9 @@ export function proxy(req: NextRequest) {
   headers.set("Content-Security-Policy", csp);
   const res = NextResponse.next({ request: { headers } });
   res.headers.set("Content-Security-Policy", csp);
-  // These routes already preload this same hero in HTML. HTTP hints expose it
-  // before parsing the document; media conditions prevent a second size fetch.
+  // These legacy routes use fixed-size background images. The homepage has
+  // responsive picture/preload sources; a fixed HTTP hint would fetch a second
+  // image before the browser can select its actual art-directed source.
   const route = path.split("/").slice(2).join("/");
   if (
     req.headers.get("sec-fetch-dest") === "document" &&
@@ -29,13 +30,14 @@ export function proxy(req: NextRequest) {
   ) {
     const image = route === "team" ? "gallery2" : "hero";
     const desktopWidth = route === "team" ? 960 : 1600;
+    const suffix = "-background";
     res.headers.append(
       "Link",
-      `</media/${image}-background-640.avif>; rel=preload; as=image; type="image/avif"; media="(max-width: 600px)"; fetchpriority=high`,
+      `</media/${image}${suffix}-640.avif>; rel=preload; as=image; type="image/avif"; media="(max-width: 600px)"; fetchpriority=high`,
     );
     res.headers.append(
       "Link",
-      `</media/${image}-background-${desktopWidth}.avif>; rel=preload; as=image; type="image/avif"; media="(min-width: 601px)"; fetchpriority=high`,
+      `</media/${image}${suffix}-${desktopWidth}.avif>; rel=preload; as=image; type="image/avif"; media="(min-width: 601px)"; fetchpriority=high`,
     );
   }
   if (https)

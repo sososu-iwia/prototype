@@ -53,51 +53,6 @@ export function HomeAbout({ locale, t }: Props) {
     </section>
   );
 }
-export function HomeAchievements({ t }: Props) {
-  return (
-    <section className="achievements-section">
-      <div className="container">
-        <div className="achievements-heading">
-          <p className="section-label">{t("achievementsLabel")}</p>
-          <h2>{t("achievementsTitle")}</h2>
-          <p className="achievements-description">
-            {t("achievementsDescription")}
-          </p>
-        </div>
-        <div className="achievements-grid">
-          <article className="achievement-card main-achievement">
-            <div className="achievement-year">{"2023"}</div>
-            <div className="trophy-icon">{"🏆"}</div>
-            <p className="achievement-type">{t("championship")}</p>
-            <h3>{t("championTitle")}</h3>
-            <p>{t("championText")}</p>
-          </article>
-          <article className="achievement-card">
-            <div className="achievement-year">{"2011"}</div>
-            <div className="trophy-icon">{"🏆"}</div>
-            <p className="achievement-type">{t("cup")}</p>
-            <h3>{t("cupTitle")}</h3>
-            <p>{t("cupText")}</p>
-          </article>
-          <article className="achievement-card">
-            <div className="achievement-year">{"★"}</div>
-            <div className="trophy-icon">{"⚽"}</div>
-            <p className="achievement-type">{t("league")}</p>
-            <h3>{t("leagueTitle")}</h3>
-            <p>{t("leagueText")}</p>
-          </article>
-          <article className="achievement-card">
-            <div className="achievement-year">{"—"}</div>
-            <div className="trophy-icon">{"◉"}</div>
-            <p className="achievement-type">{t("history")}</p>
-            <h3>{t("historyTitle")}</h3>
-            <p>{t("historyText")}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  );
-}
 export function ContactSection({ locale, t }: Props) {
   return (
     <section className="contact-section">
@@ -213,7 +168,7 @@ export function AboutTimeline({ t }: Props) {
 }
 export function AboutStadium({ t }: Props) {
   return (
-    <section className="stadium-section">
+    <section className="stadium-section" id="stadium">
       <div className="container stadium-grid">
         <div className="stadium-photo">
           <Media src="images/news1.jpg" alt={t("galleryTitle")} />

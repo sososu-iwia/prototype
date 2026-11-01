@@ -1,3 +1,4 @@
+import "../../../styles/admin.css";
 import { getTranslations, getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import type { Locale } from "../../../lib/i18n/config";

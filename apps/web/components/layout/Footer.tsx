@@ -1,58 +1,75 @@
 import Link from "next/link";
+import { Icon } from "../editorial/Icon";
 import { getLocale, getTranslations } from "next-intl/server";
 export async function Footer() {
-  const t = await getTranslations("site"),
-    u = await getTranslations("ui"),
-    locale = await getLocale();
+  const locale = await getLocale(),
+    p = await getTranslations("premium"),
+    s = await getTranslations("site"),
+    u = await getTranslations("ui");
   return (
-    <footer className="footer">
-      <div className="container footer-grid">
-        <div className="footer-brand">
-          <Link prefetch={false} href={`/${locale}`} className="footer-logo">
-            <span>ФК</span> ОРДАБАСЫ
-          </Link>
-          <p>{t("footerText")}</p>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-wordmark" aria-hidden="true">
+          ORDABASY
         </div>
-        <div className="footer-column">
-          <h2>{t("navigation")}</h2>
-          {(["home", "about", "team", "matches"] as const).map((key, i) => (
-            <Link
-              prefetch={false}
-              key={key}
-              href={`/${locale}${i ? `/${key}` : ""}`}
-            >
-              {t(key)}
-            </Link>
+        <div className="site-footer-grid">
+          <div>
+            <img
+              src="/media/logo-header-96.webp"
+              width="58"
+              height="64"
+              alt="FC Ordabasy"
+            />
+            <p>{p("city")}</p>
+            <p>{s("footerText")}</p>
+          </div>
+          {[
+            [
+              "teams",
+              [
+                ["firstTeam", "/teams/first-team"],
+                ["firstLeague", "/teams/first-league"],
+                ["secondLeague", "/teams/second-league"],
+              ],
+            ],
+            [
+              "club",
+              [
+                ["history", "/about"],
+                ["honours", "/#honours"],
+                ["partners", "/partners"],
+              ],
+            ],
+            [
+              "academy",
+              [
+                ["academy", "/academy"],
+                ["admission", "/academy/admission"],
+                ["privacy", "/privacy"],
+              ],
+            ],
+          ].map(([label, links]) => (
+            <div key={String(label)}>
+              <h2>{p(label as "teams")}</h2>
+              {(links as string[][]).map(([key, url]) => (
+                <Link key={url} prefetch={false} href={`/${locale}${url}`}>
+                  {p(key as "teams")}
+                </Link>
+              ))}
+            </div>
           ))}
         </div>
-        <div className="footer-column">
-          <h2>{t("media")}</h2>
-          <Link prefetch={false} href={`/${locale}/news`}>
-            {t("news")}
-          </Link>
-          <Link prefetch={false} href={`/${locale}/gallery`}>
-            {t("gallery")}
-          </Link>
-          <Link prefetch={false} href={`/${locale}/statistics`}>
-            {u("stats")}
-          </Link>
-        </div>
-        <div className="footer-column">
-          <h2>{t("clubInfo")}</h2>
-          <p>📍 {t("footerCity")}</p>
-          <p>⚽ {t("footerClub")}</p>
-          <Link prefetch={false} href={`/${locale}/admin`}>
+        <div className="site-footer-bottom">
+          <span>
+            © {new Date().getUTCFullYear()} FC Ordabasy. {s("rights")}
+          </span>
+          <Link href={`/${locale}/admin`} prefetch={false}>
             {u("admin")}
           </Link>
+          <a href="#top-sentinel" aria-label={u("top")}>
+            <Icon name="arrow" style={{ transform: "rotate(-90deg)" }} />
+          </a>
         </div>
-      </div>
-      <div className="container footer-bottom">
-        <p>
-          © {new Date().getUTCFullYear()} FC Ordabasy. {t("rights")}
-        </p>
-        <a href="#top-sentinel" className="back-to-top" aria-label={u("top")}>
-          ↑
-        </a>
       </div>
     </footer>
   );

@@ -16,6 +16,7 @@ import { db } from "./db";
 import { mutationLock } from "./cms";
 import { readUpload } from "./storage";
 import { mediaDir } from "./config";
+import { backupCountSql } from "./backup-counts";
 function pgEnv(url: string) {
   const u = new URL(url);
   return {
@@ -58,7 +59,7 @@ async function backup(directory: string) {
   await mkdir(directory, { recursive: false, mode: 0o700 });
   await mkdir(join(directory, "media"), { mode: 0o700 });
   const files: Record<string, string> = {};
-  let counts = { players: 0, memberships: 0, articles: 0 };
+  let counts: Record<string, number> = {};
   await db.$transaction(
     async (tx) => {
       await mutationLock(tx);
@@ -77,11 +78,9 @@ async function backup(directory: string) {
         process.env.DATABASE_URL!,
       );
       await chmod(join(directory, "database.dump"), 0o600);
-      counts = {
-        players: await tx.player.count(),
-        memberships: await tx.rosterMembership.count(),
-        articles: await tx.newsPost.count(),
-      };
+      // SQL identifiers come exclusively from the closed application table map.
+      [counts] =
+        await tx.$queryRawUnsafe<Record<string, number>[]>(backupCountSql());
       const assets = await tx.mediaAsset.findMany();
       for (const asset of assets)
         for (const url of [
@@ -104,7 +103,7 @@ async function backup(directory: string) {
   await writeFile(
     join(directory, "manifest.json"),
     JSON.stringify(
-      { version: 1, createdAt: new Date().toISOString(), counts, files },
+      { version: 2, createdAt: new Date().toISOString(), counts, files },
       null,
       2,
     ),
@@ -120,9 +119,21 @@ async function restore(directory: string) {
     );
   const manifest = JSON.parse(
     await readFile(join(directory, "manifest.json"), "utf8"),
-  ) as { version: number; files: Record<string, string> };
-  if (manifest.version !== 1 || !manifest.files?.["database.dump"])
+  ) as {
+    version: number;
+    files: Record<string, string>;
+    counts: Record<string, number>;
+  };
+  if (
+    ![1, 2].includes(manifest.version) ||
+    !manifest.files?.["database.dump"] ||
+    !manifest.counts ||
+    Object.values(manifest.counts).some(
+      (value) => !Number.isSafeInteger(value) || value < 0,
+    )
+  )
     throw new Error("Unsupported backup manifest");
+  const countSql = backupCountSql(Object.keys(manifest.counts));
   for (const [name, hash] of Object.entries(manifest.files)) {
     if (
       name !== "database.dump" &&
@@ -216,9 +227,15 @@ async function restore(directory: string) {
     try {
       await verification.query('DELETE FROM "Session"');
       await verification.query('UPDATE "MediaAsset" SET storage=$1', [driver]);
-      const result = await verification.query(
-        'SELECT (SELECT count(*) FROM "Player") as players,(SELECT count(*) FROM "RosterMembership") as memberships,(SELECT count(*) FROM "NewsPost") as articles',
-      );
+      const result = await verification.query(countSql);
+      if (
+        Object.entries(manifest.counts).some(
+          ([key, expected]) => result.rows[0][key] !== expected,
+        )
+      )
+        throw new Error(
+          "Restored record counts differ from the backup snapshot",
+        );
       console.log(
         JSON.stringify({
           restored: true,

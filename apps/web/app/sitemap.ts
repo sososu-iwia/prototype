@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   const paths = [
     "",
-    "/about",
+    "/about", "/academy", "/academy/admission", "/partners", "/privacy", "/teams/first-team", "/teams/second-league",
     "/team",
     "/players",
     "/matches",

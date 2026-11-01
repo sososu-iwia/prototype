@@ -1,0 +1,39 @@
+{
+  "capturedAt": "2026-10-30T00:34:05.369Z",
+  "production": true,
+  "checks": [
+    {
+      "url": "http://127.0.0.1:4000/api/v1/health",
+      "status": 200,
+      "durationMs": 147
+    },
+    {
+      "url": "http://127.0.0.1:4000/api/v1/ready",
+      "status": 200,
+      "durationMs": 78
+    },
+    {
+      "url": "http://localhost:3000/api/v1/health",
+      "status": 200,
+      "durationMs": 198
+    },
+    {
+      "url": "http://localhost:3000/api/v1/ready",
+      "status": 200,
+      "durationMs": 11
+    },
+    {
+      "url": "http://localhost:3000/kk",
+      "status": 200,
+      "durationMs": 238,
+      "lang": true,
+      "approved2026Rendered": true,
+      "smoothRouteResetConfigured": true
+    },
+    {
+      "url": "http://localhost:3000/kk/admin",
+      "status": 200,
+      "durationMs": 15
+    }
+  ]
+}

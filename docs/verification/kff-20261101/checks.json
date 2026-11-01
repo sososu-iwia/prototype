@@ -1,0 +1,92 @@
+{
+  "applicationCommit": "979502cd5d845b8f87877e6d0c44c0b195ffe25e",
+  "lastKnownGreenCICommit": "c729893dce47479719c37de63475f7451f76806d",
+  "ciRun": "https://github.com/sososu-iwia/prototype/actions/runs/41309039031",
+  "draftPR": "https://github.com/sososu-iwia/prototype/pull/4",
+  "archiveDocumentsRead": 4,
+  "qaImport": {
+    "sourcePlayers": 30,
+    "existingMatched": 20,
+    "playersAdded": 10,
+    "confirmedCoachesAdded": 3,
+    "staffDraftsAdded": 3,
+    "approvedSeasonRecords": 12,
+    "pendingRecords": 18,
+    "reserveProfilesExcludedFromFirstTeam": 8,
+    "newContracts": 0,
+    "repeatAdditions": 0
+  },
+  "checks": {
+    "lint": {
+      "exit": 0
+    },
+    "typecheck": {
+      "exit": 0
+    },
+    "unit": {
+      "exit": 0,
+      "passed": 23
+    },
+    "integration": {
+      "exit": 0,
+      "passed": 56
+    },
+    "buildAfterTests": {
+      "exit": 0
+    },
+    "e2e": {
+      "exit": 0,
+      "passed": 123
+    },
+    "seo": {
+      "exit": 0,
+      "pages": 54
+    },
+    "visual": {
+      "exit": 0,
+      "views": 345,
+      "issues": 0
+    },
+    "backupRestore": {
+      "exit": 0
+    },
+    "freshMigrationsRepeatSeed": {
+      "exit": 0
+    },
+    "securityPatternScan": {
+      "exit": 0
+    },
+    "npmAudit": {
+      "exit": 0,
+      "vulnerabilities": 0
+    },
+    "localDocker": {
+      "exit": 1,
+      "reason": "Docker daemon/socket unavailable"
+    },
+    "ciDocker": {
+      "exit": 0,
+      "containerIntegration": 56,
+      "routes": 30,
+      "S3": true,
+      "DMLRoleRestore": true
+    },
+    "lighthouseHomeGallery": {
+      "exit": 1,
+      "measurements": 6,
+      "reason": "LCP gate"
+    },
+    "lighthouse18Routes": {
+      "exit": 1,
+      "measurements": 54,
+      "LCPMedianFailures": 11,
+      "minPerformanceMedian": 0.91,
+      "minAccessibilityMedian": 0.96,
+      "maxCLS": 0
+    }
+  },
+  "sourceDatabaseUnchanged": true,
+  "draftEditsPersistedAcrossRestart": true,
+  "publicDeploymentApproved": false,
+  "publicReleaseReady": false
+}

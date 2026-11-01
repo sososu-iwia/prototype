@@ -38,6 +38,11 @@ export async function audit(
     ...Object.keys(after || {}),
   ])) {
     if (/password|token|secret|csrf/i.test(key)) continue;
+    if (
+      entity === "academy-inquiries" &&
+      !["state", "purgedAt", "version"].includes(key)
+    )
+      continue;
     if (JSON.stringify(before?.[key]) !== JSON.stringify(after?.[key])) {
       // Long article bodies are summarized, never logged verbatim.
       const summarize = (v: unknown) =>
@@ -67,6 +72,16 @@ export async function validateRelations(
   body: unknown,
   id?: string,
 ) {
+  if (entity === "staff") {
+    const staff = cmsSchemas.staff.parse(body);
+    if (
+      (staff.teamId &&
+        !(await tx.team.findUnique({ where: { id: staff.teamId } }))) ||
+      (staff.sourceSeasonId &&
+        !(await tx.season.findUnique({ where: { id: staff.sourceSeasonId } })))
+    )
+      throw new BadRequestException({ code: "INVALID_RELATION" });
+  }
   if (id && ["player-seasons", "statistics", "seasons"].includes(entity)) {
     const data = body as Record<string, unknown>;
     if (entity === "seasons" && data.id !== id)

@@ -1,0 +1,363 @@
+{
+  "capturedAt": "2026-11-01T08:59:28.775Z",
+  "origin": "http://localhost:3000",
+  "pages": [
+    {
+      "locale": "kk",
+      "width": 390,
+      "deviceScaleFactor": 2,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif",
+        "naturalWidth": 570,
+        "fit": "cover",
+        "focus": "64% 50%"
+      },
+      "lang": "kk",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "deviceScaleFactor": 2,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif",
+        "naturalWidth": 570,
+        "fit": "cover",
+        "focus": "64% 50%"
+      },
+      "lang": "ru",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "deviceScaleFactor": 2,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-mobile-820.avif",
+        "naturalWidth": 570,
+        "fit": "cover",
+        "focus": "64% 50%"
+      },
+      "lang": "en",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "kk",
+      "width": 768,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif",
+        "naturalWidth": 1100,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "kk",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "ru",
+      "width": 768,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif",
+        "naturalWidth": 1100,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "ru",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1280.avif",
+        "naturalWidth": 1100,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "en",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "kk",
+      "width": 1440,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1440,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "kk",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1440,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "ru",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1440,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "en",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "kk",
+      "width": 1920,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1920,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "kk",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "ru",
+      "width": 1920,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1920,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "ru",
+      "overflow": false,
+      "brokenImages": 0
+    },
+    {
+      "locale": "en",
+      "width": 1920,
+      "deviceScaleFactor": 1,
+      "heroRequests": [
+        "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif"
+      ],
+      "heroCLS": 0,
+      "cspViolations": [],
+      "image": {
+        "src": "http://localhost:3000/media/hero-editorial-v2-desktop-1600.avif",
+        "naturalWidth": 1920,
+        "fit": "cover",
+        "focus": "50% 42%"
+      },
+      "lang": "en",
+      "overflow": false,
+      "brokenImages": 0
+    }
+  ],
+  "errors": [],
+  "publicPartners": [
+    "Bank RBK"
+  ],
+  "video": {
+    "width": 960,
+    "height": 720,
+    "duration": 24.066667,
+    "muted": true,
+    "loop": true,
+    "frames": 1423,
+    "cycles": [
+      {
+        "observedAt": 24714.899999976158,
+        "from": 24.033333,
+        "to": 0
+      },
+      {
+        "observedAt": 48790.299999952316,
+        "from": 24.033333,
+        "to": 0
+      }
+    ],
+    "boundaryLuma": [
+      {
+        "time": 0.033333,
+        "meanRgb": 93.74175347222223
+      },
+      {
+        "time": 23.933333,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 24,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 24.033333,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 0,
+        "meanRgb": 122.98220486111111
+      },
+      {
+        "time": 0.033333,
+        "meanRgb": 122.98394097222223
+      },
+      {
+        "time": 0.066667,
+        "meanRgb": 93.74175347222223
+      },
+      {
+        "time": 0.1,
+        "meanRgb": 93.74609375
+      },
+      {
+        "time": 0.133333,
+        "meanRgb": 131.48871527777777
+      },
+      {
+        "time": 23.933333,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 24,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 24.033333,
+        "meanRgb": 1.3025173611111112
+      },
+      {
+        "time": 0,
+        "meanRgb": 122.98220486111111
+      }
+    ],
+    "lastTime": 0,
+    "error": null,
+    "rangeStatus": 206,
+    "mimeType": "video/mp4",
+    "realFullCycles": 2,
+    "fullscreen": true
+  },
+  "marquee": {
+    "duration": 40615.38461538461,
+    "startTime": 100.03600001817946,
+    "playState": "running",
+    "names": [
+      "Eurasia",
+      "final-qa-demo-en-1793316156653",
+      "ERG",
+      "City Hotel",
+      "Integra Construction",
+      "SCAT Airlines",
+      "Global Coffee",
+      "final-qa-upload-1793310624621"
+    ],
+    "nodes": 16,
+    "realFullCycles": 3,
+    "cycles": [
+      {
+        "currentTime": 40865.102000018174,
+        "nodes": 16,
+        "documentOverflow": false
+      },
+      {
+        "currentTime": 81546.80000001818,
+        "nodes": 16,
+        "documentOverflow": false
+      },
+      {
+        "currentTime": 122095.17000001819,
+        "nodes": 16,
+        "documentOverflow": false
+      }
+    ],
+    "privatePreview": true,
+    "mobileFullCycles": 1,
+    "mobileDuration": 30153.846153846152
+  },
+  "webkit": {
+    "muted": true,
+    "inline": true,
+    "loop": true,
+    "width": 960,
+    "height": 720,
+    "error": null
+  }
+}

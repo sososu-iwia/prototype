@@ -3,6 +3,9 @@ import { cache } from "react";
 import snapshot from "../../../../packages/content/public-snapshot.json";
 import type {
   Player,
+  Sponsor,
+  Academy,
+  TeamPageData,
   Match,
   News,
   GalleryItem,
@@ -72,7 +75,10 @@ export const getGallery = () =>
     list(snapshot.gallery as unknown as GalleryItem[]),
   );
 export const getClub = () =>
-  readApi<Club>("club", snapshot.club as unknown as Club);
+  readApi<Club>("club", {
+    ...snapshot.club,
+    achievements: [],
+  } as unknown as Club);
 export const getSeasons = () =>
   readApi<{ id: string; name: string; current: boolean }[]>(
     "seasons",
@@ -97,3 +103,19 @@ export const getStatistics = (query = "") =>
     updatedAt: string | null;
     method?: string;
   }>(`statistics?${query}`, { items: [], season: null, updatedAt: null });
+
+export const getSponsors = (youth = false) =>
+  readApi<{ items: Sponsor[] }>(`sponsors${youth ? "?youth=true" : ""}`, {
+    items: [],
+  });
+export const getAcademy = () =>
+  readApi<Academy>("academy", {
+    published: false,
+    admissionState: "UNCONFIRMED",
+    inquiriesEnabled: false,
+  });
+export const getTeamPage = (category: string, season?: string) =>
+  readApi<TeamPageData>(
+    `team-pages/${encodeURIComponent(category)}${season ? `?season=${encodeURIComponent(season)}` : ""}`,
+    { published: false, category },
+  );
