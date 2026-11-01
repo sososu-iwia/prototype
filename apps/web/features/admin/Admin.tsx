@@ -9,6 +9,7 @@ import { entityFields, blank, editable, type Field } from "./schema";
 import { AdminApiError, rebaseDraft } from "./drafts";
 import { SponsorPreview } from "./SponsorPreview";
 import { KffReview } from "./KffReview";
+import { StaffHistory } from "./StaffHistory";
 type Row = Record<string, unknown>;
 type User = {
   id: string;
@@ -1178,6 +1179,13 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                 >
                                   {u("edit")}
                                 </button>
+                                {entity === "staff" && (
+                                  <StaffHistory
+                                    key={`${row.id}-${row.version}`}
+                                    staffId={String(row.id)}
+                                    api={api}
+                                  />
+                                )}
                                 {user.role !== "EDITOR" &&
                                   [
                                     "players",

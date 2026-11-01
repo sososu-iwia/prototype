@@ -1,11 +1,13 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { localized, type Locale } from "../../lib/i18n/config";
 import type { Text } from "../../lib/api/types";
+import { AdminApiError } from "./drafts";
 
 type Row = {
   id: string;
+  seasonId: string;
   version: number;
   sourceName: string;
   shirtNumber: number;
@@ -52,23 +54,33 @@ export function KffReview({
     locale = useLocale() as Locale;
   const [data, setData] = useState<Data>({ items: [], teams: [], players: [] }),
     [status, setStatus] = useState(""),
+    [search, setSearch] = useState(""),
+    [loading, setLoading] = useState(true),
+    [dirty, setDirty] = useState(false),
     [selected, setSelected] = useState<Row | null>(null),
     [draft, setDraft] = useState<Draft | null>(null),
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
+  const loadSequence = useRef(0);
   const load = useCallback(async () => {
+    const sequence = ++loadSequence.current;
+    setLoading(true);
     try {
-      setData(
-        await api(
-          `admin/kff-review?season=2026${status ? `&status=${status}` : ""}`,
-        ),
+      const result = await api(
+        `admin/kff-review?season=2026${status ? `&status=${status}` : ""}`,
       );
+      if (sequence === loadSequence.current) setData(result);
     } catch {
-      setMessage(t("error"));
+      if (sequence === loadSequence.current) setMessage(t("error"));
+    } finally {
+      if (sequence === loadSequence.current) setLoading(false);
     }
   }, [api, status, t]);
   useEffect(() => {
     void load();
+    return () => {
+      loadSequence.current++;
+    };
   }, [load]);
   function edit(row: Row) {
     setSelected(row);
@@ -82,10 +94,22 @@ export function KffReview({
       publishPlayer: false,
     });
     onDirty(false);
+    setDirty(false);
+    setMessage("");
   }
   function change(value: Partial<Draft>) {
     setDraft((old) => (old ? { ...old, ...value } : old));
     onDirty(true);
+    setDirty(true);
+  }
+  function close() {
+    if (dirty && !window.confirm(t("discard"))) return;
+    setSelected(null);
+    setDraft(null);
+    setDirty(false);
+    onDirty(false);
+    setMessage("");
+    void load();
   }
   async function decide(action: string) {
     if (!selected || !draft) return;
@@ -106,23 +130,48 @@ export function KffReview({
         }),
       });
       onDirty(false);
+      setDirty(false);
       setSelected(null);
       setDraft(null);
       setMessage(t("saved"));
       await load();
-    } catch {
-      setMessage(t("error"));
+    } catch (error) {
+      const reasons = {
+        KFF_TEAM_CONFLICT: "teamConflict",
+        SOURCE_REVIEW_REQUIRED: "sourceRequired",
+        IDENTITY_REVIEW_REQUIRED: "identityRequired",
+        REVIEW_NOTE_REQUIRED: "noteRequired",
+        EDITORIAL_PUBLICATION_REQUIRED: "publicationRequired",
+      } as const;
+      setMessage(
+        error instanceof AdminApiError && error.code in reasons
+          ? t(reasons[error.code as keyof typeof reasons])
+          : error instanceof Error
+            ? error.message
+            : t("error"),
+      );
     } finally {
       setBusy(false);
     }
   }
+  const query = search.trim().toLocaleLowerCase(locale);
+  const visible = data.items.filter((row) =>
+    [
+      row.sourceName,
+      row.player ? localized(row.player.names, locale) : "",
+      row.profileTeam,
+      String(row.shirtNumber),
+      ...row.conflicts.map((c) => t(c as "PROFILE_UNAVAILABLE")),
+    ].some((value) => value?.toLocaleLowerCase(locale).includes(query)),
+  );
   return (
-    <section className="kff-review">
-      <h2>{t("title")}</h2>
+    <section className="kff-review" aria-label={t("title")}>
       <p>{t("reviewHint")}</p>
-      <p role="status">{message}</p>
+      <p role="status" aria-live="polite">
+        {message}
+      </p>
       <label>
-        {t("all")}
+        {t("decisionStatus")}
         <select
           value={status}
           disabled={!!selected}
@@ -138,34 +187,98 @@ export function KffReview({
           )}
         </select>
       </label>
+      {!selected && (
+        <label>
+          {t("search")}
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </label>
+      )}
       {!selected ? (
-        <div className="kff-review-list">
-          {data.items.map((row) => (
+        <div className="kff-review-list" aria-busy={loading}>
+          <p role="status">
+            {loading
+              ? t("loading")
+              : t("resultCount", {
+                  count: visible.length,
+                  total: data.items.length,
+                })}
+          </p>
+          {!loading && visible.length === 0 && <p>{t("empty")}</p>}
+          {visible.map((row) => (
             <article key={row.id}>
               <div>
-                <strong>
+                <h3>
                   #{row.shirtNumber} · {row.sourceName}
-                </strong>
-                <p>
-                  {row.player
-                    ? localized(row.player.names, locale)
-                    : t("unknown")}{" "}
-                  · {row.profileTeam || t("unknown")}
-                </p>
-                <p>{t(row.reviewStatus as "PENDING")}</p>
+                </h3>
+                <dl className="kff-review-facts">
+                  <dt>{t("local")}</dt>
+                  <dd>
+                    {row.player
+                      ? localized(row.player.names, locale)
+                      : t("unknown")}
+                  </dd>
+                  <dt>{t("sourceTeam")}</dt>
+                  <dd>{row.profileTeam || t("unknown")}</dd>
+                  <dt>{t("seasonLabel")}</dt>
+                  <dd>{row.seasonId}</dd>
+                  <dt>{t("position")}</dt>
+                  <dd>
+                    {row.sourcePosition}
+                    {row.profilePosition &&
+                    row.profilePosition !== row.sourcePosition
+                      ? ` / ${row.profilePosition}`
+                      : ""}
+                  </dd>
+                  <dt>{t("source")}</dt>
+                  <dd>
+                    <a href={row.sourceUrl} target="_blank" rel="noreferrer">
+                      {t("TEAM")}
+                    </a>
+                    {row.profileUrl && (
+                      <>
+                        {" "}
+                        ·{" "}
+                        <a
+                          href={row.profileUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("PROFILE")}
+                        </a>
+                      </>
+                    )}
+                  </dd>
+                  <dt>{t("decisionStatus")}</dt>
+                  <dd>{t(row.reviewStatus as "PENDING")}</dd>
+                </dl>
+                <p className="kff-review-reasons">{t("reason")}</p>
+                {!row.conflicts.length && <span>{t("noConflicts")}</span>}
                 {row.conflicts.map((c) => (
                   <span className="archive-badge" key={c}>
                     {t(c as "PROFILE_UNAVAILABLE")}
                   </span>
                 ))}
               </div>
-              <button onClick={() => edit(row)}>{t("EDIT")}</button>
+              <button
+                disabled={loading}
+                aria-label={`${t("openReview")}: ${row.sourceName}`}
+                onClick={() => edit(row)}
+              >
+                {t("openReview")}
+              </button>
             </article>
           ))}
         </div>
       ) : (
         draft && (
           <div className="kff-review-editor">
+            <button type="button" disabled={busy} onClick={close}>
+              {t("back")}
+            </button>
             <h3>
               #{selected.shirtNumber} · {selected.sourceName}
             </h3>
@@ -187,6 +300,10 @@ export function KffReview({
               </time>
             </p>
             <dl>
+              <dt>{t("seasonLabel")}</dt>
+              <dd>
+                {selected.seasonId} · {t(selected.reviewStatus as "PENDING")}
+              </dd>
               <dt>{t("TEAM")}</dt>
               <dd>
                 {selected.sourcePosition} · {selected.sourceNationality}

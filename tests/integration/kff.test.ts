@@ -308,6 +308,12 @@ test("KFF import, source review, protected history and coaching staff", async (t
         assert.equal(r.status, 201);
         const member = await r.json();
         temporaryStaff = member.id;
+        const search = await (
+          await call(`/admin/staff?q=${encodeURIComponent(prefix)}`)
+        ).json();
+        assert.ok(
+          search.items.some((row: { id: string }) => row.id === member.id),
+        );
         r = await call(
           `/admin/staff/${member.id}`,
           "PUT",
@@ -335,6 +341,8 @@ test("KFF import, source review, protected history and coaching staff", async (t
           await call(`/admin/staff/${member.id}/history`)
         ).json();
         assert.equal(history.length, 3);
+        assert.deepEqual(history[0].team.names, reserve.names);
+        assert.equal(history[0].season.name, "2026");
         const saved = await db.staffMember.findUniqueOrThrow({
           where: { id: member.id },
         });

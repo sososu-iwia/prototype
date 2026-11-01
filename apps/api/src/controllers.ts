@@ -631,6 +631,19 @@ export class AdminController {
                 }))),
           ],
         };
+      else if (entity === "staff")
+        where = {
+          OR: [
+            { source: { contains: p.q, mode: "insensitive" } },
+            ...["kk", "ru", "en"].map((locale) => ({
+              names: {
+                path: [locale],
+                string_contains: p.q,
+                mode: "insensitive",
+              },
+            })),
+          ],
+        };
       else if (entity === "sponsors")
         where = { name: { contains: p.q, mode: "insensitive" } };
       else if (entity === "achievements")

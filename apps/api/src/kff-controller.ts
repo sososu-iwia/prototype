@@ -83,6 +83,10 @@ export class KffReviewController {
     return db.staffRevision.findMany({
       where: { staffId: id },
       orderBy: { staffVersion: "desc" },
+      include: {
+        team: { select: { names: true } },
+        season: { select: { name: true } },
+      },
     });
   }
 }

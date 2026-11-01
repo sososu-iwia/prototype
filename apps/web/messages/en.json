@@ -617,6 +617,33 @@
     "POSITION_UNKNOWN": "Unknown position",
     "POSITION_SOURCE_CONFLICT": "Sources disagree on position",
     "CANONICAL_POSITION_CONFLICT": "Position differs from database",
-    "POSSIBLE_DUPLICATE": "Possible duplicate"
+    "POSSIBLE_DUPLICATE": "Possible duplicate",
+    "decisionStatus": "Decision status",
+    "search": "Search by name, number, team or discrepancy",
+    "sourceTeam": "Team in KFF profile",
+    "seasonLabel": "Season",
+    "reason": "Reason for review",
+    "noConflicts": "No discrepancies identified",
+    "openReview": "Review record",
+    "back": "Back to list and refresh",
+    "discard": "Discard unsaved changes and return to the list?",
+    "loading": "Loading review queue…",
+    "empty": "No records match these filters.",
+    "resultCount": "Showing {count} of {total}",
+    "teamConflict": "The KFF profile lists Ordabasy M. First-team affiliation requires club confirmation; automatic transfer is blocked.",
+    "sourceRequired": "An accessible source, team, position or linked profile is missing. Keep this record under review until confirmed.",
+    "identityRequired": "The selected record does not match the source name. Confirm the identity first; no new profile is created automatically.",
+    "noteRequired": "Explain the approval of disputed facts in at least 10 characters.",
+    "publicationRequired": "This profile needs a separate editorial review before publication."
+  },
+  "staffHistory": {
+    "title": "Staff history",
+    "version": "Version {version}",
+    "loading": "Loading history…",
+    "error": "Could not load history. Please retry.",
+    "empty": "No saved revisions yet.",
+    "unknown": "Not specified",
+    "source": "Source",
+    "notice": "This is the CMS revision history. Save timestamps are not employment contract dates."
   }
 }

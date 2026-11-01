@@ -78,7 +78,9 @@ test("KFF editorial decisions survive reload and cannot publish reserve as first
   const row = page
     .locator(".kff-review-list article")
     .filter({ hasText: /#6 · Нурби/ });
-  await row.getByRole("button", { name: ru.kff.EDIT, exact: true }).click();
+  await row
+    .getByRole("button", { name: new RegExp(`^${ru.kff.openReview}:`) })
+    .click();
   const note = "QA: reserve source remains pending club approval";
   await page.getByLabel(ru.kff.notes, { exact: true }).fill(note);
   await page.getByRole("button", { name: ru.kff.EDIT, exact: true }).click();
@@ -87,7 +89,9 @@ test("KFF editorial decisions survive reload and cannot publish reserve as first
   await page
     .getByRole("button", { name: ru.ui["kff-review"], exact: true })
     .click();
-  await row.getByRole("button", { name: ru.kff.EDIT, exact: true }).click();
+  await row
+    .getByRole("button", { name: new RegExp(`^${ru.kff.openReview}:`) })
+    .click();
   await expect(page.getByLabel(ru.kff.notes, { exact: true })).toHaveValue(
     note,
   );
@@ -98,5 +102,7 @@ test("KFF editorial decisions survive reload and cannot publish reserve as first
     .getAttribute("value");
   await team.selectOption(first!);
   await page.getByRole("button", { name: ru.kff.APPROVE, exact: true }).click();
-  await expect(page.getByText(ru.kff.error, { exact: true })).toBeVisible();
+  await expect(
+    page.getByText(ru.kff.teamConflict, { exact: true }),
+  ).toBeVisible();
 });
