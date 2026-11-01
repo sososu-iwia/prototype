@@ -32,7 +32,8 @@
     "test:compose": "node scripts/verify-compose.mjs"
   },
   "overrides": {
-    "multer": "2.5.0"
+    "multer": "2.5.0",
+    "minimatch": "11.0.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
@@ -42,7 +43,7 @@
     "cheerio": "1.2.0",
     "concurrently": "9.2.5",
     "esbuild": "0.28.2",
-    "eslint": "9.39.5",
+    "eslint": "10.14.0",
     "fontkit": "2.0.4",
     "lighthouse": "13.5.0",
     "prettier": "3.9.10",
@@ -50,6 +51,6 @@
     "subset-font": "^2.9.0",
     "tsx": "4.23.15",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.71.2"
+    "typescript-eslint": "8.72.1"
   }
 }
