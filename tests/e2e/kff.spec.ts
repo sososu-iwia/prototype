@@ -18,7 +18,25 @@ for (const locale of ["kk", "ru", "en"] as const) {
     await expect(coaches).toContainText("Андрей Мартин");
     await expect(coaches).not.toContainText("Игорь Зайцев");
     await expect(coaches.locator(".portrait-placeholder")).toHaveCount(3);
-    await expect(page.locator("#squad .team-player-card")).toHaveCount(12);
+    // Other CMS suites deliberately retain valid contract fixtures until global
+    // teardown. Verify each KFF identity exactly once without hiding those players.
+    for (const slug of [
+      "bekhan-shaizada",
+      "kazhymukan-tolepbergen",
+      "sergey-keyler",
+      "nikola-antic",
+      "ali-turganov",
+      "sergey-maly",
+      "elkhan-astanov",
+      "yuriy-vakulko",
+      "cristian-capatina",
+      "abinur-nurymbet",
+      "tidiane-keita",
+      "magzhan-toktibai",
+    ])
+      await expect(
+        page.locator(`#squad a[href="/${locale}/players/${slug}"]`),
+      ).toHaveCount(1);
     await expect(page.locator("#squad")).not.toContainText("Нурби Маратулы");
     await expect(page.locator("#squad")).not.toContainText("Аян Абдухалық");
     expect(
@@ -29,7 +47,10 @@ for (const locale of ["kk", "ru", "en"] as const) {
     const result = await new AxeBuilder({ page }).include("#coaches").analyze();
     expect(result.violations).toEqual([]);
     await page.goto(`/${locale}/teams/first-team`);
-    await expect(page.locator("#squad .team-player-card")).toHaveCount(0);
+    for (const slug of ["sergey-keyler", "abinur-nurymbet", "tidiane-keita"])
+      await expect(
+        page.locator(`#squad a[href="/${locale}/players/${slug}"]`),
+      ).toHaveCount(0);
     await page.goto(`/${locale}/players/sergey-keyler`);
     await expect(page.locator("h1")).toHaveText("Сергей Кейлер");
     await expect(
