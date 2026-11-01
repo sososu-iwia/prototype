@@ -269,6 +269,10 @@ test("video autoplay, mute, viewport/tab resume, native loop and intentional pau
   await page.goto("/en/gallery");
   const video = page.locator("video").first();
   await video.scrollIntoViewIfNeeded();
+  const toggle = await page.locator(".gallery-video-toggle").boundingBox();
+  const frame = await video.boundingBox();
+  expect(toggle!.height).toBeGreaterThanOrEqual(44);
+  expect(toggle!.width).toBeLessThan(frame!.width * 0.65);
   await expect
     .poll(() =>
       video.evaluate(

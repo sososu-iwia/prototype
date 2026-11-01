@@ -1847,12 +1847,13 @@ body:has(.admin-page) .site-header {
 .sponsor-preview-panel .sponsor-logo {
   border-color: #d6e0e8;
 }
-.gallery-video-toggle {
+.gallery-grid .gallery-video-toggle {
   position: absolute;
   z-index: 3;
   top: 16px;
   left: 16px;
   min-height: 44px;
+  width: fit-content;
   max-width: calc(100% - 80px);
   padding: 10px 16px;
   border: 1px solid #ffffff99;
