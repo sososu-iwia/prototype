@@ -16,6 +16,13 @@ for (const locale of ["kk", "ru", "en"])
     "/news",
     "/news/website-archive",
     "/gallery",
+    "/teams/first-team",
+    "/teams/first-league",
+    "/teams/second-league",
+    "/academy",
+    "/academy/admission",
+    "/partners",
+    "/privacy",
   ]) {
     const path = `/${locale}${route}`,
       res = await fetch("http://localhost:3000" + path);

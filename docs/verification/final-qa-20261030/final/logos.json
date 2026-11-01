@@ -1,0 +1,128 @@
+[
+  {
+    "name": "bank-rbk white",
+    "width": 640,
+    "height": 316,
+    "fit": "contain"
+  },
+  {
+    "name": "bank-rbk navy",
+    "width": 640,
+    "height": 316,
+    "fit": "contain"
+  },
+  {
+    "name": "bank-rbk mat",
+    "width": 640,
+    "height": 316,
+    "fit": "contain"
+  },
+  {
+    "name": "city-hotel white",
+    "width": 320,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "city-hotel navy",
+    "width": 320,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "city-hotel mat",
+    "width": 320,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "erg white",
+    "width": 300,
+    "height": 141,
+    "fit": "contain"
+  },
+  {
+    "name": "erg navy",
+    "width": 300,
+    "height": 141,
+    "fit": "contain"
+  },
+  {
+    "name": "erg mat",
+    "width": 300,
+    "height": 141,
+    "fit": "contain"
+  },
+  {
+    "name": "eurasia white",
+    "width": 569,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "eurasia navy",
+    "width": 569,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "eurasia mat",
+    "width": 569,
+    "height": 320,
+    "fit": "contain"
+  },
+  {
+    "name": "global-coffee white",
+    "width": 224,
+    "height": 224,
+    "fit": "contain"
+  },
+  {
+    "name": "global-coffee navy",
+    "width": 224,
+    "height": 224,
+    "fit": "contain"
+  },
+  {
+    "name": "global-coffee mat",
+    "width": 224,
+    "height": 224,
+    "fit": "contain"
+  },
+  {
+    "name": "integra white",
+    "width": 242,
+    "height": 84,
+    "fit": "contain"
+  },
+  {
+    "name": "integra navy",
+    "width": 242,
+    "height": 84,
+    "fit": "contain"
+  },
+  {
+    "name": "integra mat",
+    "width": 242,
+    "height": 84,
+    "fit": "contain"
+  },
+  {
+    "name": "scat white",
+    "width": 640,
+    "height": 139,
+    "fit": "contain"
+  },
+  {
+    "name": "scat navy",
+    "width": 640,
+    "height": 139,
+    "fit": "contain"
+  },
+  {
+    "name": "scat mat",
+    "width": 640,
+    "height": 139,
+    "fit": "contain"
+  }
+]

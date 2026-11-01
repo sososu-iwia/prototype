@@ -127,12 +127,45 @@ export const entityFields: Record<string, Field[]> = {
     localized("names"),
     localized("title"),
     text("photo", false),
-    select("group", ["management", "coaching"]),
+    select("group", ["management", "coaching", "academy"]),
+    relation("teamId", "teams", true),
     publication,
     text("source"),
     verification,
   ],
+  sponsors: [
+    text("name"),
+    { ...text("logo", false), nullable: true },
+    localized("description", false),
+    { ...text("websiteUrl", false), nullable: true },
+    { ...text("tier", false), nullable: true },
+    publication,
+    number("sortOrder"),
+    date("validFrom", true),
+    date("validUntil", true),
+    { ...text("verificationSource", false), nullable: true },
+    date("verifiedAt", true),
+    { key: "logoApproved", type: "boolean" },
+    { key: "youthSafe", type: "boolean" },
+  ],
+  academy: [
+    text("id"),
+    { key: "content", type: "content" },
+    publication,
+    select("admissionState", ["UNCONFIRMED", "CLOSED", "OPEN"]),
+    { key: "inquiriesEnabled", type: "boolean" },
+    { ...text("contactEmail", false), nullable: true },
+    { ...text("contactPhone", false), nullable: true },
+    text("source"),
+  ],
+  "academy-inquiries": [
+    select("state", ["NEW", "CONTACTED", "RESOLVED", "ARCHIVED"]),
+  ],
   achievements: [
+    text("clubKey"),
+    { ...text("competitionKey", false), nullable: true },
+    select("achievementType", ["MILESTONE", "LEAGUE", "CUP", "SUPERCUP"]),
+    publication,
     relation("playerId", "players", true),
     relation("seasonId", "seasons", true),
     number("year", true),
@@ -155,6 +188,15 @@ export const entityFields: Record<string, Field[]> = {
     localized("names"),
     text("logo", false),
     { key: "managed", type: "boolean" },
+    {
+      ...select("category", ["first-team", "first-league", "second-league"]),
+      nullable: true,
+      required: false,
+    },
+    publication,
+    verification,
+    localized("overview", false),
+    text("source"),
   ],
   competitions: [text("id"), localized("names")],
   categories: [text("slug"), localized("names")],
@@ -243,6 +285,26 @@ export function blank(entity: string) {
                     : field.nullable
                       ? null
                       : "";
+  if (entity === "achievements") value.clubKey = "ordabasy";
+  if (entity === "academy") {
+    value.id = "main";
+    value.content = Object.fromEntries(
+      [
+        "introduction",
+        "philosophy",
+        "ageGroups",
+        "coaches",
+        "facilities",
+        "programs",
+        "requirements",
+        "trials",
+        "schedule",
+        "nextSteps",
+        "faq",
+        "privacyNotice",
+      ].map((k) => [k, { kk: "", ru: "", en: "" }]),
+    );
+  }
   if (entity === "seasons" || entity === "competitions")
     value.id = crypto.randomUUID();
   if (entity === "match-events") value.eventKey = crypto.randomUUID();

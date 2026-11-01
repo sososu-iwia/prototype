@@ -1,4 +1,5 @@
 import "../src/config";
+import { seedPremium } from "../src/premium-content";
 import { Prisma } from "@prisma/client";
 import { db } from "../src/db";
 import snapshot from "../../../packages/content/public-snapshot.json";
@@ -142,6 +143,7 @@ async function main() {
     },
     { timeout: 30000 },
   );
+  await seedPremium();
   console.log(
     "Imported 20 archive players, 36 draft matches, 3 draft articles, 6 gallery items. No fabricated statistics. Existing editorial changes retained.",
   );

@@ -178,14 +178,96 @@ export const schemas = {
       names: shortLocalized,
       title: shortLocalized,
       photo: media,
-      group: z.enum(["management", "coaching"]),
+      group: z.enum(["management", "coaching", "academy"]),
+      teamId: id.nullable().optional(),
       status: publication,
       source,
       verification,
     })
     .strict(),
+  sponsors: z
+    .object({
+      name: z.string().min(1).max(120),
+      logo: media,
+      description: localized.default({ kk: "" }),
+      websiteUrl: z
+        .url()
+        .refine(
+          (v) =>
+            v.startsWith("https://") &&
+            !new URL(v).username &&
+            !new URL(v).password,
+        )
+        .nullable()
+        .optional(),
+      tier: z.string().max(80).nullable().optional(),
+      status: publication,
+      sortOrder: z.number().int().min(0).max(1000),
+      validFrom: utc.nullable().optional(),
+      validUntil: utc.nullable().optional(),
+      verificationSource: z.string().max(1000).nullable().optional(),
+      verifiedAt: utc.nullable().optional(),
+      logoApproved: z.boolean(),
+      youthSafe: z.boolean(),
+    })
+    .strict()
+    .superRefine((v, c) => {
+      if (v.validFrom && v.validUntil && v.validUntil <= v.validFrom)
+        c.addIssue({
+          code: "custom",
+          path: ["validUntil"],
+          message: "Invalid validity interval",
+        });
+      if (
+        v.status === "PUBLISHED" &&
+        (!v.logo ||
+          !v.logoApproved ||
+          !v.verificationSource ||
+          !v.verifiedAt ||
+          new Date(v.verifiedAt) > new Date())
+      )
+        c.addIssue({
+          code: "custom",
+          path: ["status"],
+          message: "Verified partnership and approved logo required",
+        });
+    }),
+  academy: z
+    .object({
+      id: z.literal("main"),
+      content: z.record(z.string().max(100), localized),
+      status: publication,
+      admissionState: z.enum(["UNCONFIRMED", "CLOSED", "OPEN"]),
+      inquiriesEnabled: z.boolean(),
+      contactEmail: z.email().nullable().optional(),
+      contactPhone: z.string().max(40).nullable().optional(),
+      source,
+    })
+    .strict()
+    .superRefine((v, c) => {
+      if (
+        v.inquiriesEnabled &&
+        (v.status !== "PUBLISHED" ||
+          !v.content.privacyNotice?.kk ||
+          (!v.contactEmail && !v.contactPhone))
+      )
+        c.addIssue({
+          code: "custom",
+          path: ["inquiriesEnabled"],
+          message: "Published privacy notice and approved contact required",
+        });
+    }),
+  "academy-inquiries": z
+    .object({ state: z.enum(["NEW", "CONTACTED", "RESOLVED", "ARCHIVED"]) })
+    .strict(),
   achievements: z
     .object({
+      clubKey: z.string().min(1).max(80).default("ordabasy"),
+      competitionKey: z.string().min(1).max(80).nullable().optional(),
+      achievementType: z
+        .enum(["LEAGUE", "CUP", "SUPERCUP", "MILESTONE"])
+        .default("MILESTONE"),
+      status: publication.default("DRAFT"),
       playerId: id.nullable().optional(),
       seasonId: id.nullable().optional(),
       year: z.number().int().min(1900).max(2100).nullable(),
@@ -194,7 +276,21 @@ export const schemas = {
       source,
       verification,
     })
-    .strict(),
+    .strict()
+    .superRefine((v, c) => {
+      if (v.achievementType !== "MILESTONE" && (!v.competitionKey || !v.year))
+        c.addIssue({
+          code: "custom",
+          path: ["competitionKey"],
+          message: "Sporting achievements require competition and year",
+        });
+      if (v.status === "PUBLISHED" && v.verification !== "VERIFIED")
+        c.addIssue({
+          code: "custom",
+          path: ["verification"],
+          message: "Verification required",
+        });
+    }),
   seasons: z
     .object({
       id,
@@ -222,6 +318,14 @@ export const schemas = {
       names: shortLocalized,
       logo: media,
       managed: z.boolean().default(false),
+      category: z
+        .enum(["first-team", "first-league", "second-league"])
+        .nullable()
+        .optional(),
+      status: publication.default("DRAFT"),
+      verification: verification.default("LEGACY_UNVERIFIED"),
+      overview: localized.default({ kk: "" }),
+      source: source.default("Pending club approval"),
     })
     .strict(),
   competitions: z.object({ id, names: shortLocalized }).strict(),
@@ -374,3 +478,37 @@ export const settingsSchema = z
       }),
   })
   .strict();
+
+export const inquirySchema = z
+  .object({
+    guardianName: z.string().trim().min(2).max(100),
+    contact: z
+      .string()
+      .trim()
+      .max(160)
+      .refine(
+        (v) => z.email().safeParse(v).success || /^\+?[0-9 ()-]{7,30}$/.test(v),
+      ),
+    ageGroup: z.string().trim().max(80).optional(),
+    message: z.string().trim().min(10).max(2000),
+    locale: z.enum(["kk", "ru", "en"]),
+    consent: z.literal(true),
+    website: z.string().max(0),
+  })
+  .strict();
+
+/** Keep exact dates private until the eighteenth UTC birthday; Feb 29 matures on Mar 1 in non-leap years. */
+export function publicBirthDate(
+  value: Date | null,
+  now = new Date(),
+): Date | null {
+  if (!value) return null;
+  const eighteenth = new Date(
+    Date.UTC(
+      value.getUTCFullYear() + 18,
+      value.getUTCMonth(),
+      value.getUTCDate(),
+    ),
+  );
+  return eighteenth <= now ? value : null;
+}

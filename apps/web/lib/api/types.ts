@@ -102,6 +102,9 @@ export type Club = {
     verification: string;
   }[];
   achievements: {
+    achievementType: "LEAGUE" | "CUP" | "SUPERCUP" | "MILESTONE";
+    competitionKey: string | null;
+    status: string;
     id: string;
     year: number | null;
     title: Text;
@@ -141,4 +144,32 @@ export type Standings = {
 };
 export type RankedStatistic = Statistics & {
   playerSeason: PlayerSeason & { player: Player };
+};
+
+export type Sponsor = {
+  id: string;
+  name: string;
+  logo: string;
+  websiteUrl: string | null;
+  description: Text;
+};
+export type Academy = {
+  published: boolean;
+  admissionState: "UNCONFIRMED" | "CLOSED" | "OPEN";
+  inquiriesEnabled: boolean;
+  content?: Record<string, Text>;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
+};
+export type TeamPageData = {
+  statistics?: { played: number; won: number; goals: number };
+  published: boolean;
+  category?: string;
+  team?: Team & { overview: Text; source: string };
+  seasons?: { id: string; name: string; current: boolean }[];
+  season?: string | null;
+  players?: import("../../features/players/PlayerCard").CardPlayer[];
+  matches?: Match[];
+  staff?: { id: string; names: Text; title: Text; photo: string | null }[];
+  news?: News[];
 };

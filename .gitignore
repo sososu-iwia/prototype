@@ -20,3 +20,6 @@ verification/
 !docs/
 docs/*
 !docs/*.md
+
+# Third-party reference captures stay local; never package or publish them.
+/design-assets/references/psg-review/

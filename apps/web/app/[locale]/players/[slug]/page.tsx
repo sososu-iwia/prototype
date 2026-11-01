@@ -111,7 +111,12 @@ export default async function Profile({
         {!!p.memberships?.length && (
           <section className="season-stat">
             <h2>{u("careerHistory")}</h2>
-            <div className="table-scroll">
+            <div
+              className="table-scroll"
+              role="region"
+              aria-label={u("careerHistory")}
+              tabIndex={0}
+            >
               <table className="stats-table">
                 <thead>
                   <tr>

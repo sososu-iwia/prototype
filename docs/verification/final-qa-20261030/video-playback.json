@@ -1,0 +1,12 @@
+{
+  "src": "http://localhost:3000/media/gallery1-web-v1-960.mp4",
+  "width": 960,
+  "height": 720,
+  "duration": 24.066667,
+  "readyState": 4,
+  "loop": true,
+  "error": null,
+  "loopWrapped": true,
+  "reducedMotionPaused": true,
+  "issues": []
+}

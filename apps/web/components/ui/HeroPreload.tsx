@@ -1,10 +1,38 @@
+import { editorialHero as hero } from "../../lib/hero-media";
 export function HeroPreload({
   team = false,
   priority = "high",
+  editorial = false,
 }: {
   team?: boolean;
   priority?: "high" | "low";
+  editorial?: boolean;
 }) {
+  if (editorial)
+    return (
+      <>
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          href={hero.mobileFallback.avif}
+          imageSrcSet={hero.mobileAvif}
+          imageSizes={hero.mobileSizes}
+          media="(max-width:480px)"
+          fetchPriority={priority}
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          href={hero.desktopFallback.avif}
+          imageSrcSet={hero.desktopAvif}
+          imageSizes={hero.desktopSizes}
+          media="(min-width:481px)"
+          fetchPriority={priority}
+        />
+      </>
+    );
   return (
     <>
       {team ? (

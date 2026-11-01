@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import sharp from "sharp";
+import { db } from "../../apps/api/src/db";
 test.setTimeout(60000);
 test("roster departure, return, unsaved changes and admin accessibility", async ({
   page,
@@ -55,6 +57,24 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
   await page
     .getByRole("combobox", { name: "Publication status", exact: true })
     .selectOption("PUBLISHED");
+  await page
+    .getByRole("combobox", { name: "Verification", exact: true })
+    .selectOption("VERIFIED");
+  const image = await sharp({
+    create: { width: 80, height: 120, channels: 3, background: "#047ca6" },
+  })
+    .png()
+    .toBuffer();
+  await page
+    .locator("input[type=file]")
+    .setInputFiles({
+      name: "synthetic-player.png",
+      mimeType: "image/png",
+      buffer: image,
+    });
+  await expect(page.getByLabel("Photo path", { exact: true })).toHaveValue(
+    /^\/uploads\//,
+  );
   let releaseSave!: () => void;
   const pendingSave = new Promise<void>((resolve) => {
     releaseSave = resolve;
@@ -105,6 +125,21 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
     await expect(page.locator(".admin-table")).toBeVisible();
   }
   await assign("2026-01-01T10:00", "19");
+  const publicPage = await page.context().newPage();
+  const publicCard = publicPage
+    .locator(".team-player-card")
+    .filter({ hasText: prefix });
+  await publicPage.goto("/en/teams/first-team");
+  await expect(publicCard).toContainText("19");
+  await page
+    .locator(".admin-table tbody tr")
+    .getByRole("button", { name: "Edit", exact: true })
+    .click();
+  await page.getByLabel("Shirt number", { exact: true }).fill("20");
+  await page.getByRole("button", { name: "Save", exact: true }).click();
+  await expect(page.locator(".admin-table")).toBeVisible();
+  await publicPage.reload();
+  await expect(publicCard).toContainText("20");
   await expect(page.locator(".admin-table tbody tr")).toHaveCount(1);
   await page
     .locator(".admin-table tbody tr")
@@ -115,7 +150,20 @@ test("roster departure, return, unsaved changes and admin accessibility", async 
   await page.getByLabel("Next club", { exact: true }).fill("Example club");
   await page.getByRole("button", { name: "Save", exact: true }).click();
   await expect(page.locator(".admin-table")).toBeVisible();
+  await publicPage.reload();
+  await expect(publicCard).toHaveCount(0);
   await assign("2026-07-01T10:00", "27");
+  await publicPage.reload();
+  await expect(publicCard).toContainText("27");
+  const stored = await db.player.findUniqueOrThrow({
+    where: { slug: prefix },
+    include: { memberships: { orderBy: { startsAt: "asc" } } },
+  });
+  expect(stored.photo).toMatch(/^\/uploads\//);
+  expect(stored.memberships.map((m) => m.number)).toEqual([20, 27]);
+  expect(stored.memberships[0].endsAt).toBeTruthy();
+  expect(stored.memberships[1].endsAt).toBeNull();
+  await publicPage.close();
   await expect(page.locator(".admin-table tbody tr")).toHaveCount(2);
   await page.evaluate(() => scrollTo(0, 0));
   await page.screenshot({

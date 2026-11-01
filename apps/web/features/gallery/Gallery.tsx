@@ -10,7 +10,8 @@ export async function Gallery({
   headingLevel?: 2 | 3;
 }) {
   const locale = await getLocale(),
-    t = await getTranslations("ui");
+    t = await getTranslations("ui"),
+    p = await getTranslations("premium");
   return (
     <GalleryClient
       items={items}
@@ -20,6 +21,10 @@ export async function Gallery({
         openImage: t("openImage"),
         empty: t("empty"),
         close: t("close"),
+        playVideo: p("playVideo"),
+        pauseVideo: p("pauseVideo"),
+        videoBlocked: p("videoBlocked"),
+        videoError: p("videoError"),
       }}
     />
   );

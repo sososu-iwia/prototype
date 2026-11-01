@@ -1,62 +1,11 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { localized, type Locale } from "../../lib/i18n/config";
 import type { GalleryItem } from "../../lib/api/types";
 import { Media } from "../../components/ui/Media";
+import { GalleryVideo, type VideoLabels } from "./GalleryVideo";
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
-function Video({ item, title }: { item: GalleryItem; title: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          if (!reduced.matches) void video.play().catch(() => {});
-        } else video.pause();
-      },
-      { threshold: 0.2 },
-    );
-    observer.observe(video);
-    const handle = () => {
-      if (document.hidden) video.pause();
-    };
-    document.addEventListener("visibilitychange", handle);
-    return () => {
-      observer.disconnect();
-      document.removeEventListener("visibilitychange", handle);
-      video.pause();
-    };
-  }, []);
-  return (
-    <video
-      className="gallery-video"
-      ref={ref}
-      src={visible ? item.url : undefined}
-      poster={item.poster || undefined}
-      muted
-      loop
-      playsInline
-      controls
-      preload="none"
-      aria-label={title}
-      onLoadedData={() => {
-        const rect = ref.current?.getBoundingClientRect();
-        if (
-          rect &&
-          rect.top < innerHeight &&
-          rect.bottom > 0 &&
-          !matchMedia("(prefers-reduced-motion: reduce)").matches
-        )
-          void ref.current?.play().catch(() => {});
-      }}
-    />
-  );
-}
 export function GalleryClient({
   items,
   headingLevel = 3,
@@ -66,7 +15,7 @@ export function GalleryClient({
   items: GalleryItem[];
   headingLevel?: 2 | 3;
   locale: Locale;
-  labels: Record<"openImage" | "empty" | "close", string>;
+  labels: Record<"openImage" | "empty" | "close", string> & VideoLabels;
 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const u = (key: keyof typeof labels) => labels[key];
@@ -91,7 +40,12 @@ export function GalleryClient({
           );
           return item.kind === "video" ? (
             <div key={item.id} className="gallery-item gallery-large">
-              <Video item={item} title={title} />
+              <GalleryVideo
+                item={item}
+                title={title}
+                labels={labels}
+                priority={headingLevel === 2 && i === 0}
+              />
               <div className="gallery-overlay video-overlay">
                 <span>{String(i + 1).padStart(2, "0")}</span>
                 <Heading>{title}</Heading>

@@ -7,6 +7,7 @@ import { MediaPicker } from "./MediaPicker";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { entityFields, blank, editable, type Field } from "./schema";
 import { AdminApiError, rebaseDraft } from "./drafts";
+import { SponsorPreview } from "./SponsorPreview";
 type Row = Record<string, unknown>;
 type User = {
   id: string;
@@ -427,7 +428,11 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     if (busy) return;
     if (
       !(await ask(
-        entity === "media" ? u("deleteConfirm") : u("archiveConfirm"),
+        entity === "academy-inquiries"
+          ? u("purgeInquiryConfirm")
+          : entity === "media"
+            ? u("deleteConfirm")
+            : u("archiveConfirm"),
       ))
     ) {
       setMessage(u("cancelledAction"));
@@ -468,7 +473,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
             ? "cover"
             : entity === "gallery"
               ? "url"
-              : entity === "teams"
+              : ["teams", "sponsors"].includes(entity)
                 ? "logo"
                 : "photo",
           asset.url,
@@ -491,6 +496,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     String(
       (row.translations as Row[])?.find((t) => t.locale === locale)?.title ||
         (row.translations as Row[])?.[0]?.title ||
+        row.guardianName ||
         row.email ||
         row.slug ||
         row.name ||
@@ -568,7 +574,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
             (value || {}) as Record<string, Record<string, string>>,
           ).map(([key, text]) => (
             <label key={key}>
-              {s.has(key as "title") ? s(key as "title") : key} (
+              {s.has(key as "title") ? s(key as "title") : label(key)} (
               {tab.toUpperCase()})
               <textarea
                 value={text[tab] || ""}
@@ -713,6 +719,9 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     ...(user?.role !== "EDITOR" ? ["audit", "settings"] : []),
   ];
   const adminOnly = [
+    "sponsors",
+    "academy",
+    "academy-inquiries",
     "club",
     "staff",
     "achievements",
@@ -831,6 +840,13 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
           <>
             {!draft && entity !== "settings" && (
               <>
+                {entity === "sponsors" && (
+                  <SponsorPreview
+                    fetchPage={(page) =>
+                      api(`admin/sponsors?page=${page}&limit=100`)
+                    }
+                  />
+                )}
                 <div className="admin-toolbar">
                   <form
                     className="filter-form"
@@ -850,7 +866,9 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                     </label>
                     <button className="btn btn-primary">{u("search")}</button>
                   </form>
-                  {!["audit", "media"].includes(entity) && (
+                  {!["audit", "media", "academy-inquiries", "academy"].includes(
+                    entity,
+                  ) && (
                     <button
                       className="btn btn-primary"
                       disabled={busy}
@@ -1054,6 +1072,17 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                   />
                                 ) : null}
                                 {display(row)}
+                                {entity === "academy-inquiries" && (
+                                  <small className="admin-row-detail">
+                                    {String(row.contact || "—")}
+                                    <br />
+                                    {String(row.ageGroup || "")}
+                                    <br />
+                                    {String(row.message || "—")}
+                                    <br />
+                                    {String(row.createdAt || "").slice(0, 10)}
+                                  </small>
+                                )}
                                 {entity === "memberships" && (
                                   <small className="admin-row-detail">
                                     {localized(
@@ -1150,13 +1179,18 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                                     "news",
                                     "gallery",
                                     "staff",
+                                    "sponsors",
+                                    "achievements",
+                                    "academy-inquiries",
                                   ].includes(entity) && (
                                     <button
                                       className="text-action danger"
                                       disabled={busy}
                                       onClick={() => remove(row)}
                                     >
-                                      {u("archiveAction")}
+                                      {entity === "academy-inquiries"
+                                        ? u("purgeInquiry")
+                                        : u("archiveAction")}
                                     </button>
                                   )}
                                 {row.slug &&
@@ -1408,9 +1442,14 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                       alt={u("preview")}
                     />
                   )}
-                  {["players", "news", "gallery", "staff", "teams"].includes(
-                    entity,
-                  ) && (
+                  {[
+                    "players",
+                    "news",
+                    "gallery",
+                    "staff",
+                    "teams",
+                    "sponsors",
+                  ].includes(entity) && (
                     <button
                       type="button"
                       className="btn btn-secondary"
@@ -1426,9 +1465,14 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                       {u("chooseMedia")}
                     </button>
                   )}
-                  {["players", "news", "gallery", "staff", "teams"].includes(
-                    entity,
-                  ) && (
+                  {[
+                    "players",
+                    "news",
+                    "gallery",
+                    "staff",
+                    "teams",
+                    "sponsors",
+                  ].includes(entity) && (
                     <label>
                       {u("upload")}
                       <input
@@ -1511,7 +1555,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
                 ? "cover"
                 : entity === "gallery"
                   ? "url"
-                  : entity === "teams"
+                  : ["teams", "sponsors"].includes(entity)
                     ? "logo"
                     : "photo",
               asset.url,

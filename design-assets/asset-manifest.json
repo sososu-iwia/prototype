@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-30",
+  "timezone": "Asia/Almaty",
+  "sourceArchive": "ordabasy-design-assets.zip",
+  "originalArchivePreserved": true,
+  "noPsgAssetsIncluded": true,
+  "assets": [
+    {
+      "originalFilename": "IMG_5658.png",
+      "originalPath": "design-assets/sponsors/IMG_5658.png",
+      "detectedType": "image/png",
+      "extensionMatchesType": true,
+      "width": 1280,
+      "height": 631,
+      "hasAlpha": true,
+      "brandOrContent": "Bank RBK",
+      "sha256": "88676a608aed197c9dbf2aa2ab665ce1ae80d60a0168bc84a3cfd76c68cec362",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "ELIGIBLE_SUBJECT_TO_CMS_REVIEW",
+      "partnershipVerification": "VERIFIED_2026_PARTNER",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "Bank RBK логотипі",
+        "ru": "Логотип Bank RBK",
+        "en": "Bank RBK logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/bank-rbk.webp",
+      "publicUrl": "/media/sponsors/bank-rbk.webp",
+      "optimized": {
+        "width": 640,
+        "height": 316,
+        "type": "image/webp",
+        "sizeBytes": 17604
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5660.webp",
+      "originalPath": "design-assets/sponsors/IMG_5660.webp",
+      "detectedType": "image/webp",
+      "extensionMatchesType": true,
+      "width": 1600,
+      "height": 900,
+      "hasAlpha": true,
+      "brandOrContent": "Eurasia (life insurance logo; legal entity requires confirmation)",
+      "sha256": "20b39ec36d7a62fd94e1727f973ee937249ead725e12567f787f2517d07227b9",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "UNVERIFIED",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "Eurasia (life insurance logo; legal entity requires confirmation) логотипі",
+        "ru": "Логотип Eurasia (life insurance logo; legal entity requires confirmation)",
+        "en": "Eurasia (life insurance logo; legal entity requires confirmation) logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/eurasia.webp",
+      "publicUrl": "/media/sponsors/eurasia.webp",
+      "optimized": {
+        "width": 569,
+        "height": 320,
+        "type": "image/webp",
+        "sizeBytes": 21976
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5664.png",
+      "originalPath": "design-assets/sponsors/IMG_5664.png",
+      "detectedType": "image/jpeg",
+      "extensionMatchesType": false,
+      "width": 242,
+      "height": 84,
+      "hasAlpha": false,
+      "brandOrContent": "Integra Construction",
+      "sha256": "1972f82f79a9089e6791c11db7c105abc27a65086b6793a421bb4da5360750dd",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "MANAGEMENT_MEMORANDUM_ONLY",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "Integra Construction логотипі",
+        "ru": "Логотип Integra Construction",
+        "en": "Integra Construction logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/integra.webp",
+      "publicUrl": "/media/sponsors/integra.webp",
+      "optimized": {
+        "width": 242,
+        "height": 84,
+        "type": "image/webp",
+        "sizeBytes": 3896
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5665.png",
+      "originalPath": "design-assets/sponsors/IMG_5665.png",
+      "detectedType": "image/jpeg",
+      "extensionMatchesType": false,
+      "width": 300,
+      "height": 141,
+      "hasAlpha": false,
+      "brandOrContent": "ERG",
+      "sha256": "3e10547f2b05bd6f00be63860113c0c43eeff3c7e40a495296300ca611fa0ef3",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "PARTNERSHIP_REPORTED_ORIGINAL_SOURCE_PENDING",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "ERG логотипі",
+        "ru": "Логотип ERG",
+        "en": "ERG logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/erg.webp",
+      "publicUrl": "/media/sponsors/erg.webp",
+      "optimized": {
+        "width": 300,
+        "height": 141,
+        "type": "image/webp",
+        "sizeBytes": 2280
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5666.webp",
+      "originalPath": "design-assets/sponsors/IMG_5666.webp",
+      "detectedType": "image/jpeg",
+      "extensionMatchesType": false,
+      "width": 1280,
+      "height": 277,
+      "hasAlpha": false,
+      "brandOrContent": "SCAT Airlines",
+      "sha256": "ab1c8089ef5c3063b31916cc8dbf7efeed5ceec4e8d650ca039431152b576914",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "PROSPECTIVE_DEAL_ONLY",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "SCAT Airlines логотипі",
+        "ru": "Логотип SCAT Airlines",
+        "en": "SCAT Airlines logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/scat.webp",
+      "publicUrl": "/media/sponsors/scat.webp",
+      "optimized": {
+        "width": 640,
+        "height": 139,
+        "type": "image/webp",
+        "sizeBytes": 13296
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5672.png",
+      "originalPath": "design-assets/sponsors/IMG_5672.png",
+      "detectedType": "image/jpeg",
+      "extensionMatchesType": false,
+      "width": 224,
+      "height": 224,
+      "hasAlpha": false,
+      "brandOrContent": "Global Coffee",
+      "sha256": "db10d32cf836c5605bf79c87f9271c9803a8f03bf287fe644216944c643df62a",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "UNVERIFIED",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "Global Coffee логотипі",
+        "ru": "Логотип Global Coffee",
+        "en": "Global Coffee logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/global-coffee.webp",
+      "publicUrl": "/media/sponsors/global-coffee.webp",
+      "optimized": {
+        "width": 224,
+        "height": 224,
+        "type": "image/webp",
+        "sizeBytes": 9414
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "IMG_5673.png",
+      "originalPath": "design-assets/sponsors/IMG_5673.png",
+      "detectedType": "image/png",
+      "extensionMatchesType": true,
+      "width": 447,
+      "height": 447,
+      "hasAlpha": false,
+      "brandOrContent": "City Hotel",
+      "sha256": "26a9f2e174ef7bac5e66bf26d8b12f5466a9c777c0f3451c0555fca89314d750",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "DRAFT_ONLY",
+      "partnershipVerification": "UNVERIFIED",
+      "logoApproval": "SUPPLIED_FOR_REQUESTED_REDESIGN_FORMAL_BRAND_SIGNOFF_NOT_PROVIDED",
+      "intendedUsage": "Sponsor CMS logo; display on white surface with object-fit: contain after publication approval",
+      "altText": {
+        "kk": "City Hotel логотипі",
+        "ru": "Логотип City Hotel",
+        "en": "City Hotel logo"
+      },
+      "optimizedOutputPath": "apps/web/public/media/sponsors/city-hotel.webp",
+      "publicUrl": "/media/sponsors/city-hotel.webp",
+      "optimized": {
+        "width": 320,
+        "height": 320,
+        "type": "image/webp",
+        "sizeBytes": 6454
+      },
+      "transformation": "Aspect-ratio preserving resize inside 640x320 without enlargement; WebP quality 90; no crop or recolor"
+    },
+    {
+      "originalFilename": "PHOTO-2026-10-28-00-05-50.jpg",
+      "originalPath": "design-assets/references/PHOTO-2026-10-28-00-05-50.jpg",
+      "detectedType": "image/jpeg",
+      "width": 1280,
+      "height": 695,
+      "brandOrContent": "Existing achievement section reference",
+      "sha256": "d3aad173ff4a0110b34e341b2a204fa1bf2653294836d0e7f1387f1fea485aac",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "NO_REFERENCE_ONLY",
+      "intendedUsage": "Private design reference, never public site content",
+      "altText": {
+        "en": "Private design reference screenshot"
+      },
+      "optimizedOutputPath": null
+    },
+    {
+      "originalFilename": "PHOTO-2026-10-28-10-30-28.jpg",
+      "originalPath": "design-assets/references/PHOTO-2026-10-28-10-30-28.jpg",
+      "detectedType": "image/jpeg",
+      "width": 798,
+      "height": 150,
+      "brandOrContent": "Sponsor reference collage",
+      "sha256": "b0ce8a1a3435a09b1cb2a8bd1ac6cd9c89054bad35f6eeb574fc45c752063f7c",
+      "source": {
+        "kind": "USER_UPLOAD",
+        "archive": "ordabasy-design-assets.zip"
+      },
+      "mayBePublished": "NO_REFERENCE_ONLY",
+      "intendedUsage": "Private design reference, never public site content",
+      "altText": {
+        "en": "Private design reference screenshot"
+      },
+      "optimizedOutputPath": null
+    }
+  ]
+}

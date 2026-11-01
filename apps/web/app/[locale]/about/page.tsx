@@ -50,7 +50,7 @@ export default async function About({
       <AboutTimeline {...props} />
       <AboutStadium {...props} />
       <AboutValues {...props} />
-      <section className="section-pad">
+      <section className="section-pad" id="management">
         <div className="container">
           <h2>{u("staff")}</h2>
           {club.data.staff.length ? (

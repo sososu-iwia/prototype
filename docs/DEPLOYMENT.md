@@ -1,5 +1,7 @@
 # VPS, домен и восстановление
 
+Последняя проверка текущей ветки и ограничения production: [FINAL_VISUAL_QA.md](FINAL_VISUAL_QA.md). Числа следующего абзаца относятся к архивному этапу 24 октября.
+
 Статус проверки 24 октября 2026: финальный native production запуск, чистый source export, Linux arm64 Docker build/PG17.11/S3/persistence/отдельный recovery API и local HTTPS production-flags drill прошли. Node Docker 24.22.1, native 24.11.1. Все 12 cold Lighthouse замеров через Caddy/H2 проходят локальный gate; direct HTTP/1.1 не проходит LCP на двух страницах. Ранее зафиксированные сбои daemon/build не удалены, но последний повтор — PASS. Полные команды, результаты и границы — [RELEASE_FINALIZATION.md](RELEASE_FINALIZATION.md). Реальные VPS/DNS/private S3 IAM/публичный ACME не предоставлены и не объявляются работающими. После проверки собственные одноразовые ресурсы удалены, пользовательские данные/контейнеры сохранены.
 
 Для кириллического/казахского поиска нужны UTF-8 и Unicode `LC_CTYPE`, например `en_US.UTF-8`; locale `C` не выполняет такое сравнение без учёта регистра. Новый Compose volume инициализируется с `--encoding=UTF8 --locale=en_US.utf8`. Это не меняет locale существующей БД. Проверьте её перед релизом: `SHOW server_encoding; SHOW lc_ctype; SHOW lc_collate;`. Для смены locale нужна отдельная БД и проверенный dump/restore, без reset текущего volume.

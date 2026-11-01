@@ -1,0 +1,88 @@
+{
+  "applicationCommit": "f5d0e53",
+  "coldSamples": 54,
+  "routes": 18,
+  "exitCode": 1,
+  "performanceMedianFailures": [
+    "/team",
+    "/teams/second-league",
+    "/players",
+    "/gallery"
+  ],
+  "lcpMedianFailures": [
+    "/",
+    "/about",
+    "/team",
+    "/teams/first-team",
+    "/teams/first-league",
+    "/teams/second-league",
+    "/players",
+    "/players/bekhan-shaizada",
+    "/matches",
+    "/standings",
+    "/news",
+    "/news/website-archive",
+    "/gallery",
+    "/academy",
+    "/academy/admission",
+    "/partners"
+  ],
+  "maxCLS": 0.001315479984938555,
+  "minimumAccessibility": 0.96,
+  "minimumSEO": 1,
+  "home": [
+    {
+      "run": 1,
+      "cpuBenchmark": 2958,
+      "TBT": 32.5,
+      "observedLCP": 352,
+      "styleLayout": 262.02
+    },
+    {
+      "run": 2,
+      "cpuBenchmark": 1584.5,
+      "TBT": 99,
+      "observedLCP": 345,
+      "styleLayout": 307.108
+    },
+    {
+      "run": 3,
+      "cpuBenchmark": 1221,
+      "TBT": 460.64525000000003,
+      "observedLCP": 739,
+      "styleLayout": 408.04000000000025
+    }
+  ],
+  "categorySampleRanges": {
+    "performance": [
+      0.63,
+      0.98
+    ],
+    "accessibility": [
+      0.96,
+      1
+    ],
+    "best-practices": [
+      1,
+      1
+    ],
+    "seo": [
+      1,
+      1
+    ]
+  },
+  "homeNetwork": [
+    {
+      "run": 1,
+      "initialGalleryMediaRequests": []
+    },
+    {
+      "run": 2,
+      "initialGalleryMediaRequests": []
+    },
+    {
+      "run": 3,
+      "initialGalleryMediaRequests": []
+    }
+  ]
+}

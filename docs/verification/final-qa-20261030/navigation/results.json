@@ -1,0 +1,1823 @@
+{
+  "results": [
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "kk",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "kk",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/#honours",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/teams/first-team",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/teams/first-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/teams/second-league",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/players",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/teams/first-team#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy/admission",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy#age-groups",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy#coaches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy#faq",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/academy#contact",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/partners",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/news",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/matches",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/gallery",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/about",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/about#stadium",
+      "menu": "drawer"
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "route": "/about#management",
+      "menu": "drawer"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "kk",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "ru",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "kk",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "ru",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "kk",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "ru",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/#honours",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/teams/first-team",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/teams/first-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/teams/second-league",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/players",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/teams/first-team#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy/admission",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy#age-groups",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy#coaches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy#faq",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/academy#contact",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/partners",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/news",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/matches",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/gallery",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/about",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/about#stadium",
+      "menu": "desktop"
+    },
+    {
+      "width": 1920,
+      "locale": "en",
+      "route": "/about#management",
+      "menu": "desktop"
+    },
+    {
+      "locale": "kk",
+      "adminSave": true,
+      "sponsorId": "a4421060-0ec0-4e52-8e63-68f17ef20e8b",
+      "status": "DRAFT"
+    },
+    {
+      "locale": "ru",
+      "adminSave": true,
+      "sponsorId": "96d8ed71-c5bd-4c6a-8b02-6626b7a2768d",
+      "status": "DRAFT"
+    },
+    {
+      "locale": "en",
+      "adminSave": true,
+      "sponsorId": "76bfbd81-125c-44fe-9245-837ef8d9623f",
+      "status": "DRAFT"
+    }
+  ],
+  "errors": []
+}
