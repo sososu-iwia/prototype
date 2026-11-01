@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loading from "../../../components/ui/Loading";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { getPlayers, getSeasons } from "../../../lib/api/server";
@@ -14,7 +16,16 @@ export async function generateMetadata({
   const u = await getTranslations({ locale, namespace: "ui" });
   return metadata(locale, "/players", u("archiveRoster"), u("careerHistory"));
 }
-export default async function PlayerArchive({
+export default function PlayerArchive(
+  props: Parameters<typeof PlayerArchiveContent>[0],
+) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <PlayerArchiveContent {...props} />
+    </Suspense>
+  );
+}
+async function PlayerArchiveContent({
   params,
   searchParams,
 }: {
