@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import type { Locale } from "../../lib/i18n/config";
 import { Icon } from "./Icon";
 import { HeroPreload } from "../ui/HeroPreload";
+import { editorialHero as hero } from "../../lib/hero-media";
 export async function EditorialHero({
   locale,
   champion,
@@ -17,17 +18,30 @@ export async function EditorialHero({
       <section className="editorial-hero">
         <picture>
           <source
-            media="(max-width:600px)"
-            srcSet="/media/hero-640.avif"
+            media="(max-width:480px)"
+            srcSet={hero.mobileAvif}
+            sizes={hero.mobileSizes}
             type="image/avif"
           />
-          <source srcSet="/media/hero-1600.avif" type="image/avif" />
+          <source
+            media="(max-width:480px)"
+            srcSet={hero.mobileWebp}
+            sizes={hero.mobileSizes}
+            type="image/webp"
+          />
+          <source
+            srcSet={hero.desktopAvif}
+            sizes={hero.desktopSizes}
+            type="image/avif"
+          />
           <img
             className="editorial-hero-image"
-            src="/media/hero-1600.webp"
+            src={hero.desktopFallback.webp}
+            srcSet={hero.desktopWebp}
+            sizes={hero.desktopSizes}
             alt=""
-            width="1600"
-            height="1067"
+            width={hero.width}
+            height={hero.height}
             fetchPriority="high"
             loading="eager"
           />

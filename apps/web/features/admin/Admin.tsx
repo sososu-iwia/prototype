@@ -7,6 +7,7 @@ import { MediaPicker } from "./MediaPicker";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { entityFields, blank, editable, type Field } from "./schema";
 import { AdminApiError, rebaseDraft } from "./drafts";
+import { SponsorPreview } from "./SponsorPreview";
 type Row = Record<string, unknown>;
 type User = {
   id: string;
@@ -839,6 +840,13 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
           <>
             {!draft && entity !== "settings" && (
               <>
+                {entity === "sponsors" && (
+                  <SponsorPreview
+                    fetchPage={(page) =>
+                      api(`admin/sponsors?page=${page}&limit=100`)
+                    }
+                  />
+                )}
                 <div className="admin-toolbar">
                   <form
                     className="filter-form"

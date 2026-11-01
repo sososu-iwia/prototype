@@ -83,6 +83,12 @@ test("sponsor, achievement and academy forms persist to PostgreSQL; guardian inq
       .selectOption("PUBLISHED");
     await save();
     await page.goto("/en/partners");
+    // Inspect the animated ribbon through its keyboard/touch pause control.
+    const pauseSponsors = page.getByRole("button", {
+      name: "Pause logo animation",
+      exact: true,
+    });
+    await pauseSponsors.click();
     const logo = page.getByRole("img", { name: prefix, exact: true });
     await logo.scrollIntoViewIfNeeded();
     await expect(logo).toHaveCSS("object-fit", "contain");
@@ -90,6 +96,7 @@ test("sponsor, achievement and academy forms persist to PostgreSQL; guardian inq
       .poll(() => logo.evaluate((i) => (i as HTMLImageElement).naturalWidth))
       .toBe(160);
     await page.reload();
+    await pauseSponsors.click();
     await expect(logo).toBeVisible();
     sponsor = await db.sponsor.findUniqueOrThrow({ where: { id: sponsor.id } });
     expect(sponsor.status).toBe("PUBLISHED");

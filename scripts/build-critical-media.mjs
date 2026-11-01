@@ -1,6 +1,7 @@
 import sharp from "sharp";
 // Keep the packaged gallery delivery copy reproducible alongside critical images.
 import "./build-gallery-video.mjs";
+import "./build-editorial-hero.mjs";
 // New filenames keep existing immutable media and originals intact.
 await sharp("images/logo.png")
   .resize({ width: 96 })

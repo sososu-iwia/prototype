@@ -559,6 +559,14 @@
     "retention": "Personal information is retained for 90 days, then erased.",
     "formInvalid": "Check your name, contact details, message and consent.",
     "formRate": "Too many inquiries. Please try again in 15 minutes.",
-    "formExpired": "This form has expired. Reload the page and try again."
+    "formExpired": "This form has expired. Reload the page and try again.",
+    "pauseSponsors": "Pause logo animation",
+    "resumeSponsors": "Resume logo animation",
+    "sponsorPreview": "Partner ribbon preview",
+    "sponsorPreviewNotice": "Internal preview of saved logos, including unapproved drafts. This is not a list of confirmed partners. Duplicate image files are shown once; no publication status is changed.",
+    "playVideo": "Play video",
+    "pauseVideo": "Pause video",
+    "videoBlocked": "Autoplay is unavailable. Use Play video to start.",
+    "videoError": "The video could not be played. Use Play video to try again."
   }
 }

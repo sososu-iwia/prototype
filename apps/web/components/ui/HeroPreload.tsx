@@ -1,3 +1,4 @@
+import { editorialHero as hero } from "../../lib/hero-media";
 export function HeroPreload({
   team = false,
   priority = "high",
@@ -7,6 +8,31 @@ export function HeroPreload({
   priority?: "high" | "low";
   editorial?: boolean;
 }) {
+  if (editorial)
+    return (
+      <>
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          href={hero.mobileFallback.avif}
+          imageSrcSet={hero.mobileAvif}
+          imageSizes={hero.mobileSizes}
+          media="(max-width:480px)"
+          fetchPriority={priority}
+        />
+        <link
+          rel="preload"
+          as="image"
+          type="image/avif"
+          href={hero.desktopFallback.avif}
+          imageSrcSet={hero.desktopAvif}
+          imageSizes={hero.desktopSizes}
+          media="(min-width:481px)"
+          fetchPriority={priority}
+        />
+      </>
+    );
   return (
     <>
       {team ? (
@@ -34,11 +60,7 @@ export function HeroPreload({
             rel="preload"
             as="image"
             type="image/avif"
-            href={
-              editorial
-                ? "/media/hero-640.avif"
-                : "/media/hero-background-640.avif"
-            }
+            href="/media/hero-background-640.avif"
             media="(max-width: 600px)"
             fetchPriority={priority}
           />
@@ -46,11 +68,7 @@ export function HeroPreload({
             rel="preload"
             as="image"
             type="image/avif"
-            href={
-              editorial
-                ? "/media/hero-1600.avif"
-                : "/media/hero-background-1600.avif"
-            }
+            href="/media/hero-background-1600.avif"
             media="(min-width: 601px)"
             fetchPriority={priority}
           />

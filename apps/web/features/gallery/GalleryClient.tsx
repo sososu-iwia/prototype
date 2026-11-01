@@ -1,107 +1,11 @@
 "use client";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { localized, type Locale } from "../../lib/i18n/config";
 import type { GalleryItem } from "../../lib/api/types";
 import { Media } from "../../components/ui/Media";
+import { GalleryVideo, type VideoLabels } from "./GalleryVideo";
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
-function Video({
-  item,
-  title,
-  priority = false,
-}: {
-  item: GalleryItem;
-  title: string;
-  priority?: boolean;
-}) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const inView = useRef(false);
-  const [visible, setVisible] = useState(priority);
-  const src =
-    item.url === "/media/gallery1.mp4"
-      ? "/media/gallery1-web-v1-960.mp4"
-      : item.url;
-  useEffect(() => {
-    const video = ref.current;
-    if (!video) return;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        inView.current = entry.isIntersecting && entry.intersectionRatio >= 0.2;
-        if (inView.current) {
-          setVisible(true);
-          if (!reduced.matches && video.getAttribute("src"))
-            void video.play().catch(() => {});
-        } else video.pause();
-      },
-      { threshold: 0.2 },
-    );
-    observer.observe(video);
-    const handle = () => {
-      if (document.hidden || reduced.matches) video.pause();
-    };
-    document.addEventListener("visibilitychange", handle);
-    reduced.addEventListener("change", handle);
-    return () => {
-      observer.disconnect();
-      document.removeEventListener("visibilitychange", handle);
-      reduced.removeEventListener("change", handle);
-      video.pause();
-    };
-  }, []);
-  useEffect(() => {
-    const video = ref.current;
-    if (
-      visible &&
-      inView.current &&
-      video &&
-      !matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      const rect = video.getBoundingClientRect();
-      if (rect.top < innerHeight && rect.bottom > 0)
-        void video.play().catch(() => {});
-    }
-  }, [visible]);
-  return (
-    <>
-      {priority && item.poster && (
-        <link
-          rel="preload"
-          as="image"
-          href={item.poster}
-          fetchPriority="high"
-        />
-      )}
-      <video
-        className="gallery-video"
-        ref={ref}
-        src={visible ? src : undefined}
-        poster={visible ? item.poster || undefined : undefined}
-        muted
-        loop
-        playsInline
-        controls
-        preload="none"
-        aria-label={title}
-        onPlay={() => {
-          // A pending play request can finish after the observer has paused it.
-          if (!inView.current || document.hidden) ref.current?.pause();
-        }}
-        onLoadedData={() => {
-          const rect = ref.current?.getBoundingClientRect();
-          if (
-            rect &&
-            inView.current &&
-            rect.top < innerHeight &&
-            rect.bottom > 0 &&
-            !matchMedia("(prefers-reduced-motion: reduce)").matches
-          )
-            void ref.current?.play().catch(() => {});
-        }}
-      />
-    </>
-  );
-}
 export function GalleryClient({
   items,
   headingLevel = 3,
@@ -111,7 +15,7 @@ export function GalleryClient({
   items: GalleryItem[];
   headingLevel?: 2 | 3;
   locale: Locale;
-  labels: Record<"openImage" | "empty" | "close", string>;
+  labels: Record<"openImage" | "empty" | "close", string> & VideoLabels;
 }) {
   const Heading = headingLevel === 2 ? "h2" : "h3";
   const u = (key: keyof typeof labels) => labels[key];
@@ -136,9 +40,10 @@ export function GalleryClient({
           );
           return item.kind === "video" ? (
             <div key={item.id} className="gallery-item gallery-large">
-              <Video
+              <GalleryVideo
                 item={item}
                 title={title}
+                labels={labels}
                 priority={headingLevel === 2 && i === 0}
               />
               <div className="gallery-overlay video-overlay">

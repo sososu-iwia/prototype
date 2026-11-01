@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import type { Sponsor } from "../../lib/api/types";
+import { SponsorMarquee } from "./SponsorMarquee";
 export async function SponsorGrid({
   items,
   headingLevel = 2,
@@ -15,36 +16,14 @@ export async function SponsorGrid({
         <p className="eyebrow">FC ORDABASY</p>
         <Heading>{p("partners")}</Heading>
         {items.length ? (
-          <div className="sponsor-grid">
-            {items.map((item) => (
-              <div className="sponsor-logo" key={item.id}>
-                {item.websiteUrl ? (
-                  <a
-                    href={item.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={item.name}
-                  >
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      width="240"
-                      height="100"
-                      loading="lazy"
-                    />
-                  </a>
-                ) : (
-                  <img
-                    src={item.logo}
-                    alt={item.name}
-                    width="240"
-                    height="100"
-                    loading="lazy"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
+          <SponsorMarquee
+            items={items}
+            labels={{
+              partners: p("partners"),
+              pause: p("pauseSponsors"),
+              resume: p("resumeSponsors"),
+            }}
+          />
         ) : (
           <p>{p("noApprovedContent")}</p>
         )}
