@@ -236,7 +236,7 @@ for (const locale of ["kk", "ru", "en"])
   }) => {
     const requests: string[] = [];
     page.on("request", (r) => {
-      if (r.url().includes("hero-editorial-v2")) requests.push(r.url());
+      if (r.url().includes("/media/hero-")) requests.push(r.url());
     });
     await page.goto(`/${locale}`, { waitUntil: "networkidle" });
     const hero = page.locator(".editorial-hero-image");
