@@ -28,6 +28,15 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - name: Ephemeral academy inquiry signing key
+        run: |
+          node --input-type=module <<'JS'
+          import { randomBytes } from "node:crypto";
+          import { appendFileSync } from "node:fs";
+          const secret = randomBytes(32).toString("hex");
+          console.log(`::add-mask::${secret}`);
+          appendFileSync(process.env.GITHUB_ENV, `INQUIRY_RATE_SECRET=${secret}\n`);
+          JS
       - name: PostgreSQL 17 client tools
         run: |
           sudo apt-get update
