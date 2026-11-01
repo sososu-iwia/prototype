@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { RetryApi } from "./RetryApi";
 export async function Empty() {
   const t = await getTranslations("ui");
   return (
@@ -10,9 +11,10 @@ export async function Empty() {
 export async function Offline({ show }: { show: boolean }) {
   const t = await getTranslations("ui");
   return show ? (
-    <p className="source-notice" role="status">
-      {t("offline")}
-    </p>
+    <div className="source-notice" role="status">
+      <p>{t("offline")}</p>
+      <RetryApi label={t("retry")} loading={t("loading")} />
+    </div>
   ) : null;
 }
 export async function Archive({ verification }: { verification?: string }) {

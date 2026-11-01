@@ -21,6 +21,7 @@ jobs:
       COOKIE_SECURE: "false"
       ALLOW_LOCAL_HTTP: "true"
       NEXT_TELEMETRY_DISABLED: "1"
+      INQUIRY_RATE_SECRET: ci-only-academy-rate-secret-not-for-production
       VERIFICATION_DIR: docs/verification/ci
     steps:
       - uses: actions/checkout@v4

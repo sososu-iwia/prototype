@@ -1,0 +1,107 @@
+# Free demo. After reviewed merge, change BOTH service branches to main and sync.
+projects:
+  - name: FC Ordabasy
+    environments:
+      - name: Production
+        services:
+          - type: web
+            name: fc-ordabasy-api
+            runtime: docker
+            plan: free
+            region: frankfurt
+            repo: https://github.com/sososu-iwia/prototype
+            branch: codex/render-update-20261101
+            dockerContext: .
+            dockerfilePath: ./Dockerfile.api
+            dockerCommand: node render-start.mjs
+            healthCheckPath: /api/v1/ready
+            autoDeployTrigger: checksPass
+            envVars:
+              - key: NODE_ENV
+                value: production
+              - key: PORT
+                value: "4000"
+              - key: API_PORT
+                value: "4000"
+              - key: API_HOST
+                value: 0.0.0.0
+              - key: DB_HOST
+                fromDatabase:
+                  name: fc-ordabasy-db
+                  property: host
+              - key: DB_PORT
+                fromDatabase:
+                  name: fc-ordabasy-db
+                  property: port
+              - key: DB_NAME
+                fromDatabase:
+                  name: fc-ordabasy-db
+                  property: database
+              - key: APP_DB_USER
+                value: ordabasy_app
+              - key: APP_DB_PASSWORD
+                sync: false
+              - key: PUBLIC_ORIGIN
+                fromService:
+                  name: fc-ordabasy-web
+                  type: web
+                  envVarKey: RENDER_EXTERNAL_URL
+              - key: TRUSTED_ORIGINS
+                fromService:
+                  name: fc-ordabasy-web
+                  type: web
+                  envVarKey: RENDER_EXTERNAL_URL
+              - key: COOKIE_SECURE
+                value: "true"
+              - key: ALLOW_LOCAL_HTTP
+                value: "false"
+              - key: DISPLAY_TIMEZONE
+                value: Asia/Almaty
+              - key: TRUST_PROXY_CIDRS
+                value: ""
+              - key: DEMO_MODE
+                value: "true"
+              - key: MEDIA_STORAGE
+                value: disabled
+          - type: web
+            name: fc-ordabasy-web
+            runtime: docker
+            plan: free
+            region: frankfurt
+            repo: https://github.com/sososu-iwia/prototype
+            branch: codex/render-update-20261101
+            dockerContext: .
+            dockerfilePath: ./Dockerfile.web
+            healthCheckPath: /api/v1/ready
+            autoDeployTrigger: checksPass
+            envVars:
+              - key: NODE_ENV
+                value: production
+              - key: PORT
+                value: "3000"
+              - key: HOSTNAME
+                value: 0.0.0.0
+              - key: COOKIE_SECURE
+                value: "true"
+              - key: NEXT_TELEMETRY_DISABLED
+                value: "1"
+              - key: API_FETCH_TIMEOUT_MS
+                value: "70000"
+              - key: API_ORIGIN
+                fromService:
+                  name: fc-ordabasy-api
+                  type: web
+                  envVarKey: RENDER_EXTERNAL_URL
+              - key: PUBLIC_ORIGIN
+                fromService:
+                  name: fc-ordabasy-web
+                  type: web
+                  envVarKey: RENDER_EXTERNAL_URL
+        databases:
+          - name: fc-ordabasy-db
+            plan: free
+            region: frankfurt
+            postgresMajorVersion: "17"
+            databaseName: ordabasy_demo
+            user: ordabasy_owner
+            ipAllowList: []

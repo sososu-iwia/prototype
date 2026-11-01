@@ -32,7 +32,8 @@
     "test:compose": "node scripts/verify-compose.mjs"
   },
   "overrides": {
-    "multer": "2.5.0"
+    "multer": "2.5.0",
+    "minimatch": "11.0.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
