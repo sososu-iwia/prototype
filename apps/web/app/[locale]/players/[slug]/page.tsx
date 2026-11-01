@@ -77,7 +77,14 @@ export default async function Profile({
               {p.rosterStatus && (
                 <>
                   <dt>{u("rosterStatus")}</dt>
-                  <dd>{u(p.rosterStatus as "ACTIVE")}</dd>
+                  <dd>
+                    {u(
+                      p.rosterStatus === "UNCONFIRMED" ||
+                        (p.rosterStatus === "ACTIVE" && !activeMembership)
+                        ? "contractUnconfirmed"
+                        : (p.rosterStatus as "ACTIVE"),
+                    )}
+                  </dd>
                 </>
               )}
               {activeMembership?.number != null && (
@@ -163,7 +170,11 @@ export default async function Profile({
                       <td>
                         {m.endsAt
                           ? date(m.endsAt, locale)
-                          : u(m.datesVerified ? "ACTIVE" : "UNCONFIRMED")}
+                          : u(
+                              m.datesVerified
+                                ? "ACTIVE"
+                                : "contractUnconfirmed",
+                            )}
                       </td>
                     </tr>
                   ))}

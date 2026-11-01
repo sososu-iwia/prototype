@@ -298,7 +298,7 @@
     "url": "Media path",
     "poster": "Video poster",
     "kind": "Media type",
-    "sortOrder": "Order",
+    "sortOrder": "Sort order",
     "name": "Name",
     "current": "Current season",
     "logo": "Logo path",
@@ -449,7 +449,7 @@
     "wins": "Wins",
     "purgeInquiry": "Erase personal data",
     "purgeInquiryConfirm": "Personal fields will be permanently erased. The anonymous history will remain. Continue?",
-    "UNCONFIRMED": "Contract unconfirmed",
+    "UNCONFIRMED": "Unconfirmed",
     "CLOSED": "Closed",
     "OPEN": "Open",
     "NEW": "New",
@@ -482,7 +482,8 @@
     "HEAD_COACH": "Head coach",
     "ASSISTANT_COACH": "Assistant coach",
     "OTHER": "Other role",
-    "kff-review": "KFF reconciliation · 2026"
+    "kff-review": "KFF reconciliation · 2026",
+    "contractUnconfirmed": "Contract unconfirmed"
   },
   "premium": {
     "teams": "Teams",
