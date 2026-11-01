@@ -122,7 +122,7 @@ export function GalleryVideo({
         loop
         playsInline
         controls
-        preload="none"
+        preload={priority ? "metadata" : "none"}
         aria-label={title}
         onLoadedData={() => play()}
         onError={() => {

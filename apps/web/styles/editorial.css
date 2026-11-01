@@ -1746,9 +1746,6 @@ section[id] {
   grid-template-columns: minmax(160px, 280px);
   justify-content: center;
 }
-body:has(.admin-page) .site-header {
-  position: static;
-}
 .academy-info-grid article > span,
 .editorial-empty > span {
   color: #0369a1;
@@ -1828,10 +1825,6 @@ body:has(.admin-page) .site-header {
 }
 .sponsor-marquee[data-static="true"] .sponsor-marquee-viewport {
   overflow-x: auto;
-}
-.admin-sponsor-preview {
-  margin-bottom: 24px;
-  min-width: 0;
 }
 .sponsor-preview-panel {
   border: 1px solid #cad7e3;
@@ -1980,73 +1973,8 @@ body:has(.admin-page) .site-header {
   letter-spacing: 0.1em;
   text-align: center;
 }
-.kff-review {
-  max-width: 100%;
-}
-.kff-review label {
-  display: grid;
-  gap: 8px;
-  margin: 18px 0;
-}
-.kff-review select,
-.kff-review textarea {
-  padding: 12px;
-  max-width: 100%;
-  border: 1px solid #aab7c8;
-  border-radius: 4px;
-  background: white;
-  color: #102340;
-}
-.kff-review textarea {
-  min-height: 110px;
-}
-.kff-review-list {
-  display: grid;
-  gap: 14px;
-  margin-top: 24px;
-}
-.kff-review-list article {
-  border: 1px solid #cad3df;
-  padding: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-.kff-review-list .archive-badge {
-  display: inline-block;
-  margin: 3px;
-}
-.kff-review-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.kff-review button {
-  padding: 12px 20px;
-  border: 1px solid #aab7c8;
-  border-radius: 4px;
-}
-.kff-review button:disabled {
-  opacity: 0.5;
-}
-.kff-review-editor dl {
-  display: grid;
-  grid-template-columns: minmax(90px, 1fr) 2fr;
-  gap: 12px;
-}
-.kff-review-editor a {
-  text-decoration: underline;
-}
 @media (max-width: 600px) {
   .coach-content {
     padding: 20px;
-  }
-  .kff-review-editor dl {
-    display: block;
-  }
-  .kff-review-editor dd {
-    margin: 8px 0 20px;
   }
 }

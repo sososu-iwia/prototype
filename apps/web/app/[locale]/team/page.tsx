@@ -40,7 +40,7 @@ export default async function Team({
       <section className="team-page-section">
         <div className="container">
           <Offline show={players.offline} />
-          <div className="admin-toolbar">
+          <div className="squad-toolbar">
             <Link
               prefetch={false}
               className="section-link"
