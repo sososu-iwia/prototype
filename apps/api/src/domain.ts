@@ -35,7 +35,7 @@ export const schemas = {
   players: z
     .object({
       rosterStatus: z
-        .enum(["ACTIVE", "INJURED", "LOANED_OUT", "DEPARTED", "RETIRED"])
+        .enum(["ACTIVE", "INJURED", "LOANED_OUT", "DEPARTED", "RETIRED", "UNCONFIRMED"])
         .default("ACTIVE"),
       archivedAt: utc.nullable().optional(),
       slug,
@@ -180,6 +180,16 @@ export const schemas = {
       photo: media,
       group: z.enum(["management", "coaching", "academy"]),
       teamId: id.nullable().optional(),
+      sourceSeasonId: id.nullable().optional(),
+      roleCode: z.enum(["HEAD_COACH", "ASSISTANT_COACH", "OTHER"]).optional(),
+      nationality: z
+        .string()
+        .regex(/^[A-Z]{2}$/)
+        .nullable()
+        .optional(),
+      sortOrder: z.number().int().min(0).max(1000).optional(),
+      sourceUrl: z.url().startsWith("https://").nullable().optional(),
+      sourceCapturedAt: utc.nullable().optional(),
       status: publication,
       source,
       verification,

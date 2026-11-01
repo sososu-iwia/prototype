@@ -17,6 +17,8 @@ const tables: Record<string, string> = {
   matchStatistics: "PlayerMatchStatistics",
   matchEvents: "MatchEvent",
   staff: "StaffMember",
+  staffRevisions: "StaffRevision",
+  rosterImportRecords: "RosterImportRecord",
   club: "ClubInfo",
   categories: "Category",
   competitions: "Competition",

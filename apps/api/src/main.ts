@@ -23,6 +23,7 @@ import {
   AdminController,
 } from "./controllers";
 import { PremiumController } from "./premium";
+import { KffReviewController } from "./kff-controller";
 import { InquiryRetentionService } from "./inquiry-retention";
 import { ManagementController } from "./management";
 import { readUpload } from "./storage";
@@ -111,6 +112,7 @@ class ErrorFilter implements ExceptionFilter {
     PremiumController,
     AuthController,
     ManagementController,
+    KffReviewController,
     AdminController,
   ],
   providers: [SessionGuard, InquiryRetentionService],

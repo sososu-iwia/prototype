@@ -54,6 +54,8 @@ import {
 import { seasonStatistics } from "./statistics";
 import { uploadImage } from "./storage";
 import { purgeExpiredInquiries } from "./inquiry-retention";
+import { recordStaffRevision } from "./staff-history";
+import { publicRegistration } from "./kff-import";
 const pagination = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(24),
@@ -99,8 +101,17 @@ async function publicPlayerRows(
     }),
   );
   const now = new Date();
+  const registrations = await db.rosterImportRecord.findMany({
+    where: {
+      playerId: { in: players.map((p) => p.id) },
+      reviewStatus: "APPROVED",
+    },
+  });
   return players.map((player) => ({
     ...player,
+    registrations: registrations
+      .filter((r) => r.playerId === player.id)
+      .map(publicRegistration),
     birthDate: publicBirthDate(player.birthDate, now),
     rosterNumber:
       player.memberships.find(
@@ -838,6 +849,7 @@ export class AdminController {
             include: includes(entity),
           })
         : d.create({ data, include: includes(entity) }));
+      if (entity === "staff") await recordStaffRevision(tx, String(saved.id));
       // Touch match timestamps when event/line changes so public provenance is current.
       if (entity === "match-events" || entity === "match-statistics")
         await tx.match.updateMany({
@@ -920,13 +932,16 @@ export class AdminController {
         const data =
           entity === "players"
             ? { archivedAt: new Date() }
-            : { status: "ARCHIVED" };
+            : entity === "staff"
+              ? { status: "ARCHIVED", archivedAt: new Date() }
+              : { status: "ARCHIVED" };
         if (entity === "players") await archivePlayerMemberships(tx, req, id);
         const saved = await d.update({
           where: { id },
           data: { ...data, version: { increment: 1 } },
         });
         await audit(tx, req, entity, id, "ARCHIVE", before, saved);
+        if (entity === "staff") await recordStaffRevision(tx, id);
       } else throw new ConflictException({ code: "HISTORY_PROTECTED" });
       return { ok: true };
     });

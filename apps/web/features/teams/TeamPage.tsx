@@ -8,6 +8,7 @@ import { MatchCard } from "../matches/MatchCard";
 import { NewsGrid } from "../news/NewsGrid";
 import { Media } from "../../components/ui/Media";
 import { Offline } from "../../components/ui/State";
+import { PortraitPlaceholder } from "../../components/editorial/PortraitPlaceholder";
 export async function TeamPage({
   locale,
   category,
@@ -19,6 +20,7 @@ export async function TeamPage({
 }) {
   const { data, offline } = await getTeamPage(category, season),
     p = await getTranslations("premium"),
+    k = await getTranslations("kff"),
     s = await getTranslations("ui");
   const key =
     category === "first-team"
@@ -66,6 +68,30 @@ export async function TeamPage({
           <section className="editorial-section" id="squad">
             <div className="container">
               <SectionTitle label="FC ORDABASY" title={p("viewSquad")} />
+              <nav className="kff-views" aria-label={k("season")}>
+                <a
+                  href={`/${locale}/teams/${category}#squad`}
+                  aria-current={data.view === "current" ? "page" : undefined}
+                >
+                  {k("current")}
+                </a>
+                {data.seasons?.map((s) => (
+                  <a
+                    key={s.id}
+                    href={`?season=${encodeURIComponent(s.id)}#squad`}
+                    aria-current={
+                      data.view === "season" && data.season === s.id
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {k("season")} {s.name}
+                  </a>
+                ))}
+              </nav>
+              {data.view === "season" && (
+                <p className="source-notice">{k("seasonNotice")}</p>
+              )}
               {!!data.seasons?.length && (
                 <form className="filter-form">
                   <label>
@@ -115,12 +141,50 @@ export async function TeamPage({
               {data.staff?.length ? (
                 <div className="staff-grid">
                   {data.staff.map((s) => (
-                    <article key={s.id} className="editorial-empty">
-                      {s.photo && (
-                        <Media src={s.photo} alt={localized(s.names, locale)} />
-                      )}
-                      <h3>{localized(s.names, locale)}</h3>
-                      <p>{localized(s.title, locale)}</p>
+                    <article
+                      key={s.id}
+                      className="coach-card"
+                      data-role={s.roleCode}
+                    >
+                      <div className="coach-portrait">
+                        {s.photo ? (
+                          <Media
+                            src={s.photo}
+                            alt={localized(s.names, locale)}
+                          />
+                        ) : (
+                          <PortraitPlaceholder label={k("photoPending")} />
+                        )}
+                      </div>
+                      <div className="coach-content">
+                        <p className="eyebrow">{localized(s.title, locale)}</p>
+                        <h3>{localized(s.names, locale)}</h3>
+                        {s.nationality && <p>{s.nationality}</p>}
+                        {s.sourceUrl && (
+                          <a
+                            href={s.sourceUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {k("source")}
+                          </a>
+                        )}
+                        {s.sourceSeasonId && s.sourceCapturedAt && (
+                          <p className="source-notice">
+                            {k("staffNotice", {
+                              season: s.sourceSeasonId,
+                              date: new Intl.DateTimeFormat(
+                                locale === "en"
+                                  ? "en-GB"
+                                  : locale === "kk"
+                                    ? "kk-KZ"
+                                    : "ru-RU",
+                                { timeZone: "Asia/Almaty" },
+                              ).format(new Date(s.sourceCapturedAt)),
+                            })}
+                          </p>
+                        )}
+                      </div>
                     </article>
                   ))}
                 </div>

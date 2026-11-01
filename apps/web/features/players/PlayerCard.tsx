@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Player } from "../../lib/api/types";
 import { localized, type Locale } from "../../lib/i18n/config";
 import { Media } from "../../components/ui/Media";
+import { PortraitPlaceholder } from "../../components/editorial/PortraitPlaceholder";
 export type CardPlayer = Pick<
   Player,
   | "id"
@@ -60,12 +61,14 @@ export function PlayerCard({
               {number}
             </span>
           )}
-          {player.photo && (
+          {player.photo ? (
             <Media
               src={player.photo}
               alt={localized(player.names, locale)}
               className={compact ? "player-photo" : undefined}
             />
+          ) : (
+            <PortraitPlaceholder label="FC ORDABASY" />
           )}
         </div>
         <div className={compact ? "player-info" : "team-player-content"}>

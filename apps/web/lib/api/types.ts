@@ -31,6 +31,15 @@ export type Membership = {
   nextClub: string | null;
 };
 export type Player = {
+  registrations?: {
+    id: string;
+    seasonId: string;
+    sourceName: string;
+    number: number;
+    sourceUrl: string;
+    sourceCapturedAt: string;
+    contractDatesConfirmed: false;
+  }[];
   memberships?: Membership[];
   rosterNumber?: number | null;
   rosterStatus?: string;
@@ -162,6 +171,7 @@ export type Academy = {
   contactPhone?: string | null;
 };
 export type TeamPageData = {
+  view?: "current" | "season";
   statistics?: { played: number; won: number; goals: number };
   published: boolean;
   category?: string;
@@ -170,6 +180,16 @@ export type TeamPageData = {
   season?: string | null;
   players?: import("../../features/players/PlayerCard").CardPlayer[];
   matches?: Match[];
-  staff?: { id: string; names: Text; title: Text; photo: string | null }[];
+  staff?: {
+    id: string;
+    names: Text;
+    title: Text;
+    photo: string | null;
+    roleCode: string;
+    nationality: string | null;
+    sourceUrl: string | null;
+    sourceCapturedAt: string | null;
+    sourceSeasonId: string | null;
+  }[];
   news?: News[];
 };

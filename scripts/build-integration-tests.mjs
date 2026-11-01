@@ -9,6 +9,7 @@ await build({
     "tests/integration/cms.test.ts",
     "tests/integration/integrity.test.ts",
     "tests/integration/premium.test.ts",
+    "tests/integration/kff.test.ts",
   ],
   outdir: "verification",
   bundle: true,

@@ -19,6 +19,7 @@ import { requireOrigin } from "./auth";
 import { secureCookie } from "./config";
 import { purgeExpiredInquiries } from "./inquiry-retention";
 import { inquirySchema } from "./domain";
+import { publicRegistration } from "./kff-import";
 function secret() {
   const key = process.env.INQUIRY_RATE_SECRET;
   if (!key || key.length < 32)
@@ -71,6 +72,18 @@ export class PremiumController {
         OR: [
           { memberships: { some: { teamId: team.id } } },
           {
+            kffRecords: { some: { teamId: team.id, reviewStatus: "APPROVED" } },
+          },
+          {
+            sourceStaff: {
+              some: {
+                teamId: team.id,
+                status: "PUBLISHED",
+                verification: "VERIFIED",
+              },
+            },
+          },
+          {
             matches: {
               some: { OR: [{ homeTeamId: team.id }, { awayTeamId: team.id }] },
             },
@@ -83,7 +96,8 @@ export class PremiumController {
     const selected =
       season || seasons.find((s) => s.current)?.id || seasons[0]?.id;
     const now = new Date();
-    const current = seasons.some((s) => s.id === selected && s.current);
+    const current =
+      !season || seasons.some((s) => s.id === selected && s.current);
     const membership = {
       teamId: team.id,
       seasonId: selected,
@@ -96,12 +110,13 @@ export class PremiumController {
           }
         : {}),
     };
-    const [players, matches, staff, news] = await Promise.all([
+    const [players, matches, staff, news, registrations] = await Promise.all([
       selected
         ? db.player.findMany({
             where: {
               status: "PUBLISHED",
               verification: "VERIFIED",
+              archivedAt: null,
               memberships: {
                 some: membership,
               },
@@ -126,7 +141,11 @@ export class PremiumController {
           teamId: team.id,
           status: "PUBLISHED",
           verification: "VERIFIED",
+          archivedAt: null,
+          group: "coaching",
+          OR: [{ sourceSeasonId: selected }, { sourceSeasonId: null }],
         },
+        orderBy: [{ sortOrder: "asc" }, { id: "asc" }],
       }),
       // No team taxonomy exists on news; never label general club news as team news.
       db.newsPost.findMany({
@@ -139,36 +158,71 @@ export class PremiumController {
         orderBy: { publishedAt: "desc" },
         take: 4,
       }),
+      season && selected
+        ? db.rosterImportRecord.findMany({
+            where: {
+              seasonId: selected,
+              teamId: team.id,
+              reviewStatus: "APPROVED",
+              player: {
+                status: "PUBLISHED",
+                archivedAt: null,
+              },
+            },
+            include: { player: true },
+            orderBy: { shirtNumber: "asc" },
+          })
+        : [],
     ]);
     return {
       published: true,
       team,
       seasons,
       season: selected || null,
-      players: players.map((p) => ({
-        id: p.id,
-        slug: p.slug,
-        names: p.names,
-        position: p.position,
-        photo: p.photo,
-        verification: p.verification,
-        rosterNumber:
-          p.memberships.find(
-            (m) =>
-              m.teamId === team.id &&
-              m.seasonId === selected &&
-              !m.cancelled &&
-              m.datesVerified &&
-              (!current ||
-                (m.startsAt <= now && (!m.endsAt || m.endsAt > now))),
-          )?.number ?? null,
-      })),
+      view: season ? "season" : "current",
+      players: [
+        ...players
+          .filter((p) => !registrations.some((r) => r.playerId === p.id))
+          .map((p) => ({
+            id: p.id,
+            slug: p.slug,
+            names: p.names,
+            position: p.position,
+            photo: p.photo,
+            verification: p.verification,
+            rosterNumber:
+              p.memberships.find(
+                (m) =>
+                  m.teamId === team.id &&
+                  m.seasonId === selected &&
+                  !m.cancelled &&
+                  m.datesVerified &&
+                  (!current ||
+                    (m.startsAt <= now && (!m.endsAt || m.endsAt > now))),
+              )?.number ?? null,
+          })),
+        ...registrations.map((r) => ({
+          id: r.player!.id,
+          slug: r.player!.slug,
+          names: r.player!.names,
+          position: r.position,
+          photo: r.player!.photo,
+          verification: r.player!.verification,
+          rosterNumber: r.shirtNumber,
+          registration: publicRegistration(r),
+        })),
+      ],
       matches,
       staff: staff.map((s) => ({
         id: s.id,
         names: s.names,
         title: s.title,
         photo: s.photo,
+        roleCode: s.roleCode,
+        nationality: s.nationality,
+        sourceUrl: s.sourceUrl,
+        sourceCapturedAt: s.sourceCapturedAt,
+        sourceSeasonId: s.sourceSeasonId,
       })),
       news,
       statistics: (() => {

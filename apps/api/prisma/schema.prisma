@@ -63,6 +63,9 @@ model Season {
   achievements ClubAchievement[]
   players PlayerSeason[]
   matches Match[]
+  kffRecords RosterImportRecord[]
+  sourceStaff StaffMember[] @relation("StaffSourceSeason")
+  staffRevisions StaffRevision[]
 }
 model Team {
   category String? @unique
@@ -71,6 +74,8 @@ model Team {
   overview Json @default("{}")
   source String @default("Pending club approval")
   staff StaffMember[]
+  staffRevisions StaffRevision[]
+  kffRecords RosterImportRecord[]
   version Int @default(1)
   id String @id @default(uuid())
   slug String @unique
@@ -90,6 +95,8 @@ model Player {
   slug String @unique
   names Json
   biography Json @default("{}")
+  aliases Json @default("[]")
+  kffRecords RosterImportRecord[]
   rosterStatus String @default("ACTIVE")
   archivedAt DateTime?
   memberships RosterMembership[]
@@ -274,6 +281,17 @@ model ClubAchievement {
   verification Verification @default(LEGACY_UNVERIFIED)
 }
 model StaffMember {
+  externalKey String? @unique
+  aliases Json @default("[]")
+  sourceUrl String?
+  sourceCapturedAt DateTime?
+  sourceSeasonId String?
+  sourceSeason Season? @relation("StaffSourceSeason",fields:[sourceSeasonId],references:[id],onDelete:Restrict)
+  roleCode String @default("OTHER")
+  nationality String?
+  sortOrder Int @default(100)
+  archivedAt DateTime?
+  revisions StaffRevision[]
   teamId String?
   team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
   version Int @default(1)
@@ -285,6 +303,59 @@ model StaffMember {
   status PublicationStatus @default(DRAFT)
   source String
   verification Verification @default(LEGACY_UNVERIFIED)
+}
+
+// Recorded CMS versions, not invented employment start/end dates.
+model StaffRevision {
+  id String @id @default(uuid())
+  staffId String
+  staff StaffMember @relation(fields:[staffId],references:[id],onDelete:Restrict)
+  staffVersion Int
+  teamId String?
+  team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
+  seasonId String?
+  season Season? @relation(fields:[seasonId],references:[id],onDelete:Restrict)
+  title Json
+  roleCode String
+  status PublicationStatus
+  source String
+  recordedAt DateTime @default(now())
+  @@unique([staffId,staffVersion])
+}
+
+// An attributed season registration and editorial decision. Never an active contract.
+model RosterImportRecord {
+  id String @id @default(uuid())
+  referenceKey String @unique
+  profileExternalId String?
+  seasonId String
+  season Season @relation(fields:[seasonId],references:[id],onDelete:Restrict)
+  playerId String?
+  player Player? @relation(fields:[playerId],references:[id],onDelete:Restrict)
+  teamId String?
+  team Team? @relation(fields:[teamId],references:[id],onDelete:Restrict)
+  sourceUrl String
+  profileUrl String?
+  sourceCapturedAt DateTime
+  sourceName String
+  sourcePosition String
+  sourceNationality String?
+  shirtNumber Int
+  profileTeam String?
+  profilePosition String?
+  position String?
+  positionSource String?
+  evidence Json
+  conflicts Json @default("[]")
+  proposedAliases Json @default("[]")
+  matchKind String
+  reviewStatus String @default("PENDING")
+  reviewNotes String @default("")
+  reviewedBy String?
+  reviewedAt DateTime?
+  version Int @default(1)
+  @@unique([seasonId,profileExternalId])
+  @@index([seasonId,teamId,reviewStatus])
 }
 model LeagueStandingSnapshot {
   id String @id @default(uuid())

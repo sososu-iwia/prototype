@@ -1,0 +1,302 @@
+[
+  {
+    "sourceName": "Бекхан Шайзада",
+    "localSlug": "bekhan-shaizada",
+    "expectedLegacyId": "legacy-bekhan-shaizada",
+    "expectedLegacyNames": [
+      "Бекхан Шайзада",
+      "Bekhan Shaizada"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Кажымукан Толепберген",
+    "localSlug": "kazhymukan-tolepbergen",
+    "expectedLegacyId": "legacy-kazhymukan-tolepbergen",
+    "expectedLegacyNames": [
+      "Қажымұқан Төлепберген",
+      "Kazhymukan Tolepbergen"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Аян Абдухалык",
+    "localSlug": "ayan-abduhalyk",
+    "expectedLegacyId": "legacy-ayan-abduhalyk",
+    "expectedLegacyNames": [
+      "Аян Абдухалық",
+      "Ayan Abduhalyk"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Гай Марселин Килама Килама",
+    "localSlug": "guy-kilama",
+    "expectedLegacyId": "legacy-guy-kilama",
+    "expectedLegacyNames": [
+      "Ги-Марселин Килама",
+      "Guy Kilama"
+    ],
+    "identityRequiresReview": true,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Сергей Кейлер",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "sergey-keyler"
+  },
+  {
+    "sourceName": "Никола Антич",
+    "localSlug": "nikola-antic",
+    "expectedLegacyId": "legacy-nikola-antic",
+    "expectedLegacyNames": [
+      "Никола Антич",
+      "Nikola Antic"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Улар Жаксыбаев",
+    "localSlug": "ular-zhaksybayev",
+    "expectedLegacyId": "legacy-ular-zhaksybayev",
+    "expectedLegacyNames": [
+      "Ұлар Жақсыбаев",
+      "Ular Zhaksybayev"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Али Турганов",
+    "localSlug": "ali-turganov",
+    "expectedLegacyId": "legacy-ali-turganov",
+    "expectedLegacyNames": [
+      "Әли Тұрғанов",
+      "Ali Turganov"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Султанбек Астанов",
+    "localSlug": "sultanbek-astanov",
+    "expectedLegacyId": "legacy-sultanbek-astanov",
+    "expectedLegacyNames": [
+      "Сұлтанбек Астанов",
+      "Sultanbek Astanov"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Сергей Малый",
+    "localSlug": "sergey-maly",
+    "expectedLegacyId": "legacy-sergey-maly",
+    "expectedLegacyNames": [
+      "Сергей Малый",
+      "Sergey Maly"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Алекса Аманович",
+    "localSlug": "aleksa-amanovic",
+    "expectedLegacyId": "legacy-aleksa-amanovic",
+    "expectedLegacyNames": [
+      "Алекса Аманович",
+      "Aleksa Amanovic"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Нурби Маратулы",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "nurbi-maratuly"
+  },
+  {
+    "sourceName": "Эльхан Астанов",
+    "localSlug": "elkhan-astanov",
+    "expectedLegacyId": "legacy-elkhan-astanov",
+    "expectedLegacyNames": [
+      "Эльхан Астанов",
+      "Elkhan Astanov"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Юрий Вакулко",
+    "localSlug": "yuriy-vakulko",
+    "expectedLegacyId": "legacy-yuriy-vakulko",
+    "expectedLegacyNames": [
+      "Юрий Вакулко",
+      "Yuriy Vakulko"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Жасулан Амир",
+    "localSlug": "zhasulan-amir",
+    "expectedLegacyId": "legacy-zhasulan-amir",
+    "expectedLegacyNames": [
+      "Жасұлан Әмір",
+      "Zhasulan Amir"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Кристиан-Михай Капацина",
+    "localSlug": "cristian-capatina",
+    "expectedLegacyId": "legacy-cristian-capatina",
+    "expectedLegacyNames": [
+      "Кристиан-Михай Капацина",
+      "Cristian Capatina"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Леонардо Натель Виера",
+    "localSlug": "leonardo-natel",
+    "expectedLegacyId": "legacy-leonardo-natel",
+    "expectedLegacyNames": [
+      "Леонардо Натель",
+      "Leonardo Natel"
+    ],
+    "identityRequiresReview": true,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Биржан Токтыбай",
+    "localSlug": "birzhan-toktibai",
+    "expectedLegacyId": "legacy-birzhan-toktibai",
+    "expectedLegacyNames": [
+      "Біржан Тоқтыбай",
+      "Birzhan Toktibai"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Абинур Нурымбет",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "abinur-nurymbet"
+  },
+  {
+    "sourceName": "Нурдаулет Серик",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "nurdaulet-serik"
+  },
+  {
+    "sourceName": "Тидиан Кейта",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "tidiane-keita"
+  },
+  {
+    "sourceName": "Давид Сандан Абагна",
+    "localSlug": "david-abagna",
+    "expectedLegacyId": "legacy-david-abagna",
+    "expectedLegacyNames": [
+      "Давид Абагна",
+      "David Abagna"
+    ],
+    "identityRequiresReview": true,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Рамазан Сердалы",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "ramazan-serdaly"
+  },
+  {
+    "sourceName": "Бакдияр Абен",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "bakdiyar-aben"
+  },
+  {
+    "sourceName": "Эвертон Маседо",
+    "localSlug": "everton-moraes",
+    "expectedLegacyId": "legacy-everton-moraes",
+    "expectedLegacyNames": [
+      "Эвертон Мораес",
+      "Everton Moraes"
+    ],
+    "identityRequiresReview": true,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Магжан Токтыбай",
+    "localSlug": "magzhan-toktibai",
+    "expectedLegacyId": "legacy-magzhan-toktibai",
+    "expectedLegacyNames": [
+      "Мағжан Тоқтыбай",
+      "Magzhan Toktibai"
+    ],
+    "identityRequiresReview": false,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Берн Йонсен",
+    "localSlug": "bjorn-johnsen",
+    "expectedLegacyId": "legacy-bjorn-johnsen",
+    "expectedLegacyNames": [
+      "Бьорн Йонсен",
+      "Bjorn Johnsen"
+    ],
+    "identityRequiresReview": true,
+    "newSlug": null
+  },
+  {
+    "sourceName": "Нурдаулет Бейсенбай",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "nurdaulet-beisenbay"
+  },
+  {
+    "sourceName": "Айдын Есболов",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "aidyn-yesbolov"
+  },
+  {
+    "sourceName": "Дамир Мынжасар",
+    "localSlug": null,
+    "expectedLegacyId": null,
+    "expectedLegacyNames": [],
+    "identityRequiresReview": false,
+    "newSlug": "damir-mynzhasar"
+  }
+]

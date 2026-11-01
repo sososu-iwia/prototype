@@ -8,6 +8,7 @@ import { ConfirmDialog } from "./ConfirmDialog";
 import { entityFields, blank, editable, type Field } from "./schema";
 import { AdminApiError, rebaseDraft } from "./drafts";
 import { SponsorPreview } from "./SponsorPreview";
+import { KffReview } from "./KffReview";
 type Row = Record<string, unknown>;
 type User = {
   id: string;
@@ -224,7 +225,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
             };
         baseDraft.current = next;
         setDraft(next);
-      } else {
+      } else if (entity !== "kff-review") {
         const response = await api(
           `admin/${entity}?${new URLSearchParams({ page: String(page), limit: "20", q: search, status: statusFilter, sort, direction, ...relationFilters })}`,
         );
@@ -255,7 +256,10 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
     };
   }, [load]);
   useEffect(() => {
-    if (!user || ["settings", "dashboard", "audit", "media"].includes(entity))
+    if (
+      !user ||
+      ["settings", "dashboard", "audit", "media", "kff-review"].includes(entity)
+    )
       return;
     let cancelled = false;
     const wanted = [
@@ -716,7 +720,7 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
   const allEntities = [
     "dashboard",
     ...Object.keys(entityFields),
-    ...(user?.role !== "EDITOR" ? ["audit", "settings"] : []),
+    ...(user?.role !== "EDITOR" ? ["kff-review", "audit", "settings"] : []),
   ];
   const adminOnly = [
     "sponsors",
@@ -836,6 +840,8 @@ export function Admin({ initialUser }: { initialUser: User | null }) {
               </button>
             ))}
           </div>
+        ) : entity === "kff-review" ? (
+          <KffReview api={api} onDirty={setDirty} />
         ) : (
           <>
             {!draft && entity !== "settings" && (
