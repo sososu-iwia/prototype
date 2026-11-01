@@ -8,27 +8,29 @@ const widths = (process.env.VISUAL_WIDTHS || "390,768,1024,1440,1920")
   .split(",")
   .map(Number);
 const locales = (process.env.VISUAL_LOCALES || "kk,ru,en").split(",");
-const paths = [
-  "",
-  "/about",
-  "/#honours",
-  "/team",
-  "/teams/first-team",
-  "/teams/first-league",
-  "/teams/second-league",
-  "/players",
-  "/players/bekhan-shaizada",
-  "/matches",
-  "/statistics",
-  "/standings",
-  "/news",
-  "/news/website-archive",
-  "/gallery",
-  "/academy",
-  "/academy/admission",
-  "/partners",
-  "/privacy",
-];
+const paths = process.env.VISUAL_PATHS
+  ? JSON.parse(process.env.VISUAL_PATHS)
+  : [
+      "",
+      "/about",
+      "/#honours",
+      "/team",
+      "/teams/first-team",
+      "/teams/first-league",
+      "/teams/second-league",
+      "/players",
+      "/players/bekhan-shaizada",
+      "/matches",
+      "/statistics",
+      "/standings",
+      "/news",
+      "/news/website-archive",
+      "/gallery",
+      "/academy",
+      "/academy/admission",
+      "/partners",
+      "/privacy",
+    ];
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const issues = [],
@@ -110,7 +112,12 @@ try {
           result.clippedHeadings.length
         )
           issues.push({ width, route, ...result });
-        const name = `${locale}-${path.replaceAll("/", "-").replaceAll("#", "").replace(/^-+/, "") || "home"}-${width}`;
+        const name = `${locale}-${
+          path
+            .replaceAll("/", "-")
+            .replace(/[?#=&]/g, "-")
+            .replace(/^-+/, "") || "home"
+        }-${width}`;
         if (locale === "kk" || width === 390 || width === 1440) {
           if (path.includes("#")) {
             // Crop the document capture: a tall locator screenshot scrolls its
