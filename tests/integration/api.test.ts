@@ -92,9 +92,9 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
         };
         for (const from of [apiRequire, platformRequire]) {
           const uploadVersion = from("multer/package.json").version as string;
-          const jsonVersion = createRequire(
-            from.resolve("express"),
-          )("body-parser/package.json").version as string;
+          const jsonVersion = createRequire(from.resolve("express"))(
+            "body-parser/package.json",
+          ).version as string;
           const [uploadMajor, uploadMinor] = uploadVersion
             .split(".")
             .map(Number);
@@ -474,6 +474,39 @@ test("API against PostgreSQL: authentication, RBAC, CRUD, localization, uploads 
             (m: { source: string }) => m.source === "Automated test fixture",
           ),
         );
+      },
+    );
+    await t.test(
+      "demo media stays authenticated and refuses ephemeral uploads",
+      async () => {
+        const previous = process.env.MEDIA_STORAGE;
+        const before = await db.mediaAsset.count();
+        process.env.MEDIA_STORAGE = "disabled";
+        try {
+          assert.equal(
+            (await request("/admin/media/upload", "POST", undefined, false))
+              .status,
+            401,
+          );
+          assert.equal(
+            (
+              await request("/admin/media/upload", "POST", undefined, true, {
+                "X-CSRF-Token": "",
+              })
+            ).status,
+            403,
+          );
+          const response = await request("/admin/media/upload", "POST");
+          assert.equal(response.status, 503);
+          assert.equal(
+            (await response.json()).error.code,
+            "MEDIA_STORAGE_DISABLED",
+          );
+          assert.equal(await db.mediaAsset.count(), before);
+        } finally {
+          if (previous === undefined) delete process.env.MEDIA_STORAGE;
+          else process.env.MEDIA_STORAGE = previous;
+        }
       },
     );
     await t.test(

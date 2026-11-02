@@ -251,6 +251,8 @@ test("gallery video stays unloaded above the fold, plays on screen and pauses of
   await page.goto("/en");
   const tiles = page.locator("#gallery .gallery-grid > .gallery-item");
   await expect(tiles).toHaveCount(4);
+  // Streamed HTML can be attached inside a hidden Suspense segment before React reveals it.
+  await expect(tiles.first()).toBeVisible();
   if (page.viewportSize()!.width > 600) {
     const tops = await tiles.evaluateAll((items) =>
       items.map((item) => (item as HTMLElement).offsetTop),

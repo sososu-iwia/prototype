@@ -141,7 +141,9 @@ async function main() {
         update: {},
       });
     },
-    { timeout: 30000 },
+    // The one-off Render Free release connects over external TLS. Its initial
+    // transaction acquisition and seed round trips need a bounded WAN budget.
+    { maxWait: 15000, timeout: 120000 },
   );
   await seedPremium();
   console.log(

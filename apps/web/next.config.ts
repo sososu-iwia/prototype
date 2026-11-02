@@ -1,9 +1,11 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import { apiEndpoint } from "./lib/api/endpoint";
 const withNextIntl = createNextIntlPlugin("./lib/i18n/request.ts");
-const api = process.env.API_INTERNAL_URL || "http://127.0.0.1:4000/api/v1";
+const api = apiEndpoint();
 export default withNextIntl({
   output: "standalone",
   poweredByHeader: false,
+  experimental: { proxyTimeout: process.env.RENDER === "true" ? 90000 : 30000 },
   outputFileTracingRoot: process.cwd() + "/../..",
   async redirects() {
     return ["index", "about", "team", "matches", "news"].map((name) => ({

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loading from "../../components/ui/Loading";
 import { getTranslations } from "next-intl/server";
 import {
   getPlayers,
@@ -29,7 +31,14 @@ export async function generateMetadata({
     t = await getTranslations({ locale, namespace: "site" });
   return metadata(locale, "", t("title"), t("description"));
 }
-export default async function Home({
+export default function Home(props: Parameters<typeof HomeContent>[0]) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <HomeContent {...props} />
+    </Suspense>
+  );
+}
+async function HomeContent({
   params,
 }: {
   params: Promise<{ locale: Locale }>;

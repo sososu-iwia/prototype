@@ -30,3 +30,5 @@ backups
 *.dump
 **/*.dump
 verification
+
+**/.vercel

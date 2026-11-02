@@ -61,9 +61,16 @@ export function validateConfig() {
 export function validateStorage() {
   if (
     process.env.MEDIA_STORAGE &&
-    !["local", "s3"].includes(process.env.MEDIA_STORAGE)
+    !["local", "s3", "disabled"].includes(process.env.MEDIA_STORAGE)
   )
-    throw new Error("MEDIA_STORAGE must be local or s3");
+    throw new Error(
+      "MEDIA_STORAGE must be local, s3 or explicitly disabled in demo mode",
+    );
+  if (process.env.MEDIA_STORAGE === "disabled") {
+    if (process.env.DEMO_MODE !== "true")
+      throw new Error("Disabled media storage requires DEMO_MODE=true");
+    return;
+  }
   if (process.env.MEDIA_STORAGE === "s3" && !process.env.S3_BUCKET)
     throw new Error("S3_BUCKET required");
   if (production && !localHttpPreview() && process.env.MEDIA_STORAGE !== "s3")

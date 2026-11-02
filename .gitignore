@@ -23,3 +23,7 @@ docs/*
 
 # Third-party reference captures stay local; never package or publish them.
 /design-assets/references/psg-review/
+
+**/.vercel/
+
+apps/api/src/release-manifest.json

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Loading from "../../../components/ui/Loading";
 import Link from "next/link";
 import { HeroPreload } from "../../../components/ui/HeroPreload";
 import { getTranslations } from "next-intl/server";
@@ -15,7 +17,14 @@ export async function generateMetadata({
     t = await getTranslations({ locale, namespace: "site" });
   return metadata(locale, "/team", t("team"), t("teamPageDescription"));
 }
-export default async function Team({
+export default function Team(props: Parameters<typeof TeamContent>[0]) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <TeamContent {...props} />
+    </Suspense>
+  );
+}
+async function TeamContent({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
